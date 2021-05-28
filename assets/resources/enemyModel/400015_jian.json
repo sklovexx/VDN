@@ -1,0 +1,1 @@
+{"skeleton":{"hash":"LMsi+H4jzu71lnSCTZNftACt3x8","spine":"3.8.99","x":-21,"y":-67,"width":42,"height":134,"images":"","audio":""},"bones":[{"name":"root"}],"slots":[{"name":"jian","bone":"root","attachment":"jian"}],"skins":[{"name":"default","attachments":{"jian":{"jian":{"width":42,"height":134}}}}],"animations":{"fly":{}}}

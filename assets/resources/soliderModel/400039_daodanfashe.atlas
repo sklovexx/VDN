@@ -1,0 +1,41 @@
+
+400039_daodanfashe.png
+size: 235,179
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+c3
+  rotate: true
+  xy: 2, 74
+  size: 63, 166
+  orig: 71, 166
+  offset: 7, 0
+  index: -1
+c3-1
+  rotate: false
+  xy: 170, 19
+  size: 63, 118
+  orig: 65, 126
+  offset: 1, 0
+  index: -1
+c3-2
+  rotate: true
+  xy: 2, 2
+  size: 70, 159
+  orig: 75, 161
+  offset: 3, 1
+  index: -1
+d
+  rotate: true
+  xy: 51, 139
+  size: 38, 177
+  orig: 43, 180
+  offset: 3, 2
+  index: -1
+pd
+  rotate: true
+  xy: 2, 155
+  size: 22, 47
+  orig: 22, 47
+  offset: 0, 0
+  index: -1

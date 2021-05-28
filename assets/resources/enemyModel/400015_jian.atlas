@@ -1,0 +1,13 @@
+
+400015_jian.png
+size: 16,69
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jian
+  rotate: false
+  xy: 2, 2
+  size: 9, 65
+  orig: 21, 67
+  offset: 6, 1
+  index: -1

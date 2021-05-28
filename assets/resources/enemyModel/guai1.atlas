@@ -1,0 +1,104 @@
+
+guai1.png
+size: 732,279
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+矛/d
+  rotate: false
+  xy: 669, 171
+  size: 49, 106
+  orig: 49, 106
+  offset: 0, 0
+  index: -1
+矛/ddz
+  rotate: true
+  xy: 485, 8
+  size: 64, 112
+  orig: 64, 112
+  offset: 0, 0
+  index: -1
+矛/dt
+  rotate: true
+  xy: 653, 93
+  size: 76, 77
+  orig: 76, 77
+  offset: 0, 0
+  index: -1
+矛/j
+  rotate: true
+  xy: 606, 58
+  size: 58, 29
+  orig: 58, 29
+  offset: 0, 0
+  index: -1
+矛/st
+  rotate: true
+  xy: 2, 10
+  size: 126, 150
+  orig: 135, 150
+  offset: 9, 0
+  index: -1
+矛/t
+  rotate: false
+  xy: 273, 23
+  size: 81, 113
+  orig: 102, 121
+  offset: 21, 0
+  index: -1
+矛/wq
+  rotate: false
+  xy: 2, 138
+  size: 352, 139
+  orig: 352, 139
+  offset: 0, 0
+  index: -1
+矛/xt
+  rotate: true
+  xy: 599, 29
+  size: 27, 62
+  orig: 27, 62
+  offset: 0, 0
+  index: -1
+矛/ys
+  rotate: false
+  xy: 154, 17
+  size: 117, 119
+  orig: 117, 119
+  offset: 0, 0
+  index: -1
+矛/ysb
+  rotate: false
+  xy: 561, 199
+  size: 106, 78
+  orig: 106, 81
+  offset: 0, 0
+  index: -1
+矛/yy
+  rotate: false
+  xy: 356, 74
+  size: 203, 203
+  orig: 225, 225
+  offset: 11, 11
+  index: -1
+矛/zs
+  rotate: true
+  xy: 356, 2
+  size: 70, 127
+  orig: 70, 127
+  offset: 0, 0
+  index: -1
+矛/zsb
+  rotate: false
+  xy: 561, 118
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+矛/zsz
+  rotate: false
+  xy: 561, 75
+  size: 43, 41
+  orig: 43, 41
+  offset: 0, 0
+  index: -1

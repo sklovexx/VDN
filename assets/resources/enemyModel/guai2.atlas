@@ -1,0 +1,62 @@
+
+guai2.png
+size: 350,1057
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dz
+  rotate: false
+  xy: 2, 551
+  size: 251, 226
+  orig: 251, 226
+  offset: 0, 0
+  index: -1
+st
+  rotate: false
+  xy: 2, 779
+  size: 306, 276
+  orig: 306, 276
+  offset: 0, 0
+  index: -1
+t
+  rotate: false
+  xy: 207, 2
+  size: 111, 105
+  orig: 111, 105
+  offset: 0, 0
+  index: -1
+yj
+  rotate: true
+  xy: 207, 109
+  size: 144, 141
+  orig: 144, 141
+  offset: 0, 0
+  index: -1
+ys
+  rotate: false
+  xy: 170, 255
+  size: 168, 294
+  orig: 168, 294
+  offset: 0, 0
+  index: -1
+yy
+  rotate: false
+  xy: 2, 37
+  size: 203, 203
+  orig: 225, 225
+  offset: 11, 11
+  index: -1
+zj
+  rotate: true
+  xy: 255, 623
+  size: 154, 89
+  orig: 154, 89
+  offset: 0, 0
+  index: -1
+zs
+  rotate: false
+  xy: 2, 242
+  size: 166, 307
+  orig: 166, 307
+  offset: 0, 0
+  index: -1

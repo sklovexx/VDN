@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "f2ae9f79-d7ab-4e00-9f3b-a720cee50418",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 153,
+  "height": 42,
+  "platformSettings": {},
+  "subMetas": {
+    "金矿采集": {
+      "ver": "1.0.4",
+      "uuid": "abd18335-96c9-4e12-a55e-cfcfa58138dc",
+      "rawTextureUuid": "f2ae9f79-d7ab-4e00-9f3b-a720cee50418",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 153,
+      "height": 42,
+      "rawWidth": 153,
+      "rawHeight": 42,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

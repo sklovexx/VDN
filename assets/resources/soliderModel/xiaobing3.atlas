@@ -1,0 +1,167 @@
+
+xiaobing3.png
+size: 402,1018
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+骑兵/bz
+  rotate: false
+  xy: 292, 595
+  size: 49, 166
+  orig: 49, 169
+  offset: 0, 0
+  index: -1
+骑兵/rd
+  rotate: false
+  xy: 292, 538
+  size: 32, 55
+  orig: 32, 55
+  offset: 0, 0
+  index: -1
+骑兵/rst
+  rotate: false
+  xy: 241, 343
+  size: 64, 84
+  orig: 78, 84
+  offset: 0, 0
+  index: -1
+骑兵/rt
+  rotate: true
+  xy: 139, 2
+  size: 140, 133
+  orig: 140, 133
+  offset: 0, 0
+  index: -1
+骑兵/ryj
+  rotate: false
+  xy: 287, 483
+  size: 32, 53
+  orig: 32, 53
+  offset: 0, 0
+  index: -1
+骑兵/ryq
+  rotate: true
+  xy: 284, 439
+  size: 42, 39
+  orig: 42, 39
+  offset: 0, 0
+  index: -1
+骑兵/rys
+  rotate: false
+  xy: 343, 685
+  size: 45, 76
+  orig: 45, 76
+  offset: 0, 0
+  index: -1
+骑兵/rysb
+  rotate: true
+  xy: 343, 620
+  size: 63, 51
+  orig: 63, 51
+  offset: 0, 0
+  index: -1
+骑兵/rzq
+  rotate: true
+  xy: 241, 476
+  size: 40, 41
+  orig: 40, 41
+  offset: 0, 0
+  index: -1
+骑兵/rzsb
+  rotate: true
+  xy: 343, 578
+  size: 40, 51
+  orig: 40, 51
+  offset: 0, 0
+  index: -1
+骑兵/rzsz
+  rotate: false
+  xy: 241, 518
+  size: 44, 39
+  orig: 44, 39
+  offset: 0, 0
+  index: -1
+骑兵/st
+  rotate: false
+  xy: 2, 360
+  size: 237, 197
+  orig: 237, 197
+  offset: 0, 0
+  index: -1
+骑兵/t
+  rotate: false
+  xy: 207, 144
+  size: 185, 181
+  orig: 185, 181
+  offset: 0, 0
+  index: -1
+骑兵/wb
+  rotate: false
+  xy: 241, 429
+  size: 27, 45
+  orig: 28, 45
+  offset: 0, 0
+  index: -1
+骑兵/wq
+  rotate: true
+  xy: 2, 559
+  size: 457, 288
+  orig: 457, 288
+  offset: 0, 0
+  index: -1
+骑兵/yc
+  rotate: false
+  xy: 2, 7
+  size: 135, 146
+  orig: 135, 146
+  offset: 0, 0
+  index: -1
+骑兵/yc2
+  rotate: true
+  xy: 274, 9
+  size: 133, 118
+  orig: 133, 118
+  offset: 0, 0
+  index: -1
+骑兵/ydt
+  rotate: false
+  xy: 292, 887
+  size: 108, 129
+  orig: 116, 129
+  offset: 0, 0
+  index: -1
+骑兵/yj
+  rotate: true
+  xy: 307, 327
+  size: 64, 77
+  orig: 64, 77
+  offset: 0, 0
+  index: -1
+骑兵/ys
+  rotate: false
+  xy: 325, 393
+  size: 65, 87
+  orig: 65, 87
+  offset: 0, 0
+  index: -1
+骑兵/ysb
+  rotate: false
+  xy: 292, 763
+  size: 97, 122
+  orig: 97, 132
+  offset: 0, 0
+  index: -1
+骑兵/yy
+  rotate: false
+  xy: 2, 155
+  size: 203, 203
+  orig: 225, 225
+  offset: 11, 11
+  index: -1
+骑兵/zs
+  rotate: false
+  xy: 326, 482
+  size: 63, 94
+  orig: 63, 94
+  offset: 0, 0
+  index: -1
