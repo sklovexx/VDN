@@ -6,9 +6,6 @@ const {ccclass, property} = cc._decorator;
 export default class EffectLayer extends cc.Component {
     static instance: EffectLayer;
     // LIFE-CYCLE CALLBACKS:
-    /**兵营 */
-    @property(cc.Node)
-    soliderTent: Array<cc.Node> = [];
     colorArray = [
         {
             //普通攻击
@@ -49,6 +46,7 @@ export default class EffectLayer extends cc.Component {
     ]
     onLoad () {
         EffectLayer.instance = this;
+        this.node.zIndex = 998;
     }
     onDestroy(){
         EffectLayer.instance = null;

@@ -1,0 +1,27 @@
+
+shalou.png
+size: 199,102
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+s1
+  rotate: true
+  xy: 148, 26
+  size: 74, 49
+  orig: 74, 49
+  offset: 0, 0
+  index: -1
+s2
+  rotate: true
+  xy: 148, 20
+  size: 4, 21
+  orig: 4, 21
+  offset: 0, 0
+  index: -1
+sl
+  rotate: true
+  xy: 2, 2
+  size: 98, 144
+  orig: 98, 144
+  offset: 0, 0
+  index: -1

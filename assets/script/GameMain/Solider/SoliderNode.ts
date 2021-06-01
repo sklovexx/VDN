@@ -133,7 +133,7 @@ export default class SoliderNode extends cc.Component {
     onEnable(){
         this._soliderSpine.enabled = true;
         this.dieSpine.node.active = false;
-        this.scope = [{x:cc.winSize.width/2 - 50,y:BaseLayer.instance.baseY + BaseLayer.instance.baseHeight + 50},{x:BaseLayer.instance.baseX - BaseLayer.instance.baseWidth/2 -50,y:-cc.winSize.height/2 + 50}]
+        this.scope = [{x:cc.winSize.width/2 - 50,y:BaseLayer.instance.baseY + BaseLayer.instance.baseHeight + 50},{x:BaseLayer.instance.baseX - BaseLayer.instance.baseWidth/2 -50,y:-cc.winSize.height/2 + 400}]
         this.initAttackTarget();
         this.healthValue = this.maxHealthValue;
         this.isOutBase = false;
@@ -154,9 +154,9 @@ export default class SoliderNode extends cc.Component {
                 this.PosOutBase = cc.v2(this.node.x, BaseLayer.instance.baseY + BaseLayer.instance.baseHeight/2 + 60);
                 break;
             case tentType.Archers:
-                this._modelId = "xiaobing2";
+                this._modelId = "xiaobing5";
                 this._speed = 100;
-                this.atk_dis = 600;
+                this.atk_dis = 400;
                 this.attackType = 1;
                 this.PosOutBase = cc.v2(this.node.x, BaseLayer.instance.baseY + BaseLayer.instance.baseHeight/2 + 60);
                 break;
@@ -181,7 +181,7 @@ export default class SoliderNode extends cc.Component {
     /**损失的血量 */
     lossHealthValue: number = 0;
     /**基础攻击力 */
-    attackValue: number = 20;
+    attackValue: number = 2;
     /**攻速 */
     attackSpeed: number = 1000;
     /**攻击目标 */
@@ -289,7 +289,7 @@ export default class SoliderNode extends cc.Component {
         let dmgStr = index == 2 ? "B" + Math.abs(value).toString() : Math.abs(value).toString();
         //----------------------------
         EffectLayer.instance.addDamageLabel(dmgStr, wolrdPos, index);
-        if(value < 0){
+        if(value < 0 && !this.hitSpine.node.active){
             this.hitSpine.node.active = true;
             this.hitSpine.setAnimation(0, "hit", false);
         }
@@ -301,12 +301,19 @@ export default class SoliderNode extends cc.Component {
         this.healthValue = num;
         // this.setEnemyState(EnemyState.Break);
     }
+    /**开始寻路 */
+    startFindPath(){
+        cc.pathFindMgr.operatePoint({x:this.node.x,y:this.node.y,type:3});
+        cc.pathFindMgr.operatePoint({x:this.targetX,y:this.targetY,type:4});
+        cc.pathFindMgr.startFindPath();
+    }
     initAttackTarget(){
         this.attackTarget = null;
         let random = Util.random(0,1);
         this.targetX = Util.random(-cc.winSize.width/2 + 50,this.scope[random].x);
         this.targetY = Util.random(this.scope[random].y,0);
         this.space_dis = 10;
+        // this.startFindPath();
     }
     setAttackTarget(enemyNode){
         this.attackTarget = enemyNode;
@@ -418,7 +425,12 @@ export default class SoliderNode extends cc.Component {
         this.node.x += x; 
         this.node.y += y;
         //移动自身组件
-        this.moveComponent(); 
+        this.moveComponent();
+        this.setzIndex(); 
+    }
+    setzIndex() {
+        this.node.zIndex = -this.node.y;
+        this._healthBar.node.zIndex = this.node.zIndex;
     }
     isEndDis(){
         return Util.distance(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY))<this.space_dis
@@ -433,8 +445,8 @@ export default class SoliderNode extends cc.Component {
     }
     creatorBullet(level?:number,effect?:boolean) {
         let soliderBullet = ObjectPool.getInstance().get("bullet");
-        let skeletonData = ResManager.getInstance().getSkeletonData(this._soliderId + "_daodanfashe");
-        soliderBullet.getComponent(Bullet).setBulletData(this, skeletonData, this.attackTarget, level, effect);
+        let spriteData = ResManager.getInstance().getSpriteFrameRes("jt");
+        soliderBullet.getComponent(Bullet).setBulletData(this, spriteData, this.attackTarget, level, effect);
         EffectLayer.instance.addChildEffectNode(soliderBullet);
         soliderBullet.setPosition(this.node.position);
     }

@@ -9,8 +9,8 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class Bullet extends cc.Component {
 
-    @property(sp.Skeleton)
-    bulletSpine: sp.Skeleton = null;
+    @property(cc.Sprite)
+    bulletSprite: cc.Sprite = null;
 
     private source;
     private _collider: cc.Collider = null;
@@ -85,9 +85,9 @@ export default class Bullet extends cc.Component {
         else if(this.attackTarget==null){
             angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY)); 
         }else angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.attackTarget.node.x,this.attackTarget.node.y)); 
-        this.node.angle = angle + 90;
-        let x = Math.cos(angle * (Math.PI / 180)) * 400 * dt;
-        let y = Math.sin(angle * (Math.PI / 180)) * 400 * dt;
+        this.node.angle = angle - 90;
+        let x = Math.cos(angle * (Math.PI / 180)) * 600 * dt;
+        let y = Math.sin(angle * (Math.PI / 180)) * 600 * dt;
         this.node.x += x; 
         this.node.y += y;
     }
@@ -96,13 +96,12 @@ export default class Bullet extends cc.Component {
         this.source.inspectEnemy();
         this.source.setStateRun();
     }
-    setBulletData(source: SoliderNode|EnemyNode, skeletonData, attackTarget, level?:number, effect?:boolean) {
+    setBulletData(source: SoliderNode|EnemyNode, spriteData, attackTarget, level?:number, effect?:boolean) {
         this.bulletLevel = 1;
         this.fixAngle = null;
         this.source = source;
         this.attackTarget = attackTarget;
-        this.bulletSpine.skeletonData = skeletonData;
-        this.bulletSpine.setAnimation(0, "fly", true);
+        this.bulletSprite.spriteFrame = spriteData
         this.attackValue = this.source.attackValue;
         if(level&&effect){
             this.bulletLevel = level;

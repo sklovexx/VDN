@@ -1,0 +1,13 @@
+
+kuangcaij.png
+size: 123,131
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+gz
+  rotate: false
+  xy: 2, 2
+  size: 119, 127
+  orig: 132, 127
+  offset: 13, 0
+  index: -1

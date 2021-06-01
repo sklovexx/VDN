@@ -36,8 +36,8 @@ export default class ResourceLayer extends cc.Component {
     curResourceType:ResourceType;
     onLoad () {
         ResourceLayer.instance = this;
-        this.goldNumber = 10000;
-        this.woodNumber = 10000;
+        this.goldNumber = 1000;
+        this.woodNumber = 1000;
     }
     onDestroy(){
         ResourceLayer.instance = null;
@@ -52,6 +52,9 @@ export default class ResourceLayer extends cc.Component {
     start () {
 
     }
-
+    reStart(){
+        this.goldNumber = 1000;
+        this.woodNumber = 1000;
+    }
     // update (dt) {}
 }

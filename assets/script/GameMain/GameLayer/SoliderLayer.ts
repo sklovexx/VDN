@@ -21,12 +21,13 @@ export default class SoliderLayer extends cc.Component {
     soliderArray: Array<SoliderNode> = new Array;
     soliderCollider: Array<cc.Collider> = new Array;
     baseX:number = -700;
-    baseY:number = -1100;
+    baseY:number = -800;
     onLoad() {
         SoliderLayer.instance = this;
         this.maxX = 500;
         this.maxY = -cc.winSize.height/12;
         this.topY = this.node.height / 2 +500;
+        this.node.zIndex = 99;
     }
     onDestroy() {
         SoliderLayer.instance = null;

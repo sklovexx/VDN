@@ -15,9 +15,25 @@ export default class ResourceNode extends cc.Component {
     private resourceAddTimer;
     onLoad () {
         EventMgr.addEventListener("resourceUpdate",this.resourceUpdate,this);
+        if(this.resourceType == 0){
+            // this.getNodePoints();
+        }
     }
     onEnable(){
         this.ResourceNumber = 1000;
+    }
+    getNodePoints(){
+        let rect = new cc.Rect(this.node.x,this.node.y,this.node.width-cc.pathFindMgr.gx,this.node.height-cc.pathFindMgr.gx);
+        let pointArr = [];
+        let rectxMin = rect.x - rect.width/2;
+        let rectyMin = rect.y - rect.height/2;
+        for(let i = 0;i < rect.width/cc.pathFindMgr.gx;i++){
+            for(let j = 0;j < rect.height/cc.pathFindMgr.gx;j++){
+                let point = {x:rectxMin + i*cc.pathFindMgr.gx,y:rectyMin + j*cc.pathFindMgr.gx};
+                pointArr.push(point);
+            }
+        }
+        cc.pathFindMgr.addObstable(pointArr);
     }
     resourceUpdate(){
         if(ResourceLayer.instance.curResourceType != this.resourceType){
@@ -58,7 +74,7 @@ export default class ResourceNode extends cc.Component {
     createResourceAddNode(){
         let objPool = ObjectPool.getInstance();
         let resourceAddNode = objPool.get("reourceAddNode");
-        resourceAddNode.getComponent(cc.Label).string = "+10";
+        resourceAddNode.getChildByName('label_resNum').getComponent(cc.Label).string = "+10";
         this.node.addChild(resourceAddNode);
         let animation = resourceAddNode.getComponent(cc.Animation);
         animation.play();

@@ -53,7 +53,7 @@ cc.Class({
         this.Init();
         this.timBo=false;
         this.Paint();
-        console.log('2D游戏码奴撩骚群：150968661');
+        // console.log('2D游戏码奴撩骚群：150968661');
     },
     Init:function(){
         this.pathObj={};
@@ -96,6 +96,75 @@ cc.Class({
         this.Paint();
         this.path =[];
     },
+    /**操作点 */
+    operatePoint(data){
+        this.moveType = data.type;
+        let nx = Math.floor((data.x - this.node.x) / this.gx), ny =Math.floor((data.y - this.node.y) / this.gx);
+        let id = ny + "*" + nx;
+        //添加点
+        if (this.moveType == 1)
+            {
+                if (this.pathObj[id] ==null)
+                {
+                    if(this.startPoint.y+"*"+this.startPoint.x!=id&&this.endPoint.y+"*"+this.endPoint.x!=id){
+                        this.pathObj[id] = 1;
+                        this.Paint();
+                    }
+                }
+            }
+            //清除点
+            else if (this.moveType == 2)
+            {
+                if (this.pathObj[id] != null)
+                {
+                    delete(this.pathObj[id]);
+                    this.Paint();
+                }
+            }
+            //更改开始点
+            else if (this.moveType == 3)
+            {
+                if (nx != this.startPoint.x || ny != this.startPoint.y)
+                {
+                    if (this.pathObj[id] == null)
+                    {
+                        this.startPoint.x = nx;
+                        this.startPoint.y = ny;
+                        console.log(nx,ny)
+                        this.Paint();
+                    }
+                }
+            }
+            //更改结束点
+            else if (this.moveType == 4)
+            {
+                if (this.nx != this.endPoint.x || ny != this.endPoint.t)
+                {
+                    if (this.pathObj[id] == null)
+                    {
+                        this.endPoint.x = nx;
+                        this.endPoint.y = ny;
+                        this.Paint();
+                    }
+                        
+                }
+            }
+    },
+    addObstable(pointArr){
+        for(let i = 0;i < pointArr.length;i++){
+            this.operatePoint({x:pointArr[i].x,y:pointArr[i].y,type:1})
+        }
+    },
+    clearAllPoint(){
+       this.pathObj = {}; 
+    },
+    startFindPath(){
+        this.moveType = 0;
+        this.search();
+        this.Paint();
+        console.log(this.path)
+        this.path =[];
+    },
     stageMove:function(e){
         let nx = Math.floor(e.getLocationX() / this.gx), ny =Math.floor(e.getLocationY() / this.gx);
         let id = ny + "*" + nx;
@@ -124,6 +193,7 @@ cc.Class({
                     {
                         this.startPoint.x = nx;
                         this.startPoint.y = ny;
+                        console.log(nx,ny)
                         this.Paint();
                     }
                 }

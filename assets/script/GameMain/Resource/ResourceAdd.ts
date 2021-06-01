@@ -3,6 +3,7 @@ import { ResourceType } from "./ResourceType";
 import ResourceLayer from "../GameLayer/ResourceLayer";
 import { EventMgr } from "../../../framework/common/EventManager";
 import  ResourceNode from "./ResourceNode";
+import  MenuLayer from "../GameLayer/MenuLayer";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -11,7 +12,7 @@ export default class ResourceAdd extends cc.Component {
     @property
     resourceType: number = 0;
     @property(cc.Node)
-    resourceRoot: cc.Node = null;
+    resourceRoot: Array<cc.Node> = [];
     private isExploitRecource:boolean = false;
 
     onLoad () {
@@ -34,7 +35,7 @@ export default class ResourceAdd extends cc.Component {
         this.chanceResource();
     }
     chanceResource(){
-        let rootChildren = this.resourceRoot.children
+        let rootChildren = this.resourceRoot[MenuLayer.instance.bg].children
         if(this.resourceType==0){
             for(let i = 0;i < rootChildren.length;i++){
                 let resourceNode = rootChildren[i].getComponent(ResourceNode)
@@ -60,6 +61,8 @@ export default class ResourceAdd extends cc.Component {
     start () {
 
     }
+    reStart(){
 
+    }
     // update (dt) {}
 }

@@ -32,6 +32,13 @@ export default class BaseLayer extends cc.Component {
     label_need_gold: cc.Label = null;
     @property(cc.Label)
     label_need_wood: cc.Label = null;
+    /**兵营 */
+    @property(cc.Node)
+    soliderTent: Array<cc.Node> = [];
+    @property(cc.Node)
+    feixu_ani: Array<cc.Node> = [];
+    @property(cc.PolygonCollider)
+    obstable: Array<cc.PolygonCollider> = [];
     baseX:number;
     baseY:number;
     baseWidth:number;
@@ -51,6 +58,8 @@ export default class BaseLayer extends cc.Component {
     private tentLevel:Array<number>= [1,1,1];
     private curTentType:tentType;
     private delayArg:number;
+    private resourceNoTipsStatus:boolean =  false;
+    private state:number = 0;//1表示无敌
     public get healthValue(): number {
         return this._healthValue;
     }
@@ -70,13 +79,19 @@ export default class BaseLayer extends cc.Component {
             e.on(cc.Node.EventType.TOUCH_CANCEL, this.TouchEnd, this);
         });
         EventMgr.addEventListener("resourceUpdate",this.resourceUpdate,this);
+        // this.addObstable();
+    }
+    addObstable(){
+        cc.pathFindMgr.addObstable(this.obstable[0].points)
+        cc.pathFindMgr.addObstable(this.obstable[1].points)
     }
     start(){
         this.soliderFillRangle = [0,0,0];
-        this.tentProgress = [-1,-1,-1];
+        this.tentProgress = [0,0,0];
         this.tentExpProgress = [0,0,0];
         this.tentLevel = [1,1,1];
         this.delayArg = 0;
+        this.state = 0;
     }
     onDisable(){
         this.unschedule(this.creatorSolider);
@@ -91,7 +106,6 @@ export default class BaseLayer extends cc.Component {
                 }else{
                     ResourceLayer.instance.curResourceType = ResourceType.Footmen;
                     this.curTentType = tentType.Footmen;
-                    this.label_need_wood.string = "0";
                 }
                 break;
             case "_btn_solider_archers":
@@ -100,7 +114,6 @@ export default class BaseLayer extends cc.Component {
                 }else{
                     ResourceLayer.instance.curResourceType = ResourceType.Archers;
                     this.curTentType = tentType.Archers;
-                    this.label_need_wood.string = "20";
                 }
                 break;
             case "_btn_solider_horsemen":
@@ -109,27 +122,30 @@ export default class BaseLayer extends cc.Component {
                 }else{
                     ResourceLayer.instance.curResourceType = ResourceType.Horsemen;
                     this.curTentType = tentType.Horsemen;
-                    this.label_need_wood.string = "20";
                 }
                 break;
             default:
                 break;
         }
         this.progressNode.x = this.soliderBtn[this.curTentType].x;
-        this.progressNode.y = this.soliderBtn[this.curTentType].y + 200;
+        this.progressNode.y = this.soliderBtn[this.curTentType].y;
         EventMgr.raiseEvent("resourceUpdate");
         this.progressNode.opacity = 255;
         if(this.tentProgress[this.curTentType]>-1){
-            this.progress.fillRange = this.tentProgress[this.curTentType];
-            this.expProgress.fillRange = this.tentExpProgress[this.curTentType];
+            this.label_need_wood.string = "200";
+            this.label_need_gold.string = "200";
+            this.progressNode.getChildByName('ani').active = false;
+            this.feixu_ani[this.curTentType].active = true;
+            this.expProgress.fillRange = this.tentProgress[this.curTentType];
             this.schedule(this.constructTent,0.01);
         }else{
+            this.progressNode.getChildByName('ani').active = true;
             this.progress.fillRange = this.soliderFillRangle[this.curTentType];
             this.expProgress.fillRange = this.tentLevel[this.curTentType]>=4? -1 : this.tentExpProgress[this.curTentType];
             this.startCreatorSolider();
         }
     }
-    TouchEnd(event){
+    TouchEnd(){
         ResourceLayer.instance.curResourceType = null;
         this.curTentType = null;
         this.resourceUpdate();
@@ -150,19 +166,32 @@ export default class BaseLayer extends cc.Component {
             this.createResourceAddNode('木材不足')
             return;
         }
-        this.progress.fillRange -= 0.005 * MenuLayer.instance.curSpeed;
-        this.tentProgress[this.curTentType] = this.progress.fillRange;
+        this.expProgress.fillRange -= 0.005 * MenuLayer.instance.curSpeed;
+        this.tentProgress[this.curTentType] = this.expProgress.fillRange;
         ResourceLayer.instance.goldNumber = ResourceLayer.instance._goldNumber - 1 * MenuLayer.instance.curSpeed;
         ResourceLayer.instance.woodNumber = ResourceLayer.instance._woodNumber - 1 * MenuLayer.instance.curSpeed;
-        if(this.progress.fillRange <= -1){
-            EffectLayer.instance.soliderTent[this.curTentType].active = true;
+        if(this.expProgress.fillRange <= -1){
+            this.soliderTent[this.curTentType].active = true;
+            this.feixu_ani[this.curTentType].active = false;
+            this.progressNode.getChildByName('ani').active = true;
             this.unschedule(this.constructTent);
+            this.expProgress.fillRange = this.tentExpProgress[this.curTentType];
             this.progress.fillRange = this.soliderFillRangle[this.curTentType];
             this.startCreatorSolider();
         }
     }
     startCreatorSolider(){
+        this.label_need_wood.string = "20";
+        this.label_need_gold.string = "20";
         this.schedule(this.creatorSolider,0.01);
+        switch (this.curTentType) {
+            case tentType.Footmen:
+                this.label_need_wood.string = "0";
+                break;
+        
+            default:
+                break;
+        }
     }
     creatorSolider(){
         this.delayArg++;
@@ -193,7 +222,7 @@ export default class BaseLayer extends cc.Component {
                 soliderId = 400039;
             }
             this.soliderFillRangle[this.curTentType] = 0;
-            SoliderLayer.instance.creatorSolider(this.curTentType,soliderId,this.tentLevel[this.curTentType],EffectLayer.instance.soliderTent[this.curTentType].position);
+            SoliderLayer.instance.creatorSolider(this.curTentType,soliderId,this.tentLevel[this.curTentType],this.soliderTent[this.curTentType].position);
             if(this.tentLevel[this.curTentType]<4){
                 this.expProgress.fillRange -= 0.1;
                 if((Math.round(this.expProgress.fillRange*100)/100) <= -1){
@@ -209,13 +238,16 @@ export default class BaseLayer extends cc.Component {
         }
     }
     createResourceAddNode(text:string){
+        if(this.resourceNoTipsStatus) return;
+        this.resourceNoTipsStatus = true;
         let objPool = ObjectPool.getInstance();
         let resourceAddNode = objPool.get("reourceAddNode");
-        resourceAddNode.getComponent(cc.Label).string = text;
+        resourceAddNode.getChildByName('label_resNum').getComponent(cc.Label).string = text;
         this.node.addChild(resourceAddNode);
         let animation = resourceAddNode.getComponent(cc.Animation);
         animation.play();
         animation.on('finished',()=>{
+            this.resourceNoTipsStatus = false;
             ObjectPool.getInstance().put(resourceAddNode);
         },this);
     }
@@ -229,10 +261,9 @@ export default class BaseLayer extends cc.Component {
     }
     /**设置当前血量 */
     setHealthValue(value: number) {
-        if (!this.node.parent) return
+        if (!this.node.parent || this.state == 1) return
         let num = this.healthValue + value;
         if (num <= 0) {
-            console.log('游戏结束');
             this.node.active = false;
             uiManager.open(UIID.EndLayer, true);
             return true;
@@ -242,6 +273,22 @@ export default class BaseLayer extends cc.Component {
     reStart(){
         this.node.active = true;
         this.healthValue = this.maxHealthValue;
+        this.soliderFillRangle = [0,0,0];
+        this.tentProgress = [0,0,0];
+        this.tentExpProgress = [0,0,0];
+        this.tentLevel = [1,1,1];
+        this.delayArg = 0;
+        this.soliderTent.forEach(e=>{
+            e.active = false;
+        });
+        this.feixu_ani.forEach(e=>{
+            e.active = false;
+        });
+        this.TouchEnd();
+        this.state = 1;
+        setTimeout(()=>{
+            this.state = 0;
+        },2000)
     }
     // update (dt) {}
 }

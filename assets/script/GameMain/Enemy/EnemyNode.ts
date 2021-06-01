@@ -64,7 +64,7 @@ export default class EnemyNode extends cc.Component {
                 if(this._enemySpine.animation == 'attack'){
                     return;
                 }
-                let angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY));
+                let angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.attackTarget.node.x,this.attackTarget.node.y));
                 //攻击时改变角色朝向，防止背对攻击
                 if((angle<=-90&&angle>=-180)||(angle>90&&angle<=180)){
                     this.node.eulerAngles = cc.v3(0, 180, 0)
@@ -132,7 +132,7 @@ export default class EnemyNode extends cc.Component {
         this._enemyId = enemyId;
         if(this._enemyId == 400015){
             this._modelId = "guai1";
-            this.atk_dis = 600;
+            this.atk_dis = 400;
             this.attackType = 1;
         }else{
             this._modelId = "guai2";
@@ -149,9 +149,9 @@ export default class EnemyNode extends cc.Component {
     /**损失的血量 */
     lossHealthValue: number = 0;
     /**基础攻击力 */
-    attackValue: number = 20;
+    attackValue: number = 2;
     /**攻速 */
-    attackSpeed: number = 1000;
+    attackSpeed: number = 1500;
     attackTarget = null;
     /**入场移动角度 */
     initialAngle: number = 0;
@@ -252,7 +252,7 @@ export default class EnemyNode extends cc.Component {
         let dmgStr = index == 2 ? "B" + Math.abs(value).toString() : Math.abs(value).toString();
         //----------------------------
         EffectLayer.instance.addDamageLabel(dmgStr, wolrdPos, index);
-        if(value < 0){
+        if(value < 0 && !this.hitSpine.node.active){
             this.hitSpine.node.active = true;
             this.hitSpine.setAnimation(0, "hit", false);
         }
@@ -315,7 +315,8 @@ export default class EnemyNode extends cc.Component {
     }
     gameUpdate(dt){
         //移动自身组件
-        this.moveComponent(); 
+        this.moveComponent();
+        this.setzIndex(); 
         if (this._index <=0 &&this.state!=EnemyState.Death) {
             this._index = 50;
             this.inspectEnemy();
@@ -373,6 +374,10 @@ export default class EnemyNode extends cc.Component {
         this.node.x += x; 
         this.node.y += y;
     }
+    setzIndex() {
+        this.node.zIndex = -this.node.y;
+        this._healthBar.node.zIndex = this.node.zIndex;
+    }
     isEndDis(){
         return Util.distance(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY))<this.atk_dis
     }
@@ -386,8 +391,8 @@ export default class EnemyNode extends cc.Component {
     }
     creatorBullet() {
         let soliderBullet = ObjectPool.getInstance().get("bullet");
-        let skeletonData = ResManager.getInstance().getSkeletonData(this._enemyId + "_jian");
-        soliderBullet.getComponent(Bullet).setBulletData(this, skeletonData, this.attackTarget);
+        let spriteData = ResManager.getInstance().getSpriteFrameRes("mao");
+        soliderBullet.getComponent(Bullet).setBulletData(this, spriteData, this.attackTarget);
         EffectLayer.instance.addChildEffectNode(soliderBullet);
         soliderBullet.setPosition(this.node.position);
     }
