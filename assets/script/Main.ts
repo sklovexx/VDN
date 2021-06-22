@@ -27,7 +27,7 @@ export default class NewClass extends cc.Component {
             this.startGame()
         }
         //加载游戏资源
-        let urlArr = ['soliderModel/xiaobing','soliderModel/xiaobing2','soliderModel/xiaobing3','soliderModel/xiaobing5','soliderModel/400039_daodanfashe','enemyModel/guai1','enemyModel/guai2','enemyModel/400015_jian']
+        let urlArr = ['soliderModel/xiaobing','soliderModel/xiaobing2','soliderModel/xiaobing3','soliderModel/xiaobing4','soliderModel/xiaobing5','soliderModel/400039_daodanfashe','enemyModel/guai1','enemyModel/guai2','enemyModel/400015_jian']
         resInstance.initLoadGameRes(() => {
             resLoader.loadArray(urlArr, sp.SkeletonData, (error, skeletonDataArr) => {
                 skeletonDataArr.forEach(skeletonData => { resInstance.pushSceneAsset(sp.SkeletonData, skeletonData) });

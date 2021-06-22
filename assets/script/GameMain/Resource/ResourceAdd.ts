@@ -4,6 +4,7 @@ import ResourceLayer from "../GameLayer/ResourceLayer";
 import { EventMgr } from "../../../framework/common/EventManager";
 import  ResourceNode from "./ResourceNode";
 import  MenuLayer from "../GameLayer/MenuLayer";
+import EffectLayer from "../GameLayer/EffectLayer";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -11,8 +12,6 @@ export default class ResourceAdd extends cc.Component {
     static instance:ResourceAdd;
     @property
     resourceType: number = 0;
-    @property(cc.Node)
-    resourceRoot: Array<cc.Node> = [];
     private isExploitRecource:boolean = false;
 
     onLoad () {
@@ -35,22 +34,12 @@ export default class ResourceAdd extends cc.Component {
         this.chanceResource();
     }
     chanceResource(){
-        let rootChildren = this.resourceRoot[MenuLayer.instance.bg].children
-        if(this.resourceType==0){
-            for(let i = 0;i < rootChildren.length;i++){
-                let resourceNode = rootChildren[i].getComponent(ResourceNode)
-                if(resourceNode.resourceType==0){
-                    resourceNode.startCollect();
-                    return;
-                }
-            }
-        }else{
-            for(let i = 0;i < rootChildren.length;i++){
-                let resourceNode = rootChildren[i].getComponent(ResourceNode)
-                if(resourceNode.resourceType==1){
-                    resourceNode.startCollect();
-                    return;
-                }
+        let rootChildren = EffectLayer.instance.node.children;
+        for(let i = 0;i < rootChildren.length;i++){
+            let resourceNode = rootChildren[i].getComponent(ResourceNode);
+            if(resourceNode&&resourceNode.resourceType==ResourceLayer.instance.curResourceType){
+                resourceNode.startCollect();
+                return;
             }
         }
     }
@@ -59,7 +48,6 @@ export default class ResourceAdd extends cc.Component {
         EventMgr.raiseEvent("resourceUpdate");
     }
     start () {
-
     }
     reStart(){
 

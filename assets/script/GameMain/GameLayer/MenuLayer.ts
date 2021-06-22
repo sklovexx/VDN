@@ -16,7 +16,7 @@ export default class MenuLayer extends cc.Component {
     curSpeed:number = 1;
 
     // LIFE-CYCLE CALLBACKS:
-    bg:number = 0;
+    bg:number = 1;
     onLoad () {
         MenuLayer.instance = this;
         this.node.zIndex = 999;
@@ -25,7 +25,7 @@ export default class MenuLayer extends cc.Component {
         MenuLayer.instance = null;
     }
     start () {
-
+        this.tabMap();
     }
     speedUpdate(){
         if(this.curSpeed == 1){
@@ -42,24 +42,24 @@ export default class MenuLayer extends cc.Component {
         ResourceLayer.instance.addResource(ResourceType.Wood,500);
     }
     tabMap(){
+        console.log(this.bg)
         if(this.bg==0){
             this.bg = 1;
             cc.find("Canvas/bg").active = false;
             cc.find("Canvas/bg2").active = true;
-            this.resourceRoot[0].active = false;
-            this.resourceRoot[1].active = true;
+            ResourceLayer.instance.addObstable();
         }else{
             this.bg = 0;
-            this.resourceRoot[1].active = false;
-            this.resourceRoot[0].active = true;
             cc.find("Canvas/bg").active = true;
             cc.find("Canvas/bg2").active = false;
+            ResourceLayer.instance.removeObstable();
         }
         EnemyLayer.instance.clearAllEnemy();
         SoliderLayer.instance.clearAllSolider();
         EffectLayer.instance.clearAllEffect();
         BaseLayer.instance.reStart();
         GameMainLayer.instance.resume();
+        ResourceLayer.instance.tabBg(this.bg);
     }
     // update (dt) {}
 }

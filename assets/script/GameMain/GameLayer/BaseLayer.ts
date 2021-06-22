@@ -9,6 +9,7 @@ import GameMainLayer from "./GameMainLayer";
 import MenuLayer from "./MenuLayer";
 import { uiManager } from "../../../framework/ui/UIManager";
 import { UIID } from "../../UIConfig";
+import { audioMgr } from "../../../framework/audio/AudioMgr";
 const {ccclass, property} = cc._decorator;
 export enum tentType {
     Footmen,
@@ -27,6 +28,8 @@ export default class BaseLayer extends cc.Component {
     @property(cc.Node)
     progressNode: cc.Node = null;
     @property(cc.Node)
+    chengbaoNode: cc.Node = null;
+    @property(cc.Node)
     soliderBtn: Array<cc.Node> = [];
     @property(cc.Label)
     label_need_gold: cc.Label = null;
@@ -39,15 +42,17 @@ export default class BaseLayer extends cc.Component {
     feixu_ani: Array<cc.Node> = [];
     @property(cc.PolygonCollider)
     obstable: Array<cc.PolygonCollider> = [];
+    @property(cc.PolygonCollider)
+    attackPoint: cc.PolygonCollider = null;
     baseX:number;
     baseY:number;
     baseWidth:number;
     baseHeight:number;
     private progressSchedule;
     /**最大血量 */
-    private maxHealthValue: number = 10000;
+    private maxHealthValue: number = 2000;
     /**当前血量 */
-    private _healthValue: number = 10000;
+    private _healthValue: number = 2000;
     /**士兵加载进度 */
     private soliderFillRangle:Array<number> = [0,0,0];
     /**兵营建造进度 */
@@ -72,14 +77,14 @@ export default class BaseLayer extends cc.Component {
         this.baseX = this.node.x;
         this.baseY = this.node.y;
         this.baseWidth = 500;
-        this.baseHeight = this.node.height;
+        this.baseHeight = this.node.height - 200;
         this.soliderBtn.forEach(e=>{
             e.on(cc.Node.EventType.TOUCH_START, this.TouchStart, this);
             e.on(cc.Node.EventType.TOUCH_END, this.TouchEnd, this);
             e.on(cc.Node.EventType.TOUCH_CANCEL, this.TouchEnd, this);
         });
         EventMgr.addEventListener("resourceUpdate",this.resourceUpdate,this);
-        // this.addObstable();
+        this.addObstable();
     }
     addObstable(){
         cc.pathFindMgr.addObstable(this.obstable[0].points)
@@ -198,11 +203,11 @@ export default class BaseLayer extends cc.Component {
         if(this.delayArg<30 && this.soliderFillRangle[this.curTentType] == 0){
             return;
         }
-        if(ResourceLayer.instance.goldNumber<1){
+        if(ResourceLayer.instance.goldNumber<=0){
             this.createResourceAddNode('金币不足')
             return;
         }
-        if(ResourceLayer.instance.woodNumber<1){
+        if(ResourceLayer.instance.woodNumber<=0){
             this.createResourceAddNode('木材不足')
             return;
         }
@@ -242,14 +247,20 @@ export default class BaseLayer extends cc.Component {
         this.resourceNoTipsStatus = true;
         let objPool = ObjectPool.getInstance();
         let resourceAddNode = objPool.get("reourceAddNode");
+        resourceAddNode.getChildByName('icon').getComponent(cc.Sprite).spriteFrame = null;
         resourceAddNode.getChildByName('label_resNum').getComponent(cc.Label).string = text;
-        this.node.addChild(resourceAddNode);
-        let animation = resourceAddNode.getComponent(cc.Animation);
-        animation.play();
-        animation.on('finished',()=>{
-            this.resourceNoTipsStatus = false;
-            ObjectPool.getInstance().put(resourceAddNode);
-        },this);
+        resourceAddNode.opacity = 255;
+        resourceAddNode.x = this.soliderTent[this.curTentType].x - 50;
+        resourceAddNode.y = this.soliderTent[this.curTentType].y;
+        ResourceLayer.instance.resourcesRoot.addChild(resourceAddNode);
+        cc.tween(resourceAddNode)
+            .by(0.3,{y:100})
+            .by(0.3,{y:100,opacity:-255})
+            .call(()=>{
+                this.resourceNoTipsStatus = false;
+                ObjectPool.getInstance().put(resourceAddNode);
+            })
+            .start()
     }
     onDestroy(){
         BaseLayer.instance = null;
@@ -261,13 +272,18 @@ export default class BaseLayer extends cc.Component {
     }
     /**设置当前血量 */
     setHealthValue(value: number) {
-        if (!this.node.parent || this.state == 1) return
+        if (!this.node.parent || this.state == 1 || this._healthValue <=0) return
         let num = this.healthValue + value;
+        let wolrdPos = this.node.parent.convertToWorldSpaceAR(this.chengbaoNode.position);
+        wolrdPos.y += 150;
+        EffectLayer.instance.addDamageLabel(Math.abs(value).toString(), wolrdPos, 0);
         if (num <= 0) {
             this.node.active = false;
+            GameMainLayer.instance.pause();
             uiManager.open(UIID.EndLayer, true);
             return true;
         };
+        audioMgr.playEffect("hit");
         this.healthValue = num;
     }
     reStart(){

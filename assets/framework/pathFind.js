@@ -20,13 +20,19 @@ var MapInfo=cc.Class({
         this.links =[];
         if (this.x > 0) {
             this.addL((this.x - 1), this.y, obj, mapObj);
+            this.addL((this.x - 1), (this.y + 1), obj,mapObj);
         }
         if (this.y > 0)
         {
             this.addL(this.x , (this.y - 1), obj, mapObj);
+            this.addL((this.x + 1), (this.y - 1), obj,mapObj);
         }
         this.addL((this.x + 1), this.y, obj, mapObj);
         this.addL(this.x, (this.y + 1), obj,mapObj);
+        this.addL((this.x + 1), (this.y + 1), obj,mapObj);
+        if(this.x>0&&this.y > 0){
+            this.addL((this.x - 1), (this.y - 1), obj,mapObj);
+        }
     },
     addL:function(tx,ty,obj, mapObj){
         let id = ty + "*" + tx;
@@ -53,7 +59,6 @@ cc.Class({
         this.Init();
         this.timBo=false;
         this.Paint();
-        // console.log('2D游戏码奴撩骚群：150968661');
     },
     Init:function(){
         this.pathObj={};
@@ -64,8 +69,8 @@ cc.Class({
         this.moveType = 0;
         this.path=[];//List<Point>
         this.mapArr={};//Dictionary<string, MapInfo>
-        this.findMax=5000;//搜索上限
-        cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_DOWN,this.stageDowd,this);
+        this.findMax=4000;//搜索上限
+        // cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_DOWN,this.stageDowd,this);
         
     },
     stageDowd:function(e){
@@ -85,12 +90,12 @@ cc.Class({
             this.moveType = 2;//清除
         }
        
-        cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_UP,this.stageUp,this);
-        cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_MOVE,this.stageMove,this);
+        // cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_UP,this.stageUp,this);
+        // cc.Canvas.instance.node.on(cc.Node.EventType.MOUSE_MOVE,this.stageMove,this);
     },
     stageUp:function(e){
-        cc.Canvas.instance.node.off(cc.Node.EventType.MOUSE_UP,this.stageUp,this);
-        cc.Canvas.instance.node.off(cc.Node.EventType.MOUSE_MOVE,this.stageMove,this);
+        // cc.Canvas.instance.node.off(cc.Node.EventType.MOUSE_UP,this.stageUp,this);
+        // cc.Canvas.instance.node.off(cc.Node.EventType.MOUSE_MOVE,this.stageMove,this);
         this.moveType = 0;
         this.search();
         this.Paint();
@@ -98,6 +103,9 @@ cc.Class({
     },
     /**操作点 */
     operatePoint(data){
+        if(!data){
+            console.log(data)
+        }
         this.moveType = data.type;
         let nx = Math.floor((data.x - this.node.x) / this.gx), ny =Math.floor((data.y - this.node.y) / this.gx);
         let id = ny + "*" + nx;
@@ -155,15 +163,26 @@ cc.Class({
             this.operatePoint({x:pointArr[i].x,y:pointArr[i].y,type:1})
         }
     },
+    removeObstable(pointArr){
+        for(let i = 0;i < pointArr.length;i++){
+            this.operatePoint({x:pointArr[i].x,y:pointArr[i].y,type:2})
+        }
+    },
     clearAllPoint(){
        this.pathObj = {}; 
     },
-    startFindPath(){
+    startFindPath(start,end){
         this.moveType = 0;
-        this.search();
+        let startPoint = {x:Math.floor((start.x - this.node.x)/this.gx),y:Math.floor((start.y - this.node.y)/this.gx)}
+        let endPoint = {x:Math.floor((end.x - this.node.x)/this.gx),y:Math.floor((end.y - this.node.y)/this.gx)}
+        this.search(startPoint,endPoint);
         this.Paint();
-        console.log(this.path)
+        let path = [];
+        for(let i = 0;i<this.path.length;i++){
+            path[i] = {x:this.path[i].x*this.gx + this.node.x,y:this.path[i].y*this.gx + this.node.y,hasArrive:false}
+        }
         this.path =[];
+        return path;
     },
     stageMove:function(e){
         let nx = Math.floor(e.getLocationX() / this.gx), ny =Math.floor(e.getLocationY() / this.gx);
@@ -212,17 +231,17 @@ cc.Class({
                 }
             }
     },
-    search:function(){
-        if (this.pathObj[this.startPoint.y + "*" + this.startPoint.x] != null)
+    search:function(startPoint,endPoint){
+        if (this.pathObj[startPoint.y + "*" + startPoint.x] != null)
         {
             this.path = []//[v2];
             return;
         }
         this.mapArr={};
-        let startNode = new MapInfo(this.startPoint.x, this.startPoint.y);
-        let endNode = new MapInfo(this.endPoint.x, this.endPoint.y);
+        let startNode = new MapInfo(startPoint.x, startPoint.y);
+        let endNode = new MapInfo(endPoint.x, endPoint.y);
         let i, l, f,t,current,test,links;
-        let openBase = Math.abs(this.startPoint.x - this.endPoint.x) + Math.abs(this.startPoint.y - this.endPoint.y);
+        let openBase = Math.sqrt(Math.pow(Math.abs(startPoint.x - endPoint.x),2) + Math.pow(Math.abs(startPoint.y - endPoint.y),2));
         let open=[null,null];
         open[0] = startNode;
         startNode.version = true;
@@ -249,6 +268,7 @@ cc.Class({
             }
             links = current.links;
             l = current.linksLength;
+            let preF=999;
             for (i = 0; i < l; i++){
                 test = links[i];//测试的四个面
                 f = current.nowCost + 1;
@@ -256,14 +276,23 @@ cc.Class({
                     test.version = true;
                     test.parent = current;
                     test.nowCost = f;
-                    test.dist = Math.abs(this.endPoint.x - test.x) + Math.abs(this.endPoint.y - test.y);//到终点的距离
+                    test.dist = Math.sqrt(Math.pow(Math.abs(endPoint.x - test.x),2) + Math.pow(Math.abs(endPoint.y - test.y),2));//到终点的距离
+                    // test.dist = Math.abs(endPoint.x - test.x) + Math.abs(endPoint.y - test.y);//到终点的距离
                     f += test.dist;
-                    test.mayCost = f;//估计的消耗	
+                    test.mayCost = f;//估计的消耗
                     f = (f - openBase) >> 1;
                     test.pre = null;
-                    test.next = open[f];//保存下一步
-                    if (open[f]!=null) open[f].pre = test;
-                    open[f] = test;
+                    if(f == 0 && test.mayCost<preF){
+                        preF = test.mayCost;
+                        test.next = open[0];//保存下一步
+                        if (open[0]!=null) open[0].pre = test;
+                        open[0] = test;
+                    }else{
+                        test.next = open[1];//保存下一步
+                        if (open[1]!=null) open[1].pre = test;
+                        open[1] = test;
+                    }
+                    
                 }else{
                     if (test.pre!=null) test.pre.next = test.next;
                     if (test.next!=null) test.next.pre = test.pre;
@@ -330,6 +359,7 @@ cc.Class({
         }
     },
     Paint:function(){
+        return;
         this.g.clear();
         let r=new cc.Rect(cc.view.getVisibleOrigin().x,cc.view.getVisibleOrigin().y,cc.view.getVisibleSize().width,cc.view.getVisibleSize().height)
         let zx = 0;

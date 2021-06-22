@@ -1,4 +1,5 @@
 import ObjectPool from "../../ObjectPool";
+import { audioMgr } from "../../../framework/audio/AudioMgr";
 import { SoliderObj, SoliderState } from "./ISolider";
 import Util from "../../Util";
 import BaseLayer from "../GameLayer/BaseLayer";
@@ -8,6 +9,8 @@ import EnemyNode from "../Enemy/EnemyNode";
 import { EnemyState } from "../Enemy/IEnemy";
 import ResManager from "../../ResManager";
 import EffectLayer from "../GameLayer/EffectLayer";
+import ResourceLayer from "../GameLayer/ResourceLayer";
+import { ResourceType } from "../Resource/ResourceType";
 import Bullet from "./Bullet";
 import { tentType } from "../GameLayer/BaseLayer"
 const {ccclass, property} = cc._decorator;
@@ -22,8 +25,6 @@ export default class SoliderNode extends cc.Component {
     @property(sp.Skeleton)
     hitSpine:sp.Skeleton = null;
     private _healthBar: cc.ProgressBar = null;
-    private _collider: cc.Collider = null;
-    private _colliderBody: cc.Collider = null;
     private _soliderId: number = 0;
     private _modelId;
     private _soliderObj: SoliderObj = null;
@@ -43,6 +44,7 @@ export default class SoliderNode extends cc.Component {
     private moveTween;
     private atk_dis:number = 200;
     private space_dis:number = 10;
+    private targetPath:Array<any>;
     private soliderType:tentType;
     public get state(): SoliderState {
         return this._state;
@@ -52,7 +54,10 @@ export default class SoliderNode extends cc.Component {
         switch (value) {
             case SoliderState.Stand:
                 this._soliderSpine.setAnimation(0, "stand", true);
-                if(this.attackTarget==null) return;
+                if(this.attackTarget==null&&this.isEndDis()) {
+                    this.node.eulerAngles = cc.v3(0, 180, 0)
+                    return;
+                }
                 if(this.isEndDis()){
                     this.resstAttackTime();
                 }else{
@@ -67,14 +72,13 @@ export default class SoliderNode extends cc.Component {
                 if(this._soliderSpine.animation == 'attack'){
                     return;
                 }
-                let angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY));
                 //攻击敌人时改变角色朝向，防止背对攻击敌人
-                if((angle<=-90&&angle>=-180)||(angle>90&&angle<=180)){
+                if(this.node.x>this.attackTarget.node.x){
                     this.node.eulerAngles = cc.v3(0, 180, 0)
-                }else if(angle>-90&&angle<=90){
+                }else if(this.node.x<=this.attackTarget.node.x){
                     this.node.eulerAngles = cc.v3(0, 0, 0)
                 }
-                this._soliderSpine.setAnimation(0, "attack", true);
+                this._soliderSpine.setAnimation(0, "attack", false);
                 break;
             case SoliderState.Run:
                 this._soliderSpine.setAnimation(0, "walk", true);
@@ -123,17 +127,17 @@ export default class SoliderNode extends cc.Component {
     onLoad () {
         this._soliderSpine = this.node.getComponent(sp.Skeleton);
         this._soliderSpine.setCompleteListener(this.spineAnimEnd.bind(this));
+        this._soliderSpine.setStartListener(this.spineAnimStart.bind(this));
         this.dieSpine.setCompleteListener(this.spineAnimEnd.bind(this));
         this.hitSpine.setCompleteListener(this.spineAnimEnd.bind(this));
     }
-
     start () {
 
     }
     onEnable(){
         this._soliderSpine.enabled = true;
         this.dieSpine.node.active = false;
-        this.scope = [{x:cc.winSize.width/2 - 50,y:BaseLayer.instance.baseY + BaseLayer.instance.baseHeight + 50},{x:BaseLayer.instance.baseX - BaseLayer.instance.baseWidth/2 -50,y:-cc.winSize.height/2 + 400}]
+        this.scope = [{x:cc.winSize.width/2 - 50,y:BaseLayer.instance.baseY + BaseLayer.instance.baseHeight + 50}]
         this.initAttackTarget();
         this.healthValue = this.maxHealthValue;
         this.isOutBase = false;
@@ -144,28 +148,28 @@ export default class SoliderNode extends cc.Component {
         this.soliderType = soliderType;
         this._soliderId = soliderId;
         this._level = level;
-        // this.node.getChildByName('level').getComponent(cc.Label).string = 'Lv.' + this._level.toString();
+        this.attackValue = 3 + 2*this._level;
         switch (this.soliderType) {
             case tentType.Footmen:
-                this._modelId = "xiaobing";
+                this._modelId = "xiaobing4";
                 this._speed = 100;
-                this.atk_dis = 200;
+                this.atk_dis = 120;
                 this.attackType = 0;
-                this.PosOutBase = cc.v2(this.node.x, BaseLayer.instance.baseY + BaseLayer.instance.baseHeight/2 + 60);
+                this.maxHealthValue = 150 + 20*this._level;
                 break;
             case tentType.Archers:
                 this._modelId = "xiaobing5";
                 this._speed = 100;
-                this.atk_dis = 400;
+                this.atk_dis = 300;
                 this.attackType = 1;
-                this.PosOutBase = cc.v2(this.node.x, BaseLayer.instance.baseY + BaseLayer.instance.baseHeight/2 + 60);
+                this.maxHealthValue = 100 + 20*this._level;
                 break;
             case tentType.Horsemen:
                 this._modelId = "xiaobing3";
-                this._speed = 200;
-                this.atk_dis = 200;
+                this._speed = 150;
+                this.atk_dis = 120;
                 this.attackType = 0;
-                this.PosOutBase = cc.v2(BaseLayer.instance.baseX - BaseLayer.instance.baseWidth/2 - 60, this.node.y);
+                this.maxHealthValue = 200 + 20*this._level;
                 break;
             default:
                 break;
@@ -181,15 +185,13 @@ export default class SoliderNode extends cc.Component {
     /**损失的血量 */
     lossHealthValue: number = 0;
     /**基础攻击力 */
-    attackValue: number = 2;
+    attackValue: number = 5;
     /**攻速 */
-    attackSpeed: number = 1000;
+    attackSpeed: number = 500;
     /**攻击目标 */
     attackTarget = null;
     /**是否走出基地 */
     isOutBase: boolean = false;
-    /**基地外集结点 */
-    PosOutBase:cc.Vec2;
     /**攻击类型 */
     attackType: number = 0;
     /** */
@@ -204,6 +206,24 @@ export default class SoliderNode extends cc.Component {
         }
         this._componentList = [];
         this._healthBar = null;
+    }
+    spineAnimStart(event: sp.spine.TrackEntry){
+        switch (event.animation.name) {
+            case "attack":
+                if(this.soliderType == tentType.Footmen){
+                    audioMgr.playEffect("infantry_atk");
+                }
+                if(this.soliderType == tentType.Archers){
+                    audioMgr.playEffect("archer_atk");
+                }
+                if(this.soliderType == tentType.Horsemen){
+                    audioMgr.playEffect("cavalry_atk");
+                }
+                break;
+        
+            default:
+                break;
+        }
     }
     spineAnimEnd(event: sp.spine.TrackEntry) {
         switch (event.animation.name) {
@@ -222,9 +242,6 @@ export default class SoliderNode extends cc.Component {
                 if(this.soliderType == tentType.Horsemen){
                     this.horsemenAttack();
                 }
-                // if(this.attackType==0){
-                    
-                // }else this.creatorBullet();
                 this.setSoliderState(SoliderState.Stand);
                 break;
             case "die":
@@ -261,13 +278,14 @@ export default class SoliderNode extends cc.Component {
             let pos = this._componentList[i].pos;
             node.x = this.node.x + pos.x;
             node.y = this.node.y + pos.y;
+            node.zIndex = this.node.zIndex + 1;
         }
     }
     setHealthBarNode(health: cc.Node) {
         this._healthBar = health.getComponent(cc.ProgressBar);
         this.addComponentList({
             component: health,
-            pos: { x: 0, y: 150 }
+            pos: { x: 0, y: 180 }
         })
     }
     setHealthBar() {
@@ -299,52 +317,74 @@ export default class SoliderNode extends cc.Component {
             return true;
         };
         this.healthValue = num;
-        // this.setEnemyState(EnemyState.Break);
     }
     /**开始寻路 */
     startFindPath(){
-        cc.pathFindMgr.operatePoint({x:this.node.x,y:this.node.y,type:3});
-        cc.pathFindMgr.operatePoint({x:this.targetX,y:this.targetY,type:4});
-        cc.pathFindMgr.startFindPath();
+        return cc.pathFindMgr.startFindPath({x:this.node.x,y:this.node.y},{x:this.targetX,y:this.targetY});
     }
     initAttackTarget(){
         this.attackTarget = null;
-        let random = Util.random(0,1);
-        this.targetX = Util.random(-cc.winSize.width/2 + 50,this.scope[random].x);
-        this.targetY = Util.random(this.scope[random].y,0);
         this.space_dis = 10;
-        // this.startFindPath();
+        let baseX = 100;
+        if(this.attackType == 1){
+            baseX = 250;
+        }
+        this.targetX = Util.random(baseX,cc.winSize.width/2 - 50);
+        this.targetY = Util.random(BaseLayer.instance.baseY + BaseLayer.instance.baseHeight/2 + 50,300);
+        this.targetPath = this.startFindPath();
+        //若终点生成于障碍物内，则取固定范围坐标
+        if(this.targetPath.length<=0){
+            this.targetX = Util.random(baseX,400);
+            this.targetY = Util.random(-100,300);
+            this.targetPath = this.startFindPath();
+        }
+        //递归方法获取不在障碍物内的终点，由于士兵数过多时循环计算量过大会导致卡死，故废弃
+        // while (true) {
+        //     randomPos();
+        //     this.targetPath = [];
+        //     this.targetPath = this.startFindPath();
+        //     if(this.targetPath.length>0){
+        //         break;
+        //     }
+        // }
     }
     setAttackTarget(enemyNode){
         this.attackTarget = enemyNode;
-        this.targetX = enemyNode.node.x;
+        if(this.node.x < enemyNode.node.x){
+            this.targetX = enemyNode.node.x - 60; 
+        }else{
+            this.targetX = enemyNode.node.x + 60; 
+        }
         this.targetY = enemyNode.node.y;
         this.space_dis = this.atk_dis;
+        this.targetPath = this.startFindPath();
+        if(this.targetPath.length<=0){
+            this.targetX = enemyNode.node.x; 
+            this.targetPath = this.startFindPath();
+        }
     }
     //检测敌人 
     private inspectEnemy(){
         let enemyArray = EnemyLayer.instance.enemyArray;
         let minPos:number = null;
         let targetNode = null;
-        if(!this.isOutBase && this.attackType!=1){
+        if(!this.isOutBase){
             return;
         }
         for (let i = 0; i < enemyArray.length; i++) {
             if(enemyArray[i].state == EnemyState.Death || enemyArray[i].isEnter) continue;
+            let dis = Util.distance({x:enemyArray[i].node.x,y:enemyArray[i].node.y},{x:this.node.x,y:this.node.y});
             if(minPos==null){
                 minPos = Util.distance({x:enemyArray[i].node.x,y:enemyArray[i].node.y},{x:this.node.x,y:this.node.y});
                 targetNode = enemyArray[i];
-            }else{
-                let dis = Util.distance({x:enemyArray[i].node.x,y:enemyArray[i].node.y},{x:this.node.x,y:this.node.y})
-                if(dis<minPos){
-                    minPos = dis;
-                    targetNode = enemyArray[i];
-                }
+            }else if(dis<minPos){
+                minPos = dis;
+                targetNode = enemyArray[i];
             }
         }
         if(targetNode!=null){
             this.setAttackTarget(targetNode);
-            if(this.state== SoliderState.Stand){
+            if(this.state == SoliderState.Stand){
                 this.setSoliderState(SoliderState.Stand);
             }
         }
@@ -374,48 +414,25 @@ export default class SoliderNode extends cc.Component {
         if(this.state!=SoliderState.Run){
             return;
         }
-        if(Util.distance(cc.v2(this.node.x,this.node.y),this.PosOutBase)<20){
+        if(Util.distance(cc.v2(this.node.x,this.node.y),cc.v2(BaseLayer.instance.chengbaoNode.x,BaseLayer.instance.chengbaoNode.y))>=400){
             this.isOutBase = true;
         }
         if(this.isEndDis()&&this.attackTarget==null){
             this.setSoliderState(SoliderState.Stand);
             return;
         }
-        if(this.isEndDis()&&this.attackTarget!=null&&this.attackType == 1){
-            this.setSoliderState(SoliderState.Attack)
-            return
-        }
         let angle;
         let isEndDis = 1;
-        if(!this.isOutBase) angle = Util.getAngle(cc.v2(this.node.x,this.node.y),this.PosOutBase);
-        else {
-            if(this.isEndDis()&&Math.abs(this.node.y-this.targetY)<20){
-                this.setSoliderState(SoliderState.Attack)
-                return
-            }else if(this.isEndDis()){
-                if(this.node.x<this.targetX){
-                    this.targetX = this.targetX - 100;
-                }else{
-                    this.targetX = this.targetX + 100;
-                }
-                isEndDis = 0;
-            }
-            angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY));
+        if(this.isEndDis()&&(Math.abs(this.node.y-this.targetY)<30 ||this.attackType == 1)){
+            this.setSoliderState(SoliderState.Attack)
+            return
+        }else if(this.isEndDis()&&(this.attackType == 1 || this.targetPath.length<=0 || this.targetPath[0].hasArrive)){
+            isEndDis = 0;
         }
+        angle = this.getTargetAngle();
+        // angle = Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY))
         let x = Math.cos(angle * (Math.PI / 180)) * this._speed * dt * isEndDis;
         let y = Math.sin(angle * (Math.PI / 180)) * this._speed * dt;
-        let targetX = this.node.x + x;
-        let targetY = this.node.y + y;
-        //移动到基地边缘时，根据角度阻止前进方向
-        if(targetX>BaseLayer.instance.baseX - BaseLayer.instance.baseHeight/2 - 40 && targetY<BaseLayer.instance.baseY + BaseLayer.instance.baseHeight/2 + 40 && this.isOutBase){
-            if(angle<=-90&&angle>=-180){
-                y = 0;
-                x = x * 1.2;
-            }else if(angle<=90&&angle>=0){
-                x = 0;
-                y = y * 1.2;
-            }
-        }
         //角色朝向
         if((angle<=-90&&angle>=-180)||(angle>90&&angle<=180)&&isEndDis==1){
             this.node.eulerAngles = cc.v3(0, 180, 0)
@@ -424,9 +441,31 @@ export default class SoliderNode extends cc.Component {
         }
         this.node.x += x; 
         this.node.y += y;
+        this.setzIndex(); 
         //移动自身组件
         this.moveComponent();
-        this.setzIndex(); 
+    }
+    getTargetAngle(){
+        for(let i = this.targetPath.length-1;i >= 0;i--){
+            if(this.targetPath[i].hasArrive == false){
+                if(Util.distance(cc.v2(this.node.x,this.node.y),cc.v2(this.targetPath[i].x,this.targetPath[i].y))<30){
+                    this.targetPath[i].hasArrive = true;
+                    continue;
+                }
+                return Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetPath[i].x,this.targetPath[i].y));
+            }
+        }
+        if(this.targetPath.length>0&&this.targetPath[0].hasArrive){
+            if(this.node.x<this.targetPath[0].x&&this.attackTarget!=null){
+                this.targetX = this.targetPath[0].x - 100;
+            }else if(this.attackTarget!=null){
+                this.targetX = this.targetPath[0].x + 100;
+            }else{
+                this.targetX = this.targetPath[0].x;
+            }
+            this.targetY = this.targetPath[0].y;
+        }
+        return Util.getAngle(cc.v2(this.node.x,this.node.y),cc.v2(this.targetX,this.targetY));
     }
     setzIndex() {
         this.node.zIndex = -this.node.y;
@@ -448,7 +487,8 @@ export default class SoliderNode extends cc.Component {
         let spriteData = ResManager.getInstance().getSpriteFrameRes("jt");
         soliderBullet.getComponent(Bullet).setBulletData(this, spriteData, this.attackTarget, level, effect);
         EffectLayer.instance.addChildEffectNode(soliderBullet);
-        soliderBullet.setPosition(this.node.position);
+        soliderBullet.x = this.node.x;
+        soliderBullet.y = this.node.y + 50;
     }
     /**士兵等级对应攻击特性 */
     footmenAttack(){
@@ -458,105 +498,109 @@ export default class SoliderNode extends cc.Component {
             this.attackEnd();
             return;
         }
-        switch (this._level) {
-            case 1:
+        // switch (this._level) {
+        //     case 1:
                 
-                break;
-            case 2:
-                this.scheduleOnce(()=>{
-                    //第一次攻击未死亡则造成第二次伤害
-                    if  (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
-                        this.attackEnd();
-                        return;
-                    }
-                },0.5)
-                break;
-            case 3:
-                //攻击剩余两个目标
-                let num = 0;
-                for(let i = 0;i < enemyArray.length;i++){
-                    if(enemyArray[i].uuid == this.attackTarget.uuid)continue;
-                    if(num>=2) return;
-                    if(Util.distance(this.node.position,enemyArray[i].node.position)<=this.atk_dis){
-                        num++;
-                        enemyArray[i].setHealthValue(-this.attackValue,this);
-                    }
-                }
-                break;
-            case 4:
-                //遍历士兵数组，恢复范围内所有士兵的血量
-                let soliderArray = SoliderLayer.instance.soliderArray;
-                for(let i = 0;i < soliderArray.length;i++){
-                    if(Util.distance(this.node.position,soliderArray[i].node.position)<=this.atk_dis){
-                        soliderArray[i].setHealthValue(this.attackValue);
-                    }
-                }
-                break;    
-            default:
-                break;
-        }
+        //         break;
+        //     case 2:
+        //         this.scheduleOnce(()=>{
+        //             //第一次攻击未死亡则造成第二次伤害
+        //             if  (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
+        //                 this.attackEnd();
+        //                 return;
+        //             }
+        //         },0.5)
+        //         break;
+        //     case 3:
+        //         //攻击剩余两个目标
+        //         let num = 0;
+        //         for(let i = 0;i < enemyArray.length;i++){
+        //             if(enemyArray[i].uuid == this.attackTarget.uuid)continue;
+        //             if(num>=2) return;
+        //             if(Util.distance(this.node.position,enemyArray[i].node.position)<=this.atk_dis){
+        //                 num++;
+        //                 enemyArray[i].setHealthValue(-this.attackValue,this);
+        //             }
+        //         }
+        //         break;
+        //     case 4:
+        //         //遍历士兵数组，恢复范围内所有士兵的血量
+        //         let soliderArray = SoliderLayer.instance.soliderArray;
+        //         for(let i = 0;i < soliderArray.length;i++){
+        //             if(Util.distance(this.node.position,soliderArray[i].node.position)<=this.atk_dis){
+        //                 soliderArray[i].setHealthValue(this.attackValue);
+        //             }
+        //         }
+        //         break;    
+        //     default:
+        //         break;
+        // }
     }
     archersAttack(){
-        let enemyArray = EnemyLayer.instance.enemyArray;
-        switch (this._level) {
-            case 1:
-                this.creatorBullet();
-                break;
-            case 2:
-                this.creatorBullet(2,true);
-                break;
-            case 3:
-                this.creatorBullet(3,true);
-                break;
-            case 4:
-                this.creatorBullet(4,true);
-                break;
-            default:
-                break;
-        }
+        this.creatorBullet();
+        // switch (this._level) {
+        //     case 1:
+        //         this.creatorBullet();
+        //         break;
+        //     case 2:
+        //         this.creatorBullet(2,true);
+        //         break;
+        //     case 3:
+        //         this.creatorBullet(3,true);
+        //         break;
+        //     case 4:
+        //         this.creatorBullet(4,true);
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
     horsemenAttack(){
-        let enemyArray = EnemyLayer.instance.enemyArray;
-        switch (this._level) {
-            case 1:
-                //命中目标死亡
-                if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
-                    this.attackEnd();
-                    return;
-                }
-                break;
-            case 2:
-                //命中目标死亡
-                if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
-                    this.attackEnd();
-                    return;
-                }
-                this.attackTarget.setBleed();
-                break;
-            case 3:
-                //命中目标死亡
-                if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
-                    this.attackEnd();
-                    return;
-                }
-                for(let i = 0;i < enemyArray.length;i++){
-                    if(enemyArray[i].uuid == this.attackTarget.uuid)continue;
-                    if(Util.distance(this.attackTarget.node.position,enemyArray[i].node.position)<=this.atk_dis){
-                        enemyArray[i].setHealthValue(-this.attackValue,this)
-                    }
-                }
-                break;
-            case 4:
-                //命中目标死亡
-                if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue * 2,this,true)) {
-                    this.attackEnd();
-                    return;
-                }
-                this.attackTarget.setBackDis(this.node.x);
-                break;    
-            default:
-                break;
+        if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
+            this.attackEnd();
+            return;
         }
+        // let enemyArray = EnemyLayer.instance.enemyArray;
+        // switch (this._level) {
+        //     case 1:
+        //         //命中目标死亡
+        //         if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
+        //             this.attackEnd();
+        //             return;
+        //         }
+        //         break;
+        //     case 2:
+        //         //命中目标死亡
+        //         if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
+        //             this.attackEnd();
+        //             return;
+        //         }
+        //         this.attackTarget.setBleed();
+        //         break;
+        //     case 3:
+        //         //命中目标死亡
+        //         if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue,this)) {
+        //             this.attackEnd();
+        //             return;
+        //         }
+        //         for(let i = 0;i < enemyArray.length;i++){
+        //             if(enemyArray[i].uuid == this.attackTarget.uuid)continue;
+        //             if(Util.distance(this.attackTarget.node.position,enemyArray[i].node.position)<=this.atk_dis){
+        //                 enemyArray[i].setHealthValue(-this.attackValue,this)
+        //             }
+        //         }
+        //         break;
+        //     case 4:
+        //         //命中目标死亡
+        //         if (this.attackTarget==null || this.attackTarget.setHealthValue(-this.attackValue * 2,this,true)) {
+        //             this.attackEnd();
+        //             return;
+        //         }
+        //         this.attackTarget.setBackDis(this.node.x);
+        //         break;    
+        //     default:
+        //         break;
+        // }
     }
     // update (dt) {}
 }

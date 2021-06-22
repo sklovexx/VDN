@@ -46,7 +46,6 @@ export default class EffectLayer extends cc.Component {
     ]
     onLoad () {
         EffectLayer.instance = this;
-        this.node.zIndex = 998;
     }
     onDestroy(){
         EffectLayer.instance = null;
@@ -84,16 +83,16 @@ export default class EffectLayer extends cc.Component {
     }
     addChildEffectNode(effectNode: cc.Node) {
         //TODO:自己存储一次key，不通过getChildByName获取，getChildByName是通过for循环取的
-        let rootNode = this.node.getChildByName(effectNode.name + "_root");
-        if (!rootNode) {
-            rootNode = new cc.Node;
-            rootNode.name = effectNode.name + "_root";
-            rootNode.width = cc.winSize.width;
-            rootNode.height = cc.winSize.height;
-            this.node.addChild(rootNode);
-            if (effectNode.name == "health_bar") rootNode.zIndex = 99;
-        }
-        rootNode.addChild(effectNode);
+        // let rootNode = this.node.getChildByName(effectNode.name + "_root");
+        // if (!rootNode) {
+        //     rootNode = new cc.Node;
+        //     rootNode.name = effectNode.name + "_root";
+        //     rootNode.width = cc.winSize.width;
+        //     rootNode.height = cc.winSize.height;
+        //     this.node.addChild(rootNode);
+        //     if (effectNode.name == "health_bar") rootNode.zIndex = 99;
+        // }
+        this.node.addChild(effectNode);
     }
     clearAllEffect(){
         this.node.removeAllChildren();

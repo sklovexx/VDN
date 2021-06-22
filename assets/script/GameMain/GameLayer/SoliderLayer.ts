@@ -27,7 +27,6 @@ export default class SoliderLayer extends cc.Component {
         this.maxX = 500;
         this.maxY = -cc.winSize.height/12;
         this.topY = this.node.height / 2 +500;
-        this.node.zIndex = 99;
     }
     onDestroy() {
         SoliderLayer.instance = null;
@@ -58,16 +57,17 @@ export default class SoliderLayer extends cc.Component {
         return ResManager.getInstance().getSkeletonData(modelName);
     }
     private addChildSoliderNode(soliderNode: cc.Node, soliderId: number) {
-        let nodeName = "solider_" + soliderId;
-        let rootNode = this.node.getChildByName(nodeName);
-        if (!rootNode) {
-            rootNode = new cc.Node;
-            rootNode.name = nodeName;
-            rootNode.width = cc.winSize.width;
-            rootNode.height = cc.winSize.height;
-            this.node.addChild(rootNode);
-        }
-        rootNode.addChild(soliderNode);
+        // let nodeName = "solider_" + soliderId;
+        // let rootNode = this.node.getChildByName(nodeName);
+        // if (!rootNode) {
+        //     rootNode = new cc.Node;
+        //     rootNode.name = nodeName;
+        //     rootNode.width = cc.winSize.width;
+        //     rootNode.height = cc.winSize.height;
+        //     this.node.addChild(rootNode);
+        // }
+        // rootNode.addChild(soliderNode);
+        EffectLayer.instance.addChildEffectNode(soliderNode);
     }
     spliceSoliderArray(mScript: SoliderNode) {
         this.soliderArray.splice(this.soliderArray.indexOf(mScript), 1);
@@ -80,7 +80,7 @@ export default class SoliderLayer extends cc.Component {
         this.soliderCollider.splice(this.soliderCollider.indexOf(soliderCollider), 1);
     }
     clearAllSolider(){
-        this.node.removeAllChildren();
+        // this.node.removeAllChildren();
         this.soliderArray = [];
         this.soliderCollider = [];
     }

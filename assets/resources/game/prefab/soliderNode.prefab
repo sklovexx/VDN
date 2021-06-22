@@ -46,8 +46,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 91.21,
-      "height": 103.47
+      "width": 121.79,
+      "height": 136.77
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -240,26 +240,26 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        0,
-        0,
-        0,
+        40,
         0,
         0,
         1,
-        1,
-        1,
-        1
+        0,
+        6.123233995736766e-17,
+        1.5,
+        1.5,
+        1.5
       ]
     },
     "_eulerAngles": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 180,
       "z": 0
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_is3DNode": false,
+    "_is3DNode": true,
     "_groupIndex": 0,
     "groupIndex": 0,
     "_id": ""
@@ -279,7 +279,7 @@
     ],
     "paused": false,
     "defaultSkin": "default",
-    "defaultAnimation": "play",
+    "defaultAnimation": "",
     "_preCacheMode": 0,
     "_cacheMode": 0,
     "loop": false,
@@ -290,7 +290,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "play",
+    "_animationName": "hit",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 1,
@@ -370,7 +370,7 @@
     "_N$debugBones": false,
     "_N$debugMesh": false,
     "_N$useTint": false,
-    "_N$enableBatch": false,
+    "_N$enableBatch": true,
     "_id": ""
   },
   {

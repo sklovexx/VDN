@@ -2335,7 +2335,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 238.87,
+      "width": 342.3,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -2386,8 +2386,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "城堡sheng'yu",
-    "_N$string": "城堡sheng'yu",
+    "_string": "城堡剩余血量100%",
+    "_N$string": "城堡剩余血量100%",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,

@@ -5,6 +5,7 @@ import EnemyLayer from "./EnemyLayer";
 import SoliderLayer from "./SoliderLayer";
 import EffectLayer from "./EffectLayer";
 import BaseLayer from "./BaseLayer";
+import ResourceLayer from "./ResourceLayer";
 import { uiManager } from "../../../framework/ui/UIManager";
 const {ccclass, property} = cc._decorator;
 
@@ -20,7 +21,7 @@ export default class EndLayer extends UIView {
 
     }
     onOpen(fromUI: number, ...arg): void {
-        GameMainLayer.instance.pause()
+        GameMainLayer.instance.pause();
     }
 
     onClose() {
@@ -30,6 +31,7 @@ export default class EndLayer extends UIView {
         SoliderLayer.instance.clearAllSolider();
         EffectLayer.instance.clearAllEffect();
         BaseLayer.instance.reStart();
+        ResourceLayer.instance.reStart();
         GameMainLayer.instance.resume();
         uiManager.close(this);
     }

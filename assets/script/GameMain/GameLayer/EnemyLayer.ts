@@ -35,11 +35,10 @@ export default class EnemyLayer extends cc.Component {
     enemyArray: Array<EnemyNode> = new Array;
     enemyCollider: Array<cc.Collider> = new Array;
     baseX:number;
-    baseY:number = 800;
+    baseY:number = 300;
     curWave:number = 0;
     maxWave:number = 30;
     onLoad() {
-        this.node.zIndex = 99;
     }
     onDestroy() {
         EnemyLayer.instance = null;
@@ -52,15 +51,21 @@ export default class EnemyLayer extends cc.Component {
                     this.createEmenyTween.stop();
                     return;
                 }
+                let ran = Util.random(0, 1);
+                let enemyId;
+                if(ran==0){
+                    enemyId = 400013;
+                }else if(ran==1){
+                    enemyId = 400015;
+                }
                 let enemyIndex = Util.random(0, this.surplusEnemy.length - 1);
-                this.creatorEnemy(this.enemyId,0);
+                this.creatorEnemy(enemyId,0);
                 this.surplusEnemy.splice(enemyIndex, 1);
             })
         );
         EnemyLayer.instance = this;
-        this.shalouSpine.paused = true;
-        // this.startCreatorEnemy();
-        this.creatorEnemyWave();
+        this.startCreatorEnemy();
+        // this.creatorEnemyWave();
     }
     startCreatorEnemy(){
         this.shalouSpine.paused = false;
@@ -68,12 +73,7 @@ export default class EnemyLayer extends cc.Component {
         this.shalouSpine.setCompleteListener(this.creatorWave.bind(this));
     }
     creatorWave(){
-        let random = Util.random(0,1);
-        if(random == 0){
-            this.creatorEnemyWave();
-        }else{
-            this.creatorEnemyWave2();
-        }
+        this.creatorEnemyWave();
         this.curWave++;
         this.label_wave.string = this.curWave <=0 ? "" : "波数" + this.curWave + "/" + this.maxWave;
         if(this.curWave>=this.maxWave){
@@ -93,13 +93,8 @@ export default class EnemyLayer extends cc.Component {
         }
     }
     creatorEnemyWave(){
-        this.surplusEnemy = new Array(100).fill(0);
+        this.surplusEnemy = new Array((this.curWave + 1) * 2).fill(0);
         this.enemyId = 400013;
-        this.createEmenyTween.start();
-    }
-    creatorEnemyWave2(){
-        this.surplusEnemy = new Array(100).fill(0);
-        this.enemyId = 400015;
         this.createEmenyTween.start();
     }
     creatorEnemy(enemyId:number,level:number) {
@@ -108,13 +103,15 @@ export default class EnemyLayer extends cc.Component {
         let enemyNode = objPool.get("enemyNode");
         let ran = 0;
         let initialAngle;
-        if(MenuLayer.instance.bg==0){
-            this.baseX = 600;
-            initialAngle = -(Math.random()*(180-90+1) + 90);
-        }else{
-            this.baseX = -600;
-            initialAngle = -(Math.random()*(90+1))
-        }
+        // if(MenuLayer.instance.bg==0){
+        //     this.baseX = 600;
+        //     initialAngle = -(Math.random()*(180-90+1) + 90);
+        // }else{
+        //     this.baseX = -600;
+        //     initialAngle = -(Math.random()*(45+1))
+        // }
+        this.baseX = -600;
+        initialAngle = -(Math.random()*(45+1))
         enemyNode.setPosition(this.baseX, this.baseY);
         let enemyScript = enemyNode.getComponent(EnemyNode);
         enemyScript.setEnemyData(initialAngle,enemyId,level);
@@ -131,16 +128,17 @@ export default class EnemyLayer extends cc.Component {
         return ResManager.getInstance().getSkeletonData(modelName);
     }
     private addChildEnemyNode(enemyNode: cc.Node, enemyId: number) {
-        let nodeName = "enemy_" + enemyId;
-        let rootNode = this.node.getChildByName(nodeName);
-        if (!rootNode) {
-            rootNode = new cc.Node;
-            rootNode.name = nodeName;
-            rootNode.width = cc.winSize.width;
-            rootNode.height = cc.winSize.height;
-            this.node.addChild(rootNode);
-        }
-        rootNode.addChild(enemyNode);
+        // let nodeName = "enemy_" + enemyId;
+        // let rootNode = this.node.getChildByName(nodeName);
+        // if (!rootNode) {
+        //     rootNode = new cc.Node;
+        //     rootNode.name = nodeName;
+        //     rootNode.width = cc.winSize.width;
+        //     rootNode.height = cc.winSize.height;
+        //     this.node.addChild(rootNode);
+        // }
+        // rootNode.addChild(enemyNode);
+        EffectLayer.instance.addChildEffectNode(enemyNode);
     }
     spliceEnemyArray(mScript: EnemyNode) {
         this.enemyArray.splice(this.enemyArray.indexOf(mScript), 1);
@@ -157,7 +155,7 @@ export default class EnemyLayer extends cc.Component {
     }
     clearAllEnemy(){
         this.curWave = 0;
-        this.node.removeAllChildren();
+        // this.node.removeAllChildren();
         this.enemyArray = [];
         this.enemyCollider = [];
         this.startCreatorEnemy();

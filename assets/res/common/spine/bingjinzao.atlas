@@ -1,20 +1,20 @@
 
 bingjinzao.png
-size: 164,138
+size: 84,74
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 dun
   rotate: false
-  xy: 2, 16
-  size: 110, 120
-  orig: 110, 120
+  xy: 2, 12
+  size: 55, 60
+  orig: 55, 60
   offset: 0, 0
   index: -1
 jan
   rotate: false
-  xy: 114, 2
-  size: 48, 134
-  orig: 48, 134
+  xy: 59, 2
+  size: 23, 70
+  orig: 23, 70
   offset: 0, 0
   index: -1
