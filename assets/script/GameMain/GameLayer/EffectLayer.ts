@@ -97,5 +97,18 @@ export default class EffectLayer extends cc.Component {
     clearAllEffect(){
         this.node.removeAllChildren();
     }
+    revive(){
+        let children = this.node.children;
+        let effectChildren = [];
+        children.forEach(e=>{
+            effectChildren.push(e);
+        })
+        for(let i = 0;i < effectChildren.length;i++){
+            if(effectChildren[i].name != 'soliderNode' && effectChildren[i].name != 'health_bar'){
+                effectChildren[i].removeFromParent();
+                effectChildren[i] = null;
+            }
+        }
+    }
     // update (dt) {}
 }

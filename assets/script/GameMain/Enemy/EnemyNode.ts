@@ -130,23 +130,13 @@ export default class EnemyNode extends cc.Component {
 
     }
     
-    setEnemyData(angle,enemyId:number,level:number){
+    setEnemyData(angle,enemyId:number,enemyObj:any){
         this.initialAngle = angle;
         this._enemyId = enemyId;
-        if(this._enemyId == 400015){
-            this._modelId = "guai1";
-            this.atk_dis = 300;
-            this.attackType = 1;
-            this._speed = 70;
-        }else{
-            this._modelId = "guai2";
-            this.atk_dis = 120;
-            this.attackType = 0;
-            this._speed = 120;
-        }
+        this._enemyObj = enemyObj;
     }
     setEnemyModel(){
-        let skeletonData = SoliderLayer.instance.getSoliderModel(this._modelId);
+        let skeletonData = SoliderLayer.instance.getSoliderModel(this._enemyObj.model_id.toString());
         this._enemySpine.skeletonData = skeletonData;
     }
     /**最大血量 */
@@ -165,18 +155,36 @@ export default class EnemyNode extends cc.Component {
     /**攻击类型 */
     attackType: number = 0;
     onEnable() {
+        //初始化所有spine动画状态
         this._enemySpine.enabled = true;
-        this.healthValue = this.maxHealthValue;
+        this._enemySpine.paused = false;
+        this.dieSpine.paused = false;
+        this.hitSpine.paused = false;
+        this.dieSpine.node.active = false;
+        this.hitSpine.node.active = false;
         this.setEnemyModel();
+        this.initProperties();
+        this.healthValue = this.maxHealthValue;
         this.state=EnemyState.Run;
         this.isEnter = true;
         this.isAttackBase = false;
         this.attackTarget = BaseLayer.instance;
         this.scheduleOnce(()=>{
             this.isEnter = false;
-            this._speed = 100;
+            this._speed = this._enemyObj.speed;
             this.initAttackTarget();
-        },4.5)
+        },2)
+    }
+    initProperties(){
+        this.atk_dis = this._enemyObj.atk_dis;
+        this.maxHealthValue = this._enemyObj.hp;
+        this.attackValue = this._enemyObj.attackValue;
+        this.attackType = this._enemyObj.attack_type;
+        this._speed = this._enemyObj.speed;
+        this.attackSpeed = this._enemyObj.atk_speed;
+        if(this.attackType == 1){
+            this._speed = 70;
+        }
     }
     recoveryEnemy() {
         if (this._attackTween) {
@@ -376,7 +384,7 @@ export default class EnemyNode extends cc.Component {
         let isEndDis = 1;
         if(this.isEnter) angle = this.initialAngle;
         else {
-            if(this.isEndDis()&&(Math.abs(this.node.y-this.targetY)<5 || this.attackType == 1)){
+            if(this.isEndDis()&&(Math.abs(this.node.y-this.targetY)<40 || this.attackType == 1)){
                 this.setEnemyState(EnemyState.Attack)
                 return
             }else if(this.isEndDis()&&(this.attackType == 1 || this.targetPath.length<=0 || this.targetPath[0].hasArrive)){
@@ -399,7 +407,7 @@ export default class EnemyNode extends cc.Component {
     getTargetAngle(){
         for(let i = this.targetPath.length-1;i >= 0;i--){
             if(this.targetPath[i].hasArrive == false){
-                if(Util.distance(cc.v2(this.node.x,this.node.y),cc.v2(this.targetPath[i].x,this.targetPath[i].y))<20){
+                if(Util.distance(cc.v2(this.node.x,this.node.y),cc.v2(this.targetPath[i].x,this.targetPath[i].y))<40){
                     this.targetPath[i].hasArrive = true;
                     continue;
                 }

@@ -231,7 +231,6 @@ export class UIManager {
         uiInfo.uiView = uiView;
         uiView.node.active = true;
         uiView.node.zIndex = uiInfo.zOrder || this.UIStack.length
-
         // 快速关闭界面的设置，绑定界面中的background，实现快速关闭
         if (uiView.quickClose) {
             let backGround = uiView.node.getChildByName('background');

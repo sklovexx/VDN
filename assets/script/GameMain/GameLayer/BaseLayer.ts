@@ -10,6 +10,7 @@ import MenuLayer from "./MenuLayer";
 import { uiManager } from "../../../framework/ui/UIManager";
 import { UIID } from "../../UIConfig";
 import { audioMgr } from "../../../framework/audio/AudioMgr";
+import { dataManager } from "../../Manager/dataManager";
 const {ccclass, property} = cc._decorator;
 export enum tentType {
     Footmen,
@@ -49,8 +50,6 @@ export default class BaseLayer extends cc.Component {
     baseWidth:number;
     baseHeight:number;
     private progressSchedule;
-    /**最大血量 */
-    private maxHealthValue: number = 2000;
     /**当前血量 */
     private _healthValue: number = 2000;
     /**士兵加载进度 */
@@ -65,6 +64,10 @@ export default class BaseLayer extends cc.Component {
     private delayArg:number;
     private resourceNoTipsStatus:boolean =  false;
     private state:number = 0;//1表示无敌
+    /**基础血量 */
+    baseHealthValue: number = 2000;
+    /**最大血量 */
+    maxHealthValue: number;
     public get healthValue(): number {
         return this._healthValue;
     }
@@ -74,6 +77,8 @@ export default class BaseLayer extends cc.Component {
     }
     onLoad () {
         BaseLayer.instance = this;
+        this.maxHealthValue = this.baseHealthValue + dataManager.studyData.base["hp"] + this.baseHealthValue*dataManager.innateData.base["hp"];
+        this.healthValue = this.maxHealthValue;
         this.baseX = this.node.x;
         this.baseY = this.node.y;
         this.baseWidth = 500;
@@ -203,8 +208,30 @@ export default class BaseLayer extends cc.Component {
         if(this.delayArg<30 && this.soliderFillRangle[this.curTentType] == 0){
             return;
         }
+        switch (this.curTentType) {
+            case tentType.Footmen:
+                if(ResourceLayer.instance.footmenNumber>=ResourceLayer.instance.footmenMaxNumber){
+                    this.createResourceAddNode('已达人口上限');
+                    return;
+                }
+                break;
+            case tentType.Archers:
+                if(ResourceLayer.instance.archersNumber>=ResourceLayer.instance.archersMaxNumber){
+                    this.createResourceAddNode('已达人口上限');
+                    return;
+                }
+                break;
+            case tentType.Horsemen:
+                if(ResourceLayer.instance.horsemenNumber>=ResourceLayer.instance.horsemenMaxNumber){
+                    this.createResourceAddNode('已达人口上限');
+                    return;
+                }
+                break;
+            default:
+                break;
+        }
         if(ResourceLayer.instance.goldNumber<=0){
-            this.createResourceAddNode('金币不足')
+            this.createResourceAddNode('金币不足');
             return;
         }
         if(ResourceLayer.instance.woodNumber<=0){
@@ -221,10 +248,21 @@ export default class BaseLayer extends cc.Component {
             this.delayArg = 0;
             this.progress.fillRange = 0;
             let soliderId;
-            if(this.curTentType == tentType.Footmen ||this.curTentType == tentType.Horsemen){
-                soliderId = 400001;
-            }else if(this.curTentType == tentType.Archers){
-                soliderId = 400039;
+            switch (this.curTentType) {
+                case tentType.Footmen:
+                    ResourceLayer.instance.footmenNumber++;
+                    soliderId = 400001;
+                    break;
+                case tentType.Archers:
+                    ResourceLayer.instance.archersNumber++;
+                    soliderId = 400002;
+                    break;
+                case tentType.Horsemen:
+                    ResourceLayer.instance.horsemenNumber++;
+                    soliderId = 400003;
+                    break;
+                default:
+                    break;
             }
             this.soliderFillRangle[this.curTentType] = 0;
             SoliderLayer.instance.creatorSolider(this.curTentType,soliderId,this.tentLevel[this.curTentType],this.soliderTent[this.curTentType].position);
@@ -263,6 +301,7 @@ export default class BaseLayer extends cc.Component {
             .start()
     }
     onDestroy(){
+        EventMgr.removeEventListener("resourceUpdate",this.resourceUpdate,this);
         BaseLayer.instance = null;
     }
     setHealthBar() {
@@ -280,7 +319,7 @@ export default class BaseLayer extends cc.Component {
         if (num <= 0) {
             this.node.active = false;
             GameMainLayer.instance.pause();
-            uiManager.open(UIID.EndLayer, true);
+            uiManager.open(UIID.EndLayer, false);
             return true;
         };
         audioMgr.playEffect("hit");
@@ -301,6 +340,14 @@ export default class BaseLayer extends cc.Component {
             e.active = false;
         });
         this.TouchEnd();
+        this.state = 1;
+        setTimeout(()=>{
+            this.state = 0;
+        },2000)
+    }
+    revive(){
+        this.node.active = true;
+        this.healthValue = this.maxHealthValue;
         this.state = 1;
         setTimeout(()=>{
             this.state = 0;

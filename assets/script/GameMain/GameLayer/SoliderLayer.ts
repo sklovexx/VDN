@@ -5,7 +5,9 @@ import Util from "../../Util";
 import EffectLayer from "./EffectLayer";
 import ResManager from "../../ResManager";
 import BaseLayer from "./BaseLayer";
+import ResourceLayer from "./ResourceLayer";
 import { ResourceType } from "../Resource/ResourceType";
+import { tentType } from "../GameLayer/BaseLayer";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -69,7 +71,23 @@ export default class SoliderLayer extends cc.Component {
         // rootNode.addChild(soliderNode);
         EffectLayer.instance.addChildEffectNode(soliderNode);
     }
+    addSoliderArray(mScript: SoliderNode) {
+        this.soliderArray.push(mScript);
+    }
     spliceSoliderArray(mScript: SoliderNode) {
+        switch (mScript.soliderType) {
+            case tentType.Footmen:
+                ResourceLayer.instance.footmenNumber--;
+                break;
+            case tentType.Archers:
+                ResourceLayer.instance.archersNumber--;
+                break;
+            case tentType.Horsemen:
+                ResourceLayer.instance.horsemenNumber--;
+                break;
+            default:
+                break;
+        }
         this.soliderArray.splice(this.soliderArray.indexOf(mScript), 1);
     }
     addSoliderColliderArr(soliderCollider: cc.Collider) {

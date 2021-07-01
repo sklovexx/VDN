@@ -3,11 +3,17 @@ import ResManager from "../../ResManager";
 import SoliderLayer from "./SoliderLayer";
 import EnemyLayer from "./EnemyLayer";
 import { EventMgr } from "../../../framework/common/EventManager";
+import GameConfig from "../../GameConfig";
+import { dataManager } from "../../Manager/dataManager";
+import MissionMgr from "../Mission/MissionMgr";
+import Util from "../../Util";
 const {ccclass, property} = cc._decorator;
-let objPoolArr = ['damageLabel', 'criticalHitLabel','soliderNode','enemyNode','health_bar','resourceNode','reourceAddNode','bullet'];
+let objPoolArr = ['damageLabel', 'criticalHitLabel','soliderNode','enemyNode','health_bar','health_bar_enemy','resourceNode','reourceAddNode','bullet'];
 @ccclass
 export default class GameMainLayer extends cc.Component {
     static instance: GameMainLayer;
+    @property(cc.Sprite)
+    bg:cc.Sprite = null;
     isPause:boolean = false;
     private updateVoidArr: Array<any> = [];
     private resumeVoidArr: Array<any> = [];
@@ -15,16 +21,25 @@ export default class GameMainLayer extends cc.Component {
         GameMainLayer.instance = this;
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
+        this.initCheckPointData();
         this.initObjectPool();
     }
     onDestroy(){
         GameMainLayer.instance = null;
     }
     start () {
-
+        
     }
     reStart(){
         
+    }
+    initCheckPointData(){
+        let checkpointCfg = GameConfig.getInstance().getJson("checkpoint")[dataManager.checkpointID];
+        this.bg.spriteFrame = ResManager.getInstance().getSpriteFrameRes(checkpointCfg.map_bg);
+        let allMission = checkpointCfg.all_mission;
+        allMission.forEach((e,i)=>{
+            MissionMgr.registerMission(e,i);
+        })
     }
     private initObjectPool() {
         let resMag = ResManager.getInstance();

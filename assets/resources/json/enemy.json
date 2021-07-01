@@ -1,0 +1,22 @@
+{
+    "10001": {
+        "enemy_id": 10001,
+        "model_id": "guai2",
+        "speed": 100,
+        "attackValue": 5,
+        "atk_dis": 120,
+        "atk_speed": 500,
+        "attack_type": 0,
+        "hp": 150
+    },
+    "10002": {
+        "enemy_id": 10002,
+        "model_id": "guai1",
+        "speed": 100,
+        "attackValue": 5,
+        "atk_dis": 300,
+        "attack_type": 1,
+        "attack_speed": 500,
+        "hp": 100
+      }
+}

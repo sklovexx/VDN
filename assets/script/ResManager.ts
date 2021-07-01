@@ -19,12 +19,12 @@ export default class ResManager extends Singleton<ResManager> {
         { resType: cc.SpriteFrame, url: "common/img" },
     ];
 
-    // private _hallResCfg: Array<ResCfg> = [
-    //     { resType: cc.Prefab, url: "hall/prefab", completeBool: false },
-    //     { resType: cc.SpriteFrame, url: "hall/img", completeBool: false },
-    //     { resType: cc.AudioClip, url: "hall/sound", completeBool: false },
-    //     { resType: sp.SkeletonData, url: "hall/spine", completeBool: false },
-    // ];
+    private _hallResCfg: Array<ResCfg> = [
+        { resType: cc.Prefab, url: "hall/prefab", completeBool: false },
+        { resType: cc.SpriteFrame, url: "hall/img", completeBool: false },
+        { resType: cc.AudioClip, url: "hall/sound", completeBool: false },
+        { resType: sp.SkeletonData, url: "hall/spine", completeBool: false },
+    ];
 
     private _gameResCfg: Array<ResCfg> = [
         { resType: cc.Prefab, url: "game/prefab", completeBool: false },
@@ -63,20 +63,20 @@ export default class ResManager extends Singleton<ResManager> {
         this._completeFun = completeFun;
     }
 
-    // initLoadHallRes(completeFun?: Function) {
-    //     //加载大厅代码包
-    //     resLoader.loadSubpackage('hall_script', () => {
-    //         this.initAssetMap();
-    //         async.eachSeries(this._hallResCfg,(element,cb)=>{
-    //             this.loadResArray(this._sceneAssetMap, element, cb, this._hallResCfg);
-    //         })
-    //         // this._hallResCfg.forEach(element => {
-    //         //     console.log('加载单个资源')
-    //         //     this.loadResArray(this._sceneAssetMap, element, this._hallResCfg);
-    //         // });
-    //         this._completeFun = completeFun;
-    //     })
-    // }
+    initLoadHallRes(completeFun?: Function) {
+        //加载大厅代码包
+        resLoader.loadSubpackage('hall_script', () => {
+            this.initAssetMap();
+            async.eachSeries(this._hallResCfg,(element,cb)=>{
+                this.loadResArray(this._sceneAssetMap, element, cb, this._hallResCfg);
+            })
+            // this._hallResCfg.forEach(element => {
+            //     console.log('加载单个资源')
+            //     this.loadResArray(this._sceneAssetMap, element, this._hallResCfg);
+            // });
+            this._completeFun = completeFun;
+        })
+    }
 
     initLoadGameRes(completeFun?: Function) {
         this.initAssetMap();

@@ -6,6 +6,8 @@ import SoliderLayer from "./SoliderLayer";
 import EffectLayer from "./EffectLayer";
 import BaseLayer from "./BaseLayer";
 import { uiManager } from "../../../framework/ui/UIManager";
+import { EventMgr } from "../../../framework/common/EventManager";
+import { dataManager } from "../../Manager/dataManager";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -16,7 +18,6 @@ export default class MenuLayer extends cc.Component {
     curSpeed:number = 1;
 
     // LIFE-CYCLE CALLBACKS:
-    bg:number = 1;
     onLoad () {
         MenuLayer.instance = this;
         this.node.zIndex = 999;
@@ -25,7 +26,6 @@ export default class MenuLayer extends cc.Component {
         MenuLayer.instance = null;
     }
     start () {
-        this.tabMap();
     }
     speedUpdate(){
         if(this.curSpeed == 1){
@@ -41,25 +41,27 @@ export default class MenuLayer extends cc.Component {
         ResourceLayer.instance.addResource(ResourceType.Gold,500);
         ResourceLayer.instance.addResource(ResourceType.Wood,500);
     }
+    reviveSolider(){
+        EventMgr.raiseEvent("reviveSolider");
+    }
     tabMap(){
-        console.log(this.bg)
-        if(this.bg==0){
-            this.bg = 1;
-            cc.find("Canvas/bg").active = false;
-            cc.find("Canvas/bg2").active = true;
-            ResourceLayer.instance.addObstable();
+        if(dataManager.checkpointID == 1000){
+            dataManager.checkpointID = 1001;
+            // ResourceLayer.instance.addObstable();
         }else{
-            this.bg = 0;
-            cc.find("Canvas/bg").active = true;
-            cc.find("Canvas/bg2").active = false;
-            ResourceLayer.instance.removeObstable();
+            dataManager.checkpointID = 1000;
+            // ResourceLayer.instance.removeObstable();
         }
+        EventMgr.raiseEvent("tabMap");
+        EnemyLayer.instance.initCheckPointEnemy();
         EnemyLayer.instance.clearAllEnemy();
         SoliderLayer.instance.clearAllSolider();
         EffectLayer.instance.clearAllEffect();
         BaseLayer.instance.reStart();
         GameMainLayer.instance.resume();
-        ResourceLayer.instance.tabBg(this.bg);
+        GameMainLayer.instance.initCheckPointData();
+        ResourceLayer.instance.initCheckpointData();
+        ResourceLayer.instance.initData();
     }
     // update (dt) {}
 }

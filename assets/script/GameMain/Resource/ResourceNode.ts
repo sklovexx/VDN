@@ -42,6 +42,9 @@ export default class ResourceNode extends cc.Component {
             .to(0.25,{angle:0})
         )
     }
+    onDestroy(){
+        EventMgr.removeEventListener("resourceUpdate",this.resourceUpdate,this);
+    }
     onEnable(){
         if(this.resourceType == 0){
             cc.pathFindMgr.addObstable(this.getNodePoints());

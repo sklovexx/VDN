@@ -6,6 +6,8 @@ import ObjectPool from "../../ObjectPool";
 import MenuLayer from "./MenuLayer";
 import ResourceNode from "../Resource/ResourceNode";
 import EffectLayer from "./EffectLayer";
+import GameConfig from "../../GameConfig";
+import { dataManager } from "../../Manager/dataManager";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -15,6 +17,12 @@ export default class ResourceLayer extends cc.Component {
     label_gold:cc.Label = null;
     @property(cc.Label)
     label_wood:cc.Label = null;
+    @property(cc.Label)
+    label_footmen:cc.Label = null;
+    @property(cc.Label)
+    label_archers:cc.Label = null;
+    @property(cc.Label)
+    label_horsemen:cc.Label = null;
     @property(cc.Node)
     futou:cc.Node = null;
     @property(cc.Node)
@@ -42,7 +50,38 @@ export default class ResourceLayer extends cc.Component {
         let calculateValue = Math.round(value*100)/100;
         this._woodNumber = calculateValue;
     }
+    _footmenNumber:number = 0;
+    public get footmenNumber(): number {
+        return this._footmenNumber;
+    }
+    public set footmenNumber(value: number) {
+        this.label_footmen.string = cc.js.formatStr("%s/%s", Math.round(value),this.footmenMaxNumber);
+        let calculateValue = Math.round(value*100)/100;
+        this._footmenNumber = calculateValue;
+    }
+    _archersNumber:number = 0;
+    public get archersNumber(): number {
+        return this._archersNumber;
+    }
+    public set archersNumber(value: number) {
+        this.label_archers.string = cc.js.formatStr("%s/%s", Math.round(value),this.archersMaxNumber);
+        let calculateValue = Math.round(value*100)/100;
+        this._archersNumber = calculateValue;
+    }
+    _horsemenNumber:number = 0;
+    public get horsemenNumber(): number {
+        return this._horsemenNumber;
+    }
+    public set horsemenNumber(value: number) {
+        this.label_horsemen.string = cc.js.formatStr("%s/%s", Math.round(value),this.horsemenMaxNumber);
+        let calculateValue = Math.round(value*100)/100;
+        this._horsemenNumber = calculateValue;
+    }
+    footmenMaxNumber:number = 100;
+    archersMaxNumber:number = 100;
+    horsemenMaxNumber:number = 100;
     curResourceType:ResourceType;
+    curCheckpoint:any;
     bg0Res:Array<any> = [
         {x: 319.881, y: 10.815, resourceType: 1, img:'shu_03'},
         {x: 410.006, y: 652.836, resourceType: 0, img:'kuangjin'},
@@ -83,9 +122,26 @@ export default class ResourceLayer extends cc.Component {
     ]
     onLoad () {
         ResourceLayer.instance = this;
+        this.initData();
+        this.initCheckpointData();
+    }
+    initData(){
         this.goldNumber = 500;
         this.woodNumber = 500;
-        this.addObstable();
+        this.footmenNumber = 0;
+        this.archersNumber = 0;
+        this.horsemenNumber = 0;
+    }
+    initCheckpointData(){
+        let objPool = ObjectPool.getInstance();
+        this.curCheckpoint = GameConfig.getInstance().getJson("checkpoint")[dataManager.checkpointID];
+        let resourceNodeArr = this.curCheckpoint.resource_node;
+        resourceNodeArr.forEach(e=>{
+            let resourceNode = objPool.get("resourceNode");
+            let resourceNodeScript = resourceNode.getComponent(ResourceNode);
+            resourceNodeScript.setResourceData(e);
+            EffectLayer.instance.addChildEffectNode(resourceNode);
+        })
     }
     onDestroy(){
         ResourceLayer.instance = null;
@@ -98,25 +154,6 @@ export default class ResourceLayer extends cc.Component {
         }
     }
     start () {
-        this.tabBg(1);
-    }
-    tabBg(index){
-        let objPool = ObjectPool.getInstance();
-        if(index == 0){
-            this.bg0Res.forEach(e=>{
-                let resourceNode = objPool.get("resourceNode");
-                let resourceNodeScript = resourceNode.getComponent(ResourceNode);
-                resourceNodeScript.setResourceData(e);
-                EffectLayer.instance.addChildEffectNode(resourceNode);
-            })
-        }else{
-            this.bg1Res.forEach(e=>{
-                let resourceNode = objPool.get("resourceNode");
-                let resourceNodeScript = resourceNode.getComponent(ResourceNode);
-                resourceNodeScript.setResourceData(e);
-                EffectLayer.instance.addChildEffectNode(resourceNode);
-            })
-        }
     }
     addObstable(){
         this.obstableRoot.children.forEach(e=>{
@@ -129,9 +166,11 @@ export default class ResourceLayer extends cc.Component {
         })
     }
     reStart(){
-        this.goldNumber = 500;
-        this.woodNumber = 500;
-        this.tabBg(MenuLayer.instance.bg);
+        this.initData();
+        this.initCheckpointData();
+    }
+    revive(){
+        this.initCheckpointData();
     }
     // update (dt) {}
 }

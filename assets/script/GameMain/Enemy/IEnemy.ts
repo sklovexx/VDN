@@ -2,14 +2,12 @@
 export interface EnemyObj {
     enemy_id: number
     model_id: number
-    level: number,
     hp: number,
-    attack: number,
+    attackValue: number,
+    attack_type:number,
     speed: number,
     atk_dis: number,
     atk_speed: number,
-    probability: string,
-    increase: string
 }
 
 /**士兵状态 */
