@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "顶部玻璃",
+    "texture": "99086efc-2b83-4365-b6f8-4af1ac3f71a5",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1280,
+      83
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      1280,
+      83
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

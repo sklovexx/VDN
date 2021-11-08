@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "雷蓝色@3x",
+    "texture": "b6a3acc0-eab6-4bc6-8c55-6093a91550c0",
+    "atlas": "",
+    "rect": [
+      2,
+      4,
+      53,
+      53
+    ],
+    "offset": [
+      0,
+      -0.5
+    ],
+    "originalSize": [
+      57,
+      60
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

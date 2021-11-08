@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "取消准备",
+    "texture": "f164dfa4-633d-4adc-9394-6888ba43b421",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      217,
+      84
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      217,
+      84
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

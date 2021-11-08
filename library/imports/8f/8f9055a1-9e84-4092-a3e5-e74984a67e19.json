@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "你赢啦",
+    "texture": "2e5693a2-155d-4cd1-951a-da7a78d8da8d",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      332,
+      185
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      332,
+      185
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

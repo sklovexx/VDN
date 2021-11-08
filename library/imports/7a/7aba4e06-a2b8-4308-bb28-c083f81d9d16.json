@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "赛车2@2x",
+    "texture": "39a8e0e3-d24b-488d-9095-c0e7d72d0f9a",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      80,
+      180
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      80,
+      180
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"loading","_duration":2,"speed":2,"wrapMode":2,"curveData":{"comps":{"cc.Sprite":{"fillRange":[{"frame":0,"value":0},{"frame":1,"value":-1},{"frame":1.0166666666666666,"value":1},{"frame":2,"value":0}]}}}}

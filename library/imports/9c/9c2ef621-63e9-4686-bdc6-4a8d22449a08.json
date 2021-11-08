@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "和平精英",
+    "texture": "8e0900a5-23d6-4eac-9c51-818b6dbd0d1a",
+    "atlas": "",
+    "rect": [
+      4,
+      5,
+      100,
+      100
+    ],
+    "offset": [
+      -0.5,
+      2.5
+    ],
+    "originalSize": [
+      109,
+      115
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

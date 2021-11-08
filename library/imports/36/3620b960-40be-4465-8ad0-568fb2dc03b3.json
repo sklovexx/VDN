@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "葫芦4",
+    "texture": "45c481ae-835c-41e3-b826-280ba9842a79",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      82,
+      70
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      82,
+      70
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

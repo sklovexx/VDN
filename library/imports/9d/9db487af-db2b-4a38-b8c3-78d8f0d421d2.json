@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "B5L",
+    "texture": "d4da78e3-6793-43c6-9b19-44c4a2346b16",
+    "atlas": "649b7fe2-1eb1-482d-b371-c75760f9aaac",
+    "rect": [
+      302,
+      196,
+      35,
+      48
+    ],
+    "offset": [
+      -4,
+      3
+    ],
+    "originalSize": [
+      53,
+      54
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

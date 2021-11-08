@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hong_10_hua",
+    "texture": "d4da78e3-6793-43c6-9b19-44c4a2346b16",
+    "atlas": "649b7fe2-1eb1-482d-b371-c75760f9aaac",
+    "rect": [
+      715,
+      2,
+      139,
+      184
+    ],
+    "offset": [
+      2,
+      -6
+    ],
+    "originalSize": [
+      143,
+      196
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

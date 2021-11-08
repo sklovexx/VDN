@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "鱼塘@3x",
+    "texture": "cf8230eb-a526-478b-90c8-dd250c80f1f0",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      828,
+      237
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      828,
+      237
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "星际穿越门",
+    "texture": "55c2461e-111e-4ac5-b965-c0155ba6d0e0",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      163,
+      159
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      163,
+      159
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

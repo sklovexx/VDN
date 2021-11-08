@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "原神",
+    "texture": "4084288c-ce13-477a-86b4-b850054f4068",
+    "atlas": "",
+    "rect": [
+      4,
+      5,
+      99,
+      98
+    ],
+    "offset": [
+      -0.5,
+      2.5
+    ],
+    "originalSize": [
+      108,
+      113
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

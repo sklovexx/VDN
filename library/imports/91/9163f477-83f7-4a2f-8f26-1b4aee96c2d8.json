@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "快速匹配",
+    "texture": "c6c517e5-53a7-4142-80d0-e9bf2b432315",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      417,
+      198
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      417,
+      198
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

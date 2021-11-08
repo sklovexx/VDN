@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "信封已读",
+    "texture": "944a0457-aaf3-4ba5-81ac-b82364cb3d3a",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      46,
+      40
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      46,
+      40
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

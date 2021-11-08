@@ -1,0 +1,1 @@
+{"version":3,"sources":["Global.js"],"names":["window","Global","PageMgr","ProtocolMgr"],"mappings":";;;;;;AAAAA,OAAOC,MAAP,GAAgB;AACZC,aAAQ,IADI;AAEZC,iBAAY;AAFA,CAAhB","file":"Global.js","sourceRoot":"..\\..\\..\\..\\..\\assets\\Script\\Global","sourcesContent":["window.Global = {\n    PageMgr:null,\n    ProtocolMgr:null\n}"]}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "人参果2",
+    "texture": "6b98db3e-2b34-4f6d-ad5a-539cf65c34d7",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      148,
+      170
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      148,
+      170
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

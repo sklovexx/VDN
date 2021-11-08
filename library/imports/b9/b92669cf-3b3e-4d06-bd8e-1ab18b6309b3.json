@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "投选@2x",
+    "texture": "fd6f9e00-f48f-48d7-9ac8-c1faea8fc6f2",
+    "atlas": "ef291da2-fea2-4f6e-93e9-04cb873d5946",
+    "rect": [
+      0,
+      238,
+      200,
+      80
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      200,
+      80
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

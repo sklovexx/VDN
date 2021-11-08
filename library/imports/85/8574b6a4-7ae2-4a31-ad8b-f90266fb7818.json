@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Axie",
+    "texture": "4cd9f06b-1fa9-4410-aaee-1d876aa8ce45",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      109,
+      115
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      109,
+      115
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

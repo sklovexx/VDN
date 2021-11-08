@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "动力@3x",
+    "texture": "352201cc-0d88-4815-9f8e-66cb2e595110",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      30,
+      36
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      30,
+      36
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

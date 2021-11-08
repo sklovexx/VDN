@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "灵力专区@2x",
+    "texture": "74cb4687-771e-40d0-860a-babfea34928d",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      364,
+      164
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      364,
+      164
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

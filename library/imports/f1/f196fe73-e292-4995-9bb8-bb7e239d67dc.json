@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "自创元宇宙",
+    "texture": "2ad8a708-acaa-4284-94bd-3da5d2cd5b85",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      269,
+      238
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      269,
+      238
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

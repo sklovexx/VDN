@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "退出",
+    "texture": "99498d07-2f2d-4c3d-b5a9-a31d46c9440a",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      218,
+      84
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      218,
+      84
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "DB",
+    "texture": "a6565a8f-ece1-47cf-b898-c1f69f5c75f4",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      759,
+      750
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      759,
+      750
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "74c4fabf-1cd1-473e-bf3c-42c5b37b705d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "第五人格": {
+      "ver": "1.0.4",
+      "uuid": "f2a64442-5be3-40b1-8250-5df5dcf433a8",
+      "rawTextureUuid": "74c4fabf-1cd1-473e-bf3c-42c5b37b705d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 128,
+      "height": 128,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "赢了人物2",
+    "texture": "b71cad4a-c9d7-4a7d-aca6-d633e74b2936",
+    "atlas": "",
+    "rect": [
+      4,
+      0,
+      215,
+      370
+    ],
+    "offset": [
+      1.5,
+      0
+    ],
+    "originalSize": [
+      220,
+      370
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

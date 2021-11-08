@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "今日任务@3x",
+    "texture": "aa5b7351-82f3-47d5-b769-e215ee84507a",
+    "atlas": "",
+    "rect": [
+      0,
+      1,
+      165,
+      136
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      165,
+      138
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

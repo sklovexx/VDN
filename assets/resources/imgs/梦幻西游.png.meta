@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "1730d562-943c-44ae-8412-20fd66051f4e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "梦幻西游": {
+      "ver": "1.0.4",
+      "uuid": "158d4525-d0e0-4d74-8d6b-f19f499caa54",
+      "rawTextureUuid": "1730d562-943c-44ae-8412-20fd66051f4e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 128,
+      "height": 128,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

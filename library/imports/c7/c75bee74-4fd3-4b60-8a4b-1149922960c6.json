@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "邮箱：@2x",
+    "texture": "3fa046e5-abe0-40f0-a5c2-06181944f390",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      70,
+      30
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      70,
+      30
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

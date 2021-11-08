@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "港口",
+    "texture": "8c70805a-449c-4444-8f9e-f8d8a0d9fa34",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      307,
+      289
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      307,
+      289
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

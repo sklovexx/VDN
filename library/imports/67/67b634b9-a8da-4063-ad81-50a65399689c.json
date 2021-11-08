@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "输了人物2",
+    "texture": "2cc2f840-a7cd-4b3c-943d-9693da0fbe0c",
+    "atlas": "",
+    "rect": [
+      0,
+      2,
+      328,
+      312
+    ],
+    "offset": [
+      0,
+      -1
+    ],
+    "originalSize": [
+      328,
+      314
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

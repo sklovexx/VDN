@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Button X @2x",
+    "texture": "c376a880-0fbe-46ce-a167-7820c213b1e4",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      99,
+      92
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      99,
+      92
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

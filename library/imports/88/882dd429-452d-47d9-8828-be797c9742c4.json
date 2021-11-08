@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "宝宝1",
+    "texture": "41edda93-2532-4a1b-8201-e1257cb386a1",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      541,
+      621
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      541,
+      621
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

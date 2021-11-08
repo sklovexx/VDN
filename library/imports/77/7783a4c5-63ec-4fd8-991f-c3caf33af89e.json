@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "体力专区@2x",
+    "texture": "3a2173b9-b516-4216-afe1-8a660e3d7d10",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      364,
+      161
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      364,
+      161
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

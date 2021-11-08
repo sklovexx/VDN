@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "COOL METAVERSE@2x",
+    "texture": "1e2eafed-d854-49ec-a162-7cd58dc8f1b8",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      521,
+      47
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      521,
+      47
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

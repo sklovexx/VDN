@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "静音",
+    "texture": "36749f88-cfc4-4826-9d6f-76e90aaf2da0",
+    "atlas": "",
+    "rect": [
+      0,
+      18,
+      200,
+      165
+    ],
+    "offset": [
+      0,
+      -0.5
+    ],
+    "originalSize": [
+      200,
+      200
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

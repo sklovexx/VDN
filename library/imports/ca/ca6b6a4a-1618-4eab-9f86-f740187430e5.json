@@ -1,0 +1,26 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "DSSC娱乐中心.plist",
+  "_objFlags": 0,
+  "_native": "",
+  "_spriteFrames": {
+    "关闭": {
+      "__uuid__": "a7c44f8c-3f60-4bdd-a54b-fa0d4a5562dc"
+    },
+    "娱乐中心": {
+      "__uuid__": "f012639f-7861-4dd0-98f0-c5c58312f8da"
+    },
+    "抢红包": {
+      "__uuid__": "92cfd4a5-e965-4290-977c-bc93bbebe6a0"
+    },
+    "斗地主": {
+      "__uuid__": "e3113da4-b8ac-4ade-8820-93ef4ee87b15"
+    },
+    "水果机": {
+      "__uuid__": "0b217adf-d4ff-41e1-8c76-9a0b9d8a7c48"
+    },
+    "麻将": {
+      "__uuid__": "0851c6f2-b426-4f65-91b0-f6c4960ceb5d"
+    }
+  }
+}

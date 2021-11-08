@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "洛克人",
+    "texture": "5f22f6ee-5db9-4a51-916a-bffdae064e63",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      302,
+      362
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      302,
+      362
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

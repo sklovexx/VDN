@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "小黄人",
+    "texture": "c3ec07ca-30c4-4917-8a94-2083c5a4665d",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      232,
+      348
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      232,
+      348
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

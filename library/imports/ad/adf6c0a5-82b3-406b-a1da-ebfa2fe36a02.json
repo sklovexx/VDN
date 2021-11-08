@@ -1,0 +1,26 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "娱乐中心.plist",
+  "_objFlags": 0,
+  "_native": "",
+  "_spriteFrames": {
+    "抢红包": {
+      "__uuid__": "82fc14fa-425b-471e-9b48-54396eb6d852"
+    },
+    "斗地主": {
+      "__uuid__": "575d826e-4414-4301-afbb-0004ccbbc629"
+    },
+    "标题": {
+      "__uuid__": "48214747-25ae-43ba-8f97-aa6ef02739cd"
+    },
+    "水果机": {
+      "__uuid__": "21cbec05-1d78-4642-ba52-028bbd411e08"
+    },
+    "离开": {
+      "__uuid__": "df2b27d7-0822-411f-8ef9-50d1c12dc65a"
+    },
+    "麻将": {
+      "__uuid__": "9dbf2c67-e326-480a-b725-2b08abf18bed"
+    }
+  }
+}

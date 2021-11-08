@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "自己金色底框",
+    "texture": "08854d1e-dfeb-414d-9575-8f002d570bc7",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      615,
+      132
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      615,
+      132
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

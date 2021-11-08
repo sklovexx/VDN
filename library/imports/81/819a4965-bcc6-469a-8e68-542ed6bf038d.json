@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "战力专区@2x - 001",
+    "texture": "553c487c-1825-41c9-a531-981f4e891a44",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      364,
+      164
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      364,
+      164
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

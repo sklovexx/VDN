@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "创建好友房底部",
+    "texture": "12f27406-0158-4c0d-8935-95f8831a2eb2",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      324,
+      51
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      324,
+      51
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

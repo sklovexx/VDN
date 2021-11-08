@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "购物中心(1)",
+    "texture": "6ebaf1ce-4861-4c16-b3e2-35be3a6a6e94",
+    "atlas": "",
+    "rect": [
+      11,
+      6,
+      425,
+      245
+    ],
+    "offset": [
+      2.5,
+      1
+    ],
+    "originalSize": [
+      442,
+      259
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

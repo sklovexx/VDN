@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "创建房间顶部玻璃",
+    "texture": "88f3a6f1-e46b-4c7b-b6b1-e33e011412c6",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      363,
+      459
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      363,
+      459
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "注册@2x",
+    "texture": "945daf3c-e083-4afd-a01c-ff4cf007e591",
+    "atlas": "",
+    "rect": [
+      5,
+      5,
+      314,
+      72
+    ],
+    "offset": [
+      0,
+      -2
+    ],
+    "originalSize": [
+      324,
+      78
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

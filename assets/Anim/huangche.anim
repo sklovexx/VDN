@@ -1,0 +1,65 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "huangche",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 10.016666666666667,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            635.35302734375,
+            -1334.240966796875,
+            0
+          ]
+        },
+        {
+          "frame": 5,
+          "value": [
+            -430.47198486328125,
+            -587.9400024414062,
+            0
+          ]
+        },
+        {
+          "frame": 10,
+          "value": [
+            -1848.572021484375,
+            -1533.9219970703125,
+            0
+          ]
+        }
+      ]
+    },
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "2232afed-10eb-4aeb-9b3b-5d10ec183ae8"
+            }
+          },
+          {
+            "frame": 5,
+            "value": {
+              "__uuid__": "10834eae-805e-4859-b2a6-1c10f7c3e916"
+            }
+          },
+          {
+            "frame": 10,
+            "value": {
+              "__uuid__": "10834eae-805e-4859-b2a6-1c10f7c3e916"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

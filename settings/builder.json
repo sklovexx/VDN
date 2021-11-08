@@ -1,13 +1,32 @@
 {
-  "title": "guardvillage",
-  "packageName": "org.cocos2d.demo",
-  "startScene": "da45b352-2ad7-4212-a5a7-6a1d0a7f0920",
-  "excludeScenes": [],
+  "title": "cool",
+  "packageName": "",
+  "startScene": "c4977c90-0709-46ee-b114-3cb35e5a3651",
+  "excludeScenes": [
+    "4e766df2-6e55-49e2-b48f-1943368ec005",
+    "1931c8f8-1c0b-4cbf-a901-ead7f03073eb",
+    "347f62d6-8f34-42dc-981d-a0459890e888",
+    "e0d67222-e84d-4b6f-894e-c7ca3a83f1c8",
+    "6ad03d30-4fbe-4cb4-81bd-0ca0e1d57757",
+    "7b4d482f-c4ff-4899-8d71-5736ee4f38d9",
+    "818e8053-6a06-47c9-a7fb-c960fd3a2c74",
+    "5063e617-71ca-4424-91da-59d0472ca6ef",
+    "ba701a1d-5799-46df-ad49-f8e30ed4b1c9",
+    "f12ec91e-2284-41f0-8f16-49b6246d9dfb",
+    "56e22268-4cd3-4d72-9c7e-91f4f9d0f6fd",
+    "80190f72-d45e-4172-aa20-ed9e556477fa",
+    "97b7094b-489a-4ac6-be5d-b1f08dce124b",
+    "350d3e2b-dc79-47b0-bcf4-9fcf28bd04bb",
+    "3f5720ea-4870-4e92-b8e3-85612a27df23",
+    "904a9d27-d234-4e61-94ef-24895c40ad4c",
+    "0ae2f16c-771c-4ba3-9d49-a039cd244994",
+    "9beca897-cbb6-4338-9336-53c514332a0e"
+  ],
   "includeSDKBox": false,
   "orientation": {
-    "landscapeLeft": false,
-    "landscapeRight": false,
-    "portrait": true,
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
     "upsideDown": false
   },
   "webOrientation": "auto",
@@ -15,25 +34,25 @@
   "inlineSpriteFrames_native": true,
   "mergeStartScene": false,
   "optimizeHotUpdate": false,
-  "md5Cache": true,
+  "md5Cache": false,
   "encryptJs": true,
-  "xxteaKey": "b1f47202-2339-4a",
+  "xxteaKey": "f146c52f-c989-47",
   "zipCompressJs": true,
   "fb-instant-games": {},
   "android": {
-    "packageName": "com.nuoaibo.guardVillage"
+    "packageName": "com.game.vdn"
   },
   "ios": {
-    "packageName": "org.cocos2d.demo"
+    "packageName": ""
   },
   "mac": {
-    "packageName": "org.cocos2d.demo"
+    "packageName": ""
   },
   "win32": {},
   "android-instant": {
     "REMOTE_SERVER_ROOT": "",
     "host": "",
-    "packageName": "org.cocos2d.demo",
+    "packageName": "",
     "pathPattern": "",
     "recordPath": "",
     "scheme": "https",

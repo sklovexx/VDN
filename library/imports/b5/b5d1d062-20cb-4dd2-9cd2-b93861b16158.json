@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "确认按钮@2x",
+    "texture": "066eb8bf-1824-467d-8d92-b9c120fba50d",
+    "atlas": "",
+    "rect": [
+      5,
+      5,
+      200,
+      72
+    ],
+    "offset": [
+      -0.5,
+      -2
+    ],
+    "originalSize": [
+      211,
+      78
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

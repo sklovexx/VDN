@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Main Label@2x",
+    "texture": "b45fb2f2-c1ad-4de0-bbc4-0212e5d145d1",
+    "atlas": "",
+    "rect": [
+      13,
+      12,
+      529,
+      168
+    ],
+    "offset": [
+      4.5,
+      -5
+    ],
+    "originalSize": [
+      546,
+      182
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

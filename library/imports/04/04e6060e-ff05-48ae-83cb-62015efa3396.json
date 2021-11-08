@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "按钮bg@2x",
+    "texture": "cf5bbf5b-8ee3-4480-84c4-5b0665182d75",
+    "atlas": "",
+    "rect": [
+      4,
+      2,
+      224,
+      70
+    ],
+    "offset": [
+      -1,
+      0
+    ],
+    "originalSize": [
+      234,
+      74
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "葫芦2",
+    "texture": "01878b3e-be94-4021-91ba-c89218e4be3e",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      148,
+      133
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      148,
+      133
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

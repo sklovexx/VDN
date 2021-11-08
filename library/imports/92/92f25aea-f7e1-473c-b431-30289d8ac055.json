@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "交易大厅",
+    "texture": "203da986-487e-447b-a83f-cc5a730b3247",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      289,
+      200
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      289,
+      200
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

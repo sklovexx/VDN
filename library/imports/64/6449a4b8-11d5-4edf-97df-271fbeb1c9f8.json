@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "进入社区@3x",
+    "texture": "151064ac-3e53-4225-b2aa-7b656e3bf247",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      48,
+      43
+    ],
+    "offset": [
+      0,
+      1
+    ],
+    "originalSize": [
+      48,
+      45
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

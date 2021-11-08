@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "查询大厅",
+    "texture": "a42bdefc-5b48-4467-b363-a5e7613e2066",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      252,
+      319
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      252,
+      319
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

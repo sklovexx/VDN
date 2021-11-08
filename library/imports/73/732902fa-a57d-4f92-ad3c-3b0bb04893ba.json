@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "退出游戏",
+    "texture": "d82df4a5-adcf-4c1f-bff3-905105233081",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      114,
+      111
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      114,
+      111
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

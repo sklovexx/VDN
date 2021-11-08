@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "sskoo",
+    "texture": "3cda8ff5-ac83-4efc-8733-4b65218a7ae6",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      463,
+      362
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      463,
+      362
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

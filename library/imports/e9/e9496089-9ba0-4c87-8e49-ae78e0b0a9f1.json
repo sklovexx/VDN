@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "商品底框@2x",
+    "texture": "338cfa96-c99a-488a-bfaa-fc4546db682e",
+    "atlas": "",
+    "rect": [
+      6,
+      5,
+      1238,
+      602
+    ],
+    "offset": [
+      0.5,
+      2
+    ],
+    "originalSize": [
+      1249,
+      616
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

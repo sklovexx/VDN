@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "user_icon_woman1",
+    "texture": "6ae3f10d-8608-4782-bb41-d7a447560ee9",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      154,
+      149
+    ],
+    "offset": [
+      -3.5,
+      0
+    ],
+    "originalSize": [
+      161,
+      149
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

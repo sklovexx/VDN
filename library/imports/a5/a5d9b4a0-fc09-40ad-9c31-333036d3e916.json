@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "宠物商店",
+    "texture": "97c47120-06f9-429c-9a37-3246c92be8b1",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      275,
+      278
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      275,
+      278
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

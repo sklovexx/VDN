@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "dialog_charge_bg",
+    "texture": "52963604-ef88-4931-9daa-4d0234c27604",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      34,
+      16
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      34,
+      16
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

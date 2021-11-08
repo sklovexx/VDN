@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "星群",
+    "texture": "fae92086-5d45-4668-a3f2-1b77f855a487",
+    "atlas": "",
+    "rect": [
+      4,
+      6,
+      193,
+      192
+    ],
+    "offset": [
+      -1,
+      -0.5
+    ],
+    "originalSize": [
+      203,
+      203
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

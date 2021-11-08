@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "战力@2x",
+    "texture": "11c32ee7-e20d-40b2-9269-55af736848e4",
+    "atlas": "",
+    "rect": [
+      1,
+      2,
+      31,
+      33
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      34,
+      37
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

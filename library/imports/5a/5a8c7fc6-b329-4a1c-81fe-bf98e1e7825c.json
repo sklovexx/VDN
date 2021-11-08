@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "plank2@2x",
+    "texture": "1b8d8676-58f6-4091-83da-25a9f76c61aa",
+    "atlas": "",
+    "rect": [
+      4,
+      0,
+      694,
+      146
+    ],
+    "offset": [
+      1.5,
+      0
+    ],
+    "originalSize": [
+      699,
+      146
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

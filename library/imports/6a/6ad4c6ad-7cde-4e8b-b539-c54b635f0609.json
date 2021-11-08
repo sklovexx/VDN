@@ -1,0 +1,68 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "KuangJi.plist",
+  "_objFlags": 0,
+  "_native": "",
+  "_spriteFrames": {
+    "-s-e令牌": {
+      "__uuid__": "ce1b71e2-6efe-4467-aa1c-3de6ec4011f6"
+    },
+    "-s-电池": {
+      "__uuid__": "2e6c01af-49b4-4407-88ef-1ee101c6f8d5"
+    },
+    "-s-金币": {
+      "__uuid__": "58b9824f-fb26-4219-a665-18e4bccef5f8"
+    },
+    "-s-钻": {
+      "__uuid__": "e684d82d-adab-416a-8df2-305ca06075b8"
+    },
+    "DoorBottom": {
+      "__uuid__": "18b358c0-1f99-4192-b5c3-9b7f29d6c77d"
+    },
+    "DoorTop": {
+      "__uuid__": "2603f4a2-0191-44a1-ab02-633545fcf33d"
+    },
+    "Fan": {
+      "__uuid__": "e0a8054a-9302-44f9-aaf1-90eb10ce3df8"
+    },
+    "MineDoor": {
+      "__uuid__": "548e87bd-71f5-4649-8eca-4afa92021f7f"
+    },
+    "doorBg": {
+      "__uuid__": "de7f32ac-c64d-4a94-b546-c90ffed17c8f"
+    },
+    "icon_1": {
+      "__uuid__": "4b1dc534-c8ba-440b-9160-87d81e81c2f1"
+    },
+    "icon_2": {
+      "__uuid__": "5d67f627-519e-4c8f-a927-6c19c0c22e54"
+    },
+    "item": {
+      "__uuid__": "244da18c-32c7-4e13-ab86-4c59fa3f3a54"
+    },
+    "treasureBox": {
+      "__uuid__": "33e65da9-bd60-4ace-9d82-3cf51a5744b1"
+    },
+    "公告": {
+      "__uuid__": "9eef8b4d-dba6-4229-aab3-26dfa0a5d888"
+    },
+    "圆角矩形 1@2x": {
+      "__uuid__": "52fe6fa9-f7ba-4ea4-a17e-249c05121728"
+    },
+    "圆角矩形 2@2x": {
+      "__uuid__": "0957505b-f9c1-4fbd-8fce-4bce618965e4"
+    },
+    "圆角矩形1": {
+      "__uuid__": "bb1da2e8-1a8d-4279-9655-f2af4d8b7ba4"
+    },
+    "圆角矩形2": {
+      "__uuid__": "3fa567fe-bccb-4178-ba58-47fbd25f9029"
+    },
+    "矩形 1 拷贝@2x": {
+      "__uuid__": "d275ff3e-63d3-442d-8ebb-1920074114be"
+    },
+    "门框填充物": {
+      "__uuid__": "f13d50ec-344f-4eaa-b8a3-d2a73739d276"
+    }
+  }
+}

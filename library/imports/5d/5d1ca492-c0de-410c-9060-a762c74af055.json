@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "船1",
+    "texture": "b9937539-866a-4aee-ba45-613e262444a9",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      265,
+      233
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      265,
+      233
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

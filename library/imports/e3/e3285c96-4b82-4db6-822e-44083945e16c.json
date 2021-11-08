@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "弹框@3x",
+    "texture": "506673de-8ced-41c6-a035-956665b7658f",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      991,
+      904
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      993,
+      906
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

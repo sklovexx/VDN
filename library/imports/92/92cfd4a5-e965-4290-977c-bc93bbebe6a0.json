@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "抢红包",
+    "texture": "5efaa204-9d32-40b7-9a97-f0aa778c2def",
+    "atlas": "ca6b6a4a-1618-4eab-9f86-f740187430e5",
+    "rect": [
+      138,
+      0,
+      537,
+      198
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      537,
+      198
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

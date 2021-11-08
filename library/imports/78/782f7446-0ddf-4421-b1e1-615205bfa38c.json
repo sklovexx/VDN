@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "退出按钮",
+    "texture": "e6eba6a6-c080-4db3-a54b-d4291e658866",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      108,
+      105
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      108,
+      105
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

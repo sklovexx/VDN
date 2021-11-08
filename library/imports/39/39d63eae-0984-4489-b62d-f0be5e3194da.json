@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "社群中心",
+    "texture": "9db40998-d7f9-4e94-a359-ddd9b1f387d2",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      189,
+      168
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      189,
+      168
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

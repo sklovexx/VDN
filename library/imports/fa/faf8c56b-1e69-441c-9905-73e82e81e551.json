@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "蓝莓1",
+    "texture": "da0efc2b-ecb0-4482-80e1-7838cd8a9ad6",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      148,
+      108
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      148,
+      108
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

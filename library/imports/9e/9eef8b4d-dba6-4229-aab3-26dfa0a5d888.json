@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "公告",
+    "texture": "f66a5770-8c41-4c86-867b-ba2a2f2cbb36",
+    "atlas": "6ad4c6ad-7cde-4e8b-b539-c54b635f0609",
+    "rect": [
+      431,
+      232,
+      200,
+      200
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      200,
+      200
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

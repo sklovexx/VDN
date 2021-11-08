@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "公告@2x",
+    "texture": "246f7f4c-cd5b-49ce-874b-6f0fcb6ecd03",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      43,
+      43
+    ],
+    "offset": [
+      0.5,
+      -0.5
+    ],
+    "originalSize": [
+      44,
+      44
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_panel 拷贝 10",
+    "texture": "282fea0b-22a9-44ea-b9a3-09c83a8191c8",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      92,
+      64
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      92,
+      64
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

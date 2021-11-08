@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "红包打开黄色",
+    "texture": "d0a6523f-d5ac-4a80-a473-2d71dd3c10be",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      882,
+      1080
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      882,
+      1080
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

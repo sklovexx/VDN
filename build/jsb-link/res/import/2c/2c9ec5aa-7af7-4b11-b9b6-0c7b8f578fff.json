@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"feiji","_duration":6.5,"wrapMode":2,"curveData":{"props":{"position":[{"frame":0,"value":[1859.833984375,57.30500030517578,0]},{"frame":6.5,"value":[-2112.739013671875,-2750.251953125,0]}],"scale":[{"frame":0,"value":{"__type__":"cc.Vec2","x":2,"y":2}},{"frame":6.5,"value":{"__type__":"cc.Vec2","x":5,"y":5}}]}}}

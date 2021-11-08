@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "地主标志",
+    "texture": "e4aeac26-bb53-48a2-8b03-3fd3caa1a5bf",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      50,
+      58
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      50,
+      58
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

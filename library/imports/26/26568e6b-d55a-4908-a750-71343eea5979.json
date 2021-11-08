@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "机器",
+    "texture": "8ab7f62a-9dda-4671-92e0-c42633048575",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1038,
+      1828
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      1038,
+      1828
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

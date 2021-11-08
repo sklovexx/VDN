@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "进阶8神昏之地-110711(修改版）@2x",
+    "texture": "ce6eec0f-1e01-484e-8ddd-488a3d2d1515",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1624,
+      750
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      1624,
+      750
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

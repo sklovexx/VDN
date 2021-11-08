@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "钻石生成区@3x",
+    "texture": "27726b66-eb6f-468a-9937-a0c4fde682c6",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      197,
+      137
+    ],
+    "offset": [
+      -0.5,
+      0.5
+    ],
+    "originalSize": [
+      198,
+      138
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

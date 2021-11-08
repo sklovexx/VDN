@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "发五个红包背景@3x",
+    "texture": "1f8190e0-dacf-46c2-89b7-0f04cec818be",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      451,
+      136
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      453,
+      138
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

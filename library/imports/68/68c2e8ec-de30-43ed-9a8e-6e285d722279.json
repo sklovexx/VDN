@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "太阳@2x",
+    "texture": "c4590824-7007-43b2-a40b-d914ea6ed7af",
+    "atlas": "",
+    "rect": [
+      3,
+      2,
+      375,
+      388
+    ],
+    "offset": [
+      0.5,
+      -1
+    ],
+    "originalSize": [
+      380,
+      390
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "抖音",
+    "texture": "fdc88202-1ec5-4667-b4c1-08c159794c34",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      70,
+      72
+    ],
+    "offset": [
+      -0.5,
+      0.5
+    ],
+    "originalSize": [
+      71,
+      73
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

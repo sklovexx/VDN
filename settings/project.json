@@ -1,29 +1,21 @@
 {
   "group-list": [
-    "default",
-    "enemy",
-    "solider"
+    "default"
   ],
   "collision-matrix": [
     [
-      true,
       true
-    ],
-    [
-      true,
-      false,
-      true
-    ],
-    [
-      false,
-      true,
-      false
     ]
   ],
   "excluded-modules": [
-    "3D Physics/Builtin"
+    "NodePool",
+    "Physics",
+    "PageView",
+    "PageViewIndicator",
+    "TiledMap",
+    "VideoPlayer"
   ],
-  "last-module-event-record-time": 1624072000580,
+  "last-module-event-record-time": 1636343822004,
   "design-resolution-width": 960,
   "design-resolution-height": 640,
   "fit-width": false,
@@ -46,6 +38,5 @@
       "enable": false
     }
   },
-  "migrate-history": [],
   "start-scene": "current"
 }

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "横版场景 @2x",
+    "texture": "6a80cef6-c15a-4c2d-8577-5ca997458eb3",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1629,
+      950
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      1630,
+      950
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

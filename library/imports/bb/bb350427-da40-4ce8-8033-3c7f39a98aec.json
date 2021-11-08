@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Health Potion@2x(1)",
+    "texture": "7c5475b7-55f3-465e-b1f1-1c9620b2cd46",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      168,
+      224
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      168,
+      224
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

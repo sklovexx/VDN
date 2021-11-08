@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Buy Button@2x",
+    "texture": "f0d55af2-dda0-4a6d-af79-308d28ec6104",
+    "atlas": "",
+    "rect": [
+      5,
+      3,
+      145,
+      56
+    ],
+    "offset": [
+      0.5,
+      0
+    ],
+    "originalSize": [
+      154,
+      62
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

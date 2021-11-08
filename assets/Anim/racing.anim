@@ -1,0 +1,63 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "racing",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 20,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 20,
+          "value": 5890
+        }
+      ]
+    },
+    "paths": {
+      "fire1": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 255
+            },
+            {
+              "frame": 19.983333333333334,
+              "value": 255
+            },
+            {
+              "frame": 20,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "speedUp1": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 255
+            },
+            {
+              "frame": 19.983333333333334,
+              "value": 255
+            },
+            {
+              "frame": 20,
+              "value": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

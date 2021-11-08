@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "门票@2x",
+    "texture": "78758288-6efe-4a13-9068-b1fd98d8e779",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      67,
+      33
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      67,
+      33
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

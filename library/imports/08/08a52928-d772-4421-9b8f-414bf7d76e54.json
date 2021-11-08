@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "王者荣耀",
+    "texture": "c85fa5c3-373e-49fb-9b68-7cf5a307b8eb",
+    "atlas": "",
+    "rect": [
+      4,
+      5,
+      100,
+      99
+    ],
+    "offset": [
+      -0.5,
+      2.5
+    ],
+    "originalSize": [
+      109,
+      114
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

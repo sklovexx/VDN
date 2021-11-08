@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "gameInfo",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "﻿info,,,,,,\nnumber,String,String,String,String,String\nid,name,picture,period,time,reward\n102001,蓝莓,蓝莓1,发芽,18500000,ECC10个\n102002,蓝莓,蓝莓2,叶子,18500000,ECC10个\n102003,蓝莓,蓝莓3,成熟,18500000,ECC10个\n102004,人参果,人参果1,发芽,18500000,ECC10个\n102005,人参果,人参果2,叶子,18500000,ECC10个\n102006,人参果,人参果3,成熟,18500000,ECC10个\n102007,葫芦,葫芦1,发芽,18500000,ECC10个\n102008,葫芦,葫芦2,叶子,18500000,ECC10个\n102009,葫芦,葫芦3,成熟,18500000,ECC10个\n"
+}

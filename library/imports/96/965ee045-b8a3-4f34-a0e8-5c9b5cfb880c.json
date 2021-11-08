@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "炼金厂",
+    "texture": "5f42afdc-9fe5-4c54-923c-dca4a0e3c9f6",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      80,
+      142
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      80,
+      142
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

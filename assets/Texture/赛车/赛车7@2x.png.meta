@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "927aaffd-a269-4d3e-be65-8a8d3cf79f34",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "赛车7@2x": {
+      "ver": "1.0.4",
+      "uuid": "6aa26154-a54e-4d16-abb8-d93648cf53cd",
+      "rawTextureUuid": "927aaffd-a269-4d3e-be65-8a8d3cf79f34",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 80,
+      "height": 171,
+      "rawWidth": 80,
+      "rawHeight": 172,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

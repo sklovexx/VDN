@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "准备",
+    "texture": "2039bc0a-61d4-46a2-80ae-fcb9e360ff66",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      217,
+      84
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      217,
+      84
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "登录@2x",
+    "texture": "aec7c655-a433-4d04-b5d5-5c0484dcaec7",
+    "atlas": "",
+    "rect": [
+      5,
+      5,
+      314,
+      72
+    ],
+    "offset": [
+      0,
+      -2
+    ],
+    "originalSize": [
+      324,
+      78
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
