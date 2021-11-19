@@ -20,8 +20,8 @@ var Md5 = require("./../encrypt/Md5").md5_hex_hmac;
 // let urlroot = "http://52.44.165.172:3000";
 // let urlroot = "http://106.55.241.55:9501/";//测试版本ip
 
-var urlroot = "http://192.168.2.99:9501/"; //本地接口
-// let urlroot = "http://api.vdnmetaverse.org/api/";//正式发布
+// let urlroot = "http://192.168.2.99:9501/";//本地接口
+var urlroot = "http://api.vdnmetaverse.org/api/"; //正式发布
 
 var encryptKey = "tclsafegame";
 

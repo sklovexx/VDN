@@ -11,6 +11,8 @@ cc.Class({
         Panle:cc.Node,
         Panle2:cc.Node,
         Panle3:cc.Node,
+        Panle4:cc.Node,
+        bgSprite:cc.Node,
         Panlelist2:cc.Node,
         Panlelist3:cc.Node,
         lable_id:cc.Label,
@@ -29,7 +31,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.goSetlectGamePanle();
+        // this.goSetlectGamePanle();
         Global.ProtocolMgr.queryUserData();
     },
 
@@ -207,18 +209,22 @@ cc.Class({
                 this.btn_item[parseInt(customData)].spriteFrame = sf;
             }
         });
+        this.bgSprite.active = false;
         switch (parseInt(customData)) {
             case 0:
                 this.curType = 0;
+                this.Panle4.active = false;
+                this.bgSprite.active = true;
                 this.gameQueryGameList();
                 break;
             case 1:
+                this.Panle4.active = false;
+                this.bgSprite.active = true;
                 this.curType = 1;
-                
                 this.gameQueryGameList();
                 break;
             case 2:
-                this.curType = 2;
+                // this.curType = 2;
                 this.Panlelist2.active= true;
                 this.Panlelist3.active= false;
                 this.container2.removeAllChildren();
@@ -228,10 +234,15 @@ cc.Class({
             case 3:
                 this.container2.removeAllChildren();
                 this.container3.removeAllChildren();
-                this.curType = 3;
+                // this.curType = 3;
                 this.Panlelist3.active= true;
                 this.Panlelist2.active= false;
                 this.setStationRecordUI();
+                break;
+            case 4:
+                this.Panle4.active = true;
+                this.container.removeAllChildren();
+                this.curType = 3;
                 break;
             default:
                 break;
@@ -265,7 +276,7 @@ cc.Class({
                 let data = res.data;
                 // data = this.data[0];
                 for(let i = 0;i < data.length;i++){
-                    if(data[i].game_terminal==this.curType){//可能有问题
+                    if(data[i].game_terminal==this.curType){
                         let gameItemNode = cc.instantiate(this.game_item);
                         gameItemNode.getComponent("game_item").setData(data[i],this.goEnterGamePanel);
                         this.container.addChild(gameItemNode);

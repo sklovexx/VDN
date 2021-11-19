@@ -113,8 +113,10 @@ cc.Class({
                         //     }
                         // })
                         // console.log(cc.find("Canvas/Main/view/mask/label_gonggao"),res2.data.title)
-                        cc.find("Canvas/Main/view/mask/").getComponent(cc.Label).string = res2.data.title;
-                    
+                        if(cc.find("Canvas/Main/view/mask/label_gonggao") != null)
+                        {
+                            cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title;
+                        }
                         this.editBox_password.string = "";
                         this.editBox_inviteCode.string = "";
                     }else{

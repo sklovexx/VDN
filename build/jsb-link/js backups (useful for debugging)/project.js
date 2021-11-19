@@ -671,22 +671,44 @@ container_zhandui: cc.Node,
 scroll_saiqu: cc.Node,
 Panle: cc.Node,
 Panle2: cc.Node,
+Panle3: cc.Node,
+Panle4: cc.Node,
 label_email: cc.Label,
 label_name: cc.Label,
 label_zhandui: cc.Label,
 label_saiqu2: cc.Label,
 label_dianhua: cc.Label,
 label_zhengjian: cc.Label,
+label_gamename: cc.Label,
+game_item: cc.Prefab,
+container: cc.Node,
 scroll_zhandui: cc.Node
 },
 start: function() {},
 onEnable: function() {
-this.showApplyForTeamInformation();
+this.showDivisionRegistrationRanking();
+},
+showDivisionRegistrationRanking: function() {
+var e = this;
+this.Panle.active = !1;
+this.Panle2.active = !1;
+this.Panle3.active = !0;
+this.Panle4.active = !1;
+this.container.removeAllChildren();
+Global.ProtocolMgr.queryGetGameSignRank(function(t) {
+console.log(t);
+if (200 == t.code) for (var n = t.data, i = 0; i < n.length; i++) {
+var a = cc.instantiate(e.game_item);
+a.getComponent("BaoMing_Item").setData(n[i]);
+e.container.addChild(a);
+} else Global.PageMgr.showTipPage(t.message);
+});
 },
 showApplyForTeamInformation: function() {
 var e = this;
 this.Panle.active = !1;
 this.Panle2.active = !0;
+this.Panle3.active = !1;
 Global.ProtocolMgr.queryGetSignUPInfo(function(t) {
 if (200 == t.code) {
 var n = t.data;
@@ -695,7 +717,7 @@ e.label_email.string = n.email;
 e.label_name.string = n.name;
 e.label_zhandui.string = n.team_name;
 e.label_saiqu2.string = n.division_name;
-e.label_zhengjian.string = n.id_card_number;
+e.label_gamename.string = n.id_card_number;
 e.label_dianhua.string = n.phone;
 }
 } else e.showApplyForTeam();
@@ -705,9 +727,14 @@ showApplyForTeam: function() {
 var e = this;
 this.Panle.active = !0;
 this.Panle2.active = !1;
+this.scroll_saiqu.active = !1;
+this.scroll_zhandui.active = !1;
+this.container_saiqu.removeAllChildren();
+this.container_zhandui.removeAllChildren();
 this.did = 0;
 this.tid = 0;
-this.label_saiqu.string = "-选择赛区";
+this.label_saiqu.string = "选择赛区";
+this.label_zhengjian.string = "比赛项目";
 this.editBox_name.string = "";
 this.editBox_email.string = "";
 this.editBox_phone.string = "";
@@ -731,6 +758,22 @@ e.container_saiqu.addChild(i);
 }, a = 0; a < n.length; a++) i(a);
 }() : Global.PageMgr.showTipPage(t.message);
 });
+Global.ProtocolMgr.queryGetGameSignList(function(t) {
+200 == t.code ? function() {
+var n = t.data;
+e.container_zhandui.removeAllChildren();
+for (var i = function(t) {
+var i = cc.instantiate(e.selectItem);
+i.getComponent(cc.Label).string = n[t].game_name;
+i.on(cc.Node.EventType.TOUCH_END, function() {
+e.label_zhengjian.string = n[t].game_name;
+e.tid = n[t].id;
+e.closeScroll();
+});
+e.container_zhandui.addChild(i);
+}, a = 0; a < n.length; a++) i(a);
+}() : Global.PageMgr.showTipPage(t.message);
+});
 },
 showScroll: function(e, t) {
 switch (t) {
@@ -747,23 +790,58 @@ this.scroll_saiqu.active = !1;
 this.scroll_zhandui.active = !1;
 },
 submit: function() {
-if (0 != this.did) if ("" != this.editBox_zhandui.string) if ("" != this.editBox_name.string) if ("" != this.editBox_card.string) if ("" != this.editBox_phone.string) if ("" != this.editBox_email.string) {
-var e = {
+var e = this;
+if (0 != this.did) if ("" != this.editBox_zhandui.string) if ("" != this.editBox_name.string) if (0 != this.tid) if ("" != this.editBox_phone.string) if ("" != this.editBox_email.string) {
+var t = {
 name: this.editBox_name.string,
 email: this.editBox_email.string,
 phone: this.editBox_phone.string,
-id_card_number: this.editBox_card.string,
 team_name: this.editBox_zhandui.string,
-did: this.did.toString()
+did: this.did.toString(),
+game_id: this.tid.toString()
 };
-Global.ProtocolMgr.submitBaoMing(e, function(e) {
-console.log(e);
-if (200 == e.code) {
-Global.PageMgr.showTipPage("报名成功");
-Global.PageMgr.onClosePage(17);
-} else Global.PageMgr.showTipPage(e.message);
+console.log("选择的游戏是：" + this.tid.toString());
+console.log("选择的赛区是：" + this.did.toString());
+Global.ProtocolMgr.submitBaoMing(t, function(t) {
+console.log(t);
+200 == t.code ? e.Panle4.active = !0 : Global.PageMgr.showTipPage(t.message);
 });
-} else Global.PageMgr.showTipPage("还未填写邮箱"); else Global.PageMgr.showTipPage("还未填写手机号"); else Global.PageMgr.showTipPage("还未填写身份证号"); else Global.PageMgr.showTipPage("还未填写姓名"); else Global.PageMgr.showTipPage("还未填写战队"); else Global.PageMgr.showTipPage("还未选择赛区");
+} else Global.PageMgr.showTipPage("还未填写邮箱"); else Global.PageMgr.showTipPage("还未填写手机号"); else Global.PageMgr.showTipPage("还未选择游戏"); else Global.PageMgr.showTipPage("还未填写姓名"); else Global.PageMgr.showTipPage("还未填写战队"); else Global.PageMgr.showTipPage("还未选择赛区");
+}
+});
+cc._RF.pop();
+}, {} ],
+BaoMing_Item: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "31a6dKaXt9OQLYIOHvLBCwu", "BaoMing_Item");
+cc.Class({
+extends: cc.Component,
+properties: {
+icon_paiming: cc.Sprite,
+label_pingming: cc.Label,
+label_quyuname: cc.Label,
+label_sum: cc.Label,
+icon_paiming2: cc.Node,
+propId: 1
+},
+start: function() {},
+setData: function(e) {
+var t = this;
+this.icon_paiming2.active = !1;
+this.label_pingming.string = cc.js.formatStr("NO.%s", e.ranking);
+this.label_quyuname.string = e.division_name;
+this.label_sum.string = e.number;
+try {
+if (parseInt(e.ranking) <= 3) {
+this.icon_paiming2.active = !0;
+this.label_pingming.string = "";
+cc.loader.loadRes("imgs/R" + e.ranking, cc.SpriteFrame, function(e, n) {
+e || (t.icon_paiming.spriteFrame = n);
+});
+}
+} catch (e) {
+console.warn(e);
+}
 }
 });
 cc._RF.pop();
@@ -1133,6 +1211,7 @@ cc._RF.pop();
 ChongWuPanel: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "db0e03FiNlODouREjsYTZEL", "ChongWuPanel");
+e("../../../NiuNiu/script/common/UtilsCross").rmAndroidSplash;
 var i = e("../../Util/appScript");
 cc.Class({
 extends: cc.Component,
@@ -1153,13 +1232,7 @@ this.showData();
 },
 showData: function() {
 var e = this;
-i.Post("member/getMemberInfo", {}, function(t) {
-if (200 == t.code && t.data) {
-e.label_id.string = t.data.username;
-e.label_lv.string = t.data.grade + "级";
-e.label_Usdt.string = t.data.totalUsdt;
-}
-});
+this.goGamePanelUI();
 Global.ProtocolMgr.queryKnapsackpetAnimalList(100, 1, function(t) {
 if (200 == t.code) {
 var n = t.data;
@@ -1177,12 +1250,23 @@ e.icon_pic.spriteFrame = new cc.SpriteFrame(n);
 }
 });
 },
+goGamePanelUI: function() {
+var e = this;
+i.Post("member/getMemberInfo", {}, function(t) {
+if (200 == t.code && t.data) {
+e.label_id.string = t.data.username;
+e.label_lv.string = t.data.grade + "级";
+e.label_Usdt.string = t.data.totalUsdt;
+}
+});
+},
 onClickIncomeDetails: function() {
 Global.PageMgr.onOpenPage(22);
 }
 });
 cc._RF.pop();
 }, {
+"../../../NiuNiu/script/common/UtilsCross": "UtilsCross",
 "../../Util/appScript": "appScript"
 } ],
 ChongWuUserDataPanel: [ function(e, t, n) {
@@ -1531,7 +1615,7 @@ return h(null, e);
 function g(e, t, n) {
 "string" == typeof n && "" !== n || (n = "utf8");
 if (!s.isEncoding(n)) throw new TypeError('"encoding" must be a valid string encoding');
-var i = 0 | y(t, n), a = (e = c(e, i)).write(t, n);
+var i = 0 | _(t, n), a = (e = c(e, i)).write(t, n);
 a !== i && (e = e.slice(0, a));
 return e;
 }
@@ -1615,7 +1699,7 @@ a += r.length;
 }
 return i;
 };
-function y(e, t) {
+function _(e, t) {
 if (s.isBuffer(e)) return e.length;
 if ("undefined" != typeof ArrayBuffer && "function" == typeof ArrayBuffer.isView && (ArrayBuffer.isView(e) || e instanceof ArrayBuffer)) return e.byteLength;
 "string" != typeof e && (e = "" + e);
@@ -1650,8 +1734,8 @@ t = ("" + t).toLowerCase();
 i = !0;
 }
 }
-s.byteLength = y;
-function _(e, t, n) {
+s.byteLength = _;
+function y(e, t, n) {
 var i = !1;
 (void 0 === t || t < 0) && (t = 0);
 if (t > this.length) return "";
@@ -1668,7 +1752,7 @@ case "utf-8":
 return L(this, t, n);
 
 case "ascii":
-return G(this, t, n);
+return B(this, t, n);
 
 case "latin1":
 case "binary":
@@ -1723,7 +1807,7 @@ return this;
 };
 s.prototype.toString = function() {
 var e = 0 | this.length;
-return 0 === e ? "" : 0 === arguments.length ? L(this, 0, e) : _.apply(this, arguments);
+return 0 === e ? "" : 0 === arguments.length ? L(this, 0, e) : y.apply(this, arguments);
 };
 s.prototype.equals = function(e) {
 if (!s.isBuffer(e)) throw new TypeError("Argument must be a Buffer");
@@ -1845,10 +1929,10 @@ return Q(J(t, e.length - n), e, n, i);
 function w(e, t, n, i) {
 return Q(Y(t), e, n, i);
 }
-function E(e, t, n, i) {
+function D(e, t, n, i) {
 return w(e, t, n, i);
 }
-function D(e, t, n, i) {
+function E(e, t, n, i) {
 return Q(X(t), e, n, i);
 }
 function R(e, t, n, i) {
@@ -1891,10 +1975,10 @@ return w(this, e, t, n);
 
 case "latin1":
 case "binary":
-return E(this, e, t, n);
+return D(this, e, t, n);
 
 case "base64":
-return D(this, e, t, n);
+return E(this, e, t, n);
 
 case "ucs2":
 case "ucs-2":
@@ -1956,16 +2040,16 @@ r = 56320 | 1023 & r;
 i.push(r);
 a += c;
 }
-return B(i);
+return G(i);
 }
 var M = 4096;
-function B(e) {
+function G(e) {
 var t = e.length;
 if (t <= M) return String.fromCharCode.apply(String, e);
 for (var n = "", i = 0; i < t; ) n += String.fromCharCode.apply(String, e.slice(i, i += M));
 return n;
 }
-function G(e, t, n) {
+function B(e, t, n) {
 var i = "";
 n = Math.min(e.length, n);
 for (var a = t; a < n; ++a) i += String.fromCharCode(127 & e[a]);
@@ -3345,15 +3429,15 @@ s = s.concat(s.slice(0, a - 16));
 for (var l = new Array(16), u = new Date().getTime(), d = u % 1e3, h = Math.floor(u / 1e3), g = Math.floor(65535 * Math.random()), f = 0; f < 2; f++) l[f] = d >>> 8 * f & 255;
 for (var p = 0; p < 2; p++) l[p + 2] = g >>> 8 * p & 255;
 for (var m = 0; m < 4; m++) l[m + 4] = h >>> 8 * m & 255;
-for (var b = "", y = 0; y < 8; y++) b += String.fromCharCode(l[y]);
-for (var _ = o.keyExpansion(s), v = Math.ceil(e.length / 16), C = new Array(v), N = 0; N < v; N++) {
+for (var b = "", _ = 0; _ < 8; _++) b += String.fromCharCode(l[_]);
+for (var y = o.keyExpansion(s), v = Math.ceil(e.length / 16), C = new Array(v), N = 0; N < v; N++) {
 for (var P = 0; P < 4; P++) l[15 - P] = N >>> 8 * P & 255;
 for (var S = 0; S < 4; S++) l[15 - S - 4] = N / 4294967296 >>> 8 * S;
-for (var w = o.cipher(l, _), E = N < v - 1 ? 16 : (e.length - 1) % 16 + 1, D = new Array(E), R = 0; R < E; R++) {
-D[R] = w[R] ^ e.charCodeAt(16 * N + R);
-D[R] = String.fromCharCode(D[R]);
+for (var w = o.cipher(l, y), D = N < v - 1 ? 16 : (e.length - 1) % 16 + 1, E = new Array(D), R = 0; R < D; R++) {
+E[R] = w[R] ^ e.charCodeAt(16 * N + R);
+E[R] = String.fromCharCode(E[R]);
 }
-C[N] = D.join("");
+C[N] = E.join("");
 }
 var T = b + C.join("");
 return T = n.base64Encode(T);
@@ -3369,8 +3453,8 @@ for (var l = new Array(8), u = e.slice(0, 8), d = 0; d < 8; d++) l[d] = u.charCo
 for (var h = o.keyExpansion(s), g = Math.ceil((e.length - 8) / 16), f = new Array(g), p = 0; p < g; p++) f[p] = e.slice(8 + 16 * p, 8 + 16 * p + 16);
 e = f;
 for (var m = new Array(e.length), b = 0; b < g; b++) {
-for (var y = 0; y < 4; y++) l[15 - y] = b >>> 8 * y & 255;
-for (var _ = 0; _ < 4; _++) l[15 - _ - 4] = (b + 1) / 4294967296 - 1 >>> 8 * _ & 255;
+for (var _ = 0; _ < 4; _++) l[15 - _] = b >>> 8 * _ & 255;
+for (var y = 0; y < 4; y++) l[15 - y - 4] = (b + 1) / 4294967296 - 1 >>> 8 * y & 255;
 for (var v = o.cipher(l, h), C = new Array(e[b].length), N = 0; N < e[b].length; N++) {
 C[N] = v[N] ^ e[b].charCodeAt(N);
 C[N] = String.fromCharCode(C[N]);
@@ -4643,6 +4727,8 @@ container3: cc.Node,
 Panle: cc.Node,
 Panle2: cc.Node,
 Panle3: cc.Node,
+Panle4: cc.Node,
+bgSprite: cc.Node,
 Panlelist2: cc.Node,
 Panlelist3: cc.Node,
 lable_id: cc.Label,
@@ -4658,7 +4744,6 @@ btn_skip: cc.Sprite,
 btn_item: [ cc.Sprite ]
 },
 onLoad: function() {
-this.goSetlectGamePanle();
 Global.ProtocolMgr.queryUserData();
 },
 onEnable: function() {
@@ -4666,6 +4751,7 @@ var e = this;
 i.Post("member/getMemberInfo", {}, function(t) {
 200 == t.code && t.data && (e.label_Usdt.string = t.data.totalUsdt);
 });
+this.getGameList(null, 2);
 },
 breakSetlectGamePanle: function(e, t) {
 this.getGameList(null, 2);
@@ -4761,19 +4847,23 @@ e.spriteFrame = null;
 cc.loader.loadRes("imgs/按钮bg", cc.SpriteFrame, function(e, i) {
 e || (n.btn_item[parseInt(t)].spriteFrame = i);
 });
+this.bgSprite.active = !1;
 switch (parseInt(t)) {
 case 0:
 this.curType = 0;
+this.Panle4.active = !1;
+this.bgSprite.active = !0;
 this.gameQueryGameList();
 break;
 
 case 1:
+this.Panle4.active = !1;
+this.bgSprite.active = !0;
 this.curType = 1;
 this.gameQueryGameList();
 break;
 
 case 2:
-this.curType = 2;
 this.Panlelist2.active = !0;
 this.Panlelist3.active = !1;
 this.container2.removeAllChildren();
@@ -4784,12 +4874,28 @@ break;
 case 3:
 this.container2.removeAllChildren();
 this.container3.removeAllChildren();
-this.curType = 3;
 this.Panlelist3.active = !0;
 this.Panlelist2.active = !1;
+this.setStationRecordUI();
+break;
+
+case 4:
+this.Panle4.active = !0;
+this.container.removeAllChildren();
+this.curType = 3;
 }
 },
-setStationRecordUI: function() {},
+setStationRecordUI: function() {
+var e = this;
+Global.ProtocolMgr.queryStationRecordList(100, 1, function(t) {
+e.container3.removeAllChildren();
+if (200 == t.code) for (var n = t.data, i = 0; i < n.length; i++) {
+var a = cc.instantiate(e.game_item3);
+a.getComponent("Game_Item3").setData(n[i]);
+e.container3.addChild(a);
+} else Global.PageMgr.showTipPage(t.message);
+});
+},
 gameQueryGameList: function() {
 var e = this;
 this.container.removeAllChildren();
@@ -4896,12 +5002,12 @@ ctor: function() {
 this.act = "startGame";
 this.uid = "";
 }
-}), y = cc.Class({
+}), _ = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "startGame";
 }
-}), _ = cc.Class({
+}), y = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "gameReady";
@@ -4945,13 +5051,13 @@ this.act = "chat";
 this.msg = "";
 this.uid = "";
 }
-}), E = cc.Class({
+}), D = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "pDeal";
 this.cards = [];
 }
-}), D = cc.Class({
+}), E = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "pBet";
@@ -4999,12 +5105,12 @@ this.coins = 0;
 this.nickname = "";
 this.avatar = "";
 }
-}), B = cc.Class({
+}), G = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "logout";
 }
-}), G = cc.Class({
+}), B = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "logout";
@@ -5067,7 +5173,7 @@ this.buildings = null;
 }
 }), q = {
 login: M,
-logout: G,
+logout: B,
 bindFb: k,
 heart: c,
 createRoom: l,
@@ -5077,12 +5183,12 @@ otherReady: C,
 payBet: P,
 countReward: f,
 config: m,
-startGame: y,
+startGame: _,
 pEnterRoom: g,
 pExitRoom: I,
 changeBanker: O,
-pDeal: E,
-pBet: D,
+pDeal: D,
+pBet: E,
 pStartBet: R,
 pShowCards: T,
 chat: w,
@@ -5091,8 +5197,8 @@ cmdTest: j
 t.exports = {
 LoginRequest: L,
 LoginResponse: M,
-LogoutRequest: B,
-LogoutResponse: G,
+LogoutRequest: G,
+LogoutResponse: B,
 BindFacebookRequest: F,
 BindFacebookResponse: k,
 RankRequest: A,
@@ -5106,9 +5212,9 @@ EnterRoomRequest: d,
 QuitRoomRequest: u,
 EnterRoomResponse: h,
 StartGameRequest: b,
-StartGameResponse: y,
+StartGameResponse: _,
 ConfigRequest: p,
-ReadyRequest: _,
+ReadyRequest: y,
 ReadyResponse: v,
 OtherReadyResponse: C,
 KickRequest: N,
@@ -5119,9 +5225,9 @@ countRewardResponse: f,
 ConfigResponse: m,
 PushEnterRoom: g,
 PushExitRoom: I,
-PushDeal: E,
+PushDeal: D,
 PushChat: w,
-PushBet: D,
+PushBet: E,
 PushStartBet: R,
 PushShowCards: T,
 response_classes: q
@@ -5250,28 +5356,118 @@ cc._RF.push(t, "47f68Jdkl5MeYboYwTOqVUS", "Game_Item3");
 cc.Class({
 extends: cc.Component,
 properties: {
-icon_pic: cc.Sprite,
+icon_touxiang: cc.Sprite,
 label_name: cc.Label,
-label_menpiao: cc.Label,
+label_changci: cc.Label,
 label_pic: cc.Label,
-label_fee: cc.Label,
+label_time: cc.Label,
+icon_winOrloser: cc.Sprite,
 propId: 1
 },
 start: function() {},
 setData: function(e) {
 var t = this;
 try {
-cc.loader.loadRes("imgs/bg" + e.id, cc.SpriteFrame, function(e, n) {
-e || (t.icon_pic.spriteFrame = n);
+cc.loader.load({
+url: e.game_logo,
+type: "png"
+}, function(e, n) {
+t.icon_touxiang.spriteFrame = new cc.SpriteFrame(n);
 });
 } catch (e) {
 console.warn(e);
 }
+this.label_name.string = e.game_name;
+this.label_changci.string = cc.js.formatStr("场次:%s场", e.grade_field_name);
+this.label_time.string = e.create_time;
+var n = parseFloat(e.value).toFixed(4);
+if (0 == e.trade_type) {
+this.label_pic.string = cc.js.formatStr("收益:+%s", n);
+this.setSpriteFrame("imgs/胜利@2x");
+} else {
+this.label_pic.string = cc.js.formatStr("收益:-%s", n);
+this.setSpriteFrame("imgs/失败@2x");
+}
+},
+setSpriteFrame: function(e) {
+var t = this;
+cc.loader.loadRes(e, cc.SpriteFrame, function(e, n) {
+e || (t.icon_winOrloser.spriteFrame = n);
+});
 },
 buy: function() {}
 });
 cc._RF.pop();
 }, {} ],
+GivingCrystalPanel: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "7aebd91ELtFkJlP5sIMrwsV", "GivingCrystalPanel");
+var i = e("../../Util/appScript");
+cc.Class({
+extends: cc.Component,
+properties: {
+editBox_ID: cc.EditBox,
+editBox_SUM: cc.EditBox,
+gold: cc.Label,
+jiesao: cc.Label,
+jine: cc.Label,
+panle: cc.Node,
+shouxufei: cc.Node
+},
+onLoad: function() {},
+onEnable: function() {
+var e = this;
+i.Post("member/getMemberInfo", {}, function(t) {
+if (200 == t.code && t.data) {
+e.goleSum = parseFloat(t.data.totalUsdt).toFixed(4);
+e.gold.string = cc.js.formatStr("可用余额:%s星钻", e.goleSum);
+e.updataUI();
+}
+});
+},
+updataUI: function() {
+this.editBox_ID.string = "";
+this.editBox_SUM.string = "";
+this.onClickBreak();
+},
+onClickGiving: function() {
+if ("" != this.editBox_ID.string && "" != this.editBox_SUM.string) {
+if (/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.editBox_ID.string)) {
+var e = parseInt(this.editBox_SUM.string);
+this.shoufeiyong = .01 * e;
+this.shoufeiyong < .1 && (this.shoufeiyong = .1);
+if (e > this.goleSum) Global.PageMgr.showTipPage("星钻不足"); else {
+this.jiesao.string = cc.js.formatStr("您将给好友(%s)赠送%s星钻,请仔细核对 好友账号与赠送数量是否有误？", this.editBox_ID.string, this.editBox_SUM.string);
+this.jine.string = cc.js.formatStr("手续费:%s星钻", this.shoufeiyong);
+this.panle.active = !0;
+}
+} else Global.PageMgr.showTipPage("请输入正确的好友账号");
+} else "" == this.editBox_ID.string ? Global.PageMgr.showTipPage("好友账号不能为空") : "" == this.editBox_SUM.string && Global.PageMgr.showTipPage("输入金额不能为空");
+},
+onClickOK: function() {
+var e = this, t = {
+transferType: 0,
+transferAccount: this.editBox_ID.string,
+number: this.editBox_SUM.string
+};
+Global.ProtocolMgr.queryTransfer(t, function(t) {
+if (3001 != t.code) {
+Global.PageMgr.showTipPage("赠送成功");
+e.updataUI();
+Global.PageMgr.onClosePage(22);
+Global.PageMgr.onClosePage(24);
+Global.PageMgr.pages[11].getComponent("ChongWuPanel").goGamePanelUI();
+} else Global.PageMgr.showTipPage(t.message);
+});
+},
+onClickBreak: function() {
+this.panle.active = !1;
+}
+});
+cc._RF.pop();
+}, {
+"../../Util/appScript": "appScript"
+} ],
 GlobalEvent: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "c347aQ7szpGVZmWaAZr75xU", "GlobalEvent");
@@ -6419,6 +6615,7 @@ pageSum: 1,
 pageSum2: 1
 },
 onEnable: function() {
+this.pageSum = 1;
 this.upDataAccountDetail();
 },
 upDataAccountDetail: function() {
@@ -6428,8 +6625,8 @@ if (200 == t.code) {
 if (t.data) {
 var n = t.data.accountDetailList;
 if (0 == n.length) {
+1 != e.pageSum && Global.PageMgr.showTipPage("已经是最后页了");
 e.pageSum = e.pageSum2 + 1;
-Global.PageMgr.showTipPage("已经是最后页了");
 return;
 }
 e.pageSum2 = e.pageSum;
@@ -6445,17 +6642,18 @@ e.container_incomeDetails.addChild(a);
 });
 },
 onClickDown: function() {
-if (this.pageSum > 2) {
-this.pageSum -= 1;
-this.upDataAccountDetail();
-} else {
+if (this.pageSum > 2) this.pageSum -= 1; else {
 this.pageSum = 1;
 Global.PageMgr.showTipPage("已经是首页了");
 }
+this.upDataAccountDetail();
 },
 onClickUp: function() {
 this.pageSum += 1;
 this.upDataAccountDetail();
+},
+onClickGivingCrystal: function() {
+Global.PageMgr.onOpenPage(24);
 }
 });
 cc._RF.pop();
@@ -7452,7 +7650,7 @@ cc.sys.localStorage.setItem("com.game.vdn.token", GameData.token);
 Global.PageMgr.showTipPage(t.message);
 Global.ResourceMgr.playBgAudio();
 Global.PageMgr.onClosePage(0);
-cc.find("Canvas/Main/view/mask/").getComponent(cc.Label).string = res2.data.title;
+null != cc.find("Canvas/Main/view/mask/label_gonggao") && (cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title);
 e.editBox_password.string = "";
 e.editBox_inviteCode.string = "";
 } else Global.PageMgr.showTipPage(t.message);
@@ -7558,6 +7756,97 @@ this.editBox_mail.string = "";
 },
 update: function(e) {
 this._time > 0 && (this._time -= e);
+}
+});
+cc._RF.pop();
+}, {} ],
+LuckyDrawItem: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "978beW/GwNJg5lQeAoZiG01", "LuckyDrawItem");
+cc.Class({
+extends: cc.Component,
+properties: {
+icon_touxiang: cc.Sprite,
+label_name: cc.Label,
+label_lv: cc.Label,
+label_lVname: cc.Label,
+label_time: cc.Label,
+propId: 1
+},
+start: function() {},
+setData: function(e) {
+var t = this;
+try {
+cc.loader.load({
+url: e.good_img,
+type: "png"
+}, function(e, n) {
+t.icon_touxiang.spriteFrame = new cc.SpriteFrame(n);
+});
+} catch (e) {
+console.warn(e);
+}
+this.label_name.string = e.nickname;
+this.label_lVname.string = e.good_name;
+this.label_lv.string = cc.js.formatStr("%s等奖", e.level);
+this.label_time.string = e.create_time;
+}
+});
+cc._RF.pop();
+}, {} ],
+LuckyDrawPanel: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "25b69IOFlRK4peKZ1MjTpzy", "LuckyDrawPanel");
+cc.Class({
+extends: cc.Component,
+properties: {
+luckyDraw_item: cc.Prefab,
+container: cc.Node,
+Panle: cc.Node,
+Panle2: cc.Node,
+btn_item: [ cc.Sprite ]
+},
+onLoad: function() {},
+onEnable: function() {
+this.getGameList(null, 0);
+},
+goLuckyDrawUI: function() {
+var e = this;
+this.container.removeAllChildren();
+Global.ProtocolMgr.queryLuckDrawList(100, 1, function(t) {
+if (200 == t.code) for (var n = t.data.list, i = 0; i < n.length; i++) {
+var a = cc.instantiate(e.luckyDraw_item);
+a.getComponent("LuckyDrawItem").setData(n[i]);
+e.container.addChild(a);
+} else Global.PageMgr.showTipPage(t.message);
+});
+},
+getGameList: function(e, t) {
+var n = this;
+this.btn_item.forEach(function(e) {
+e.spriteFrame = null;
+});
+cc.loader.loadRes("imgs/按钮bg2", cc.SpriteFrame, function(e, i) {
+e || (n.btn_item[parseInt(t)].spriteFrame = i);
+});
+switch (parseInt(t)) {
+case 0:
+this.onClickBeganTheDetail(null, 1);
+break;
+
+case 1:
+this.onClickBeganTheDetail(null, 0);
+this.goLuckyDrawUI();
+}
+},
+onClickBeganToDraw: function() {
+Global.PageMgr.showTipPage("每周六下午5点,官方统一抽奖", 20);
+},
+onClickBeganTheDetail: function(e, t) {
+var n = parseInt(t);
+this.Panle.active = n > 0;
+this.Panle2.active = n <= 0;
+0 == n && this.goLuckyDrawUI();
 }
 });
 cc._RF.pop();
@@ -7687,6 +7976,11 @@ logOut: function() {
 cc.sys.localStorage.removeItem("com.game.vdn.token");
 Global.PageMgr.closeAllPages();
 Global.PageMgr.onOpenPage(0);
+},
+onClickSubmitLogout: function() {
+Global.ProtocolMgr.querySubmitLogout({}, function(e) {
+200 == e.code && Global.PageMgr.onOpenPage(21);
+});
 }
 });
 cc._RF.pop();
@@ -7762,7 +8056,7 @@ Md5: [ function(e, t, n) {
 cc._RF.push(t, "df9553a0RtFNZ/mf3UeoRp9", "Md5");
 var i = 0, a = "", o = 8;
 function r(e) {
-return y(c(m(e), e.length * o));
+return _(c(m(e), e.length * o));
 }
 function c(e, t) {
 e[t >> 5] |= 128 << t % 32;
@@ -7817,27 +8111,27 @@ function b(e) {
 for (var t = "", n = (1 << o) - 1, i = 0; i < 32 * e.length; i += o) t += String.fromCharCode(e[i >> 5] >>> i % 32 & n);
 return t;
 }
-function y(e) {
+function _(e) {
 for (var t = i ? "0123456789ABCDEF" : "0123456789abcdef", n = "", a = 0; a < 4 * e.length; a++) n += t.charAt(e[a >> 2] >> a % 4 * 8 + 4 & 15) + t.charAt(e[a >> 2] >> a % 4 * 8 & 15);
 return n;
 }
-function _(e) {
+function y(e) {
 for (var t = "", n = 0; n < 4 * e.length; n += 3) for (var i = (e[n >> 2] >> n % 4 * 8 & 255) << 16 | (e[n + 1 >> 2] >> (n + 1) % 4 * 8 & 255) << 8 | e[n + 2 >> 2] >> (n + 2) % 4 * 8 & 255, o = 0; o < 4; o++) 8 * n + 6 * o > 32 * e.length ? t += a : t += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(i >> 6 * (3 - o) & 63);
 return t;
 }
 t.exports = {
 md5_hex: r,
 md5_b64: function(e) {
-return _(c(m(e), e.length * o));
+return y(c(m(e), e.length * o));
 },
 md5_str: function(e) {
 return b(c(m(e), e.length * o));
 },
 md5_hex_hmac: function(e, t) {
-return y(g(e, t));
+return _(g(e, t));
 },
 md5_b64_hmac: function(e, t) {
-return _(g(e, t));
+return y(g(e, t));
 },
 md5_str_hmac: function(e, t) {
 return b(g(e, t));
@@ -8640,11 +8934,13 @@ showTips: function(e, t) {
 this.showTipPage(t);
 },
 showTipPage: function(e) {
+var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : .1;
+null == t && (t = .1);
 this.Tips = cc.instantiate(this.TipsPage);
 this.Tips.parent = cc.find("Canvas");
 this.Tips.active = !0;
-var t = cc.sequence(cc.moveBy(1, cc.v2(0, 30)), cc.fadeOut(.1), cc.callFunc(this.closePage, this));
-this.Tips.runAction(t);
+var n = cc.sequence(cc.moveBy(1, cc.v2(0, 30)), cc.fadeOut(t), cc.callFunc(this.closePage, this));
+this.Tips.runAction(n);
 this.Tips.getComponent("TipsPage").setText(e);
 },
 showTipPage2: function(e) {
@@ -9160,6 +9456,12 @@ i.Post("member/forgetPassword", e, t);
 queryGetAuthCode: function(e, t) {
 i.Post("member/getAuthCode", e, t);
 },
+querySubmitLogout: function(e, t) {
+i.Post("member/submitLogout", e, t);
+},
+queryTransfer: function(e, t) {
+i.Post("finance/transfer", e, t);
+},
 queryBuyPetAnimal: function(e, t) {
 i.Post("store/buyPetAnimal", e, t);
 },
@@ -9177,6 +9479,24 @@ i.Post("sign_up/division_list", {}, e);
 },
 queryGameTeamList: function(e) {
 i.Post("sign_up/game_team_list", {}, e);
+},
+queryGetGameSignRank: function(e) {
+i.Post("sign_up/getGameSignRank", {}, e);
+},
+queryGetGameSignList: function(e) {
+i.Post("sign_up/sign_up_game_list", {}, e);
+},
+queryStationRecordList: function(e, t, n) {
+i.Post("game/stationRecord/list", {
+limit: e,
+page: t
+}, n);
+},
+queryLuckDrawList: function(e, t, n) {
+i.Post("lottery/luckDrawList", {
+limit: e,
+page: t
+}, n);
 },
 submitBaoMing: function(e, t) {
 console.log(e);
@@ -11918,6 +12238,123 @@ start: function() {}
 });
 cc._RF.pop();
 }, {} ],
+TurntableMgr: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "1d8b1mXi9VEd6NGyE5BVmaP", "TurntableMgr");
+cc.Class({
+extends: cc.Component,
+properties: {
+boolRandom: {
+default: !1,
+displayName: "随机位置",
+tooltip: "确定结果区域后,是否在该区域内随机落下"
+},
+intTotalPrize: {
+default: 6,
+type: cc.Integer,
+displayName: "奖品/区域总数",
+tooltip: "游戏总奖品数"
+},
+intResultId: {
+default: 1,
+type: cc.Integer,
+displayName: "奖品/目标Id",
+tooltip: "中奖奖品"
+},
+floatAccelerated: {
+default: 720,
+type: cc.Float,
+displayName: "加速度",
+tooltip: "加速度值,每秒速度增加几度,°/s²"
+},
+floatDeceleration: {
+default: -270,
+type: cc.Float,
+displayName: "减速度",
+tooltip: "加速度值,每秒速度减少几度,°/s²"
+},
+floatMaxRangeSpeed: {
+default: 1080,
+type: cc.Float,
+displayName: "最大速度",
+tooltip: "每秒速度减少几度,°/s"
+}
+},
+initProperties: function() {
+this._range = 360;
+this._currentRotationSpeed = 0;
+this._targetRotation = 0;
+this._turntableBg = this.node.getChildByName("TurntableBg");
+this.intResultId <= 0 || this.intTotalPrize < this.intResultId || this.intTotalPrize;
+this.intResultId = this.intTotalPrize + 1 - this.intResultId;
+this._interval = .02;
+},
+onLoad: function() {
+this.initProperties();
+},
+onRandomPlace: function() {
+cc.log("随机该区域内位置");
+return (Math.random() - .5) * this._range / (this.intTotalPrize + 2);
+},
+onStart: function() {
+Global.PageMgr.showTipPage("每周六由官方统一抽奖", 2);
+},
+onStop: function() {
+void 0 == this._currentState || 0 == this._currentState ? cc.log("转盘已经停止...") : this.unschedule(this.updateRotation);
+},
+onVirtualCompute: function() {
+for (var e = 0, t = this.floatMaxRangeSpeed; t > 0; ) {
+e += t * this._interval;
+t += this._interval * this.floatDeceleration;
+}
+return e;
+},
+onGetValue: function(e) {
+var t = e - this.onVirtualCompute();
+if (t > 0) for (;t >= 360; ) t -= this._range; else for (;t < 0; ) t += this._range;
+return t;
+},
+detectionAngle: function() {
+var e = this._range / this.intTotalPrize * this.intResultId;
+this.boolRandom && (e += this.onRandomPlace());
+var t = this.onGetValue(e);
+this._turntableBg.rotation = t;
+this._currentState = 2;
+},
+updateRotation: function() {
+switch (this._currentState) {
+case 0:
+break;
+
+case 1:
+if (this._currentRotationSpeed >= this.floatMaxRangeSpeed) {
+this._currentRotationSpeed = this.floatMaxRangeSpeed;
+this.detectionAngle();
+} else this._currentRotationSpeed += this.floatAccelerated * this._interval;
+break;
+
+case 2:
+if (this._currentRotationSpeed <= 0) {
+this._currentRotationSpeed = 0;
+this._currentState = 0;
+} else this._currentRotationSpeed += this.floatDeceleration * this._interval;
+break;
+
+default:
+this._currentRotationSpeed = 0;
+this._currentState = 0;
+}
+cc.log("当前旋转速度 : ", this._currentRotationSpeed);
+var e = this._currentRotationSpeed * this._interval;
+cc.log("当前转盘转动速度" + e + "°/" + this._interval + "s");
+this._turntableBg.rotation += e;
+},
+onDestroy: function() {
+this.node.onDestroy();
+}
+});
+cc._RF.pop();
+}, {} ],
 UiUpdater: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "6bea9e70DdDKYGKRZQO+Ors", "UiUpdater");
@@ -12940,12 +13377,12 @@ return p(e, t);
 }, b = function(e, t) {
 console.log("compareThree");
 return p(e, t);
-}, y = function(e, t) {
+}, _ = function(e, t) {
 console.log("compareBoom");
 var n = !1;
 4 == e.length && 4 == t.length && (n = p(e, t));
 return n;
-}, _ = function(e, t) {
+}, y = function(e, t) {
 return 2 == t.length;
 }, v = function(e, t) {
 for (var n = [], i = [], a = {}, o = 0; o < e.length; o++) a.hasOwnProperty(e.card_data.value) ? n.push(e) : a[e.card_data.value] = 1;
@@ -12998,7 +13435,7 @@ for (var a = 100, o = 0; o < t.length; o++) t[o].card_data.value < a && (a = t[o
 console.log("min a = " + n);
 console.log("min b = " + a);
 return n <= a;
-}, E = function(e, t) {
+}, D = function(e, t) {
 for (var n = {}, i = [], o = 0; o < e.length; o++) if (n.hasOwnProperty(e[o].card_data.value)) ; else {
 n[e[o].card_data.value] = !0;
 i.push(a[o]);
@@ -13011,7 +13448,7 @@ c.push(t[o]);
 console.log("list a = " + JSON.stringify(i));
 console.log("list b = " + JSON.stringify(c));
 return w(i, c);
-}, D = function(e, t, n) {
+}, E = function(e, t, n) {
 var i = !1;
 switch (n.name) {
 case f.one.name:
@@ -13027,11 +13464,11 @@ i = b(e, t);
 break;
 
 case f.boom.name:
-i = y(e, t);
+i = _(e, t);
 break;
 
 case f.kingboom.name:
-i = _(0, t);
+i = y(0, t);
 break;
 
 case f.planeWithOne.name:
@@ -13059,7 +13496,7 @@ i = w(e, t);
 break;
 
 case f.doubleScroll.name:
-i = E(e, t);
+i = D(e, t);
 break;
 
 default:
@@ -13081,7 +13518,7 @@ if (e.value < t.value) {
 console.log("compareWithCard less");
 return !0;
 }
-return e.value == t.value && (n.name != i.name ? "牌型不同" : D(e, t, n));
+return e.value == t.value && (n.name != i.name ? "牌型不同" : E(e, t, n));
 };
 e.IsCanPushs = function(e) {
 if (t(e)) {
@@ -15598,4 +16035,4 @@ redPackList: "红包列表"
 };
 cc._RF.pop();
 }, {} ]
-}, {}, [ "CardCtrl", "DragSelect", "GameMgr", "LoadingCtrl", "LobbyCardCtrl", "LobbyCtrl", "MenuCtrl", "PlayerCtrl", "RoomCtrl", "RoomNetCtrl", "AssetMgr", "AudioMgr", "AutoScaleFixedWidth", "BtnCtrl", "ButtonSafe", "CSVParser", "CoinsMgr", "DataMgr", "DataObject", "Facebook", "FacebookMgr", "GCONFIG", "GlobalNiuNiu", "GraySprite", "IAP", "IAPMgr", "IapTools", "ImageLoader", "LabelInteger", "LabelOwnNumCtrl", "ListView", "ProgressBarExt", "ScrollViewFixed", "ServerTimeMgr", "SliderExt", "SpriteRemote", "SwitchControl", "Toast", "UiUpdater", "UtilsCross", "UtilsOther", "ViewBase", "ViewMgr", "one-side-platform", "AchievementData", "DailyRewardData", "EnemyBaseData", "EnemyGroupData", "GameCfg", "GunData", "Algo", "Encrypt", "Md5", "joinRoomNiuNiu", "GameHttp", "HttpProxy", "GameNetwork", "GameProtocols", "GameWebSocket", "NetProxy", "AlertBindFBCtrl", "DialogCtrl", "ModeSelViewCtrl", "SettingViewCtrl", "ToastCtrl", "ComboBox", "Item", "Config", "Dssc", "GameData", "Global", "GlobalEvent", "HotUpdate", "Main", "PageMgr", "ProtocolMgr", "ResourceMgr", "SocketMgr", "Tip", "ArderPanel", "Arder_Item", "BaoMingPanel", "ChongWuPanel", "ChongWuUserDataPanel", "CustomerServicePanel", "EmailDetailPanel", "EmailPanel", "emailItem", "Friend", "GamePanel", "Game_Item2", "Game_Item3", "game_item", "GongGaoPanel", "FaHongBao", "HongBao", "HongBaoList", "HongBaoList1", "IncomeDetailsPanel", "IncomeDetails_Item", "JiaoYiPanel", "jiaoyi_item", "KnapsackPanel", "KuangJiShiChang", "DoorBg", "DoorBottom", "DoorTop", "Email", "Fan", "Gold", "KuangChi", "MineDoor", "TreasureBox", "LoginPanel", "MainPage", "Manor", "NFTPanel", "NongChang", "NongChangPanel", "SalePanel", "ZhongZiPanel", "Racing", "RankPanel", "rank_item", "RecreationalCenter", "ShejiaoPanel", "ShengJia", "NFT_item", "ShopPanel", "ShopUserDataPanel", "XHP_item", "SlotPanel", "TipsPage", "MaiRu", "MairChu", "TradingFloor", "ZhuJinPanel", "ZiChuangPanel", "BuyPanel", "ChongZhiPanel", "TiXianPanel", "DataFunc", "appScript", "ClickEvent", "GainGold", "ShaderHelper", "ShaderMouse", "ShaderNameLabel", "ShaderTime", "carder", "player", "socket_ctr", "failPanel", "gameScene", "gamebeforeUI", "gameingUI", "card", "player_node", "winPanel", "hallScene", "creatRoom", "joinRoom", "password", "quick_join", "loginScene", "mygolbal", "event_lister", "waitnode", "en", "zh", "LanguageData", "LocalizedLabel", "LocalizedSprite", "SpriteFrameSet", "polyglot.min" ]);
+}, {}, [ "CardCtrl", "DragSelect", "GameMgr", "LoadingCtrl", "LobbyCardCtrl", "LobbyCtrl", "MenuCtrl", "PlayerCtrl", "RoomCtrl", "RoomNetCtrl", "AssetMgr", "AudioMgr", "AutoScaleFixedWidth", "BtnCtrl", "ButtonSafe", "CSVParser", "CoinsMgr", "DataMgr", "DataObject", "Facebook", "FacebookMgr", "GCONFIG", "GlobalNiuNiu", "GraySprite", "IAP", "IAPMgr", "IapTools", "ImageLoader", "LabelInteger", "LabelOwnNumCtrl", "ListView", "ProgressBarExt", "ScrollViewFixed", "ServerTimeMgr", "SliderExt", "SpriteRemote", "SwitchControl", "Toast", "UiUpdater", "UtilsCross", "UtilsOther", "ViewBase", "ViewMgr", "one-side-platform", "AchievementData", "DailyRewardData", "EnemyBaseData", "EnemyGroupData", "GameCfg", "GunData", "Algo", "Encrypt", "Md5", "joinRoomNiuNiu", "GameHttp", "HttpProxy", "GameNetwork", "GameProtocols", "GameWebSocket", "NetProxy", "AlertBindFBCtrl", "DialogCtrl", "ModeSelViewCtrl", "SettingViewCtrl", "ToastCtrl", "ComboBox", "Item", "Config", "Dssc", "GameData", "Global", "GlobalEvent", "HotUpdate", "Main", "PageMgr", "ProtocolMgr", "ResourceMgr", "SocketMgr", "Tip", "ArderPanel", "Arder_Item", "BaoMingPanel", "BaoMing_Item", "ChongWuPanel", "ChongWuUserDataPanel", "CustomerServicePanel", "EmailDetailPanel", "EmailPanel", "emailItem", "Friend", "GamePanel", "Game_Item2", "Game_Item3", "game_item", "GivingCrystalPanel", "GongGaoPanel", "FaHongBao", "HongBao", "HongBaoList", "HongBaoList1", "IncomeDetailsPanel", "IncomeDetails_Item", "JiaoYiPanel", "jiaoyi_item", "KnapsackPanel", "KuangJiShiChang", "DoorBg", "DoorBottom", "DoorTop", "Email", "Fan", "Gold", "KuangChi", "MineDoor", "TreasureBox", "LoginPanel", "LuckyDrawItem", "LuckyDrawPanel", "TurntableMgr", "MainPage", "Manor", "NFTPanel", "NongChang", "NongChangPanel", "SalePanel", "ZhongZiPanel", "Racing", "RankPanel", "rank_item", "RecreationalCenter", "ShejiaoPanel", "ShengJia", "NFT_item", "ShopPanel", "ShopUserDataPanel", "XHP_item", "SlotPanel", "TipsPage", "MaiRu", "MairChu", "TradingFloor", "ZhuJinPanel", "ZiChuangPanel", "BuyPanel", "ChongZhiPanel", "TiXianPanel", "DataFunc", "appScript", "ClickEvent", "GainGold", "ShaderHelper", "ShaderMouse", "ShaderNameLabel", "ShaderTime", "carder", "player", "socket_ctr", "failPanel", "gameScene", "gamebeforeUI", "gameingUI", "card", "player_node", "winPanel", "hallScene", "creatRoom", "joinRoom", "password", "quick_join", "loginScene", "mygolbal", "event_lister", "waitnode", "en", "zh", "LanguageData", "LocalizedLabel", "LocalizedSprite", "SpriteFrameSet", "polyglot.min" ]);

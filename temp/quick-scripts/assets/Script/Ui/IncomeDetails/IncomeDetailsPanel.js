@@ -51,15 +51,20 @@ cc.Class({
     onClickDown: function onClickDown() {
         if (this.pageSum > 2) {
             this.pageSum -= 1;
-            this.upDataAccountDetail();
         } else {
             this.pageSum = 1;
             Global.PageMgr.showTipPage("已经是首页了");
         }
+        this.upDataAccountDetail();
     },
     onClickUp: function onClickUp() {
         this.pageSum += 1;
         this.upDataAccountDetail();
+    },
+
+    //赠送
+    onClickGivingCrystal: function onClickGivingCrystal() {
+        Global.PageMgr.onOpenPage(24);
     }
 }
 // update (dt) {},

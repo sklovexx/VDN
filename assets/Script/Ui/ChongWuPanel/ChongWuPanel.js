@@ -1,3 +1,4 @@
+const { rmAndroidSplash } = require('../../../NiuNiu/script/common/UtilsCross');
 let app = require('../../Util/appScript')
 cc.Class({
     extends: cc.Component,
@@ -26,18 +27,7 @@ cc.Class({
 
     showData()
     {
-        let reqData = {};
-        app.Post('member/getMemberInfo',reqData,(res)=>{
-            if(res.code==200){
-                if(res.data)
-                {
-                    this.label_id.string = res.data.username;
-                    this.label_lv.string = res.data.grade+"级";
-                    this.label_Usdt.string = res.data.totalUsdt;
-                }
-            }
-        })
-
+        this.goGamePanelUI();
         Global.ProtocolMgr.queryKnapsackpetAnimalList(100,1,(res)=>{
             if(res.code==200){
                 let data = res.data;
@@ -52,6 +42,21 @@ cc.Class({
                 }
             }
         });
+    },
+
+    goGamePanelUI()
+    {
+        let reqData = {};
+        app.Post('member/getMemberInfo',reqData,(res)=>{
+            if(res.code==200){
+                if(res.data)
+                {
+                    this.label_id.string = res.data.username;
+                    this.label_lv.string = res.data.grade+"级";
+                    this.label_Usdt.string = res.data.totalUsdt;
+                }
+            }
+        })
     },
     //收益明细
     onClickIncomeDetails()

@@ -15,7 +15,6 @@ cc.Class({
     },
 
     // LIFE-CYCLE CALLBACKS:
-
     onLoad: function onLoad() {
         // i18n.init(GameData.curLanguage);
         // i18n.updateSceneRenderers()
@@ -95,6 +94,14 @@ cc.Class({
         cc.sys.localStorage.removeItem("com.game.vdn.token");
         Global.PageMgr.closeAllPages();
         Global.PageMgr.onOpenPage(0);
+    },
+    onClickSubmitLogout: function onClickSubmitLogout() {
+        var reqData = {};
+        Global.ProtocolMgr.querySubmitLogout(reqData, function (res) {
+            if (res.code == 200) {
+                Global.PageMgr.onOpenPage(21);
+            }
+        });
     }
     // update (dt) {},
 

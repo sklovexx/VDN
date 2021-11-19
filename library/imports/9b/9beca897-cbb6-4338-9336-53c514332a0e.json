@@ -175,7 +175,7 @@
       "array": [
         0,
         0,
-        360.2665710449219,
+        383.64925387650635,
         0,
         0,
         0,
@@ -231,6 +231,7 @@
       "height": 1
     },
     "_renderStages": 1,
+    "_alignWithScreen": true,
     "_id": "92wfDUY3pPkIO1AWVooL+0"
   },
   {
@@ -310,9 +311,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "ba65a4dd-d928-4b13-80f0-f53d94f5704a"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -432,6 +431,8 @@
       "__id__": 7
     },
     "_enabled": true,
+    "_normalMaterial": null,
+    "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [

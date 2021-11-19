@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "抽奖@2x",
+    "texture": "e52edbed-c341-40c9-99e5-56c81db3ceff",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      100,
+      100
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      102,
+      102
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

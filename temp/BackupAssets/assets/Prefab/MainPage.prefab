@@ -5973,7 +5973,7 @@
     "_enabled": true,
     "_normalMaterial": null,
     "_grayMaterial": null,
-    "duration": 0.1,
+    "duration": 0,
     "zoomScale": 0.9,
     "clickEvents": [
       {
@@ -6044,7 +6044,7 @@
     },
     "component": "",
     "_componentId": "f6b98h9dcJB5JXE14uqzs1C",
-    "handler": "showTips",
+    "handler": "openTipsPanel",
     "customEventData": "交易大厅-交易大厅"
   },
   {

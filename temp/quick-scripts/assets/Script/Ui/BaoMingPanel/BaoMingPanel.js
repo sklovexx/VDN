@@ -2,14 +2,13 @@
 cc._RF.push(module, '5cc0aPY98ZNQ4nRAH9o+Jcn', 'BaoMingPanel', __filename);
 // Script/Ui/BaoMingPanel/BaoMingPanel.js
 
-"use strict";
+'use strict';
 
 cc.Class({
     extends: cc.Component,
 
     properties: {
         label_saiqu: cc.Label,
-        // label_zhandui:cc.Label,
         editBox_zhandui: cc.EditBox,
         editBox_name: cc.EditBox,
         editBox_card: cc.EditBox,
@@ -21,13 +20,17 @@ cc.Class({
         scroll_saiqu: cc.Node,
         Panle: cc.Node,
         Panle2: cc.Node,
+        Panle3: cc.Node,
+        Panle4: cc.Node,
         label_email: cc.Label,
         label_name: cc.Label,
         label_zhandui: cc.Label,
         label_saiqu2: cc.Label,
         label_dianhua: cc.Label,
         label_zhengjian: cc.Label,
-
+        label_gamename: cc.Label,
+        game_item: cc.Prefab,
+        container: cc.Node,
         scroll_zhandui: cc.Node
     },
 
@@ -37,29 +40,55 @@ cc.Class({
 
     start: function start() {},
     onEnable: function onEnable() {
-        this.showApplyForTeamInformation();
+        this.showDivisionRegistrationRanking();
     },
 
 
-    //展示战队信息
-    showApplyForTeamInformation: function showApplyForTeamInformation() {
+    //展示赛区报名排行
+    showDivisionRegistrationRanking: function showDivisionRegistrationRanking() {
         var _this = this;
 
         this.Panle.active = false;
+        this.Panle2.active = false;
+        this.Panle3.active = true;
+        this.Panle4.active = false;
+        this.container.removeAllChildren();
+        Global.ProtocolMgr.queryGetGameSignRank(function (res) {
+            console.log(res);
+            if (res.code == 200) {
+                var data = res.data;
+                for (var i = 0; i < data.length; i++) {
+                    var gameItemNode = cc.instantiate(_this.game_item);
+                    gameItemNode.getComponent("BaoMing_Item").setData(data[i]);
+                    _this.container.addChild(gameItemNode);
+                }
+            } else {
+                Global.PageMgr.showTipPage(res.message);
+            }
+        });
+        // this.showApplyForTeamInformation();
+    },
+
+    //展示战队信息
+    showApplyForTeamInformation: function showApplyForTeamInformation() {
+        var _this2 = this;
+
+        this.Panle.active = false;
         this.Panle2.active = true;
+        this.Panle3.active = false;
         Global.ProtocolMgr.queryGetSignUPInfo(function (res) {
             if (res.code == 200) {
                 var data = res.data;
                 if (data) {
-                    _this.label_email.string = data.email;
-                    _this.label_name.string = data.name;
-                    _this.label_zhandui.string = data.team_name;
-                    _this.label_saiqu2.string = data.division_name;
-                    _this.label_zhengjian.string = data.id_card_number;
-                    _this.label_dianhua.string = data.phone;
+                    _this2.label_email.string = data.email;
+                    _this2.label_name.string = data.name;
+                    _this2.label_zhandui.string = data.team_name;
+                    _this2.label_saiqu2.string = data.division_name;
+                    _this2.label_gamename.string = data.id_card_number;
+                    _this2.label_dianhua.string = data.phone;
                 }
             } else {
-                _this.showApplyForTeam();
+                _this2.showApplyForTeam();
             }
         });
     },
@@ -67,13 +96,18 @@ cc.Class({
 
     //展示申请战队ui
     showApplyForTeam: function showApplyForTeam() {
-        var _this2 = this;
+        var _this3 = this;
 
         this.Panle.active = true;
         this.Panle2.active = false;
+        this.scroll_saiqu.active = false;
+        this.scroll_zhandui.active = false;
+        this.container_saiqu.removeAllChildren();
+        this.container_zhandui.removeAllChildren();
         this.did = 0;
         this.tid = 0;
-        this.label_saiqu.string = '-选择赛区';
+        this.label_saiqu.string = '选择赛区';
+        this.label_zhengjian.string = '比赛项目';
         this.editBox_name.string = "";
         this.editBox_email.string = "";
         this.editBox_phone.string = "";
@@ -84,22 +118,48 @@ cc.Class({
                 (function () {
                     var data = res.data;
                     console.log(data);
-                    _this2.container_saiqu.removeAllChildren();
+                    _this3.container_saiqu.removeAllChildren();
 
                     var _loop = function _loop(i) {
-                        var selectItem = cc.instantiate(_this2.selectItem);
+                        var selectItem = cc.instantiate(_this3.selectItem);
                         selectItem.getComponent(cc.Label).string = data[i].division_name;
                         selectItem.on(cc.Node.EventType.TOUCH_END, function () {
-                            _this2.label_saiqu.string = data[i].division_name;
-                            _this2.did = data[i].id;
-                            console.log(_this2.did);
-                            _this2.closeScroll();
+                            _this3.label_saiqu.string = data[i].division_name;
+                            _this3.did = data[i].id;
+                            console.log(_this3.did);
+                            _this3.closeScroll();
                         });
-                        _this2.container_saiqu.addChild(selectItem);
+                        _this3.container_saiqu.addChild(selectItem);
                     };
 
                     for (var i = 0; i < data.length; i++) {
                         _loop(i);
+                    }
+                })();
+            } else {
+                Global.PageMgr.showTipPage(res.message);
+            }
+        });
+
+        Global.ProtocolMgr.queryGetGameSignList(function (res) {
+            if (res.code == 200) {
+                (function () {
+                    var data = res.data;
+                    _this3.container_zhandui.removeAllChildren();
+
+                    var _loop2 = function _loop2(i) {
+                        var selectItem = cc.instantiate(_this3.selectItem);
+                        selectItem.getComponent(cc.Label).string = data[i].game_name;
+                        selectItem.on(cc.Node.EventType.TOUCH_END, function () {
+                            _this3.label_zhengjian.string = data[i].game_name;
+                            _this3.tid = data[i].id;
+                            _this3.closeScroll();
+                        });
+                        _this3.container_zhandui.addChild(selectItem);
+                    };
+
+                    for (var i = 0; i < data.length; i++) {
+                        _loop2(i);
                     }
                 })();
             } else {
@@ -124,6 +184,8 @@ cc.Class({
         this.scroll_zhandui.active = false;
     },
     submit: function submit() {
+        var _this4 = this;
+
         if (this.did == 0) {
             Global.PageMgr.showTipPage("还未选择赛区");
             return;
@@ -136,8 +198,8 @@ cc.Class({
             Global.PageMgr.showTipPage("还未填写姓名");
             return;
         }
-        if (this.editBox_card.string == "") {
-            Global.PageMgr.showTipPage("还未填写身份证号");
+        if (this.tid == 0) {
+            Global.PageMgr.showTipPage("还未选择游戏");
             return;
         }
         if (this.editBox_phone.string == "") {
@@ -152,23 +214,34 @@ cc.Class({
             name: this.editBox_name.string,
             email: this.editBox_email.string,
             phone: this.editBox_phone.string,
-            id_card_number: this.editBox_card.string,
             team_name: this.editBox_zhandui.string,
-            did: this.did.toString()
+            did: this.did.toString(),
+            game_id: this.tid.toString()
+            // id_card_number:this.editBox_card.string,
         };
+        console.log("选择的游戏是：" + this.tid.toString());
+        console.log("选择的赛区是：" + this.did.toString());
         Global.ProtocolMgr.submitBaoMing(reqData, function (res) {
             console.log(res);
             if (res.code == 200) {
-                Global.PageMgr.showTipPage("报名成功");
-                Global.PageMgr.onClosePage(17);
+                // Global.PageMgr.showTipPage("报名成功");
+                // Global.PageMgr.onClosePage(17);
+                _this4.Panle4.active = true;
             } else {
                 Global.PageMgr.showTipPage(res.message);
             }
         });
     }
-    // update (dt) {},
-
-});
+}
+// //返回界面
+// onClickBack()
+// {
+//     this.Panle.active = false;
+//     this.Panle2.active = false;
+//     this.Panle3.active = true;
+// },
+// update (dt) {},
+);
 
 cc._RF.pop();
         }

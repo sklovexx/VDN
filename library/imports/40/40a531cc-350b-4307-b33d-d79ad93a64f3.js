@@ -124,6 +124,15 @@ cc.Class({
         app.Post('member/getAuthCode', reqData, callback);
     },
 
+    //退出
+    querySubmitLogout: function querySubmitLogout(reqData, callback) {
+        app.Post('member/submitLogout', reqData, callback);
+    },
+
+    //转账
+    queryTransfer: function queryTransfer(reqData, callback) {
+        app.Post('finance/transfer', reqData, callback);
+    },
 
     //购买宠物
     queryBuyPetAnimal: function queryBuyPetAnimal(reqData, callback) {
@@ -160,9 +169,26 @@ cc.Class({
     },
 
 
+    //请求报名列表
+    queryGetGameSignRank: function queryGetGameSignRank(callback) {
+        app.Post('sign_up/getGameSignRank', {}, callback);
+    },
+
+
+    //游戏列表
+    queryGetGameSignList: function queryGetGameSignList(callback) {
+        app.Post('sign_up/sign_up_game_list', {}, callback);
+    },
+
+
     //对战记录列表
     queryStationRecordList: function queryStationRecordList(limit2, page2, callback) {
         app.Post('game/stationRecord/list', { limit: limit2, page: page2 }, callback);
+    },
+
+    //抽奖明细
+    queryLuckDrawList: function queryLuckDrawList(limit2, page2, callback) {
+        app.Post('lottery/luckDrawList', { limit: limit2, page: page2 }, callback);
     },
     submitBaoMing: function submitBaoMing(reqData, callback) {
         console.log(reqData);

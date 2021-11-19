@@ -2,8 +2,8 @@ window.Config = {
     // baseUrl:"http://interface.app.ecciot.net/api/",//新版ECC
     // baseUrl:"http://47.104.224.184:8096/api/",//旧版ECC
     // baseUrl:"http://106.55.241.55:9501/api/",//旧版ECC
-    baseUrl:"http://192.168.2.99:9501/api/",//本地接口
-    // baseUrl:"http://api.vdnmetaverse.org/api/",//正式发布
+    // baseUrl:"http://192.168.2.99:9501/api/",//本地接口
+    baseUrl:"http://api.vdnmetaverse.org/api/",//正式发布
     // baseUrl:"http://interface.app.goailab.com/api/",//Dssc
     // baseUrl:"http://interface.newapp.cnyiliaosc.com/api/",//USDT
     // baseUrl:"http://192.168.199.221:8091/api/",

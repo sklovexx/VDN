@@ -4,6 +4,9 @@ cc._RF.push(module, 'db0e03FiNlODouREjsYTZEL', 'ChongWuPanel');
 
 'use strict';
 
+var _require = require('../../../NiuNiu/script/common/UtilsCross'),
+    rmAndroidSplash = _require.rmAndroidSplash;
+
 var app = require('../../Util/appScript');
 cc.Class({
     extends: cc.Component,
@@ -27,17 +30,7 @@ cc.Class({
     showData: function showData() {
         var _this = this;
 
-        var reqData = {};
-        app.Post('member/getMemberInfo', reqData, function (res) {
-            if (res.code == 200) {
-                if (res.data) {
-                    _this.label_id.string = res.data.username;
-                    _this.label_lv.string = res.data.grade + "级";
-                    _this.label_Usdt.string = res.data.totalUsdt;
-                }
-            }
-        });
-
+        this.goGamePanelUI();
         Global.ProtocolMgr.queryKnapsackpetAnimalList(100, 1, function (res) {
             if (res.code == 200) {
                 var data = res.data;
@@ -48,6 +41,20 @@ cc.Class({
                     cc.loader.load({ url: data[0].icon, type: 'png' }, function (err, res) {
                         _this.icon_pic.spriteFrame = new cc.SpriteFrame(res);
                     });
+                }
+            }
+        });
+    },
+    goGamePanelUI: function goGamePanelUI() {
+        var _this2 = this;
+
+        var reqData = {};
+        app.Post('member/getMemberInfo', reqData, function (res) {
+            if (res.code == 200) {
+                if (res.data) {
+                    _this2.label_id.string = res.data.username;
+                    _this2.label_lv.string = res.data.grade + "级";
+                    _this2.label_Usdt.string = res.data.totalUsdt;
                 }
             }
         });

@@ -85,11 +85,16 @@ cc.Class({
         this.showTipPage(customData);
     },
     //顯示提示-橫屏
-    showTipPage(text){
+    showTipPage(text,times = 0.1){
+        if(times == null)
+        {
+            times = 0.1;
+        }
+        
         this.Tips = cc.instantiate(this.TipsPage);
         this.Tips.parent = cc.find('Canvas');
         this.Tips.active = true;
-        let action = cc.sequence(cc.moveBy(1,cc.v2(0,30)),cc.fadeOut(0.1),cc.callFunc(this.closePage,this))
+        let action = cc.sequence(cc.moveBy(1,cc.v2(0,30)),cc.fadeOut(times),cc.callFunc(this.closePage,this))
         this.Tips.runAction(action)
         this.Tips.getComponent('TipsPage').setText(text)
     },

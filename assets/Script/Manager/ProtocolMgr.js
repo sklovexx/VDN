@@ -105,7 +105,14 @@ cc.Class({
     queryGetAuthCode(reqData,callback){
         app.Post('member/getAuthCode',reqData,callback);
     },
-
+    //退出
+    querySubmitLogout(reqData,callback){
+        app.Post('member/submitLogout',reqData,callback);
+    },
+    //转账
+    queryTransfer(reqData,callback){
+        app.Post('finance/transfer',reqData,callback);
+    },
     //购买宠物
     queryBuyPetAnimal(reqData,callback){
         app.Post('store/buyPetAnimal',reqData,callback);
@@ -135,11 +142,24 @@ cc.Class({
         app.Post('sign_up/game_team_list',{},callback);
     },
 
+    //请求报名列表
+    queryGetGameSignRank(callback){
+        app.Post('sign_up/getGameSignRank',{},callback);
+    },
+
+    //游戏列表
+    queryGetGameSignList(callback){
+        app.Post('sign_up/sign_up_game_list',{},callback);
+    },
+    
     //对战记录列表
     queryStationRecordList(limit2,page2,callback){
         app.Post('game/stationRecord/list',{limit:limit2,page:page2},callback)
     },
-
+    //抽奖明细
+    queryLuckDrawList(limit2,page2,callback){
+        app.Post('lottery/luckDrawList',{limit:limit2,page:page2},callback);
+    },
     submitBaoMing(reqData,callback){
         console.log(reqData)
         app.Post('sign_up/sub',reqData,callback);//,"http://api.vdnmetaverse.org/api/"

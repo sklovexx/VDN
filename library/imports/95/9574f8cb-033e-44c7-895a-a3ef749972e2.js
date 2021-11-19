@@ -92,10 +92,16 @@ cc.Class({
 
     //顯示提示-橫屏
     showTipPage: function showTipPage(text) {
+        var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.1;
+
+        if (times == null) {
+            times = 0.1;
+        }
+
         this.Tips = cc.instantiate(this.TipsPage);
         this.Tips.parent = cc.find('Canvas');
         this.Tips.active = true;
-        var action = cc.sequence(cc.moveBy(1, cc.v2(0, 30)), cc.fadeOut(0.1), cc.callFunc(this.closePage, this));
+        var action = cc.sequence(cc.moveBy(1, cc.v2(0, 30)), cc.fadeOut(times), cc.callFunc(this.closePage, this));
         this.Tips.runAction(action);
         this.Tips.getComponent('TipsPage').setText(text);
     },
