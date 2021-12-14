@@ -5,6 +5,7 @@ cc.Class({
     properties: {
         content:cc.Node,
         MainPage:cc.Prefab,
+        _thime:0,
         toggles:cc.Node
     },
 
@@ -95,9 +96,23 @@ cc.Class({
         let reqData = {};
         Global.ProtocolMgr.querySubmitLogout(reqData,(res)=>{
             if(res.code==200){
-                Global.PageMgr.onOpenPage(21);
+                Global.SocketMgr.closeSocket(()=>{
+                    Global.PageMgr.onOpenPage(21);
+                });
             }
         });
-    }
-    // update (dt) {},
+    },
+
+    update (dt) {
+        this._thime += dt;
+        if(this._thime >= 10)
+        {
+            let reqData = {
+                command:"ping",
+                username:window.DEFAULT_userID
+            };
+            Global.SocketMgr.send_data(reqData);
+            this._thime = 0;
+        }
+    },
 });

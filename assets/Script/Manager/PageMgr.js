@@ -54,6 +54,9 @@ cc.Class({
         this.onOpenPage(parseInt(customData));
     },
     onOpenPage(num, tag) {
+        if(Global.pages[num]=="BaoMingPanel"){
+            return;
+        }
         cc.find('Canvas/'+Global.pages[num]).active = true;
         let action = cc.scaleTo(0.2,1,1)
         if(tag&&tag==1){

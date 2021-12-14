@@ -212,10 +212,13 @@ cc.Class({
                 this.gameQueryGameList();
                 break;
             case 1:
-                this.Panle4.active = false;
-                this.bgSprite.active = true;
-                this.curType = 1;
-                this.gameQueryGameList();
+                // this.Panle4.active = false;
+                // this.bgSprite.active = true;
+                // this.curType = 1;
+                // this.gameQueryGameList();
+                this.Panle4.active = true;
+                this.container.removeAllChildren();
+                this.curType = 3;
                 break;
             case 2:
                 // this.curType = 2;

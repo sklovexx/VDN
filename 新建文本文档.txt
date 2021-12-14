@@ -1,1 +1,3 @@
-node version_generator.js -v 1.0.6 -u http://129.226.180.137:8001/remote-assets/ -s build/jsb-link/ -d assets/
+node version_generator.js -v 2.3.4 -u http://129.226.180.137:8001/remote-assets/ -s build/jsb-link/ -d assets/
+
+

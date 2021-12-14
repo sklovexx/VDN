@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "下拉按钮 (1)",
+    "texture": "9f81bfff-147d-439d-818e-57bc5de52a44",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      17,
+      12
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      18,
+      12
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

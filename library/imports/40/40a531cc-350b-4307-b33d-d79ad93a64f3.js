@@ -190,6 +190,30 @@ cc.Class({
     queryLuckDrawList: function queryLuckDrawList(limit2, page2, callback) {
         app.Post('lottery/luckDrawList', { limit: limit2, page: page2 }, callback);
     },
+
+
+    //奖品列表
+    queryPrizeList: function queryPrizeList(callback) {
+        app.Post('lottery/luckGoodList', {}, callback);
+    },
+
+
+    //抽奖
+    queryLuckDraw: function queryLuckDraw(callback) {
+        app.Post('lottery/luckDraw', {}, callback);
+    },
+
+
+    //抽奖地区列表
+    queryGetPickUpLocation: function queryGetPickUpLocation(callback) {
+        app.Post('lottery/getPickUpLocation', {}, callback);
+    },
+
+
+    //提交中奖信息
+    queryReceivePrizes: function queryReceivePrizes(reqData, callback) {
+        app.Post('lottery/receivePrizes', reqData, callback);
+    },
     submitBaoMing: function submitBaoMing(reqData, callback) {
         console.log(reqData);
         app.Post('sign_up/sub', reqData, callback); //,"http://api.vdnmetaverse.org/api/"

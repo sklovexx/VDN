@@ -11,6 +11,7 @@ cc.Class({
     properties: {
         content: cc.Node,
         MainPage: cc.Prefab,
+        _thime: 0,
         toggles: cc.Node
     },
 
@@ -99,12 +100,23 @@ cc.Class({
         var reqData = {};
         Global.ProtocolMgr.querySubmitLogout(reqData, function (res) {
             if (res.code == 200) {
-                Global.PageMgr.onOpenPage(21);
+                Global.SocketMgr.closeSocket(function () {
+                    Global.PageMgr.onOpenPage(21);
+                });
             }
         });
+    },
+    update: function update(dt) {
+        this._thime += dt;
+        if (this._thime >= 10) {
+            var reqData = {
+                command: "ping",
+                username: window.DEFAULT_userID
+            };
+            Global.SocketMgr.send_data(reqData);
+            this._thime = 0;
+        }
     }
-    // update (dt) {},
-
 });
 
 cc._RF.pop();

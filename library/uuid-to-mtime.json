@@ -3269,11 +3269,6 @@
     "meta": 1635904635294,
     "relativePath": "Script\\Dssc\\Dssc.js"
   },
-  "3774d86a-7680-4655-97ee-6f2712457f54": {
-    "asset": 1635882990000,
-    "meta": 1635904635534,
-    "relativePath": "Script\\Manager\\SocketMgr.js"
-  },
   "4f2db21e-bae2-43ad-bff4-ebaa5e13317d": {
     "asset": 1635882990000,
     "meta": 1635904631261,
@@ -3398,11 +3393,6 @@
     "asset": 1635882990000,
     "meta": 1635904636112,
     "relativePath": "Script\\Ui\\HongBao\\FaHongBao.js"
-  },
-  "e55f96f7-2f80-44aa-98e7-e5240631fd94": {
-    "asset": 1635882990000,
-    "meta": 1635904636145,
-    "relativePath": "Script\\Ui\\HongBao\\HongBao.js"
   },
   "66c8081f-508a-4c9a-8ce4-83d89dd65f43": {
     "asset": 1635882990000,
@@ -4549,11 +4539,6 @@
     "meta": 1635904641799,
     "relativePath": "Texture\\Login\\bg.png"
   },
-  "1e2eafed-d854-49ec-a162-7cd58dc8f1b8": {
-    "asset": 1635882990000,
-    "meta": 1635904641804,
-    "relativePath": "Texture\\Login\\COOL METAVERSE@2x.png"
-  },
   "aec7c655-a433-4d04-b5d5-5c0484dcaec7": {
     "asset": 1635882990000,
     "meta": 1635904641726,
@@ -4904,11 +4889,6 @@
     "meta": 1636535903092,
     "relativePath": "Texture\\GivingCrystalPanel\\圆角矩形 987@2x.png"
   },
-  "68775ff4-0d6b-49d5-8245-b454ca21bed3": {
-    "asset": 1636539072957,
-    "meta": 1636539110869,
-    "relativePath": "Script\\Util\\appScript.js"
-  },
   "7aebdf75-10bb-4590-994f-e6c20caf0b15": {
     "asset": 1636542282663,
     "meta": 1636542283802,
@@ -4918,11 +4898,6 @@
     "asset": 1636543018890,
     "meta": 1636543075855,
     "relativePath": "Script\\Ui\\ChongWuPanel\\ChongWuPanel.js"
-  },
-  "4e904812-e1fb-4baf-b516-5a5e2041006a": {
-    "asset": 1636543593000,
-    "meta": 1636543595234,
-    "relativePath": "Script\\Ui\\LoginPanel\\LoginPanel.js"
   },
   "c85fa5c3-373e-49fb-9b68-7cf5a307b8eb": {
     "asset": 1635882990000,
@@ -4934,18 +4909,13 @@
     "meta": 1636605512344,
     "relativePath": "resources\\imgs\\宝宝1.png"
   },
-  "bade2282-829e-49fb-9368-362139f943ed": {
-    "asset": 1636615775896,
-    "meta": 1636615912083,
-    "relativePath": "Script\\Main.js"
-  },
   "edd6b09c-ea26-4805-9f34-bedb7d13216c": {
     "asset": 1636967827158,
     "meta": 1636967827164,
     "relativePath": "Prefab\\BaoMingPanel\\baoMing_item.prefab"
   },
   "a9057e32-788b-432d-9c3a-cd3f0e39be63": {
-    "asset": 1636971765595,
+    "asset": 1637919886544,
     "meta": 1636966346913,
     "relativePath": "Texture\\BaoMingPanel"
   },
@@ -4958,16 +4928,6 @@
     "asset": 1636966271057,
     "meta": 1636966367604,
     "relativePath": "Texture\\BaoMingPanel\\矩形 1@2x.png"
-  },
-  "099c1e92-5552-461c-aa07-c7d5579852c1": {
-    "asset": 1636966218864,
-    "meta": 1636966367618,
-    "relativePath": "Texture\\BaoMingPanel\\椭圆 1 拷贝 2@2x.png"
-  },
-  "4a82ff0c-b522-4e0f-9ad6-52101d65e43f": {
-    "asset": 1636966383517,
-    "meta": 1636966398481,
-    "relativePath": "Texture\\BaoMingPanel\\图层 1@2x.png"
   },
   "d163d780-076c-42eb-9598-3ddfb2252da2": {
     "asset": 1636967307646,
@@ -5019,18 +4979,8 @@
     "meta": 1636971765606,
     "relativePath": "Texture\\BaoMingPanel\\关闭@3x.png"
   },
-  "6c8c3358-7066-428e-ac00-5dbb10ef3beb": {
-    "asset": 1636972611444,
-    "meta": 1636972696060,
-    "relativePath": "Texture\\BaoMingPanel\\标题@2x.png"
-  },
-  "5cc0a3d8-f7c6-4d43-89d1-007f68f89727": {
-    "asset": 1636978638599,
-    "meta": 1636978644255,
-    "relativePath": "Script\\Ui\\BaoMingPanel\\BaoMingPanel.js"
-  },
   "b6d9676a-ff84-417c-9ba5-b4fa828dbdb8": {
-    "asset": 1637227329229,
+    "asset": 1637921027526,
     "meta": 1637203127437,
     "relativePath": "Texture\\LuckyDrawPanel"
   },
@@ -5053,21 +5003,6 @@
     "asset": 1637227423682,
     "meta": 1637227423692,
     "relativePath": "Prefab\\LuckyDrawPanel\\LuckyDrawItem.prefab"
-  },
-  "22bf8a65-1ff8-4554-8042-96445f91950d": {
-    "asset": 1637206007222,
-    "meta": 1637206009259,
-    "relativePath": "Script\\Ui\\GamePanel\\GamePanel.js"
-  },
-  "40a531cc-350b-4307-b33d-d79ad93a64f3": {
-    "asset": 1637206676352,
-    "meta": 1637206733252,
-    "relativePath": "Script\\Manager\\ProtocolMgr.js"
-  },
-  "978be5bf-1b03-4983-9950-780a19886d35": {
-    "asset": 1637207643159,
-    "meta": 1637207649175,
-    "relativePath": "Script\\Ui\\LuckyDrawPanel\\LuckyDrawItem.js"
   },
   "e0d47e53-d9eb-4652-8266-612da98ab6aa": {
     "asset": 1637211580374,
@@ -5464,40 +5399,10 @@
     "meta": 1637219806574,
     "relativePath": "Scene\\Turntable.fire"
   },
-  "d76aeee5-3409-415a-b48f-6e15cda50592": {
-    "asset": 1581341557000,
-    "meta": 1637219947929,
-    "relativePath": "Texture\\LuckyDrawPanel\\pointer.png"
-  },
-  "1fe08a51-05b5-4a46-8f08-c9a3371ad163": {
-    "asset": 1581341557000,
-    "meta": 1637219947936,
-    "relativePath": "Texture\\LuckyDrawPanel\\bg.png"
-  },
-  "2d2f792f-a40c-49bb-a189-ed176a246e49": {
-    "asset": 1637292306496,
-    "meta": 1637292306603,
-    "relativePath": "Scene\\ECC.fire"
-  },
-  "ae20cc0a-b707-4131-9b58-e887ba6626d9": {
-    "asset": 1637225763054,
-    "meta": 1637225774938,
-    "relativePath": "NiuNiu\\script\\net\\HttpProxy.js"
-  },
-  "ad421270-96da-46a7-b819-76196036fb62": {
-    "asset": 1637225769371,
-    "meta": 1637225774938,
-    "relativePath": "Script\\Config.js"
-  },
   "5eb117e9-ae51-401a-97b7-721b50929d78": {
     "asset": 1637226671978,
     "meta": 1637226756632,
     "relativePath": "resources\\imgs\\按钮bg2.png"
-  },
-  "4324321a-b0de-4b48-842f-8de00a376c18": {
-    "asset": 1637226796882,
-    "meta": 1637226847473,
-    "relativePath": "Texture\\LuckyDrawPanel\\bg2.png"
   },
   "719c3685-8804-4736-9275-3b4734b75edd": {
     "asset": 1637226650958,
@@ -5509,59 +5414,189 @@
     "meta": 1637227329242,
     "relativePath": "Texture\\LuckyDrawPanel\\bg@2x.png"
   },
-  "584b5dc6-f052-437c-9de3-58808f600b11": {
-    "asset": 1637228992591,
-    "meta": 1637229030389,
-    "relativePath": "project.manifest"
-  },
-  "7a56eb68-6ce4-485e-9c2d-e05c2a307cda": {
-    "asset": 1637228992591,
-    "meta": 1637229030391,
-    "relativePath": "version.manifest"
-  },
-  "25b6920e-1654-4ae2-978a-6753234e9cf2": {
-    "asset": 1637288868585,
-    "meta": 1637288869576,
-    "relativePath": "Script\\Ui\\LuckyDrawPanel\\LuckyDrawPanel.js"
-  },
-  "9574f8cb-033e-44c7-895a-a3ef749972e2": {
-    "asset": 1637289689170,
-    "meta": 1637289690059,
-    "relativePath": "Script\\Manager\\PageMgr.js"
-  },
-  "1d8b1997-8bd5-4477-a346-c84e4156668f": {
-    "asset": 1637289983489,
-    "meta": 1637289984283,
-    "relativePath": "Script\\Ui\\LuckyDrawPanel\\TurntableMgr.js"
-  },
   "82becd66-9b3f-4da6-866f-4731f7c0fc86": {
     "asset": 1637292246932,
     "meta": 1637292281938,
     "relativePath": "Texture\\LuckyDrawPanel\\组 675@2x.png"
   },
+  "68775ff4-0d6b-49d5-8245-b454ca21bed3": {
+    "asset": 1637310462835,
+    "meta": 1637310467742,
+    "relativePath": "Script\\Util\\appScript.js"
+  },
+  "6c8c3358-7066-428e-ac00-5dbb10ef3beb": {
+    "asset": 1637655552525,
+    "meta": 1637655606951,
+    "relativePath": "Texture\\BaoMingPanel\\标题@2x.png"
+  },
+  "099c1e92-5552-461c-aa07-c7d5579852c1": {
+    "asset": 1637655650538,
+    "meta": 1637655664624,
+    "relativePath": "Texture\\BaoMingPanel\\椭圆 1 拷贝 2@2x.png"
+  },
+  "d76aeee5-3409-415a-b48f-6e15cda50592": {
+    "asset": 1637893035441,
+    "meta": 1637893204442,
+    "relativePath": "Texture\\LuckyDrawPanel\\pointer.png"
+  },
+  "1fe08a51-05b5-4a46-8f08-c9a3371ad163": {
+    "asset": 1637893155792,
+    "meta": 1637893204466,
+    "relativePath": "Texture\\LuckyDrawPanel\\bg.png"
+  },
+  "2b63e047-7590-44ce-9ae4-fa6231ffe087": {
+    "asset": 1637906771225,
+    "meta": 1637906802796,
+    "relativePath": "Texture\\LuckyDrawPanel\\手机.png"
+  },
+  "9e816023-3606-4fb7-9c1e-9b95b94053fe": {
+    "asset": 1637906939135,
+    "meta": 1637906954077,
+    "relativePath": "Texture\\LuckyDrawPanel\\组 18.png"
+  },
+  "2d24502d-fcc5-448e-a302-d2963f80e0c7": {
+    "asset": 1637908030836,
+    "meta": 1637908046367,
+    "relativePath": "Texture\\LuckyDrawPanel\\x.png"
+  },
+  "7eda37f4-a24c-4fbe-a7a4-254d65c2d6ca": {
+    "asset": 1637908025768,
+    "meta": 1637908046370,
+    "relativePath": "Texture\\LuckyDrawPanel\\表情.png"
+  },
+  "987a4ea0-f136-472b-87c6-49cf0c396d71": {
+    "asset": 1637920097197,
+    "meta": 1637920127528,
+    "relativePath": "Texture\\LuckyDrawPanel\\矩形 1 拷贝 4.png"
+  },
+  "a82271c5-0ec4-4137-9f35-0d7b557bfbd3": {
+    "asset": 1637920862916,
+    "meta": 1637920877476,
+    "relativePath": "Texture\\LuckyDrawPanel\\返回.png"
+  },
+  "9f81bfff-147d-439d-818e-57bc5de52a44": {
+    "asset": 1637921009996,
+    "meta": 1637921027549,
+    "relativePath": "Texture\\LuckyDrawPanel\\下拉按钮 (1).png"
+  },
+  "1d8b1997-8bd5-4477-a346-c84e4156668f": {
+    "asset": 1637923991162,
+    "meta": 1637923996021,
+    "relativePath": "Script\\Ui\\LuckyDrawPanel\\TurntableMgr.js"
+  },
+  "22bf8a65-1ff8-4554-8042-96445f91950d": {
+    "asset": 1637924134524,
+    "meta": 1637924135280,
+    "relativePath": "Script\\Ui\\GamePanel\\GamePanel.js"
+  },
+  "657ca27c-eb14-462a-a153-e14a9b8f95fa": {
+    "asset": 1637924280140,
+    "meta": 1637924311186,
+    "relativePath": "Texture\\LuckyDrawPanel\\bg2.png"
+  },
+  "978be5bf-1b03-4983-9950-780a19886d35": {
+    "asset": 1637924791363,
+    "meta": 1637924792369,
+    "relativePath": "Script\\Ui\\LuckyDrawPanel\\LuckyDrawItem.js"
+  },
+  "40a531cc-350b-4307-b33d-d79ad93a64f3": {
+    "asset": 1638156256704,
+    "meta": 1638156348967,
+    "relativePath": "Script\\Manager\\ProtocolMgr.js"
+  },
+  "e55f96f7-2f80-44aa-98e7-e5240631fd94": {
+    "asset": 1638158576014,
+    "meta": 1638159875355,
+    "relativePath": "Script\\Ui\\HongBao\\HongBao.js"
+  },
+  "3774d86a-7680-4655-97ee-6f2712457f54": {
+    "asset": 1638169430105,
+    "meta": 1638169432215,
+    "relativePath": "Script\\Manager\\SocketMgr.js"
+  },
+  "4e904812-e1fb-4baf-b516-5a5e2041006a": {
+    "asset": 1638169776572,
+    "meta": 1638172449504,
+    "relativePath": "Script\\Ui\\LoginPanel\\LoginPanel.js"
+  },
+  "bade2282-829e-49fb-9368-362139f943ed": {
+    "asset": 1638175748126,
+    "meta": 1638175770544,
+    "relativePath": "Script\\Main.js"
+  },
   "61de0eb6-9f87-49ed-933d-fd776e9a8ce7": {
     "asset": 1635882990000,
-    "meta": 1637293272727,
+    "meta": 1638258350632,
     "relativePath": "LanguageData.js"
   },
   "744dcb38-0c27-4da6-b361-1b4c70aba14a": {
     "asset": 1635882990000,
-    "meta": 1637293272740,
+    "meta": 1638258350654,
     "relativePath": "LocalizedLabel.js"
   },
   "f34acd86-1a25-4e05-b1ba-5e57ef8183f8": {
     "asset": 1635882990000,
-    "meta": 1637293272797,
+    "meta": 1638258350667,
     "relativePath": "LocalizedSprite.js"
   },
   "e26fdf72-cbae-40e2-adff-264a559c5620": {
     "asset": 1635882990000,
-    "meta": 1637293272802,
+    "meta": 1638258350704,
     "relativePath": "polyglot.min.js"
   },
   "9701943c-d23a-44d9-87f3-e336ee09906a": {
     "asset": 1635882990000,
-    "meta": 1637293272808,
+    "meta": 1638258350711,
     "relativePath": "SpriteFrameSet.js"
+  },
+  "ae20cc0a-b707-4131-9b58-e887ba6626d9": {
+    "asset": 1638848040972,
+    "meta": 1638848045425,
+    "relativePath": "NiuNiu\\script\\net\\HttpProxy.js"
+  },
+  "25b6920e-1654-4ae2-978a-6753234e9cf2": {
+    "asset": 1638848008408,
+    "meta": 1638848045499,
+    "relativePath": "Script\\Ui\\LuckyDrawPanel\\LuckyDrawPanel.js"
+  },
+  "1e2eafed-d854-49ec-a162-7cd58dc8f1b8": {
+    "asset": 1639376562927,
+    "meta": 1639376587099,
+    "relativePath": "Texture\\Login\\COOL METAVERSE@2x.png"
+  },
+  "ad421270-96da-46a7-b819-76196036fb62": {
+    "asset": 1639377255972,
+    "meta": 1639377258349,
+    "relativePath": "Script\\Config.js"
+  },
+  "2d2f792f-a40c-49bb-a189-ed176a246e49": {
+    "asset": 1639471454643,
+    "meta": 1639471454765,
+    "relativePath": "Scene\\ECC.fire"
+  },
+  "4a82ff0c-b522-4e0f-9ad6-52101d65e43f": {
+    "asset": 1639377689369,
+    "meta": 1639377711681,
+    "relativePath": "Texture\\BaoMingPanel\\图层 1@2x.png"
+  },
+  "7a56eb68-6ce4-485e-9c2d-e05c2a307cda": {
+    "asset": 1639379217731,
+    "meta": 1639379220599,
+    "relativePath": "version.manifest"
+  },
+  "584b5dc6-f052-437c-9de3-58808f600b11": {
+    "asset": 1639379217731,
+    "meta": 1639379220600,
+    "relativePath": "project.manifest"
+  },
+  "5cc0a3d8-f7c6-4d43-89d1-007f68f89727": {
+    "asset": 1639472314043,
+    "meta": 1639472318942,
+    "relativePath": "Script\\Ui\\BaoMingPanel\\BaoMingPanel.js"
+  },
+  "9574f8cb-033e-44c7-895a-a3ef749972e2": {
+    "asset": 1639472632141,
+    "meta": 1639472636216,
+    "relativePath": "Script\\Manager\\PageMgr.js"
   }
 }

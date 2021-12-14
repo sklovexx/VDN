@@ -7,6 +7,9 @@ cc.Class({
         container:cc.Node,
         Panle:cc.Node,
         Panle2:cc.Node,
+        Panle3:cc.Node,
+        pageSum:1,
+        pageSum2:1,
         btn_item:[cc.Sprite]
     },
 
@@ -14,14 +17,30 @@ cc.Class({
     },
 
     onEnable(){
+        this.pageSum = 1;
         this.getGameList(null,0);
     },
 
     goLuckyDrawUI(){
-        this.container.removeAllChildren();
-        Global.ProtocolMgr.queryLuckDrawList(100,1,(res)=>{
+        Global.ProtocolMgr.queryLuckDrawList(20,this.pageSum,(res)=>{
             if(res.code==200){
                 let data = res.data.list;
+
+                if(data.length == 0)
+                {
+                    if(this.pageSum != 1)
+                    {
+                        Global.PageMgr.showTipPage("已经是最后页了"); 
+                    }
+                    this.pageSum = this.pageSum2 + 1;
+                    return;
+                }
+                this.pageSum2 = this.pageSum;
+                if(this.pageSum != 1)
+                {
+                    Global.PageMgr.showTipPage("刷新成功！"); 
+                }
+                this.container.removeAllChildren();
                 for(let i = 0;i < data.length;i++){
                     let gameItemNode = cc.instantiate(this.luckyDraw_item);
                     gameItemNode.getComponent("LuckyDrawItem").setData(data[i]);
@@ -50,6 +69,9 @@ cc.Class({
                 this.onClickBeganTheDetail(null,0);
                 this.goLuckyDrawUI();
                 break;
+            case 2:
+                this.onClickBeganTheDetail(null,2);
+                break;
             default:
                 break;
         }
@@ -60,16 +82,42 @@ cc.Class({
     {
         Global.PageMgr.showTipPage("每周六下午5点,官方统一抽奖",20); 
     },
-
+    //点击抽奖规则
+    onClickSweepstakesRules()
+    {
+        this.onClickBeganTheDetail(null,2);
+        this.Panle3.active = true;
+    },
     //点击明显或者返回
     onClickBeganTheDetail(event,customData)
     {
         var index = parseInt(customData);
-        this.Panle.active = index > 0 ? true:false;
-        this.Panle2.active = index <= 0 ? true:false;
-        if(index == 0)
+        this.Panle.active = index == 1 ? true:false;
+        this.Panle2.active = index == 0 ? true:false;
+        this.Panle3.active = index == 2 ? true:false;
+        // if(index == 0)
+        // {
+        //     this.goLuckyDrawUI();
+        // }
+    },
+
+    onClickDown()
+    {
+        if(this.pageSum > 2)
         {
-            this.goLuckyDrawUI();
+            this.pageSum -=1;
         }
+        else
+        {
+            this.pageSum = 1;
+            Global.PageMgr.showTipPage("已经是首页了"); 
+        }
+        this.goLuckyDrawUI();
+    },
+
+    onClickUp()
+    {
+        this.pageSum +=1;
+        this.goLuckyDrawUI();
     },
 });

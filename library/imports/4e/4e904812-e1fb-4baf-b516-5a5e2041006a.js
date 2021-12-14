@@ -47,6 +47,9 @@ cc.Class({
             GameData.token = token;
             Global.ResourceMgr.playBgAudio();
             Global.PageMgr.onClosePage(0);
+            Global.ProtocolMgr.queryUserData();
+            Global.SocketMgr.openSocket();
+
             Global.ProtocolMgr.queryGonggao(function (res2) {
                 if (res2.code == 200) {
                     cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title;
@@ -105,18 +108,22 @@ cc.Class({
                         Global.PageMgr.showTipPage(res.message);
                         Global.ResourceMgr.playBgAudio();
                         Global.PageMgr.onClosePage(0);
-                        // Global.ProtocolMgr.queryGonggao((res2)=>{
-                        //     if(res2.code != 3001){
-                        //         console.log(cc.find("Canvas/Main/view/mask/label_gonggao"),res2.data.title)
-                        //         cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title;
-                        //     }else{
-                        //         Global.PageMgr.showTipPage(res2.message);
-                        //     }
-                        // })
+                        Global.ProtocolMgr.queryUserData();
+                        Global.SocketMgr.openSocket();
+
+                        Global.ProtocolMgr.queryGonggao(function (res2) {
+                            if (res2.code != 3001) {
+                                console.log(cc.find("Canvas/Main/view/mask/label_gonggao"), res2.data.title);
+                                cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title;
+                            } else {
+                                Global.PageMgr.showTipPage(res2.message);
+                            }
+                        });
                         // console.log(cc.find("Canvas/Main/view/mask/label_gonggao"),res2.data.title)
-                        if (cc.find("Canvas/Main/view/mask/label_gonggao") != null) {
-                            cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title;
-                        }
+                        // if(cc.find("Canvas/Main/view/mask/label_gonggao") != null)
+                        // {
+                        //     cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title;
+                        // }
                         _this.editBox_password.string = "";
                         _this.editBox_inviteCode.string = "";
                     } else {

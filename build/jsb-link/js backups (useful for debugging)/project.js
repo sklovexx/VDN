@@ -1434,7 +1434,7 @@ Config: [ function(e, t, n) {
 cc._RF.push(t, "ad421JwltpGp7gZdhlgNvti", "Config");
 window.Config = {
 baseUrl: "http://api.vdnmetaverse.org/api/",
-socketUrl: "8.210.235.222"
+socketUrl: "ws://129.226.180.137:9502/"
 };
 cc._RF.pop();
 }, {} ],
@@ -1745,7 +1745,7 @@ if ((n >>>= 0) <= (t >>>= 0)) return "";
 e || (e = "utf8");
 for (;;) switch (e) {
 case "hex":
-return k(this, t, n);
+return F(this, t, n);
 
 case "utf8":
 case "utf-8":
@@ -1756,7 +1756,7 @@ return B(this, t, n);
 
 case "latin1":
 case "binary":
-return F(this, t, n);
+return k(this, t, n);
 
 case "base64":
 return T(this, t, n);
@@ -1765,7 +1765,7 @@ case "ucs2":
 case "ucs-2":
 case "utf16le":
 case "utf-16le":
-return A(this, t, n);
+return x(this, t, n);
 
 default:
 if (i) throw new TypeError("Unknown encoding: " + e);
@@ -2055,20 +2055,20 @@ n = Math.min(e.length, n);
 for (var a = t; a < n; ++a) i += String.fromCharCode(127 & e[a]);
 return i;
 }
-function F(e, t, n) {
+function k(e, t, n) {
 var i = "";
 n = Math.min(e.length, n);
 for (var a = t; a < n; ++a) i += String.fromCharCode(e[a]);
 return i;
 }
-function k(e, t, n) {
+function F(e, t, n) {
 var i = e.length;
 (!t || t < 0) && (t = 0);
 (!n || n < 0 || n > i) && (n = i);
 for (var a = "", o = t; o < n; ++o) a += Z(e[o]);
 return a;
 }
-function A(e, t, n) {
+function x(e, t, n) {
 for (var i = e.slice(t, n), a = "", o = 0; o < i.length; o += 2) a += String.fromCharCode(i[o] + 256 * i[o + 1]);
 return a;
 }
@@ -2086,48 +2086,48 @@ for (var o = 0; o < a; ++o) n[o] = this[o + e];
 }
 return n;
 };
-function x(e, t, n) {
+function A(e, t, n) {
 if (e % 1 != 0 || e < 0) throw new RangeError("offset is not uint");
 if (e + t > n) throw new RangeError("Trying to access beyond buffer length");
 }
 s.prototype.readUIntLE = function(e, t, n) {
 e |= 0;
 t |= 0;
-n || x(e, t, this.length);
+n || A(e, t, this.length);
 for (var i = this[e], a = 1, o = 0; ++o < t && (a *= 256); ) i += this[e + o] * a;
 return i;
 };
 s.prototype.readUIntBE = function(e, t, n) {
 e |= 0;
 t |= 0;
-n || x(e, t, this.length);
+n || A(e, t, this.length);
 for (var i = this[e + --t], a = 1; t > 0 && (a *= 256); ) i += this[e + --t] * a;
 return i;
 };
 s.prototype.readUInt8 = function(e, t) {
-t || x(e, 1, this.length);
+t || A(e, 1, this.length);
 return this[e];
 };
 s.prototype.readUInt16LE = function(e, t) {
-t || x(e, 2, this.length);
+t || A(e, 2, this.length);
 return this[e] | this[e + 1] << 8;
 };
 s.prototype.readUInt16BE = function(e, t) {
-t || x(e, 2, this.length);
+t || A(e, 2, this.length);
 return this[e] << 8 | this[e + 1];
 };
 s.prototype.readUInt32LE = function(e, t) {
-t || x(e, 4, this.length);
+t || A(e, 4, this.length);
 return (this[e] | this[e + 1] << 8 | this[e + 2] << 16) + 16777216 * this[e + 3];
 };
 s.prototype.readUInt32BE = function(e, t) {
-t || x(e, 4, this.length);
+t || A(e, 4, this.length);
 return 16777216 * this[e] + (this[e + 1] << 16 | this[e + 2] << 8 | this[e + 3]);
 };
 s.prototype.readIntLE = function(e, t, n) {
 e |= 0;
 t |= 0;
-n || x(e, t, this.length);
+n || A(e, t, this.length);
 for (var i = this[e], a = 1, o = 0; ++o < t && (a *= 256); ) i += this[e + o] * a;
 i >= (a *= 128) && (i -= Math.pow(2, 8 * t));
 return i;
@@ -2135,47 +2135,47 @@ return i;
 s.prototype.readIntBE = function(e, t, n) {
 e |= 0;
 t |= 0;
-n || x(e, t, this.length);
+n || A(e, t, this.length);
 for (var i = t, a = 1, o = this[e + --i]; i > 0 && (a *= 256); ) o += this[e + --i] * a;
 o >= (a *= 128) && (o -= Math.pow(2, 8 * t));
 return o;
 };
 s.prototype.readInt8 = function(e, t) {
-t || x(e, 1, this.length);
+t || A(e, 1, this.length);
 return 128 & this[e] ? -1 * (255 - this[e] + 1) : this[e];
 };
 s.prototype.readInt16LE = function(e, t) {
-t || x(e, 2, this.length);
+t || A(e, 2, this.length);
 var n = this[e] | this[e + 1] << 8;
 return 32768 & n ? 4294901760 | n : n;
 };
 s.prototype.readInt16BE = function(e, t) {
-t || x(e, 2, this.length);
+t || A(e, 2, this.length);
 var n = this[e + 1] | this[e] << 8;
 return 32768 & n ? 4294901760 | n : n;
 };
 s.prototype.readInt32LE = function(e, t) {
-t || x(e, 4, this.length);
+t || A(e, 4, this.length);
 return this[e] | this[e + 1] << 8 | this[e + 2] << 16 | this[e + 3] << 24;
 };
 s.prototype.readInt32BE = function(e, t) {
-t || x(e, 4, this.length);
+t || A(e, 4, this.length);
 return this[e] << 24 | this[e + 1] << 16 | this[e + 2] << 8 | this[e + 3];
 };
 s.prototype.readFloatLE = function(e, t) {
-t || x(e, 4, this.length);
+t || A(e, 4, this.length);
 return a.read(this, e, !0, 23, 4);
 };
 s.prototype.readFloatBE = function(e, t) {
-t || x(e, 4, this.length);
+t || A(e, 4, this.length);
 return a.read(this, e, !1, 23, 4);
 };
 s.prototype.readDoubleLE = function(e, t) {
-t || x(e, 8, this.length);
+t || A(e, 8, this.length);
 return a.read(this, e, !0, 52, 8);
 };
 s.prototype.readDoubleBE = function(e, t) {
-t || x(e, 8, this.length);
+t || A(e, 8, this.length);
 return a.read(this, e, !1, 52, 8);
 };
 function I(e, t, n, i, a, o) {
@@ -4857,10 +4857,9 @@ this.gameQueryGameList();
 break;
 
 case 1:
-this.Panle4.active = !1;
-this.bgSprite.active = !0;
-this.curType = 1;
-this.gameQueryGameList();
+this.Panle4.active = !0;
+this.container.removeAllChildren();
+this.curType = 3;
 break;
 
 case 2:
@@ -5115,26 +5114,26 @@ extends: o,
 ctor: function() {
 this.act = "logout";
 }
-}), F = cc.Class({
+}), k = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "bindFb";
 this.token = "";
 }
-}), k = cc.Class({
+}), F = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "bindFb";
 this.me = 0;
 this.friends = 0;
 }
-}), A = cc.Class({
+}), x = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "rankboard";
 this.type = 0;
 }
-}), x = cc.Class({
+}), A = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "rankboard";
@@ -5174,7 +5173,7 @@ this.buildings = null;
 }), q = {
 login: M,
 logout: B,
-bindFb: k,
+bindFb: F,
 heart: c,
 createRoom: l,
 enterRoom: h,
@@ -5199,10 +5198,10 @@ LoginRequest: L,
 LoginResponse: M,
 LogoutRequest: G,
 LogoutResponse: B,
-BindFacebookRequest: F,
-BindFacebookResponse: k,
-RankRequest: A,
-RankResponse: x,
+BindFacebookRequest: k,
+BindFacebookResponse: F,
+RankRequest: x,
+RankResponse: A,
 HeartRequest: r,
 HeartResponse: c,
 ChatRequest: S,
@@ -7615,6 +7614,8 @@ if (e && "" != e) {
 GameData.token = e;
 Global.ResourceMgr.playBgAudio();
 Global.PageMgr.onClosePage(0);
+Global.ProtocolMgr.queryUserData();
+Global.SocketMgr.openSocket();
 Global.ProtocolMgr.queryGonggao(function(e) {
 200 == e.code ? cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = e.data.title : Global.PageMgr.showTipPage(e.message);
 });
@@ -7650,7 +7651,14 @@ cc.sys.localStorage.setItem("com.game.vdn.token", GameData.token);
 Global.PageMgr.showTipPage(t.message);
 Global.ResourceMgr.playBgAudio();
 Global.PageMgr.onClosePage(0);
-null != cc.find("Canvas/Main/view/mask/label_gonggao") && (cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = res2.data.title);
+Global.ProtocolMgr.queryUserData();
+Global.SocketMgr.openSocket();
+Global.ProtocolMgr.queryGonggao(function(e) {
+if (3001 != e.code) {
+console.log(cc.find("Canvas/Main/view/mask/label_gonggao"), e.data.title);
+cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = e.data.title;
+} else Global.PageMgr.showTipPage(e.message);
+});
 e.editBox_password.string = "";
 e.editBox_inviteCode.string = "";
 } else Global.PageMgr.showTipPage(t.message);
@@ -7786,7 +7794,7 @@ t.icon_touxiang.spriteFrame = new cc.SpriteFrame(n);
 } catch (e) {
 console.warn(e);
 }
-this.label_name.string = e.nickname;
+this.label_name.string = e.username;
 this.label_lVname.string = e.good_name;
 this.label_lv.string = cc.js.formatStr("%s等奖", e.level);
 this.label_time.string = e.create_time;
@@ -7804,20 +7812,34 @@ luckyDraw_item: cc.Prefab,
 container: cc.Node,
 Panle: cc.Node,
 Panle2: cc.Node,
+Panle3: cc.Node,
+pageSum: 1,
+pageSum2: 1,
 btn_item: [ cc.Sprite ]
 },
 onLoad: function() {},
 onEnable: function() {
+this.pageSum = 1;
 this.getGameList(null, 0);
 },
 goLuckyDrawUI: function() {
 var e = this;
-this.container.removeAllChildren();
-Global.ProtocolMgr.queryLuckDrawList(100, 1, function(t) {
-if (200 == t.code) for (var n = t.data.list, i = 0; i < n.length; i++) {
+Global.ProtocolMgr.queryLuckDrawList(20, this.pageSum, function(t) {
+if (200 == t.code) {
+var n = t.data.list;
+if (0 == n.length) {
+1 != e.pageSum && Global.PageMgr.showTipPage("已经是最后页了");
+e.pageSum = e.pageSum2 + 1;
+return;
+}
+e.pageSum2 = e.pageSum;
+1 != e.pageSum && Global.PageMgr.showTipPage("刷新成功！");
+e.container.removeAllChildren();
+for (var i = 0; i < n.length; i++) {
 var a = cc.instantiate(e.luckyDraw_item);
 a.getComponent("LuckyDrawItem").setData(n[i]);
 e.container.addChild(a);
+}
 } else Global.PageMgr.showTipPage(t.message);
 });
 },
@@ -7837,16 +7859,35 @@ break;
 case 1:
 this.onClickBeganTheDetail(null, 0);
 this.goLuckyDrawUI();
+break;
+
+case 2:
+this.onClickBeganTheDetail(null, 2);
 }
 },
 onClickBeganToDraw: function() {
 Global.PageMgr.showTipPage("每周六下午5点,官方统一抽奖", 20);
 },
+onClickSweepstakesRules: function() {
+this.onClickBeganTheDetail(null, 2);
+this.Panle3.active = !0;
+},
 onClickBeganTheDetail: function(e, t) {
 var n = parseInt(t);
-this.Panle.active = n > 0;
-this.Panle2.active = n <= 0;
-0 == n && this.goLuckyDrawUI();
+this.Panle.active = 1 == n;
+this.Panle2.active = 0 == n;
+this.Panle3.active = 2 == n;
+},
+onClickDown: function() {
+if (this.pageSum > 2) this.pageSum -= 1; else {
+this.pageSum = 1;
+Global.PageMgr.showTipPage("已经是首页了");
+}
+this.goLuckyDrawUI();
+},
+onClickUp: function() {
+this.pageSum += 1;
+this.goLuckyDrawUI();
 }
 });
 cc._RF.pop();
@@ -7927,6 +7968,7 @@ extends: cc.Component,
 properties: {
 content: cc.Node,
 MainPage: cc.Prefab,
+_thime: 0,
 toggles: cc.Node
 },
 onLoad: function() {},
@@ -7979,8 +8021,21 @@ Global.PageMgr.onOpenPage(0);
 },
 onClickSubmitLogout: function() {
 Global.ProtocolMgr.querySubmitLogout({}, function(e) {
-200 == e.code && Global.PageMgr.onOpenPage(21);
+200 == e.code && Global.SocketMgr.closeSocket(function() {
+Global.PageMgr.onOpenPage(21);
 });
+});
+},
+update: function(e) {
+this._thime += e;
+if (this._thime >= 10) {
+var t = {
+command: "ping",
+username: window.DEFAULT_userID
+};
+Global.SocketMgr.send_data(t);
+this._thime = 0;
+}
 }
 });
 cc._RF.pop();
@@ -9497,6 +9552,18 @@ i.Post("lottery/luckDrawList", {
 limit: e,
 page: t
 }, n);
+},
+queryPrizeList: function(e) {
+i.Post("lottery/luckGoodList", {}, e);
+},
+queryLuckDraw: function(e) {
+i.Post("lottery/luckDraw", {}, e);
+},
+queryGetPickUpLocation: function(e) {
+i.Post("lottery/getPickUpLocation", {}, e);
+},
+queryReceivePrizes: function(e, t) {
+i.Post("lottery/receivePrizes", e, t);
 },
 submitBaoMing: function(e, t) {
 console.log(e);
@@ -11822,56 +11889,9 @@ cc.game.addPersistRootNode(this.node);
 Global.SocketMgr = this.node.getComponent("SocketMgr");
 },
 openSocket: function() {
-this.ws = new WebSocket(Config.socketUrl + "/websocket/Bearer " + this.GetQueryVariable("token"));
-this.ws.onopen = function() {
-console.log("已连接");
-};
-this.ws.onmessage = function(e) {
-var t = JSON.parse(e.data);
-console.log(t);
-switch (t.event) {
-case "USER_REFRESH":
-GameData.HongBaoUserData = t.data;
-cc.director.GlobalEvent.emit("HongBaoUserData", {});
-break;
-
-case "START":
-GameData.CurHongBao = t.data;
-cc.director.GlobalEvent.emit("CurHongBaoData", {});
-break;
-
-case "TIME_REFRESH":
-GameData.CountDown = t.data.time;
-cc.director.GlobalEvent.emit("CountDown", {});
-GameData.KaiJiangList = t.data.data;
-cc.director.GlobalEvent.emit("KaiJiangList", {});
-break;
-
-case "SETTLEMENT_START":
-GameData.ReadParkSinl = 0;
-break;
-
-case "SETTLEMENT_END":
-GameData.KaiJiangList = t.data.members;
-GameData.HongBaoJieGuo = t.data.bankerProFit;
-cc.director.GlobalEvent.emit("KaiJiangList", {});
-cc.director.GlobalEvent.emit("KaiJiang", {});
-break;
-
-case "RED_REFRESH":
-GameData.HongBaoList = t.data;
-cc.director.GlobalEvent.emit("HongBaoListData", {});
-break;
-
-case "ABOUT_TO_BEGIN_MAINTENANCE":
-console.log(t);
-Global.PageMgr.showTipPage("服务器即将开始维护");
-break;
-
-default:
-return;
-}
-};
+this.ws = new WebSocket(Config.socketUrl);
+this.ws.onopen = function() {};
+this.ws.onmessage = function(e) {};
 this.ws.onclose = function() {
 console.log("连接已关闭...");
 };
@@ -11881,6 +11901,9 @@ this.ws.close();
 e();
 },
 start: function() {},
+send_data: function(e) {
+void 0 != this.ws && this.ws.readyState == WebSocket.OPEN && this.ws.send(JSON.stringify(e));
+},
 GetQueryVariable: function(e) {
 for (var t = window.location.search.substring(1).split("&"), n = 0; n < t.length; n++) {
 var i = t[n].split("=");
@@ -12278,29 +12301,110 @@ default: 1080,
 type: cc.Float,
 displayName: "最大速度",
 tooltip: "每秒速度减少几度,°/s"
-}
 },
-initProperties: function() {
-this._range = 360;
-this._currentRotationSpeed = 0;
-this._targetRotation = 0;
-this._turntableBg = this.node.getChildByName("TurntableBg");
-this.intResultId <= 0 || this.intTotalPrize < this.intResultId || this.intTotalPrize;
-this.intResultId = this.intTotalPrize + 1 - this.intResultId;
-this._interval = .02;
+item_name: [ cc.Label ],
+item_Prizename: [ cc.Label ],
+Panle: cc.Node,
+Panle2: cc.Node,
+Panle3: cc.Node,
+Panle4: cc.Node,
+winning_name: cc.Label,
+winning_Prizename: cc.Label,
+winning_icon: cc.Sprite,
+editBox_name: cc.EditBox,
+editBox_weixin: cc.EditBox,
+editBox_phone: cc.EditBox,
+label_mendian: cc.Label,
+selectItem: cc.Prefab,
+container_mendian: cc.Node,
+scroll_mendian: cc.Node,
+item_icon: [ cc.Sprite ]
 },
-onLoad: function() {
+onLoad: function() {},
+onEnable: function() {
 this.initProperties();
 },
+initProperties: function() {
+this.Panle.active = !1;
+this.Panle2.active = !1;
+this.Panle3.active = !1;
+this.Panle4.active = !1;
+this._range = 360;
+this._currentRotationSpeed = 0;
+this.isLuckyDraw = !0;
+this._targetRotation = 0;
+this._turntableBg = this.node.getChildByName("TurntableBg");
+this._turntableBg.angle = 0;
+this.intResultId <= 0 || this.intTotalPrize < this.intResultId || this.intTotalPrize;
+this._interval = .02;
+this.updatePrizeList();
+},
+updatePrizeList: function() {
+var e = this;
+Global.ProtocolMgr.queryPrizeList(function(t) {
+if (200 == t.code) {
+var n = t.data.list;
+e.PrizeList = e.ModifyPrizeList(n);
+for (var i = function(t) {
+cc.loader.load({
+url: e.PrizeList[t].good_img,
+type: "png"
+}, function(n, i) {
+e.item_icon[t].spriteFrame = new cc.SpriteFrame(i);
+});
+e.item_name[t].string = cc.js.formatStr("%s", e.PrizeList[t].level);
+e.item_Prizename[t].string = e.PrizeList[t].good_name;
+}, a = 0; a < e.PrizeList.length; a++) i(a);
+} else Global.PageMgr.showTipPage(t.message);
+});
+},
+ModifyPrizeList: function(e) {
+for (var t, n = [], i = e.length, a = 0; a < 8; a++) {
+t = e[a % i];
+n.push(t);
+}
+return n;
+},
+UpsetArray: function(e) {
+var t = this.copyArray(e);
+t.sort(function() {
+return .5 - Math.random();
+});
+return t;
+},
+copyArray: function(e) {
+return JSON.parse(JSON.stringify(e));
+},
+getPrizeListData: function(e) {
+for (var t = 0; t < this.PrizeList.length; t++) if (this.PrizeList[t].id == e) return t + 1;
+},
 onRandomPlace: function() {
-cc.log("随机该区域内位置");
 return (Math.random() - .5) * this._range / (this.intTotalPrize + 2);
 },
 onStart: function() {
-Global.PageMgr.showTipPage("每周六由官方统一抽奖", 2);
+var e = this;
+this.isLuckyDraw && Global.ProtocolMgr.queryLuckDraw(function(t) {
+if (200 == t.code) {
+var n = t.data;
+e.LuckDrawdata = n;
+e.intResultId = e.getPrizeListData(n.yes_good_id);
+if (void 0 == e._currentState || 0 == e._currentState) {
+e._currentState = 1;
+e._turntableBg.angle = 0;
+} else e.isLuckyDraw = !1;
+e.schedule(e.updateRotation, e._interval);
+} else Global.PageMgr.showTipPage(t.message);
+});
+},
+onClickBreak: function() {
+this.Panle.active = !1;
+this.isLuckyDraw = !0;
 },
 onStop: function() {
-void 0 == this._currentState || 0 == this._currentState ? cc.log("转盘已经停止...") : this.unschedule(this.updateRotation);
+if (void 0 == this._currentState || 0 == this._currentState) cc.log("转盘已经停止..."); else {
+cc.log("转盘已经停止2...");
+this.unschedule(this.updateRotation);
+}
 },
 onVirtualCompute: function() {
 for (var e = 0, t = this.floatMaxRangeSpeed; t > 0; ) {
@@ -12315,10 +12419,10 @@ if (t > 0) for (;t >= 360; ) t -= this._range; else for (;t < 0; ) t += this._ra
 return t;
 },
 detectionAngle: function() {
-var e = this._range / this.intTotalPrize * this.intResultId;
+var e = this._range / this.intTotalPrize * (this.intResultId - 1);
 this.boolRandom && (e += this.onRandomPlace());
 var t = this.onGetValue(e);
-this._turntableBg.rotation = t;
+this._turntableBg.angle = t;
 this._currentState = 2;
 },
 updateRotation: function() {
@@ -12337,6 +12441,7 @@ case 2:
 if (this._currentRotationSpeed <= 0) {
 this._currentRotationSpeed = 0;
 this._currentState = 0;
+this.setTheWinning();
 } else this._currentRotationSpeed += this.floatDeceleration * this._interval;
 break;
 
@@ -12344,10 +12449,75 @@ default:
 this._currentRotationSpeed = 0;
 this._currentState = 0;
 }
-cc.log("当前旋转速度 : ", this._currentRotationSpeed);
 var e = this._currentRotationSpeed * this._interval;
-cc.log("当前转盘转动速度" + e + "°/" + this._interval + "s");
-this._turntableBg.rotation += e;
+this._turntableBg.angle += e;
+},
+setTheWinning: function() {
+var e = this;
+this.Panle.active = !0;
+if (0 == this.LuckDrawdata.is_win) this.Panle3.active = !0; else {
+this.Panle2.active = !0;
+cc.loader.load({
+url: this.LuckDrawdata.yes_goode_img,
+type: "png"
+}, function(t, n) {
+e.winning_icon.spriteFrame = new cc.SpriteFrame(n);
+});
+this.winning_name.string = cc.js.formatStr("%s", this.LuckDrawdata.yes_good_name);
+this.winning_Prizename.string = this.LuckDrawdata.yes_goode_level;
+}
+},
+onClickToReceive: function() {
+var e = this;
+this.onClickMessagePanle(null, 1);
+this.Panle.active = !1;
+Global.ProtocolMgr.queryGetPickUpLocation(function(t) {
+200 == t.code ? function() {
+var n = t.data;
+e.container_mendian.removeAllChildren();
+for (var i = function(t) {
+var i = cc.instantiate(e.selectItem);
+i.getComponent(cc.Label).string = n[t].address;
+i.on(cc.Node.EventType.TOUCH_END, function() {
+e.label_mendian.string = n[t].address;
+e.tid = n[t].id;
+e.scroll_mendian.active = !1;
+});
+e.container_mendian.addChild(i);
+}, a = 0; a < n.length; a++) i(a);
+}() : Global.PageMgr.showTipPage(t.message);
+});
+this.editBox_name.string = "";
+this.editBox_weixin.string = "";
+this.editBox_phone.string = "";
+},
+submit: function() {
+var e = this;
+if (0 != this.did) if ("" != this.editBox_name.string) if ("" != this.editBox_phone.string) if ("" != this.editBox_weixin.string) {
+var t = {
+name: this.editBox_name.string,
+phone: this.editBox_phone.string,
+wx_number: this.editBox_weixin.string,
+lid: this.tid.toString()
+};
+console.log("选择的游戏是：" + this.tid.toString());
+Global.ProtocolMgr.queryReceivePrizes(t, function(t) {
+if (200 == t.code) {
+Global.PageMgr.showTipPage("提交成功");
+e.onClickMessagePanle(null, 0);
+} else Global.PageMgr.showTipPage(t.message);
+});
+} else Global.PageMgr.showTipPage("还未填写微信"); else Global.PageMgr.showTipPage("还未填写手机号"); else Global.PageMgr.showTipPage("还未填写姓名"); else Global.PageMgr.showTipPage("还未选择门店");
+},
+onClickMessagePanle: function(e, t) {
+var n = parseInt(t);
+this.Panle4.active = 1 == n;
+},
+showScroll: function(e, t) {
+switch (t) {
+case "mendian":
+this.scroll_mendian.active = !0;
+}
 },
 onDestroy: function() {
 this.node.onDestroy();
@@ -13221,6 +13391,7 @@ a.setRequestHeader("Content-Type", "application/json");
 a.setRequestHeader("token", GameData.token);
 a.setRequestHeader("language", GameData.curLanguage);
 console.log("-------|" + GameData.token);
+console.log("-------reqData：" + JSON.stringify(t));
 a.send(JSON.stringify(t));
 },
 GetQueryVariable: function(e) {

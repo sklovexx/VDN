@@ -31,7 +31,7 @@ cc.Class({
             console.warn(e);
         }
 
-        this.label_name.string = data.nickname;
+        this.label_name.string = data.username;
         this.label_lVname.string = data.good_name;
         this.label_lv.string = cc.js.formatStr("%s等奖", data.level);
         this.label_time.string = data.create_time;

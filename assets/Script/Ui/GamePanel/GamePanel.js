@@ -218,10 +218,13 @@ cc.Class({
                 this.gameQueryGameList();
                 break;
             case 1:
-                this.Panle4.active = false;
-                this.bgSprite.active = true;
-                this.curType = 1;
-                this.gameQueryGameList();
+                // this.Panle4.active = false;
+                // this.bgSprite.active = true;
+                // this.curType = 1;
+                // this.gameQueryGameList();
+                this.Panle4.active = true;
+                this.container.removeAllChildren();
+                this.curType = 3;
                 break;
             case 2:
                 // this.curType = 2;
@@ -237,7 +240,7 @@ cc.Class({
                 // this.curType = 3;
                 this.Panlelist3.active= true;
                 this.Panlelist2.active= false;
-                this.setStationRecordUI();
+                this.setStationRecordUI(); 
                 break;
             case 4:
                 this.Panle4.active = true;

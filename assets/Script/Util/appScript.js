@@ -80,6 +80,8 @@ var appScript = {
         xhr.setRequestHeader("token",GameData.token);
         xhr.setRequestHeader("language",GameData.curLanguage);
         console.log("-------|"+GameData.token);
+        console.log("-------reqData："+JSON.stringify(reqData));
+        
         xhr.send(JSON.stringify(reqData));//reqData为字符串形式： "key=value"
     },
     GetQueryVariable:function(variable)
