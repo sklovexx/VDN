@@ -16,8 +16,11 @@ cc.Class({
         label_zhanli: cc.Label,
         label_tili: cc.Label,
         label_zili: cc.Label,
+        label_nengliang: cc.Label,
         label_xingzuan: cc.Label,
+        label_PMV: cc.Label,
         label_lv: cc.Label,
+        label_shenfu: cc.Label,
         icon_pic: cc.Sprite,
         label_Usdt: cc.Label
     },
@@ -55,6 +58,9 @@ cc.Class({
                     _this2.label_id.string = res.data.username;
                     _this2.label_lv.string = res.data.grade + "级";
                     _this2.label_Usdt.string = res.data.totalUsdt;
+                    _this2.label_nengliang.string = parseFloat(res.data.availableCoinTwo).toFixed(4); //能量
+                    _this2.label_PMV.string = parseFloat(res.data.availableCoinOne).toFixed(4); //门票
+                    _this2.label_shenfu.string = parseFloat(res.data.totalCoinThree).toFixed(4); //神符
                 }
             }
         });

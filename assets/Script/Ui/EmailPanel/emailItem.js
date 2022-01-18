@@ -16,7 +16,7 @@ cc.Class({
     start () {
 
     },
-    setData(data){
+    setData(data,index){
         let icon_email = ""
         if(data.state==0){
             icon_email = "信封未读";
@@ -33,7 +33,14 @@ cc.Class({
             console.warn(e)
         }
         this.label_title.string = data.title;
-        this.label_time.string = data.time;
+        if(index == 1)
+        {
+            this.label_time.string = data.time;
+        }else
+        {
+            this.label_time.string = "";//data.createTime;
+        }
+
     }
     // update (dt) {},
 });

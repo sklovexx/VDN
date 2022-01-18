@@ -30,10 +30,10 @@ cc.Class({
 
                     var _loop = function _loop(i) {
                         var emailItem = cc.instantiate(_this.emailItem);
-                        emailItem.getComponent("emailItem").setData(data[i]);
+                        emailItem.getComponent("emailItem").setData(data[i], 1);
                         emailItem.on(cc.Node.EventType.TOUCH_END, function () {
                             Global.PageMgr.onOpenPage(20);
-                            Global.PageMgr.pages[20].getComponent("EmailDetailPanel").setData(data[i]);
+                            Global.PageMgr.pages[20].getComponent("EmailDetailPanel").setData(data[i], 1);
                             if (data[i].state == 0) {
                                 Global.ProtocolMgr.readEmail(data[i].id, function (res2) {
                                     if (res2.code == 200) {

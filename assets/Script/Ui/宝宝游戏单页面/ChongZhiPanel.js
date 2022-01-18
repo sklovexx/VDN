@@ -24,7 +24,7 @@ cc.Class({
     onEdit(event){
         console.log(event.string)
         if(parseFloat(event.string)<0.1){
-            Global.PageMgr.showTipPage("最少要充值0.1个水晶星钻");
+            Global.PageMgr.showTipPage("最少要充值0.1个PMV");
             this.editBox_ZS.string = "";
             this.label_RMB.string = "";
         }

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "shenfu",
+    "texture": "93dace85-e620-40fa-bd3a-5babbe0c9d10",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      66,
+      71
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      66,
+      71
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

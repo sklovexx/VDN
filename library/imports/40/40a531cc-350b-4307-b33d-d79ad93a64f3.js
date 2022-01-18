@@ -222,6 +222,12 @@ cc.Class({
         app.Post('member/get_email_message_list', {}, callback);
     },
 
+
+    //公告列表
+    queryGetMessage: function queryGetMessage(callback) {
+        app.Post('content/getMessage', { limit: 100, page: 1 }, callback);
+    },
+
     //读取邮件
     readEmail: function readEmail(i, callback) {
         var data = {

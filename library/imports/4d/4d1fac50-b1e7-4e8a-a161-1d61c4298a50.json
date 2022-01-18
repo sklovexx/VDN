@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "menpiao",
+    "texture": "69841c2e-bbdc-4a46-9c36-da5935a9e769",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      71,
+      64
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      72,
+      64
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

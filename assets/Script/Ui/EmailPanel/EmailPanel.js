@@ -24,10 +24,10 @@ cc.Class({
                 this.container_email.removeAllChildren();
                 for(let i = 0;i<data.length;i++){
                     let emailItem = cc.instantiate(this.emailItem);
-                    emailItem.getComponent("emailItem").setData(data[i])
+                    emailItem.getComponent("emailItem").setData(data[i],1)
                     emailItem.on(cc.Node.EventType.TOUCH_END,()=>{
                         Global.PageMgr.onOpenPage(20);
-                        Global.PageMgr.pages[20].getComponent("EmailDetailPanel").setData(data[i]);
+                        Global.PageMgr.pages[20].getComponent("EmailDetailPanel").setData(data[i],1);
                         if(data[i].state==0){
                             Global.ProtocolMgr.readEmail(data[i].id,(res2)=>{
                                 if(res2.code==200){

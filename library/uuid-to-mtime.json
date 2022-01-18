@@ -640,7 +640,7 @@
     "relativePath": "Scene\\YuTang.fire"
   },
   "4734c20c-0db8-4eb2-92ea-e692f4d70934": {
-    "asset": 1636220581143,
+    "asset": 1640846695461,
     "meta": 1635882990000,
     "relativePath": "Script"
   },
@@ -740,7 +740,7 @@
     "relativePath": "Script\\Tip"
   },
   "82463a7a-1cc7-425d-a4f4-df6051ca7be9": {
-    "asset": 1637203626638,
+    "asset": 1640846695461,
     "meta": 1635882990000,
     "relativePath": "Script\\Ui"
   },
@@ -1185,7 +1185,7 @@
     "relativePath": "Script\\Dssc"
   },
   "1fa4d1a6-414d-4917-b51d-3333966b3537": {
-    "asset": 1637226756592,
+    "asset": 1641968608756,
     "meta": 1635882990000,
     "relativePath": "resources\\imgs"
   },
@@ -3800,8 +3800,8 @@
     "relativePath": "Prefab\\ShopPanel"
   },
   "05144d90-6f1a-4124-acdd-dc2af4314b0d": {
-    "asset": 1636347144075,
-    "meta": 1636347144081,
+    "asset": 1641871337583,
+    "meta": 1641871337591,
     "relativePath": "Prefab\\ShopPanel\\XHP_item.prefab"
   },
   "a2b4221a-43eb-45cc-8534-c1110dd1f679": {
@@ -4349,11 +4349,6 @@
     "meta": 1635904638035,
     "relativePath": "Texture\\宝宝游戏\\NFR市场.png"
   },
-  "a42bdefc-5b48-4467-b363-a5e7613e2066": {
-    "asset": 1635882990000,
-    "meta": 1635904637533,
-    "relativePath": "Texture\\宝宝游戏\\查询大厅.png"
-  },
   "97c47120-06f9-429c-9a37-3246c92be8b1": {
     "asset": 1635882990000,
     "meta": 1635904637561,
@@ -4369,11 +4364,6 @@
     "meta": 1635904637922,
     "relativePath": "Texture\\宝宝游戏\\星群.png"
   },
-  "6ebaf1ce-4861-4c16-b3e2-35be3a6a6e94": {
-    "asset": 1635882990000,
-    "meta": 1635904637699,
-    "relativePath": "Texture\\宝宝游戏\\购物中心(1).png"
-  },
   "51e53237-6fe0-4dec-887e-7bb58db56890": {
     "asset": 1635882990000,
     "meta": 1635904637894,
@@ -4383,11 +4373,6 @@
     "asset": 1635882990000,
     "meta": 1635904637399,
     "relativePath": "Script\\Ui\\ZiChuangPanel\\ZiChuangPanel.js"
-  },
-  "a839f2ce-87c2-4efd-b561-aa91b8e00623": {
-    "asset": 1635882990000,
-    "meta": 1635904637856,
-    "relativePath": "Texture\\宝宝游戏\\背景.png"
   },
   "80f73f39-f8a1-465a-aff2-80e7dee191cf": {
     "asset": 1635882990000,
@@ -4418,11 +4403,6 @@
     "asset": 1635882990000,
     "meta": 1635904634751,
     "relativePath": "Scene\\hotUpdate.fire"
-  },
-  "c6edb0a2-a88b-45b0-a015-71eb194b3259": {
-    "asset": 1635882990000,
-    "meta": 1635904635364,
-    "relativePath": "Script\\HotUpdate.js"
   },
   "63501ecd-ea1c-4137-a67c-f61377e91ca1": {
     "asset": 1635882990000,
@@ -4503,16 +4483,6 @@
     "asset": 1635904518115,
     "meta": 1635882990000,
     "relativePath": "Script\\Ui\\GongGaoPanel"
-  },
-  "4b8e37bb-8dd3-405d-af55-0202fb728c24": {
-    "asset": 1635882990000,
-    "meta": 1635904635765,
-    "relativePath": "Script\\Ui\\EmailPanel\\emailItem.js"
-  },
-  "9b6e62dc-be85-49f2-8197-dda70423896c": {
-    "asset": 1635882990000,
-    "meta": 1635904635788,
-    "relativePath": "Script\\Ui\\EmailPanel\\EmailPanel.js"
   },
   "629d8b21-e8c3-4802-849a-0e3d5e72c455": {
     "asset": 1636178765896,
@@ -4679,25 +4649,15 @@
     "meta": 1635928549669,
     "relativePath": "Texture\\平行游戏大厅\\bg3@2x.png"
   },
-  "4b395419-df58-4b0e-9fd7-0b7621813477": {
-    "asset": 1635950748536,
-    "meta": 1635950780562,
-    "relativePath": "Script\\Ui\\GamePanel\\game_item.js"
-  },
   "f6b9887d-75c2-41e4-95c4-d78baacecd42": {
     "asset": 1636038226722,
     "meta": 1636038228950,
     "relativePath": "Script\\Ui\\MainPage\\MainPage.js"
   },
   "76436c1f-e83b-4f08-9c1a-37768958f3e0": {
-    "asset": 1636347256469,
-    "meta": 1636347256477,
+    "asset": 1641871318153,
+    "meta": 1641871318162,
     "relativePath": "Prefab\\ShopPanel\\NFT_item.prefab"
-  },
-  "09a9d34a-c83d-4c6d-941c-df220ac840c2": {
-    "asset": 1636044095805,
-    "meta": 1636044096556,
-    "relativePath": "Script\\Ui\\EmailPanel\\EmailDetailPanel.js"
   },
   "6a80cef6-c15a-4c2d-8577-5ca997458eb3": {
     "asset": 1636052942956,
@@ -4708,11 +4668,6 @@
     "asset": 1636053818076,
     "meta": 1636053865352,
     "relativePath": "Texture\\宠物\\图层 692@2x.png"
-  },
-  "033f3812-4cd0-49bc-8ac0-3d210bfa45fd": {
-    "asset": 1636101762109,
-    "meta": 1636101763362,
-    "relativePath": "Script\\Ui\\宝宝游戏单页面\\ChongZhiPanel.js"
   },
   "b2757405-c558-4cfd-86f0-302298391f36": {
     "asset": 1636204042099,
@@ -4769,11 +4724,6 @@
     "meta": 1636200437721,
     "relativePath": "Script\\Ui\\ShopPanel\\XHP_item.js"
   },
-  "fabe4738-31b8-4c4a-88a1-b494fbaccb3d": {
-    "asset": 1636202294955,
-    "meta": 1636202307431,
-    "relativePath": "Script\\Ui\\GamePanel\\Game_Item2.js"
-  },
   "2a8595ae-0448-4e05-a653-eb8f595a85a5": {
     "asset": 1636203947607,
     "meta": 1636203974688,
@@ -4784,20 +4734,10 @@
     "meta": 1636204565881,
     "relativePath": "Script\\Ui\\ShopPanel\\ShopUserDataPanel.js"
   },
-  "65a98899-7e2b-49e8-a534-5b16d0eb7e22": {
-    "asset": 1636206482030,
-    "meta": 1636210681735,
-    "relativePath": "Script\\Ui\\宝宝游戏单页面\\BuyPanel.js"
-  },
   "cd521368-1145-42e5-a5d3-8fbb9dad5603": {
     "asset": 1636214093808,
     "meta": 1636214238735,
     "relativePath": "Script\\Ui\\CustomerServicePanel\\CustomerServicePanel.js"
-  },
-  "a74a410e-a4d7-4bea-88aa-44a196cf538c": {
-    "asset": 1636214135161,
-    "meta": 1636214238790,
-    "relativePath": "Script\\Ui\\GongGaoPanel\\GongGaoPanel.js"
   },
   "446116e9-0f09-460a-b44a-093070bd704d": {
     "asset": 1636215025620,
@@ -4813,16 +4753,6 @@
     "asset": 1636031296013,
     "meta": 1636220581204,
     "relativePath": "Script\\Ui\\ChongWuPanel"
-  },
-  "79c6d0f6-c440-4f64-a080-b90e587d9d04": {
-    "asset": 1636223240709,
-    "meta": 1636223242347,
-    "relativePath": "Script\\Ui\\ArderPanel\\Arder_Item.js"
-  },
-  "88bc95d7-1306-44dd-a7b6-41280cf4cb36": {
-    "asset": 1636225611893,
-    "meta": 1636225613087,
-    "relativePath": "Script\\Ui\\ArderPanel\\ArderPanel.js"
   },
   "1319a094-ff52-487a-9237-4bf6468f00b6": {
     "asset": 1636108769893,
@@ -4888,16 +4818,6 @@
     "asset": 1636535892850,
     "meta": 1636535903092,
     "relativePath": "Texture\\GivingCrystalPanel\\圆角矩形 987@2x.png"
-  },
-  "7aebdf75-10bb-4590-994f-e6c20caf0b15": {
-    "asset": 1636542282663,
-    "meta": 1636542283802,
-    "relativePath": "Script\\Ui\\GivingCrystalPanel\\GivingCrystalPanel.js"
-  },
-  "db0e0dc5-88d9-4e0e-8b91-123b184d910b": {
-    "asset": 1636543018890,
-    "meta": 1636543075855,
-    "relativePath": "Script\\Ui\\ChongWuPanel\\ChongWuPanel.js"
   },
   "c85fa5c3-373e-49fb-9b68-7cf5a307b8eb": {
     "asset": 1635882990000,
@@ -5419,11 +5339,6 @@
     "meta": 1637292281938,
     "relativePath": "Texture\\LuckyDrawPanel\\组 675@2x.png"
   },
-  "68775ff4-0d6b-49d5-8245-b454ca21bed3": {
-    "asset": 1637310462835,
-    "meta": 1637310467742,
-    "relativePath": "Script\\Util\\appScript.js"
-  },
   "6c8c3358-7066-428e-ac00-5dbb10ef3beb": {
     "asset": 1637655552525,
     "meta": 1637655606951,
@@ -5484,11 +5399,6 @@
     "meta": 1637923996021,
     "relativePath": "Script\\Ui\\LuckyDrawPanel\\TurntableMgr.js"
   },
-  "22bf8a65-1ff8-4554-8042-96445f91950d": {
-    "asset": 1637924134524,
-    "meta": 1637924135280,
-    "relativePath": "Script\\Ui\\GamePanel\\GamePanel.js"
-  },
   "657ca27c-eb14-462a-a153-e14a9b8f95fa": {
     "asset": 1637924280140,
     "meta": 1637924311186,
@@ -5499,95 +5409,20 @@
     "meta": 1637924792369,
     "relativePath": "Script\\Ui\\LuckyDrawPanel\\LuckyDrawItem.js"
   },
-  "40a531cc-350b-4307-b33d-d79ad93a64f3": {
-    "asset": 1638156256704,
-    "meta": 1638156348967,
-    "relativePath": "Script\\Manager\\ProtocolMgr.js"
-  },
   "e55f96f7-2f80-44aa-98e7-e5240631fd94": {
     "asset": 1638158576014,
     "meta": 1638159875355,
     "relativePath": "Script\\Ui\\HongBao\\HongBao.js"
-  },
-  "3774d86a-7680-4655-97ee-6f2712457f54": {
-    "asset": 1638169430105,
-    "meta": 1638169432215,
-    "relativePath": "Script\\Manager\\SocketMgr.js"
-  },
-  "4e904812-e1fb-4baf-b516-5a5e2041006a": {
-    "asset": 1638169776572,
-    "meta": 1638172449504,
-    "relativePath": "Script\\Ui\\LoginPanel\\LoginPanel.js"
-  },
-  "bade2282-829e-49fb-9368-362139f943ed": {
-    "asset": 1638175748126,
-    "meta": 1638175770544,
-    "relativePath": "Script\\Main.js"
-  },
-  "61de0eb6-9f87-49ed-933d-fd776e9a8ce7": {
-    "asset": 1635882990000,
-    "meta": 1638258350632,
-    "relativePath": "LanguageData.js"
-  },
-  "744dcb38-0c27-4da6-b361-1b4c70aba14a": {
-    "asset": 1635882990000,
-    "meta": 1638258350654,
-    "relativePath": "LocalizedLabel.js"
-  },
-  "f34acd86-1a25-4e05-b1ba-5e57ef8183f8": {
-    "asset": 1635882990000,
-    "meta": 1638258350667,
-    "relativePath": "LocalizedSprite.js"
-  },
-  "e26fdf72-cbae-40e2-adff-264a559c5620": {
-    "asset": 1635882990000,
-    "meta": 1638258350704,
-    "relativePath": "polyglot.min.js"
-  },
-  "9701943c-d23a-44d9-87f3-e336ee09906a": {
-    "asset": 1635882990000,
-    "meta": 1638258350711,
-    "relativePath": "SpriteFrameSet.js"
-  },
-  "ae20cc0a-b707-4131-9b58-e887ba6626d9": {
-    "asset": 1638848040972,
-    "meta": 1638848045425,
-    "relativePath": "NiuNiu\\script\\net\\HttpProxy.js"
   },
   "25b6920e-1654-4ae2-978a-6753234e9cf2": {
     "asset": 1638848008408,
     "meta": 1638848045499,
     "relativePath": "Script\\Ui\\LuckyDrawPanel\\LuckyDrawPanel.js"
   },
-  "1e2eafed-d854-49ec-a162-7cd58dc8f1b8": {
-    "asset": 1639376562927,
-    "meta": 1639376587099,
-    "relativePath": "Texture\\Login\\COOL METAVERSE@2x.png"
-  },
-  "ad421270-96da-46a7-b819-76196036fb62": {
-    "asset": 1639377255972,
-    "meta": 1639377258349,
-    "relativePath": "Script\\Config.js"
-  },
-  "2d2f792f-a40c-49bb-a189-ed176a246e49": {
-    "asset": 1639471454643,
-    "meta": 1639471454765,
-    "relativePath": "Scene\\ECC.fire"
-  },
   "4a82ff0c-b522-4e0f-9ad6-52101d65e43f": {
     "asset": 1639377689369,
     "meta": 1639377711681,
     "relativePath": "Texture\\BaoMingPanel\\图层 1@2x.png"
-  },
-  "7a56eb68-6ce4-485e-9c2d-e05c2a307cda": {
-    "asset": 1639379217731,
-    "meta": 1639379220599,
-    "relativePath": "version.manifest"
-  },
-  "584b5dc6-f052-437c-9de3-58808f600b11": {
-    "asset": 1639379217731,
-    "meta": 1639379220600,
-    "relativePath": "project.manifest"
   },
   "5cc0a3d8-f7c6-4d43-89d1-007f68f89727": {
     "asset": 1639472314043,
@@ -5595,8 +5430,218 @@
     "relativePath": "Script\\Ui\\BaoMingPanel\\BaoMingPanel.js"
   },
   "9574f8cb-033e-44c7-895a-a3ef749972e2": {
-    "asset": 1639472632141,
-    "meta": 1639472636216,
+    "asset": 1639543718602,
+    "meta": 1639553416421,
     "relativePath": "Script\\Manager\\PageMgr.js"
+  },
+  "a42bdefc-5b48-4467-b363-a5e7613e2066": {
+    "asset": 1639627335789,
+    "meta": 1639650598580,
+    "relativePath": "Texture\\宝宝游戏\\查询大厅.png"
+  },
+  "6ebaf1ce-4861-4c16-b3e2-35be3a6a6e94": {
+    "asset": 1639627564111,
+    "meta": 1639650598627,
+    "relativePath": "Texture\\宝宝游戏\\购物中心(1).png"
+  },
+  "a839f2ce-87c2-4efd-b561-aa91b8e00623": {
+    "asset": 1639626447060,
+    "meta": 1639650598730,
+    "relativePath": "Texture\\宝宝游戏\\背景.png"
+  },
+  "65a98899-7e2b-49e8-a534-5b16d0eb7e22": {
+    "asset": 1639722653878,
+    "meta": 1639723020503,
+    "relativePath": "Script\\Ui\\宝宝游戏单页面\\BuyPanel.js"
+  },
+  "1e2eafed-d854-49ec-a162-7cd58dc8f1b8": {
+    "asset": 1639967003307,
+    "meta": 1639967053337,
+    "relativePath": "Texture\\Login\\COOL METAVERSE@2x.png"
+  },
+  "4e904812-e1fb-4baf-b516-5a5e2041006a": {
+    "asset": 1639967145489,
+    "meta": 1639967146418,
+    "relativePath": "Script\\Ui\\LoginPanel\\LoginPanel.js"
+  },
+  "83ac99d6-0fa8-44fa-a800-71e216a47a15": {
+    "asset": 1640846777039,
+    "meta": 1640846674296,
+    "relativePath": "Script\\Ui\\AnnouncementPanel"
+  },
+  "40a531cc-350b-4307-b33d-d79ad93a64f3": {
+    "asset": 1640847639006,
+    "meta": 1640847649588,
+    "relativePath": "Script\\Manager\\ProtocolMgr.js"
+  },
+  "4b8e37bb-8dd3-405d-af55-0202fb728c24": {
+    "asset": 1640848410575,
+    "meta": 1640848517754,
+    "relativePath": "Script\\Ui\\EmailPanel\\emailItem.js"
+  },
+  "a74a410e-a4d7-4bea-88aa-44a196cf538c": {
+    "asset": 1640920277169,
+    "meta": 1640920283521,
+    "relativePath": "Script\\Ui\\GongGaoPanel\\GongGaoPanel.js"
+  },
+  "09a9d34a-c83d-4c6d-941c-df220ac840c2": {
+    "asset": 1640920319408,
+    "meta": 1640920320409,
+    "relativePath": "Script\\Ui\\EmailPanel\\EmailDetailPanel.js"
+  },
+  "40d073ab-b5a0-4306-8114-033500606924": {
+    "asset": 1640920743419,
+    "meta": 1640920748292,
+    "relativePath": "Script\\Ui\\AnnouncementPanel\\AnnouncementPanel.js"
+  },
+  "9b6e62dc-be85-49f2-8197-dda70423896c": {
+    "asset": 1640920890538,
+    "meta": 1640920892422,
+    "relativePath": "Script\\Ui\\EmailPanel\\EmailPanel.js"
+  },
+  "3fc40ca7-4469-4a91-9a55-fc2687a06c7e": {
+    "asset": 1641266519384,
+    "meta": 1641266714353,
+    "relativePath": "resources\\imgs\\能量瓶.png"
+  },
+  "64b7dafa-b50a-47e4-9cf2-355e545dc871": {
+    "asset": 1641269186441,
+    "meta": 1641269236066,
+    "relativePath": "resources\\imgs\\组 1.png"
+  },
+  "f709a81c-76c5-45fb-8cc8-f033e9b873e1": {
+    "asset": 1641269170686,
+    "meta": 1641269236073,
+    "relativePath": "resources\\imgs\\能量.png"
+  },
+  "00782f0f-dff2-4e4b-b8d9-e49dff60b317": {
+    "asset": 1641269175501,
+    "meta": 1641269236080,
+    "relativePath": "resources\\imgs\\组 11.png"
+  },
+  "53cc53ca-a56a-489b-9575-2d4895da37e5": {
+    "asset": 1641269192424,
+    "meta": 1641269236082,
+    "relativePath": "resources\\imgs\\Life.png"
+  },
+  "033f3812-4cd0-49bc-8ac0-3d210bfa45fd": {
+    "asset": 1641871107879,
+    "meta": 1641871115210,
+    "relativePath": "Script\\Ui\\宝宝游戏单页面\\ChongZhiPanel.js"
+  },
+  "68775ff4-0d6b-49d5-8245-b454ca21bed3": {
+    "asset": 1641955487599,
+    "meta": 1641955509291,
+    "relativePath": "Script\\Util\\appScript.js"
+  },
+  "69841c2e-bbdc-4a46-9c36-da5935a9e769": {
+    "asset": 1641968529049,
+    "meta": 1641968608773,
+    "relativePath": "resources\\imgs\\menpiao.png"
+  },
+  "7aebdf75-10bb-4590-994f-e6c20caf0b15": {
+    "asset": 1641973858358,
+    "meta": 1641973877604,
+    "relativePath": "Script\\Ui\\GivingCrystalPanel\\GivingCrystalPanel.js"
+  },
+  "bade2282-829e-49fb-9368-362139f943ed": {
+    "asset": 1641993025962,
+    "meta": 1641993034734,
+    "relativePath": "Script\\Main.js"
+  },
+  "3774d86a-7680-4655-97ee-6f2712457f54": {
+    "asset": 1641994121114,
+    "meta": 1641994406415,
+    "relativePath": "Script\\Manager\\SocketMgr.js"
+  },
+  "4b395419-df58-4b0e-9fd7-0b7621813477": {
+    "asset": 1642060794738,
+    "meta": 1642061005156,
+    "relativePath": "Script\\Ui\\GamePanel\\game_item.js"
+  },
+  "88bc95d7-1306-44dd-a7b6-41280cf4cb36": {
+    "asset": 1642061655204,
+    "meta": 1642061696384,
+    "relativePath": "Script\\Ui\\ArderPanel\\ArderPanel.js"
+  },
+  "79c6d0f6-c440-4f64-a080-b90e587d9d04": {
+    "asset": 1642061814922,
+    "meta": 1642061817497,
+    "relativePath": "Script\\Ui\\ArderPanel\\Arder_Item.js"
+  },
+  "fabe4738-31b8-4c4a-88a1-b494fbaccb3d": {
+    "asset": 1642061868364,
+    "meta": 1642061870233,
+    "relativePath": "Script\\Ui\\GamePanel\\Game_Item2.js"
+  },
+  "93dace85-e620-40fa-bd3a-5babbe0c9d10": {
+    "asset": 1642407027029,
+    "meta": 1642407039171,
+    "relativePath": "resources\\imgs\\shenfu.png"
+  },
+  "2d2f792f-a40c-49bb-a189-ed176a246e49": {
+    "asset": 1642407176065,
+    "meta": 1642407189683,
+    "relativePath": "Scene\\ECC.fire"
+  },
+  "22bf8a65-1ff8-4554-8042-96445f91950d": {
+    "asset": 1642408095670,
+    "meta": 1642408101068,
+    "relativePath": "Script\\Ui\\GamePanel\\GamePanel.js"
+  },
+  "ad421270-96da-46a7-b819-76196036fb62": {
+    "asset": 1642413859239,
+    "meta": 1642413864342,
+    "relativePath": "Script\\Config.js"
+  },
+  "c6edb0a2-a88b-45b0-a015-71eb194b3259": {
+    "asset": 1642413860995,
+    "meta": 1642413864388,
+    "relativePath": "Script\\HotUpdate.js"
+  },
+  "db0e0dc5-88d9-4e0e-8b91-123b184d910b": {
+    "asset": 1642413862647,
+    "meta": 1642413864388,
+    "relativePath": "Script\\Ui\\ChongWuPanel\\ChongWuPanel.js"
+  },
+  "ae20cc0a-b707-4131-9b58-e887ba6626d9": {
+    "asset": 1642414309773,
+    "meta": 1642414310229,
+    "relativePath": "NiuNiu\\script\\net\\HttpProxy.js"
+  },
+  "61de0eb6-9f87-49ed-933d-fd776e9a8ce7": {
+    "asset": 1635882990000,
+    "meta": 1642414480625,
+    "relativePath": "LanguageData.js"
+  },
+  "744dcb38-0c27-4da6-b361-1b4c70aba14a": {
+    "asset": 1635882990000,
+    "meta": 1642414480636,
+    "relativePath": "LocalizedLabel.js"
+  },
+  "f34acd86-1a25-4e05-b1ba-5e57ef8183f8": {
+    "asset": 1635882990000,
+    "meta": 1642414480697,
+    "relativePath": "LocalizedSprite.js"
+  },
+  "e26fdf72-cbae-40e2-adff-264a559c5620": {
+    "asset": 1635882990000,
+    "meta": 1642414480702,
+    "relativePath": "polyglot.min.js"
+  },
+  "9701943c-d23a-44d9-87f3-e336ee09906a": {
+    "asset": 1635882990000,
+    "meta": 1642414480712,
+    "relativePath": "SpriteFrameSet.js"
+  },
+  "7a56eb68-6ce4-485e-9c2d-e05c2a307cda": {
+    "asset": 1642414486406,
+    "meta": 1642414522640,
+    "relativePath": "version.manifest"
+  },
+  "584b5dc6-f052-437c-9de3-58808f600b11": {
+    "asset": 1642414486406,
+    "meta": 1642414522641,
+    "relativePath": "project.manifest"
   }
 }

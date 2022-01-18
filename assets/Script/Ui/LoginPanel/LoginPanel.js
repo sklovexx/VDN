@@ -39,7 +39,7 @@ cc.Class({
         this.editBox_password.string = "";
         this.editBox_inviteCode.string = "";
         let token = cc.sys.localStorage.getItem("com.game.vdn.token");
-        // console.log(token)
+        console.log(token)
         if(token&&token!=""){
             GameData.token = token;
             Global.ResourceMgr.playBgAudio();
@@ -72,21 +72,22 @@ cc.Class({
         this.Panle2.active = false;
         this.PanleForgetPassword.active = false;
         // this.editBox_inviteCode.node.active = false;
-        let zhujici;
-        // let zhujici = "bitter,undo,later,custom,unfold,owner,bargain,electric,rigid,ginger,range,cupboard"
-        for(let i = 0;i<this.editBox_zhujici.length;i++){
-            this.editBox_zhujici[i].enabled = true;
-            this.editBox_zhujici[i].string = "";
-        }
-        if(zhujici){
-            let zhujiciArr = zhujici.split(",");
-            for(let i = 0;i<this.editBox_zhujici.length;i++){
-                this.editBox_zhujici[i].string = zhujiciArr[i];
-            }
-        }
+        // let zhujici;
+        // // let zhujici = "bitter,undo,later,custom,unfold,owner,bargain,electric,rigid,ginger,range,cupboard"
+        // for(let i = 0;i<this.editBox_zhujici.length;i++){
+        //     this.editBox_zhujici[i].enabled = true;
+        //     this.editBox_zhujici[i].string = "";
+        // }
+        // if(zhujici){
+        //     let zhujiciArr = zhujici.split(",");
+        //     for(let i = 0;i<this.editBox_zhujici.length;i++){
+        //         this.editBox_zhujici[i].string = zhujiciArr[i];
+        //     }
+        // }
     },
     //登录
     login(){
+        // return;
         if(this.editBox_password.string != "" && this.editBox_inviteCode.string != "")
         {
             var myreg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;

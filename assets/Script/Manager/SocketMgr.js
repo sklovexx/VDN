@@ -21,6 +21,7 @@ cc.Class({
         {
             // Web Socket 已连接上，使用 send() 方法发送数据
             // this.ws.send(data);
+            console.log("连接...");
         };
         
         this.ws.onmessage = function (evt)
@@ -92,7 +93,14 @@ cc.Class({
     send_data(data) {
         if (this.ws != undefined && this.ws.readyState == WebSocket.OPEN) {
             this.ws.send(JSON.stringify(data));
-        } 
+             console.log("连接ing...");
+        }
+        // else if(this.ws != undefined && this.ws.readyState == WebSocket.CLOSED)
+        // {
+        //     // this.openSocket();
+        //     // console.log("再次连接...");
+        //     // this.ws.send(JSON.stringify(data));
+        // }
     },
 
     GetQueryVariable:function(variable)

@@ -7,11 +7,11 @@ android {
     buildToolsVersion PROP_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "com.game.vdns"
+        applicationId "com.game.ParallelMetaverse"
         minSdkVersion PROP_MIN_SDK_VERSION
         targetSdkVersion PROP_TARGET_SDK_VERSION
-        versionCode 2
-        versionName "2.3.4"
+        versionCode 1
+        versionName "1.0.1"
 
         externalNativeBuild {
             ndkBuild {

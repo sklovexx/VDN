@@ -1,5 +1,5 @@
 {
-  "title": "cool",
+  "title": "parallel",
   "packageName": "",
   "startScene": "c4977c90-0709-46ee-b114-3cb35e5a3651",
   "excludeScenes": [
@@ -20,7 +20,8 @@
     "3f5720ea-4870-4e92-b8e3-85612a27df23",
     "904a9d27-d234-4e61-94ef-24895c40ad4c",
     "0ae2f16c-771c-4ba3-9d49-a039cd244994",
-    "9beca897-cbb6-4338-9336-53c514332a0e"
+    "9beca897-cbb6-4338-9336-53c514332a0e",
+    "818e95e2-0e80-4248-a2fd-6a0ef0982d75"
   ],
   "includeSDKBox": false,
   "orientation": {
@@ -40,7 +41,7 @@
   "zipCompressJs": true,
   "fb-instant-games": {},
   "android": {
-    "packageName": "com.game.vdn"
+    "packageName": "com.game.ParallelMetaverse"
   },
   "ios": {
     "packageName": ""

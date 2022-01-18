@@ -1,0 +1,1558 @@
+window._CCSettings = {
+    designWidth: 1624,
+    designHeight: 750,
+    groupList: [
+        "default"
+    ],
+    collisionMatrix: [
+        [
+            true
+        ]
+    ],
+    platform: "web-desktop",
+    scripts: [
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/CardCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/DragSelect.js"
+        },
+        {
+            deps: {
+                "./views/ToastCtrl": 64,
+                "./common/DataMgr": 17
+            },
+            file: "preview-scripts/assets/NiuNiu/script/GameMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/LoadingCtrl.js"
+        },
+        {
+            deps: {
+                "./views/ModeSelViewCtrl": 62
+            },
+            file: "preview-scripts/assets/NiuNiu/script/LobbyCardCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/LobbyCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/MenuCtrl.js"
+        },
+        {
+            deps: {
+                "./common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/PlayerCtrl.js"
+        },
+        {
+            deps: {
+                "./common/UtilsOther": 40,
+                "./views/ToastCtrl": 64,
+                "./views/DialogCtrl": 61,
+                "./common/DataMgr": 17
+            },
+            file: "preview-scripts/assets/NiuNiu/script/RoomCtrl.js"
+        },
+        {
+            deps: {
+                "./common/UtilsOther": 40,
+                "./views/ToastCtrl": 64,
+                "./views/DialogCtrl": 61,
+                "./common/DataMgr": 17,
+                "./RoomCtrl": 8
+            },
+            file: "preview-scripts/assets/NiuNiu/script/RoomNetCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/AssetMgr.js"
+        },
+        {
+            deps: {
+                "./DataMgr": 17,
+                "./UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/AudioMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/AutoScaleFixedWidth.js"
+        },
+        {
+            deps: {
+                "./GCONFIG": 21
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/BtnCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/ButtonSafe.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/CSVParser.js"
+        },
+        {
+            deps: {
+                "./DataMgr": 17,
+                "./ViewMgr": 42
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/CoinsMgr.js"
+        },
+        {
+            deps: {
+                "./DataObject": 18,
+                "./GCONFIG": 21
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/DataMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/DataObject.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/Facebook.js"
+        },
+        {
+            deps: {
+                "./Facebook": 19
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/FacebookMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/GCONFIG.js"
+        },
+        {
+            deps: {
+                "./UiUpdater": 38,
+                "./GCONFIG": 21,
+                "./AudioMgr": 11,
+                "./IAPMgr": 25,
+                "./DataMgr": 17,
+                "./ViewMgr": 42,
+                "./UtilsCross": 39,
+                "./../net/socket/NetProxy": 59
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/GlobalNiuNiu.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/GraySprite.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/IAP.js"
+        },
+        {
+            deps: {
+                "./IAP": 24,
+                "./UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/IAPMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/IapTools.js"
+        },
+        {
+            deps: {
+                "./../encrypt/Md5": 52
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/ImageLoader.js"
+        },
+        {
+            deps: {
+                UtilsOther: 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/LabelInteger.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/LabelOwnNumCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/ListView.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/ProgressBarExt.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/ScrollViewFixed.js"
+        },
+        {
+            deps: {
+                UtilsCross: 39
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/ServerTimeMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/SliderExt.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/SpriteRemote.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/SwitchControl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/Toast.js"
+        },
+        {
+            deps: {
+                "./DataMgr": 17
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/UiUpdater.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/UtilsCross.js"
+        },
+        {
+            deps: {
+                "./../encrypt/Md5": 52,
+                "./CSVParser": 15,
+                fs: 182
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/UtilsOther.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/ViewBase.js"
+        },
+        {
+            deps: {
+                "./GCONFIG": 21
+            },
+            file: "preview-scripts/assets/NiuNiu/script/common/ViewMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/common/one-side-platform.js"
+        },
+        {
+            deps: {
+                "./../common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/config/AchievementData.js"
+        },
+        {
+            deps: {
+                "./../common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/config/DailyRewardData.js"
+        },
+        {
+            deps: {
+                "./../common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/config/EnemyBaseData.js"
+        },
+        {
+            deps: {
+                "./../common/UtilsOther": 40,
+                "./EnemyBaseData": 46
+            },
+            file: "preview-scripts/assets/NiuNiu/script/config/EnemyGroupData.js"
+        },
+        {
+            deps: {
+                "./EnemyBaseData": 46,
+                "./GunData": 49,
+                "./EnemyGroupData": 47,
+                "./AchievementData": 44,
+                "./DailyRewardData": 45,
+                "./../Common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/config/GameCfg.js"
+        },
+        {
+            deps: {
+                "./../common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/config/GunData.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/encrypt/Algo.js"
+        },
+        {
+            deps: {
+                "./Algo": 50,
+                buffer: 183
+            },
+            file: "preview-scripts/assets/NiuNiu/script/encrypt/Encrypt.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/encrypt/Md5.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/joinRoomNiuNiu.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/net/GameHttp.js"
+        },
+        {
+            deps: {
+                "./GameHttp": 54,
+                "./../common/UtilsCross": 39,
+                "./../encrypt/Md5": 52,
+                "./../common/FacebookMgr": 20,
+                "./../common/DataMgr": 17
+            },
+            file: "preview-scripts/assets/NiuNiu/script/net/HttpProxy.js"
+        },
+        {
+            deps: {
+                "./GameWebSocket": 58,
+                "./GameProtocols": 57
+            },
+            file: "preview-scripts/assets/NiuNiu/script/net/socket/GameNetwork.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/net/socket/GameProtocols.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/NiuNiu/script/net/socket/GameWebSocket.js"
+        },
+        {
+            deps: {
+                "./GameNetwork": 56,
+                "./GameProtocols": 57,
+                "./../../Common/DataMgr": 17
+            },
+            file: "preview-scripts/assets/NiuNiu/script/net/socket/NetProxy.js"
+        },
+        {
+            deps: {
+                "./../common/ViewBase": 41,
+                "./../common/DataMgr": 17,
+                "./../common/UtilsOther": 40
+            },
+            file: "preview-scripts/assets/NiuNiu/script/views/AlertBindFBCtrl.js"
+        },
+        {
+            deps: {
+                "./../common/ViewBase": 41,
+                "./../common/ViewMgr": 42
+            },
+            file: "preview-scripts/assets/NiuNiu/script/views/DialogCtrl.js"
+        },
+        {
+            deps: {
+                "./../common/ViewBase": 41
+            },
+            file: "preview-scripts/assets/NiuNiu/script/views/ModeSelViewCtrl.js"
+        },
+        {
+            deps: {
+                "./../common/DataMgr": 17,
+                "./../common/ViewBase": 41,
+                "./../views/DialogCtrl": 61,
+                "./../common/FacebookMgr": 20,
+                "./../net/HttpProxy": 55,
+                "./../common/SwitchControl": 36,
+                "./../common/UtilsCross": 39
+            },
+            file: "preview-scripts/assets/NiuNiu/script/views/SettingViewCtrl.js"
+        },
+        {
+            deps: {
+                "./../common/ViewBase": 41,
+                "./../common/ViewMgr": 42
+            },
+            file: "preview-scripts/assets/NiuNiu/script/views/ToastCtrl.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/ComoboBox/ComboBox.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/ComoboBox/Item.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Config.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Dssc/Dssc.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Global/GameData.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Global/Global.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Global/GlobalEvent.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/HotUpdate.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Main.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Manager/PageMgr.js"
+        },
+        {
+            deps: {
+                "../Util/appScript": 148
+            },
+            file: "preview-scripts/assets/Script/Manager/ProtocolMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Manager/ResourceMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Manager/SocketMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Tip/Tip.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/AnnouncementPanel/AnnouncementPanel.js"
+        },
+        {
+            deps: {
+                "../../Util/appScript": 148
+            },
+            file: "preview-scripts/assets/Script/Ui/ArderPanel/ArderPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ArderPanel/Arder_Item.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/BaoMingPanel/BaoMingPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/BaoMingPanel/BaoMing_Item.js"
+        },
+        {
+            deps: {
+                "../../../NiuNiu/script/common/UtilsCross": 39,
+                "../../Util/appScript": 148
+            },
+            file: "preview-scripts/assets/Script/Ui/ChongWuPanel/ChongWuPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ChongWuUserDataPanel/ChongWuUserDataPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/CustomerServicePanel/CustomerServicePanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/EmailPanel/EmailDetailPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/EmailPanel/EmailPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/EmailPanel/emailItem.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Friend/Friend.js"
+        },
+        {
+            deps: {
+                "../../Util/appScript": 148
+            },
+            file: "preview-scripts/assets/Script/Ui/GamePanel/GamePanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/GamePanel/Game_Item2.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/GamePanel/Game_Item3.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/GamePanel/game_item.js"
+        },
+        {
+            deps: {
+                "../../Util/appScript": 148
+            },
+            file: "preview-scripts/assets/Script/Ui/GivingCrystalPanel/GivingCrystalPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/GongGaoPanel/GongGaoPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/HongBao/FaHongBao.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/HongBao/HongBao.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/HongBao/HongBaoList.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/HongBao/HongBaoList1.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/IncomeDetails/IncomeDetailsPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/IncomeDetails/IncomeDetails_Item.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/JiaoYiPanel/JiaoYiPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/JiaoYiPanel/jiaoyi_item.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/KnapsackPanel/KnapsackPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/KuangJiShiChang/KuangJiShiChang.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/DoorBg.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/DoorBottom.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/DoorTop.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/Email.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/Fan.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/Gold.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/KuangChi.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/MineDoor.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Kuangchi/TreasureBox.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/LoginPanel/LoginPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/LuckyDrawPanel/LuckyDrawItem.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/LuckyDrawPanel/LuckyDrawPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/LuckyDrawPanel/TurntableMgr.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/MainPage/MainPage.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Manor/Manor.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/NFTPanel/NFTPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/NongChang/NongChang.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/NongChang/NongChangPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/NongChang/SalePanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/NongChang/ZhongZiPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/Racing/Racing.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/RankPanel/RankPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/RankPanel/rank_item.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/RecreationalCenter/RecreationalCenter.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ShejiaoPanel/ShejiaoPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ShengJia/ShengJia.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ShopPanel/NFT_item.js"
+        },
+        {
+            deps: {
+                "../../Util/appScript": 148
+            },
+            file: "preview-scripts/assets/Script/Ui/ShopPanel/ShopPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ShopPanel/ShopUserDataPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ShopPanel/XHP_item.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/SlotPanel/SlotPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/TipsPage/TipsPage.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/TradingFloor/MaiRu.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/TradingFloor/MairChu.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/TradingFloor/TradingFloor.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ZhuJinPanel/ZhuJinPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/ZiChuangPanel/ZiChuangPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/宝宝游戏单页面/BuyPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/宝宝游戏单页面/ChongZhiPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Ui/宝宝游戏单页面/TiXianPanel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Util/DataFunc.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/Util/appScript.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/components/ClickEvent/ClickEvent.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/components/GainGold.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/components/ShaderHelper.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/components/ShaderMouse.js"
+        },
+        {
+            deps: {
+                "./ShaderHelper": 151
+            },
+            file: "preview-scripts/assets/Script/components/ShaderNameLabel.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/Script/components/ShaderTime.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/ddz/scripts/carder.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/ddz/scripts/data/player.js"
+        },
+        {
+            deps: {
+                "../util/event_lister.js": 172
+            },
+            file: "preview-scripts/assets/ddz/scripts/data/socket_ctr.js"
+        },
+        {
+            deps: {
+                "../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/failPanel.js"
+        },
+        {
+            deps: {
+                "../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/gameScene.js"
+        },
+        {
+            deps: {
+                "../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/gamebeforeUI.js"
+        },
+        {
+            deps: {
+                "../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/gameingUI.js"
+        },
+        {
+            deps: {
+                "../../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/prefabs/card.js"
+        },
+        {
+            deps: {
+                "../../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/prefabs/player_node.js"
+        },
+        {
+            deps: {
+                "../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/gameScene/winPanel.js"
+        },
+        {
+            deps: {
+                "./../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/hallscene/hallScene.js"
+        },
+        {
+            deps: {
+                "../../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/hallscene/prefabs_script/creatRoom.js"
+        },
+        {
+            deps: {
+                "../../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/hallscene/prefabs_script/joinRoom.js"
+        },
+        {
+            deps: {
+                "../../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/hallscene/prefabs_script/password.js"
+        },
+        {
+            deps: {
+                "../../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/hallscene/prefabs_script/quick_join.js"
+        },
+        {
+            deps: {
+                "../mygolbal.js": 171
+            },
+            file: "preview-scripts/assets/ddz/scripts/loginscene/loginScene.js"
+        },
+        {
+            deps: {
+                "./data/socket_ctr.js": 157,
+                "./data/player.js": 156,
+                "./util/event_lister.js": 172
+            },
+            file: "preview-scripts/assets/ddz/scripts/mygolbal.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/ddz/scripts/util/event_lister.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/ddz/scripts/util/waitnode.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/resources/i18n/en.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/assets/resources/i18n/zh.js"
+        },
+        {
+            deps: {
+                "polyglot.min": 180
+            },
+            file: "preview-scripts/i18n-plugin/LanguageData.js"
+        },
+        {
+            deps: {
+                LanguageData: 176
+            },
+            file: "preview-scripts/i18n-plugin/LocalizedLabel.js"
+        },
+        {
+            deps: {
+                SpriteFrameSet: 179
+            },
+            file: "preview-scripts/i18n-plugin/LocalizedSprite.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/i18n-plugin/SpriteFrameSet.js"
+        },
+        {
+            deps: {},
+            file: "preview-scripts/i18n-plugin/polyglot.min.js"
+        },
+        {
+            isNodeModule: true,
+            deps: {},
+            file: "preview-scripts/__node_modules/base64-js/index.js"
+        },
+        {
+            isNodeModule: true,
+            deps: {},
+            file: "preview-scripts/__node_modules/browserify/lib/_empty.js"
+        },
+        {
+            isNodeModule: true,
+            deps: {
+                "base64-js": 181,
+                ieee754: 185,
+                isarray: 184
+            },
+            file: "preview-scripts/__node_modules/buffer/index.js"
+        },
+        {
+            isNodeModule: true,
+            deps: {},
+            file: "preview-scripts/__node_modules/buffer/node_modules/isarray/index.js"
+        },
+        {
+            isNodeModule: true,
+            deps: {},
+            file: "preview-scripts/__node_modules/ieee754/index.js"
+        }
+    ],
+    rawAssets: {
+        assets: {
+            "34e1c257-3856-4ec7-9d19-055a38a07751": [
+                "NongChang/人参果1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "0343baba-6613-449c-a051-241c4592c90f": [
+                "NongChang/人参果1.png",
+                "cc.Texture2D"
+            ],
+            "cc186496-e512-46a2-9c68-7a65e92fd372": [
+                "NongChang/人参果2",
+                "cc.SpriteFrame",
+                1
+            ],
+            "6b98db3e-2b34-4f6d-ad5a-539cf65c34d7": [
+                "NongChang/人参果2.png",
+                "cc.Texture2D"
+            ],
+            "e08123cd-4cf2-4af4-bfe9-c94fd7c9a6fc": [
+                "NongChang/人参果3",
+                "cc.SpriteFrame",
+                1
+            ],
+            "42710e4e-46c5-495e-beb6-968317aa5796": [
+                "NongChang/人参果3.png",
+                "cc.Texture2D"
+            ],
+            "3347d3a2-c02d-45cf-a9fb-7483f612bde9": [
+                "NongChang/人参果4",
+                "cc.SpriteFrame",
+                1
+            ],
+            "3e98e13a-bff0-4eb7-b53f-7a037da4fce3": [
+                "NongChang/人参果4.png",
+                "cc.Texture2D"
+            ],
+            "fcb3d61f-12ce-4434-aa74-40277539c8a4": [
+                "NongChang/葫芦1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "ee53adcc-261f-42cf-aacb-cb1b8bf04a24": [
+                "NongChang/葫芦1.png",
+                "cc.Texture2D"
+            ],
+            "0c587a78-e611-4de0-8b76-2d94fe8595a2": [
+                "NongChang/葫芦2",
+                "cc.SpriteFrame",
+                1
+            ],
+            "01878b3e-be94-4021-91ba-c89218e4be3e": [
+                "NongChang/葫芦2.png",
+                "cc.Texture2D"
+            ],
+            "000f32ac-751f-49b6-b0d7-c09a6be1a3d0": [
+                "NongChang/葫芦3",
+                "cc.SpriteFrame",
+                1
+            ],
+            "8377d03e-2cdb-4b9b-b78c-1fd14cacf92b": [
+                "NongChang/葫芦3.png",
+                "cc.Texture2D"
+            ],
+            "3620b960-40be-4465-8ad0-568fb2dc03b3": [
+                "NongChang/葫芦4",
+                "cc.SpriteFrame",
+                1
+            ],
+            "45c481ae-835c-41e3-b826-280ba9842a79": [
+                "NongChang/葫芦4.png",
+                "cc.Texture2D"
+            ],
+            "faf8c56b-1e69-441c-9905-73e82e81e551": [
+                "NongChang/蓝莓1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "da0efc2b-ecb0-4482-80e1-7838cd8a9ad6": [
+                "NongChang/蓝莓1.png",
+                "cc.Texture2D"
+            ],
+            "3ce275f5-cb39-45d4-906d-5336ec87e21f": [
+                "NongChang/蓝莓2",
+                "cc.SpriteFrame",
+                1
+            ],
+            "60665dfa-3e16-4024-b4dc-a2bb4ec64d11": [
+                "NongChang/蓝莓2.png",
+                "cc.Texture2D"
+            ],
+            "3dd8ce90-f340-4367-9c91-ad5ad85f5168": [
+                "NongChang/蓝莓3",
+                "cc.SpriteFrame",
+                1
+            ],
+            "ac404177-99c7-4d02-a829-6a9e11f5c85e": [
+                "NongChang/蓝莓3.png",
+                "cc.Texture2D"
+            ],
+            "547a1f4f-de9f-472b-818f-f5228ee87d64": [
+                "NongChang/蓝莓4",
+                "cc.SpriteFrame",
+                1
+            ],
+            "b102253c-e868-4b0c-a04e-5d86adb40f07": [
+                "NongChang/蓝莓4.png",
+                "cc.Texture2D"
+            ],
+            "2e0650a5-b43c-4d99-a670-21c6f1d2d731": [
+                "data/gameInfo.csv",
+                "cc.TextAsset"
+            ],
+            "a28516e5-d91a-4458-a44c-fbaa479b8c22": [
+                "data/zhongzi.csv",
+                "cc.TextAsset"
+            ],
+            "b7d4e5ff-c5ca-4b32-8f4c-a08e9378fb59": [
+                "data/zhongziperiod.csv",
+                "cc.TextAsset"
+            ],
+            "31828510-4860-40dd-b048-a29db0eadf07": [
+                "effect/CirclePortrait_Base.effect",
+                "cc.EffectAsset"
+            ],
+            "daf8422b-b252-4d67-8409-0f02cd05a8df": [
+                "effect/Dissolve.effect",
+                "cc.EffectAsset"
+            ],
+            "4eecf4b5-f0b7-4895-8bfc-1737bf6ed3a2": [
+                "effect/Fluxay2.effect",
+                "cc.EffectAsset"
+            ],
+            "b174ba0d-087b-4009-92ed-dcae3aa933d6": [
+                "effect/FluxaySuper.effect",
+                "cc.EffectAsset"
+            ],
+            "49645906-cbe8-45aa-a772-21f4cf432c81": [
+                "effect/Glowing.effect",
+                "cc.EffectAsset"
+            ],
+            "bec92e45-b145-4be6-ba59-993a3ecf01fd": [
+                "effect/Highlight.effect",
+                "cc.EffectAsset"
+            ],
+            "f3bb47dc-9cdf-44f5-aea3-319717c157f4": [
+                "effect/MoRen.effect",
+                "cc.EffectAsset"
+            ],
+            "298c2915-248c-4660-a967-5c82b14d70d0": [
+                "effect/Mosaic.effect",
+                "cc.EffectAsset"
+            ],
+            "cf570555-0bb3-46c1-925d-a927d7b344b5": [
+                "effect/Outline.effect",
+                "cc.EffectAsset"
+            ],
+            "2c848409-b277-415e-b759-2b6866d3456e": [
+                "effect/RadialBlur.effect",
+                "cc.EffectAsset"
+            ],
+            "76381d85-b057-4f9b-ad0d-f2a84c107c96": [
+                "effect/Rain.effect",
+                "cc.EffectAsset"
+            ],
+            "f1663821-9edc-4c07-a576-d561b15d9292": [
+                "effect/SearchLight.effect",
+                "cc.EffectAsset"
+            ],
+            "dcdc6f65-26b7-485a-906c-fbd75273772b": [
+                "effect/Stone.effect",
+                "cc.EffectAsset"
+            ],
+            "d5330e0c-5d26-4379-8717-6e2192770bf8": [
+                "effect/Transfer.effect",
+                "cc.EffectAsset"
+            ],
+            "f38885cf-5848-4ee0-ad94-fe35e52944cc": [
+                "effect/Water.effect",
+                "cc.EffectAsset"
+            ],
+            "e0839464-b2d6-459a-a545-3df5cb3d050f": [
+                "font/matchTxt.fnt",
+                "cc.BitmapFont"
+            ],
+            "e489c1cf-bf50-45f5-8672-fed8ab2f299e": [
+                "font/matchTxt_0",
+                "cc.SpriteFrame",
+                1
+            ],
+            "ed52878d-ab93-4673-bed9-7c1e95b11a6e": [
+                "font/matchTxt_0.png",
+                "cc.Texture2D"
+            ],
+            "e674f337-9d65-4593-8eef-39ae3021b1b5": [
+                "i18n/en.js",
+                "cc.JavaScript"
+            ],
+            "d16a96db-9398-447c-b35b-bce6304746a7": [
+                "i18n/zh.js",
+                "cc.JavaScript"
+            ],
+            "9fd98342-45d2-47f2-813b-bf3977d76a90": [
+                "imgs/Life",
+                "cc.SpriteFrame",
+                1
+            ],
+            "53cc53ca-a56a-489b-9575-2d4895da37e5": [
+                "imgs/Life.png",
+                "cc.Texture2D"
+            ],
+            "b64afacb-f3a2-4732-9c49-11f77465c22d": [
+                "imgs/R1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "9645b976-8a73-44c1-8b37-d4c790f944a9": [
+                "imgs/R1.png",
+                "cc.Texture2D"
+            ],
+            "d2d2dfc6-2cf4-4f16-9b85-78f03f878b3a": [
+                "imgs/R2",
+                "cc.SpriteFrame",
+                1
+            ],
+            "57945b25-4d77-46fd-a2b0-2e177b4fa129": [
+                "imgs/R2.png",
+                "cc.Texture2D"
+            ],
+            "aa5edc33-961e-42ce-9740-6f5f563ed485": [
+                "imgs/R3",
+                "cc.SpriteFrame",
+                1
+            ],
+            "8fe268fd-c838-453c-a103-9c75575bf613": [
+                "imgs/R3.png",
+                "cc.Texture2D"
+            ],
+            "7a4b914f-9241-4a28-80f5-19d8648edf49": [
+                "imgs/bg1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "fb51622a-ba5d-45bc-9b54-e49d8d9fe219": [
+                "imgs/bg1.png",
+                "cc.Texture2D"
+            ],
+            "6c814300-0156-4f91-b960-060be823e618": [
+                "imgs/bg2",
+                "cc.SpriteFrame",
+                1
+            ],
+            "0efb0f7f-f5f0-4648-8236-92baa2253836": [
+                "imgs/bg2.png",
+                "cc.Texture2D"
+            ],
+            "19ebe3b6-1dd5-4587-b6a9-8e8ab85bdfce": [
+                "imgs/bg3",
+                "cc.SpriteFrame",
+                1
+            ],
+            "cc22c001-be67-4a79-9f16-bd60ab6e0325": [
+                "imgs/bg3.png",
+                "cc.Texture2D"
+            ],
+            "bdb6dbb8-3c9d-4825-95c5-137a03514536": [
+                "imgs/bg4",
+                "cc.SpriteFrame",
+                1
+            ],
+            "02eb8fe3-d650-4939-aff8-c986119715c2": [
+                "imgs/bg4.png",
+                "cc.Texture2D"
+            ],
+            "072c7559-b6ec-4e1b-9564-9823f06a2d60": [
+                "imgs/bg5",
+                "cc.SpriteFrame",
+                1
+            ],
+            "1290d3bc-28a0-4f4b-98c8-e94b7eaddf1b": [
+                "imgs/bg5.png",
+                "cc.Texture2D"
+            ],
+            "cfba6b6a-16be-4f7d-a11e-1272f54a2f1a": [
+                "imgs/bg6",
+                "cc.SpriteFrame",
+                1
+            ],
+            "3321fbc4-54c3-4196-9312-bc10f0e5bfaa": [
+                "imgs/bg6.png",
+                "cc.Texture2D"
+            ],
+            "0a892a86-2a6f-48a2-b843-e1d1870570d5": [
+                "imgs/bg7",
+                "cc.SpriteFrame",
+                1
+            ],
+            "bce9eb2b-c74f-4dee-a5b8-40b0208ce3eb": [
+                "imgs/bg7.png",
+                "cc.Texture2D"
+            ],
+            "203864f9-3d5c-4f61-a915-8d77b08e3ccc": [
+                "imgs/bg8",
+                "cc.SpriteFrame",
+                1
+            ],
+            "8bb80539-4822-44c6-917a-ba2f02d70bb1": [
+                "imgs/bg8.png",
+                "cc.Texture2D"
+            ],
+            "15aef70d-2e51-426d-9fd9-065f599395be": [
+                "imgs/blue",
+                "cc.SpriteFrame",
+                1
+            ],
+            "21f1fb65-15df-4ec8-bb94-31dc32981ff9": [
+                "imgs/blue.png",
+                "cc.Texture2D"
+            ],
+            "4d1fac50-b1e7-4e8a-a161-1d61c4298a50": [
+                "imgs/menpiao",
+                "cc.SpriteFrame",
+                1
+            ],
+            "69841c2e-bbdc-4a46-9c36-da5935a9e769": [
+                "imgs/menpiao.png",
+                "cc.Texture2D"
+            ],
+            "e0f798a8-7e11-458e-91cc-f374abac6c7a": [
+                "imgs/orange",
+                "cc.SpriteFrame",
+                1
+            ],
+            "2595168c-7207-4d9b-9bf1-c9f7fb54e509": [
+                "imgs/orange.png",
+                "cc.Texture2D"
+            ],
+            "884815f6-2f86-4a22-923b-9248529c3928": [
+                "imgs/red",
+                "cc.SpriteFrame",
+                1
+            ],
+            "6b8b5718-bf3d-48a0-bbe2-20edc6621e0b": [
+                "imgs/red.png",
+                "cc.Texture2D"
+            ],
+            "45fe71c2-f9de-4a8b-a7da-7e963da734e1": [
+                "imgs/信封已读",
+                "cc.SpriteFrame",
+                1
+            ],
+            "944a0457-aaf3-4ba5-81ac-b82364cb3d3a": [
+                "imgs/信封已读.png",
+                "cc.Texture2D"
+            ],
+            "01ea923f-37f1-401e-add7-ecd539799029": [
+                "imgs/信封未读",
+                "cc.SpriteFrame",
+                1
+            ],
+            "31b27190-3dbd-4236-83fd-bc600a8aba42": [
+                "imgs/信封未读.png",
+                "cc.Texture2D"
+            ],
+            "c6f8e940-5e19-4d83-a149-70d4bbcb47bd": [
+                "imgs/失败@2x",
+                "cc.SpriteFrame",
+                1
+            ],
+            "e5dc5de3-0c46-414c-a8b7-874594907a94": [
+                "imgs/失败@2x.png",
+                "cc.Texture2D"
+            ],
+            "882dd429-452d-47d9-8828-be797c9742c4": [
+                "imgs/宝宝1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "41edda93-2532-4a1b-8201-e1257cb386a1": [
+                "imgs/宝宝1.png",
+                "cc.Texture2D"
+            ],
+            "c3c69d42-7c97-4221-860a-0f67c1ab692f": [
+                "imgs/按钮bg",
+                "cc.SpriteFrame",
+                1
+            ],
+            "ab0ba6df-5152-4799-892e-9ccaee312a39": [
+                "imgs/按钮bg.png",
+                "cc.Texture2D"
+            ],
+            "45975722-f1d5-435e-af59-c3de1767b81a": [
+                "imgs/按钮bg2",
+                "cc.SpriteFrame",
+                1
+            ],
+            "5eb117e9-ae51-401a-97b7-721b50929d78": [
+                "imgs/按钮bg2.png",
+                "cc.Texture2D"
+            ],
+            "08a52928-d772-4421-9b8f-414bf7d76e54": [
+                "imgs/王者荣耀",
+                "cc.SpriteFrame",
+                1
+            ],
+            "c85fa5c3-373e-49fb-9b68-7cf5a307b8eb": [
+                "imgs/王者荣耀.png",
+                "cc.Texture2D"
+            ],
+            "c0fede91-cd8d-4467-9eda-1c5875cb7028": [
+                "imgs/组 1",
+                "cc.SpriteFrame",
+                1
+            ],
+            "64b7dafa-b50a-47e4-9cf2-355e545dc871": [
+                "imgs/组 1.png",
+                "cc.Texture2D"
+            ],
+            "2e3ebc06-ab27-46ff-b3d3-6af3cf3855ba": [
+                "imgs/组 11",
+                "cc.SpriteFrame",
+                1
+            ],
+            "00782f0f-dff2-4e4b-b8d9-e49dff60b317": [
+                "imgs/组 11.png",
+                "cc.Texture2D"
+            ],
+            "0d6155ce-4885-4ea3-8105-d0b074f6725d": [
+                "imgs/胜利@2x",
+                "cc.SpriteFrame",
+                1
+            ],
+            "4494ecb8-ca37-4f74-a8e1-d7b577e0244d": [
+                "imgs/胜利@2x.png",
+                "cc.Texture2D"
+            ],
+            "79652246-bcfd-4cc7-a2c1-ed26e33ce44d": [
+                "imgs/能量",
+                "cc.SpriteFrame",
+                1
+            ],
+            "f709a81c-76c5-45fb-8cc8-f033e9b873e1": [
+                "imgs/能量.png",
+                "cc.Texture2D"
+            ],
+            "97eacff6-124f-4628-9412-fd69ac95c0c8": [
+                "imgs/能量瓶",
+                "cc.SpriteFrame",
+                1
+            ],
+            "3fc40ca7-4469-4a91-9a55-fc2687a06c7e": [
+                "imgs/能量瓶.png",
+                "cc.Texture2D"
+            ],
+            "b233f2fb-7e3a-48e8-a062-faf02fb6c85b": [
+                "sound/bg.mp3",
+                "cc.AudioClip"
+            ],
+            "fd222f9f-66af-4de2-a9a9-725bd9cfd933": [
+                "sound/duizi.mp3",
+                "cc.AudioClip"
+            ],
+            "2b7b0bce-2a2c-49ac-937b-c7429a18704a": [
+                "sound/fapai1.mp3",
+                "cc.AudioClip"
+            ],
+            "4d337119-09a4-4d0d-933a-5fdcad66ce92": [
+                "sound/man_san_dai_yi_dui.ogg",
+                "cc.AudioClip"
+            ],
+            "0ba9ca5d-4e94-4247-9f32-0d1d9ca2bcd7": [
+                "sound/woman_bu_jiao.ogg",
+                "cc.AudioClip"
+            ],
+            "35b436b2-298f-4615-9e30-7532f003e0d9": [
+                "sound/woman_jiao_di_zhu.ogg",
+                "cc.AudioClip"
+            ]
+        },
+        internal: {
+            "144c3297-af63-49e8-b8ef-1cfa29b3be28": [
+                "effects/builtin-2d-gray-sprite.effect",
+                "cc.EffectAsset"
+            ],
+            "0e93aeaa-0b53-4e40-b8e0-6268b4e07bd7": [
+                "effects/builtin-2d-spine.effect",
+                "cc.EffectAsset"
+            ],
+            "2874f8dd-416c-4440-81b7-555975426e93": [
+                "effects/builtin-2d-sprite.effect",
+                "cc.EffectAsset"
+            ],
+            "c0040c95-c57f-49cd-9cbc-12316b73d0d4": [
+                "effects/builtin-clear-stencil.effect",
+                "cc.EffectAsset"
+            ],
+            "79eafaef-b7ef-45d9-9c3f-591dc836fc7a": [
+                "effects/builtin-unlit-transparent.effect",
+                "cc.EffectAsset"
+            ],
+            "6d91e591-4ce0-465c-809f-610ec95019c6": [
+                "effects/builtin-unlit.effect",
+                "cc.EffectAsset"
+            ],
+            "6f801092-0c37-4f30-89ef-c8d960825b36": [
+                "materials/builtin-2d-base.mtl",
+                "cc.Material"
+            ],
+            "3a7bb79f-32fd-422e-ada2-96f518fed422": [
+                "materials/builtin-2d-gray-sprite.mtl",
+                "cc.Material"
+            ],
+            "7afd064b-113f-480e-b793-8817d19f63c3": [
+                "materials/builtin-2d-spine.mtl",
+                "cc.Material"
+            ],
+            "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432": [
+                "materials/builtin-2d-sprite.mtl",
+                "cc.Material"
+            ],
+            "cf7e0bb8-a81c-44a9-ad79-d28d43991032": [
+                "materials/builtin-clear-stencil.mtl",
+                "cc.Material"
+            ],
+            "2a296057-247c-4a1c-bbeb-0548b6c98650": [
+                "materials/builtin-unlit.mtl",
+                "cc.Material"
+            ]
+        }
+    },
+    jsList: [
+        "assets/NiuNiu/script/PokerUtils.js",
+        "assets/ddz/scripts/defines.js",
+        "assets/ddz/scripts/lib/socket-io.js"
+    ],
+    launchScene: "db://assets/ddz/scenes/gameScene.fire",
+    scenes: [
+        {
+            url: "db://assets/ddz/scenes/gameScene.fire",
+            uuid: "4e766df2-6e55-49e2-b48f-1943368ec005"
+        },
+        {
+            url: "db://assets/ddz/scenes/hallScene.fire",
+            uuid: "1931c8f8-1c0b-4cbf-a901-ead7f03073eb"
+        },
+        {
+            url: "db://assets/ddz/scenes/loginScene.fire",
+            uuid: "347f62d6-8f34-42dc-981d-a0459890e888"
+        },
+        {
+            url: "db://assets/NiuNiu/scene/Loading.fire",
+            uuid: "e0d67222-e84d-4b6f-894e-c7ca3a83f1c8"
+        },
+        {
+            url: "db://assets/NiuNiu/scene/Lobby.fire",
+            uuid: "6ad03d30-4fbe-4cb4-81bd-0ca0e1d57757"
+        },
+        {
+            url: "db://assets/NiuNiu/scene/Menu.fire",
+            uuid: "7b4d482f-c4ff-4899-8d71-5736ee4f38d9"
+        },
+        {
+            url: "db://assets/NiuNiu/scene/Room.fire",
+            uuid: "818e8053-6a06-47c9-a7fb-c960fd3a2c74"
+        },
+        {
+            url: "db://assets/NiuNiu/scene/RoomNet.fire",
+            uuid: "5063e617-71ca-4424-91da-59d0472ca6ef"
+        },
+        {
+            url: "db://assets/NiuNiu/scene/Test.fire",
+            uuid: "ba701a1d-5799-46df-ad49-f8e30ed4b1c9"
+        },
+        {
+            url: "db://assets/Scene/DsccHongBao.fire",
+            uuid: "f12ec91e-2284-41f0-8f16-49b6246d9dfb"
+        },
+        {
+            url: "db://assets/Scene/Dssc.fire",
+            uuid: "56e22268-4cd3-4d72-9c7e-91f4f9d0f6fd"
+        },
+        {
+            url: "db://assets/Scene/ECC.fire",
+            uuid: "2d2f792f-a40c-49bb-a189-ed176a246e49"
+        },
+        {
+            url: "db://assets/Scene/HongBao.fire",
+            uuid: "80190f72-d45e-4172-aa20-ed9e556477fa"
+        },
+        {
+            url: "db://assets/Scene/hotUpdate.fire",
+            uuid: "c4977c90-0709-46ee-b114-3cb35e5a3651"
+        },
+        {
+            url: "db://assets/Scene/New Scene.fire",
+            uuid: "97b7094b-489a-4ac6-be5d-b1f08dce124b"
+        },
+        {
+            url: "db://assets/Scene/NiuNiu.fire",
+            uuid: "350d3e2b-dc79-47b0-bcf4-9fcf28bd04bb"
+        },
+        {
+            url: "db://assets/Scene/NongChang.fire",
+            uuid: "3f5720ea-4870-4e92-b8e3-85612a27df23"
+        },
+        {
+            url: "db://assets/Scene/ShengJia.fire",
+            uuid: "904a9d27-d234-4e61-94ef-24895c40ad4c"
+        },
+        {
+            url: "db://assets/Scene/Slot.fire",
+            uuid: "0ae2f16c-771c-4ba3-9d49-a039cd244994"
+        },
+        {
+            url: "db://assets/Scene/Turntable.fire",
+            uuid: "818e95e2-0e80-4248-a2fd-6a0ef0982d75"
+        },
+        {
+            url: "db://assets/Scene/YuTang.fire",
+            uuid: "9beca897-cbb6-4338-9336-53c514332a0e"
+        }
+    ],
+    packedAssets: {},
+    md5AssetsMap: {},
+    debug: true
+};

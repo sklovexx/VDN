@@ -32,15 +32,15 @@ cc.Class({
         console.log(data);
         this.propId = data.id;
         this.label_name.string = data.grade_field_name;
-        this.label_pic.string = cc.js.formatStr("%s个星钻\n每局胜奖励负扣减%s",parseFloat(data.crystal_quantity).toFixed(1),parseFloat(data.reward).toFixed(1));
-        this.label_menpiao.string = cc.js.formatStr("门票:%s",parseFloat(data.ticket).toFixed(2));
+        this.label_pic.string = cc.js.formatStr("%s个PMV\n每局胜奖励负扣减%s",parseFloat(data.crystal_quantity).toFixed(1),parseFloat(data.reward).toFixed(1));
+        this.label_menpiao.string = cc.js.formatStr("门票:%s",parseFloat(data.ticket).toFixed(4));
         this.data = data;
     },
     buy(){
         if(window.DEFAULT_availableUsdt >= (parseInt(this.data.crystal_quantity))){
-            Global.PageMgr.pages[7].getComponent("GamePanel").goGamePanelUI(this.data); 
+            Global.PageMgr.pages[7].getComponent("GamePanel").goGamePanelUI(this.data,this.propId); 
         }else{
-            Global.PageMgr.showTipPage( cc.js.formatStr("星钻不足%s",parseFloat(this.data.crystal_quantity).toFixed(1)));
+            Global.PageMgr.showTipPage( cc.js.formatStr("PMV不足%s",parseFloat(this.data.crystal_quantity).toFixed(1)));
             // Global.PageMgr.pages[15].getComponent("BuyPanel").propId = this.propId;
             // Global.PageMgr.pages[15].getComponent("BuyPanel").type = 2;
             // Global.PageMgr.onOpenPage(15);

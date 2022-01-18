@@ -12,7 +12,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        label_content:cc.Label
+        label_content:cc.Label,
+        label_title:cc.Label,
+        label_title2:cc.Label,
+        container:cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -22,8 +25,19 @@ cc.Class({
     start () {
 
     },
-    setData(data){
-        this.label_content.string = data.content
+    setData(data,index){
+        if(index == 1)
+        {
+            this.label_title.string ="邮件";
+            this.label_title2.string ="邮件内容";
+        }else
+        {
+            this.label_title.string ="公告";
+            this.label_title2.string ="公告内容";
+        }
+        this.label_content.string = data.content;
+        this.label_content._forceUpdateRenderData(true); // 这里调用一次手动渲染
+        this.container.height = this.label_content.node.getContentSize().height + 5; // 修改尺寸
     }
     // update (dt) {},
 });

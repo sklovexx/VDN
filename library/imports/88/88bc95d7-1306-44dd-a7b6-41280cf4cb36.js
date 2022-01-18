@@ -28,6 +28,7 @@ cc.Class({
         editBox_id: cc.EditBox,
         editBox_name: cc.EditBox,
         btn_skip: cc.Sprite,
+        _availableCoinOne: 0,
         label_description: [cc.Label]
     },
 
@@ -105,27 +106,43 @@ cc.Class({
         var reqData = {};
         app.Post('member/getMemberInfo', reqData, function (res) {
             if (res.code == 200) {
-                if (res.data) _this.label_Usdt.string = res.data.totalUsdt;
+                if (res.data) {
+                    // window.DEFAULT_availableUsdt = res.data.availableCoinOne;
+                    _this.label_Usdt.string = res.data.totalUsdt;
+                    _this._availableCoinOne = res.data.availableCoinOne;
+                }
             }
         });
     },
     breakSetlectLieFallowPanle: function breakSetlectLieFallowPanle(event, customData) {
         this.goSetlectLieFallowPanle();
     },
-    goGamePanelUI: function goGamePanelUI(datas) {
+    goGamePanelUI: function goGamePanelUI(datas, index) {
         var _this2 = this;
 
         this.Panle.active = false;
         this.Panle2.active = true;
         this.Panle3.active = false;
         this.datas = datas;
-
+        this.numberID = index;
         // this.setPageData({target:{name:0}});
         this.container2.removeAllChildren();
         Global.ProtocolMgr.queryGameList(1, 2, function (res) {
             if (res.code == 200) {
                 var data = res.data;
                 for (var i = 0; i < data.length; i++) {
+                    if (datas != null) {
+                        //     if(data[i].is_true == 1)
+                        //     {
+                        //         continue;
+                        //     } 
+                        // }
+                        // else
+                        // {
+                        if (data[i].is_true == 0) {
+                            continue;
+                        }
+                    }
                     var gameItemNode = cc.instantiate(_this2.game_item2);
                     gameItemNode.getComponent("game_item").setData(data[i], _this2.goEnterGamePanel);
                     _this2.container2.addChild(gameItemNode);
@@ -143,24 +160,26 @@ cc.Class({
     //回调
     goEnterGamePanel: function goEnterGamePanel(bundleId, datas) {
         var node = Global.PageMgr.pages[8].getComponent("ArderPanel");
-
         node.datas2 = datas;
-        if (this.selectData != null) {
-            node.Panle.active = false;
-            node.Panle2.active = false;
-            node.Panle3.active = true;
+        node.selectData = datas;
+        if (node.datas != null) //
+            {
+                node.Panle.active = false;
+                node.Panle2.active = false;
+                node.Panle3.active = true;
+                node.editBox_id.string = "";
+                node.editBox_name.string = "";
+                node.bundleId = cc.js.formatStr("1,%s,%s", datas.game_package_name, datas.game_web_link);
+                node.lable_pic.string = cc.js.formatStr("%s", parseFloat(node.datas.ticket).toFixed(3));
+                node.lable_gold.string = cc.js.formatStr("%s张", parseFloat(node._availableCoinOne).toFixed(3)); //parseFloat(window.DEFAULT_availableUsdt).toFixed(3)
+                node.lable_limit.string = datas.number_limit;
+                if (datas.number_limit == "0") {
+                    node.lable_limit.string = "无限";
+                }
+                node.dianjiSum = 0;
 
-            node.bundleId = cc.js.formatStr("1,%s,%s", datas.game_package_name, datas.game_web_link);
-            node.lable_pic.string = cc.js.formatStr("%s", parseFloat(node.datas.ticket).toFixed(3));
-            node.lable_gold.string = cc.js.formatStr("%s钻", parseFloat(window.DEFAULT_availableUsdt).toFixed(3));
-            node.lable_limit.string = datas.number_limit;
-            if (datas.number_limit == "0") {
-                node.lable_limit.string = "无限";
-            }
-            node.dianjiSum = 0;
-
-            node.lable_sum.string = "" + node.dianjiSum;
-        } else {
+                node.lable_sum.string = "" + node.dianjiSum;
+            } else {
             var _bundleId = cc.js.formatStr("1,%s,%s", node.datas2.game_package_name, node.datas2.game_web_link);
             var res = jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "openApp", "(Ljava/lang/String;)Z", _bundleId);
         }
@@ -230,8 +249,8 @@ cc.Class({
         // this.Panle2.active = false;
         // this.Panle3.active = true;
 
-        // this.lable_pic.string = cc.js.formatStr("%s钻",parseFloat(this.datas.ticket).toFixed(3));
-        // this.lable_gold.string = cc.js.formatStr("%s钻",parseFloat(window.DEFAULT_availableUsdt).toFixed(3));
+        // this.lable_pic.string = cc.js.formatStr("%sPMV",parseFloat(this.datas.ticket).toFixed(3));
+        // this.lable_gold.string = cc.js.formatStr("%sPMV",parseFloat(window.DEFAULT_availableUsdt).toFixed(3));
         // // this.lable_limit.string = datas.number_limit;
         // this.dianjiSum = 0;
         // // this.datas = datas;
@@ -258,10 +277,13 @@ cc.Class({
 
     //自增
     sinceIncrease: function sinceIncrease() {
-        if (this.dianjiSum < 100) {
-            this.dianjiSum += 1;
+        this.dianjiSum += 1;
+        if (this._availableCoinOne >= this.dianjiSum * (parseInt(this.datas.ticket * 1000) / 1000)) {
+            this.lable_sum.string = "" + this.dianjiSum;
+        } else {
+            this.dianjiSum = parseInt(this.lable_sum.string);
+            Global.PageMgr.showTipPage("门票不足请购买门票");
         }
-        this.lable_sum.string = "" + this.dianjiSum;
     },
 
 
@@ -273,6 +295,7 @@ cc.Class({
         this.lable_sum.string = "" + this.dianjiSum;
     },
 
+
     //提交信息
     submitMessage: function submitMessage() {
         var _this5 = this;
@@ -280,21 +303,21 @@ cc.Class({
         if (this.dianjiSum <= 0) {
             Global.PageMgr.showTipPage("门票不能小于1");
             return;
-        } else if (window.DEFAULT_availableUsdt < this.dianjiSum * (parseInt(this.datas.ticket * 1000) / 1000)) {
-            Global.PageMgr.showTipPage("钻不够请充值");
+        } else if (this._availableCoinOne < this.dianjiSum * (parseInt(this.datas.ticket * 1000) / 1000)) {
+            Global.PageMgr.showTipPage("门票不足请购买门票");
             return;
         }
 
         var reqData = {
             game_id: this.datas2.id, //游戏id
-            sg_id: this.datas.id, //游戏场次ID
+            sg_id: this.numberID, //游戏场次ID
             number: "" + this.dianjiSum //游戏数量
         };
 
         Global.ProtocolMgr.startLeisureGame(reqData, function (res) {
             console.log(res);
             if (res.code != 3001) {
-                var data = _res.data;
+                // let data = res.data;
                 // // data = this.data[0];
                 // for(let i = 0;i < data.length;i++){
                 //     // if(data[i].type==this.curType){
@@ -303,13 +326,16 @@ cc.Class({
                 //         this.container.addChild(gameItemNode);
                 //     // }
                 // }
-                if (!_this5.curPageData[parseInt(customData)] || !_this5.curPageData[parseInt(customData)].bundleId) {
-                    return;
-                }
+
+                // if(!this.curPageData[parseInt(customData)]||!this.curPageData[parseInt(customData)].bundleId){
+                //     return;
+                // }
                 // console.log(this.curPageData[parseInt(customData)]);
-                var _res = jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "openApp", "(Ljava/lang/String;)Z", _this5.bundleId);
-                if (!_res) {
-                    Global.PageMgr.showTipPage("跳转失败");
+
+                var bundleId = cc.js.formatStr("1,%s,%s", _this5.datas2.game_package_name, _this5.datas2.game_web_link);
+                var _res = jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "openApp", "(Ljava/lang/String;)Z", bundleId);
+                if (_res) {
+                    _this5.breakPanle(null, 0);
                 }
             } else {
                 Global.PageMgr.showTipPage(res.message);

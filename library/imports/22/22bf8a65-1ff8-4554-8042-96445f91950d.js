@@ -14,6 +14,7 @@ cc.Class({
         container2: cc.Node,
         game_item3: cc.Prefab,
         container3: cc.Node,
+        container4: cc.Node,
         Panle: cc.Node,
         Panle2: cc.Node,
         Panle3: cc.Node,
@@ -21,6 +22,8 @@ cc.Class({
         bgSprite: cc.Node,
         Panlelist2: cc.Node,
         Panlelist3: cc.Node,
+        Panlelist4: cc.Node,
+        PanleBG: cc.Node,
         lable_id: cc.Label,
         lable_name: cc.Label,
         lable_pic: cc.Label,
@@ -31,6 +34,14 @@ cc.Class({
         editBox_id: cc.EditBox,
         editBox_name: cc.EditBox,
         btn_skip: cc.Sprite,
+        _availableCoinOne: 0,
+        lable_name1: cc.Label,
+        lable_name2: cc.Label,
+        label_equipment: cc.Label,
+        scroll_equipment: cc.Node,
+        editBox_equipment: cc.EditBox,
+        container_equipment: cc.Node,
+        selectItem: cc.Prefab,
         btn_item: [cc.Sprite]
     },
 
@@ -47,7 +58,10 @@ cc.Class({
         app.Post('member/getMemberInfo', reqData, function (res) {
             if (res.code == 200) {
                 if (res.data) {
+                    // window.availableCoinOne = res.data.availableCoinOne;
                     _this.label_Usdt.string = res.data.totalUsdt;
+                    _this._availableCoinOne = res.data.availableCoinOne;
+                    _this.equipmentdata = [{ "division_name": "安卓", "id": 0 }, { "division_name": "苹果", "id": 1 }, { "division_name": "H5", "id": 2 }, { "division_name": "其他", "id": 3 }];
                 }
             }
         });
@@ -78,6 +92,38 @@ cc.Class({
             }
         });
     },
+    showScroll: function showScroll(event, customData) {
+        switch (customData) {
+            case "equipment":
+                this.scroll_equipment.active = true;
+                break;
+            default:
+                break;
+        }
+    },
+    showScrolle: function showScrolle() {
+        var _this3 = this;
+
+        this.container_equipment.removeAllChildren();
+
+        var _loop = function _loop(i) {
+            var selectItem = cc.instantiate(_this3.selectItem);
+            selectItem.getComponent(cc.Label).string = _this3.equipmentdata[i].division_name;
+            selectItem.on(cc.Node.EventType.TOUCH_END, function () {
+                _this3.label_equipment.string = _this3.equipmentdata[i].division_name;
+                _this3.did = _this3.equipmentdata[i].id;
+                _this3.closeScroll();
+            });
+            _this3.container_equipment.addChild(selectItem);
+        };
+
+        for (var i = 0; i < this.equipmentdata.length; i++) {
+            _loop(i);
+        }
+    },
+    closeScroll: function closeScroll() {
+        this.scroll_equipment.active = false;
+    },
 
     //回调
     goEnterGamePanel: function goEnterGamePanel(bundleId, datas) {
@@ -85,10 +131,18 @@ cc.Class({
         // node.bundleId = bundleId;
         node.bundleId = cc.js.formatStr("1,%s,%s", datas.game_package_name, datas.game_web_link);
         node.datas = datas;
-        if (this.selectData != null) {
+        if (node.selectData != null) {
+            node.showScrolle();
             node.Panle.active = false;
             node.Panle2.active = false;
             node.Panle3.active = true;
+            node.did = -1;
+            node.scroll_equipment.active = false;
+            node.editBox_id.string = "";
+            node.label_equipment.string = "设备选择:";
+            node.editBox_name.string = "";
+            node.lable_name1.string = cc.js.formatStr("%s中官方客服:", datas.game_name);
+            node.lable_name2.string = cc.js.formatStr("%s中我的:", datas.game_name);
             node.lable_id.string = datas.game_customer_account;
             node.lable_name.string = datas.game_customer_nickname;
             node.lable_pic.string = cc.js.formatStr("%s", parseFloat(node.selectData.ticket).toFixed(2));
@@ -97,7 +151,7 @@ cc.Class({
                 node.lable_limit.string = "无限";
             }
 
-            node.lable_gold.string = cc.js.formatStr("%s钻", parseFloat(window.DEFAULT_availableUsdt).toFixed(3));;
+            node.lable_gold.string = cc.js.formatStr("%s张", parseFloat(node._availableCoinOne).toFixed(3));;
             node.dianjiSum = 0;
 
             node.lable_sum.string = "" + node.dianjiSum;
@@ -112,10 +166,17 @@ cc.Class({
 
     //自增
     sinceIncrease: function sinceIncrease() {
-        if (this.dianjiSum < 100) {
-            this.dianjiSum += 1;
+        // if(this.dianjiSum < 100){
+        //     this.dianjiSum +=1;
+        // }
+        // this.lable_sum.string = "" + this.dianjiSum;
+        this.dianjiSum += 1;
+        if (this._availableCoinOne >= this.dianjiSum * (parseInt(this.selectData.ticket * 1000) / 1000)) {
+            this.lable_sum.string = "" + this.dianjiSum;
+        } else {
+            this.dianjiSum = parseInt(this.lable_sum.string);
+            Global.PageMgr.showTipPage("门票不足请购买门票");
         }
-        this.lable_sum.string = "" + this.dianjiSum;
     },
 
 
@@ -138,26 +199,31 @@ cc.Class({
         } else if (this.dianjiSum <= 0) {
             Global.PageMgr.showTipPage("门票不能小于1");
             return;
-        } else if (window.DEFAULT_availableUsdt < this.dianjiSum * (parseInt(this.selectData.ticket * 1000) / 1000)) {
-            Global.PageMgr.showTipPage("钻不够请充值");
+        } else if (this._availableCoinOne < this.dianjiSum * (parseInt(this.selectData.ticket * 1000) / 1000)) {
+            Global.PageMgr.showTipPage("门票不足请购买门票");
+            return;
+        } else if (this.did == -1) {
+            Global.PageMgr.showTipPage("还未选择设备");
             return;
         }
         this.setUrl();
     },
     setUrl: function setUrl() {
-        var _this3 = this;
+        var _this4 = this;
 
         var reqData = {
             game_id: this.selectData.id, //游戏id
-            sg_id: this.datas.id, //游戏场次ID
+            sg_id: this.numberID, //游戏场次ID
             number: "" + this.dianjiSum, //游戏数量
             game_account: this.editBox_id.string, //游戏账号
-            game_nickname: this.editBox_name.string //游戏昵称
+            game_nickname: this.editBox_name.string, //游戏昵称
+            type: this.did.toString()
         };
+
         Global.ProtocolMgr.startCompetitiveGame(reqData, function (res) {
             console.log(res);
             if (res.code != 3001) {
-                var data = res.data;
+                // let data = res.data;
                 // // data = this.data[0];
                 // for(let i = 0;i < data.length;i++){
                 //     // if(data[i].type==this.curType){
@@ -166,8 +232,8 @@ cc.Class({
                 //         this.container.addChild(gameItemNode);
                 //     // }
                 // }
-                jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "openApp", "(Ljava/lang/String;)Z", _this3.bundleId);
-                _this3.breakPanle(null, 0);
+                jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "openApp", "(Ljava/lang/String;)Z", _this4.bundleId);
+                _this4.breakPanle(null, 0);
             } else {
                 Global.PageMgr.showTipPage(res.message);
             }
@@ -182,25 +248,25 @@ cc.Class({
         // this.curType = 2;
         // lobal.PageMgr.pages[7].getComponent("GamePanel").getGameList(null,2);
     },
-    goGamePanelUI: function goGamePanelUI(selectData) {
+    goGamePanelUI: function goGamePanelUI(selectData, index) {
         this.container2.removeAllChildren();
         this.Panle.active = false;
         this.Panle2.active = true;
         this.Panle3.active = false;
         this.curType = 0;
         this.selectData = selectData;
-
+        this.numberID = index;
         this.getGameList(null, 0);
     },
     getGameList: function getGameList(event, customData) {
-        var _this4 = this;
+        var _this5 = this;
 
         this.btn_item.forEach(function (e) {
             e.spriteFrame = null;
         });
         cc.loader.loadRes("imgs/按钮bg", cc.SpriteFrame, function (err, sf) {
             if (!err) {
-                _this4.btn_item[parseInt(customData)].spriteFrame = sf;
+                _this5.btn_item[parseInt(customData)].spriteFrame = sf;
             }
         });
         this.bgSprite.active = false;
@@ -224,6 +290,8 @@ cc.Class({
                 // this.curType = 2;
                 this.Panlelist2.active = true;
                 this.Panlelist3.active = false;
+                this.Panlelist4.active = false;
+                this.PanleBG.active = false;
                 this.container2.removeAllChildren();
                 this.container3.removeAllChildren();
                 this.goSetlectGamePanle();
@@ -234,12 +302,25 @@ cc.Class({
                 // this.curType = 3;
                 this.Panlelist3.active = true;
                 this.Panlelist2.active = false;
+                this.Panlelist4.active = false;
+                this.PanleBG.active = false;
                 this.setStationRecordUI();
                 break;
             case 4:
                 this.Panle4.active = true;
                 this.container.removeAllChildren();
                 this.curType = 3;
+                break;
+            case 5:
+                this.curType = 0;
+                this.selectData = null;
+                this.container2.removeAllChildren();
+                this.container3.removeAllChildren();
+                this.Panlelist3.active = false;
+                this.Panlelist2.active = false;
+                this.Panlelist4.active = true;
+                this.PanleBG.active = true;
+                this.MobileGamesList();
                 break;
             default:
                 break;
@@ -249,16 +330,16 @@ cc.Class({
 
     //战绩列表更新数据
     setStationRecordUI: function setStationRecordUI() {
-        var _this5 = this;
+        var _this6 = this;
 
         Global.ProtocolMgr.queryStationRecordList(100, 1, function (res) {
-            _this5.container3.removeAllChildren();
+            _this6.container3.removeAllChildren();
             if (res.code == 200) {
                 var data = res.data;
                 for (var i = 0; i < data.length; i++) {
-                    var gameItemNode = cc.instantiate(_this5.game_item3);
+                    var gameItemNode = cc.instantiate(_this6.game_item3);
                     gameItemNode.getComponent("Game_Item3").setData(data[i]);
-                    _this5.container3.addChild(gameItemNode);
+                    _this6.container3.addChild(gameItemNode);
                 }
             } else {
                 Global.PageMgr.showTipPage(res.message);
@@ -266,19 +347,43 @@ cc.Class({
         });
     },
     gameQueryGameList: function gameQueryGameList() {
-        var _this6 = this;
+        var _this7 = this;
 
         this.container.removeAllChildren();
         Global.ProtocolMgr.queryGameList(1, 1, function (res) {
-            _this6.container.removeAllChildren();
+            _this7.container.removeAllChildren();
             if (res.code == 200) {
                 var data = res.data;
                 // data = this.data[0];
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].game_terminal == _this6.curType) {
-                        var gameItemNode = cc.instantiate(_this6.game_item);
-                        gameItemNode.getComponent("game_item").setData(data[i], _this6.goEnterGamePanel);
-                        _this6.container.addChild(gameItemNode);
+                    if (_this7.selectData != null) {
+                        if (data[i].is_true == 0) {
+                            continue;
+                        }
+                    }
+                    if (data[i].game_terminal == _this7.curType) {
+                        var gameItemNode = cc.instantiate(_this7.game_item);
+                        gameItemNode.getComponent("game_item").setData(data[i], _this7.goEnterGamePanel);
+                        _this7.container.addChild(gameItemNode);
+                    }
+                }
+            } else {
+                Global.PageMgr.showTipPage(res.message);
+            }
+        });
+    },
+    MobileGamesList: function MobileGamesList() {
+        var _this8 = this;
+
+        Global.ProtocolMgr.queryGameList(1, 1, function (res) {
+            _this8.container4.removeAllChildren();
+            if (res.code == 200) {
+                var data = res.data;
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].game_terminal == _this8.curType && data[i].is_true == 0) {
+                        var gameItemNode = cc.instantiate(_this8.game_item);
+                        gameItemNode.getComponent("game_item").setData(data[i], _this8.goEnterGamePanel);
+                        _this8.container4.addChild(gameItemNode);
                     }
                 }
             } else {

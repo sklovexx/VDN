@@ -15,7 +15,9 @@ let Md5 = require("./../encrypt/Md5").md5_hex_hmac;
 // let urlroot = "http://106.55.241.55:9501/";//测试版本ip
 
 // let urlroot = "http://192.168.0.114:9501/";//本地接口
-let urlroot = "http://api.vdnmetaverse.org/api/";//正式发布
+// let urlroot = "http://api.vdnmetaverse.org/api/";//正式发布
+let urlroot = "http://156.241.191.27:9501/api/";//正式发布2
+
 
 let encryptKey = "tclsafegame";
 

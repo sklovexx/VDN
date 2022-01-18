@@ -1745,7 +1745,7 @@ if ((n >>>= 0) <= (t >>>= 0)) return "";
 e || (e = "utf8");
 for (;;) switch (e) {
 case "hex":
-return F(this, t, n);
+return k(this, t, n);
 
 case "utf8":
 case "utf-8":
@@ -1756,7 +1756,7 @@ return B(this, t, n);
 
 case "latin1":
 case "binary":
-return k(this, t, n);
+return F(this, t, n);
 
 case "base64":
 return T(this, t, n);
@@ -2055,13 +2055,13 @@ n = Math.min(e.length, n);
 for (var a = t; a < n; ++a) i += String.fromCharCode(127 & e[a]);
 return i;
 }
-function k(e, t, n) {
+function F(e, t, n) {
 var i = "";
 n = Math.min(e.length, n);
 for (var a = t; a < n; ++a) i += String.fromCharCode(e[a]);
 return i;
 }
-function F(e, t, n) {
+function k(e, t, n) {
 var i = e.length;
 (!t || t < 0) && (t = 0);
 (!n || n < 0 || n > i) && (n = i);
@@ -5114,13 +5114,13 @@ extends: o,
 ctor: function() {
 this.act = "logout";
 }
-}), k = cc.Class({
+}), F = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "bindFb";
 this.token = "";
 }
-}), F = cc.Class({
+}), k = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "bindFb";
@@ -5173,7 +5173,7 @@ this.buildings = null;
 }), q = {
 login: M,
 logout: B,
-bindFb: F,
+bindFb: k,
 heart: c,
 createRoom: l,
 enterRoom: h,
@@ -5198,8 +5198,8 @@ LoginRequest: L,
 LoginResponse: M,
 LogoutRequest: G,
 LogoutResponse: B,
-BindFacebookRequest: k,
-BindFacebookResponse: F,
+BindFacebookRequest: F,
+BindFacebookResponse: k,
 RankRequest: x,
 RankResponse: A,
 HeartRequest: r,
@@ -6256,7 +6256,7 @@ o.getInstance().playerObj;
 var i = {
 uid: n
 };
-this.serverRequest("http://api.vdnmetaverse.org/api//login", i, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//login", i, e, t);
 } else t();
 },
 bindFb: function(e, t) {
@@ -6268,7 +6268,7 @@ sid: i.sid,
 fbid: i.fbid,
 uid: n
 };
-this.serverRequest("http://api.vdnmetaverse.org/api//bind_fb", a, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//bind_fb", a, e, t);
 } else t();
 },
 updateIcon: function(e, t) {
@@ -6276,27 +6276,27 @@ var n = o.getInstance().playerObj, i = {
 fbid: n.fbid,
 fbicon: n.fbicon
 };
-this.serverRequest("http://api.vdnmetaverse.org/api//update_icon", i, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//update_icon", i, e, t);
 },
 updateName: function(e, t) {
 var n = o.getInstance().playerObj, i = {
 fbid: n.fbid,
 fbname: n.fbname
 };
-this.serverRequest("http://api.vdnmetaverse.org/api//update_name", i, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//update_name", i, e, t);
 },
 uploadScore: function(e, t) {
 var n = o.getInstance().playerObj, i = {
 sid: n.sid,
 score: n.bestScore
 };
-this.serverRequest("http://api.vdnmetaverse.org/api//upload_score", i, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//upload_score", i, e, t);
 },
 getRankList: function(e, t) {
 var n = o.getInstance().playerObj, i = {
 sid: n.sid
 };
-this.serverRequest("http://api.vdnmetaverse.org/api//get_rank", i, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//get_rank", i, e, t);
 },
 getFriendsRankList: function(e, t) {
 var n = o.getInstance().playerObj, a = r.getInstance().installFriends;
@@ -6326,7 +6326,7 @@ fbid: n.fbid,
 friends: c
 };
 cc.log("get friend rank: " + JSON.stringify(f));
-this.serverRequest("http://api.vdnmetaverse.org/api//get_rank_friends", f, e, t);
+this.serverRequest("http://156.241.191.27:9501/api//get_rank_friends", f, e, t);
 }
 },
 serverRequest: function(e, t, n, o) {
@@ -7609,63 +7609,18 @@ onLoad: function() {},
 onEnable: function() {
 this.editBox_password.string = "";
 this.editBox_inviteCode.string = "";
-var e = cc.sys.localStorage.getItem("com.game.vdn.token");
-if (e && "" != e) {
-GameData.token = e;
-Global.ResourceMgr.playBgAudio();
-Global.PageMgr.onClosePage(0);
-Global.ProtocolMgr.queryUserData();
-Global.SocketMgr.openSocket();
-Global.ProtocolMgr.queryGonggao(function(e) {
-200 == e.code ? cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = e.data.title : Global.PageMgr.showTipPage(e.message);
-});
-} else {
+cc.sys.localStorage.getItem("com.game.vdn.token");
 GameData.audio = !0;
 Global.ResourceMgr.playLoginAudio();
 this.goLogin();
-}
 },
 start: function() {},
 goLogin: function() {
 this.PanleLogin.active = !0;
 this.Panle2.active = !1;
 this.PanleForgetPassword.active = !1;
-for (var e = 0; e < this.editBox_zhujici.length; e++) {
-this.editBox_zhujici[e].enabled = !0;
-this.editBox_zhujici[e].string = "";
-}
 },
-login: function() {
-var e = this;
-if ("" != this.editBox_password.string && "" != this.editBox_inviteCode.string) {
-if (/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.editBox_inviteCode.string)) {
-this.getZhujici();
-var t = {
-account: this.editBox_inviteCode.string,
-password: this.editBox_password.string
-};
-Global.ProtocolMgr.login(t, function(t) {
-if (3001 != t.code) {
-GameData.token = t.data.tokenHead + " " + t.data.token;
-cc.sys.localStorage.setItem("com.game.vdn.token", GameData.token);
-Global.PageMgr.showTipPage(t.message);
-Global.ResourceMgr.playBgAudio();
-Global.PageMgr.onClosePage(0);
-Global.ProtocolMgr.queryUserData();
-Global.SocketMgr.openSocket();
-Global.ProtocolMgr.queryGonggao(function(e) {
-if (3001 != e.code) {
-console.log(cc.find("Canvas/Main/view/mask/label_gonggao"), e.data.title);
-cc.find("Canvas/Main/view/mask/label_gonggao").getComponent(cc.Label).string = e.data.title;
-} else Global.PageMgr.showTipPage(e.message);
-});
-e.editBox_password.string = "";
-e.editBox_inviteCode.string = "";
-} else Global.PageMgr.showTipPage(t.message);
-});
-} else Global.PageMgr.showTipPage("请输入正确的邮箱");
-} else "" == this.editBox_inviteCode.string ? Global.PageMgr.showTipPage("邮箱为空") : "" == this.editBox_password.string && Global.PageMgr.showTipPage("密码为空");
-},
+login: function() {},
 forgotPassword: function() {
 this.PanleLogin.active = !1;
 this.Panle2.active = !1;
@@ -8966,10 +8921,12 @@ openPage: function(e, t) {
 this.onOpenPage(parseInt(t));
 },
 onOpenPage: function(e, t) {
+if ("BaoMingPanel" != Global.pages[e]) {
 cc.find("Canvas/" + Global.pages[e]).active = !0;
 var n = cc.scaleTo(.2, 1, 1);
 t && 1 == t && (n = cc.moveTo(.2, cc.v2(0, 0)));
 cc.find("Canvas/" + Global.pages[e]).runAction(n);
+}
 },
 onClosePage: function(e, t) {
 if (!isNaN(e)) {

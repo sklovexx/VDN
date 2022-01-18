@@ -42,7 +42,7 @@ cc.Class({
         this.editBox_password.string = "";
         this.editBox_inviteCode.string = "";
         var token = cc.sys.localStorage.getItem("com.game.vdn.token");
-        // console.log(token)
+        console.log(token);
         if (token && token != "") {
             GameData.token = token;
             Global.ResourceMgr.playBgAudio();
@@ -73,24 +73,25 @@ cc.Class({
         this.Panle2.active = false;
         this.PanleForgetPassword.active = false;
         // this.editBox_inviteCode.node.active = false;
-        var zhujici = void 0;
-        // let zhujici = "bitter,undo,later,custom,unfold,owner,bargain,electric,rigid,ginger,range,cupboard"
-        for (var i = 0; i < this.editBox_zhujici.length; i++) {
-            this.editBox_zhujici[i].enabled = true;
-            this.editBox_zhujici[i].string = "";
-        }
-        if (zhujici) {
-            var zhujiciArr = zhujici.split(",");
-            for (var _i = 0; _i < this.editBox_zhujici.length; _i++) {
-                this.editBox_zhujici[_i].string = zhujiciArr[_i];
-            }
-        }
+        // let zhujici;
+        // // let zhujici = "bitter,undo,later,custom,unfold,owner,bargain,electric,rigid,ginger,range,cupboard"
+        // for(let i = 0;i<this.editBox_zhujici.length;i++){
+        //     this.editBox_zhujici[i].enabled = true;
+        //     this.editBox_zhujici[i].string = "";
+        // }
+        // if(zhujici){
+        //     let zhujiciArr = zhujici.split(",");
+        //     for(let i = 0;i<this.editBox_zhujici.length;i++){
+        //         this.editBox_zhujici[i].string = zhujiciArr[i];
+        //     }
+        // }
     },
 
     //登录
     login: function login() {
         var _this = this;
 
+        // return;
         if (this.editBox_password.string != "" && this.editBox_inviteCode.string != "") {
             var myreg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
             if (!myreg.test(this.editBox_inviteCode.string)) {

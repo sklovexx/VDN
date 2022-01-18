@@ -18,7 +18,7 @@ cc.Class({
     // onLoad () {},
 
     start: function start() {},
-    setData: function setData(data) {
+    setData: function setData(data, index) {
         var _this = this;
 
         var icon_email = "";
@@ -37,7 +37,11 @@ cc.Class({
             console.warn(e);
         }
         this.label_title.string = data.title;
-        this.label_time.string = data.time;
+        if (index == 1) {
+            this.label_time.string = data.time;
+        } else {
+            this.label_time.string = ""; //data.createTime;
+        }
     }
     // update (dt) {},
 

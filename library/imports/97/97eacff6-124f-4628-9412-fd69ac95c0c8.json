@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "能量瓶",
+    "texture": "3fc40ca7-4469-4a91-9a55-fc2687a06c7e",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      288,
+      324
+    ],
+    "offset": [
+      -25.5,
+      0
+    ],
+    "originalSize": [
+      339,
+      324
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

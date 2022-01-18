@@ -2,6 +2,20 @@ var fs = require('fs');
 var path = require('path');
 var crypto = require('crypto');
 
+// //vdn配置
+// var manifest = {
+//     packageUrl: 'http://localhost/tutorial-hot-update/remote-assets/',
+//     remoteManifestUrl: 'http://localhost/tutorial-hot-update/remote-assets/project.manifest',
+//     remoteVersionUrl: 'http://localhost/tutorial-hot-update/remote-assets/version.manifest',
+//     version: '1.0.0',
+//     assets: {},
+//     searchPaths: []
+// };
+
+// var dest = './remote-assets/';
+// var src = './jsb/';
+
+//parallel-assets 配置
 var manifest = {
     packageUrl: 'http://localhost/tutorial-hot-update/remote-assets/',
     remoteManifestUrl: 'http://localhost/tutorial-hot-update/remote-assets/project.manifest',
@@ -11,7 +25,7 @@ var manifest = {
     searchPaths: []
 };
 
-var dest = './remote-assets/';
+var dest = './remote-asset/';
 var src = './jsb/';
 
 // Parse arguments

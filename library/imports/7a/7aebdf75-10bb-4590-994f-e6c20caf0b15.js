@@ -29,7 +29,7 @@ cc.Class({
             if (res.code == 200) {
                 if (res.data) {
                     _this.goleSum = parseFloat(res.data.totalUsdt).toFixed(4);
-                    _this.gold.string = cc.js.formatStr("可用余额:%s星钻", _this.goleSum);
+                    _this.gold.string = cc.js.formatStr("可用余额:%sPMV", _this.goleSum);
                     _this.updataUI();
                 }
             }
@@ -56,10 +56,10 @@ cc.Class({
                 }
                 //    var sum2 = sum1 + this.shoufeiyong;
                 if (sum1 > this.goleSum) {
-                    Global.PageMgr.showTipPage("星钻不足");
+                    Global.PageMgr.showTipPage("PMV不足");
                 } else {
-                    this.jiesao.string = cc.js.formatStr("您将给好友(%s)赠送%s星钻,请仔细核对 好友账号与赠送数量是否有误？", this.editBox_ID.string, this.editBox_SUM.string);
-                    this.jine.string = cc.js.formatStr("手续费:%s星钻", this.shoufeiyong);
+                    this.jiesao.string = cc.js.formatStr("您将给好友(%s)赠送%sPMV,请仔细核对 好友账号与赠送数量是否有误？", this.editBox_ID.string, this.editBox_SUM.string);
+                    this.jine.string = cc.js.formatStr("手续费:%sPMV", this.shoufeiyong);
                     this.panle.active = true;
                 }
             }
