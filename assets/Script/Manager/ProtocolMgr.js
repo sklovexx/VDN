@@ -94,7 +94,12 @@ cc.Class({
     },
     //获取收益明细
     querygetAccountDetail(accountType,limit,page,callback){
-        app.Post('finance/getAccountDetail',{accountType:accountType,limit:limit,page:page},callback,);
+        app.Post('finance/getAccountDetail',{accountType:accountType,limit:limit,page:page},callback);
+    },
+
+    //获取提币列表
+    queryGetWithdrawApplyDetail(limit,page,callback){
+        app.Post('finance/getWithdrawApplyDetail',{limit:limit,page:page},callback);
     },
 
     //找回密码
@@ -180,7 +185,10 @@ cc.Class({
     queryReceivePrizes(reqData,callback){
         app.Post('lottery/receivePrizes',reqData,callback);
     },
-
+    //提现
+    queryWithdrawApply(reqData,callback){
+        app.Post('finance/withdrawApply',reqData,callback);
+    },
     submitBaoMing(reqData,callback){
         console.log(reqData)
         app.Post('sign_up/sub',reqData,callback);//,"http://api.vdnmetaverse.org/api/"

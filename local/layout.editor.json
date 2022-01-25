@@ -5,8 +5,8 @@
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": 112,
-      "y": 31,
+      "x": 110,
+      "y": 29,
       "width": 1721,
       "height": 971,
       "layout": {
@@ -18,23 +18,23 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 576,
+                "height": 440.984375,
                 "type": "panel",
-                "width": 325
+                "width": 315
               },
               {
                 "active": 0,
                 "children": [
                   "assets"
                 ],
-                "height": 274,
+                "height": 409,
                 "type": "panel",
-                "width": 325
+                "width": 315
               }
             ],
             "height": 853,
             "type": "dock-v",
-            "width": 325
+            "width": 315
           },
           {
             "children": [
@@ -43,9 +43,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 500,
+                "height": 499,
                 "type": "panel",
-                "width": 953
+                "width": 1044
               },
               {
                 "active": 0,
@@ -54,14 +54,14 @@
                   "timeline",
                   "game-window"
                 ],
-                "height": 350,
+                "height": 351,
                 "type": "panel",
-                "width": 953
+                "width": 1044
               }
             ],
             "height": 853,
             "type": "dock-v",
-            "width": 953
+            "width": 1044
           },
           {
             "active": 0,
@@ -71,7 +71,7 @@
             ],
             "height": 853,
             "type": "panel",
-            "width": 421
+            "width": 340
           }
         ],
         "type": "dock-h"
@@ -87,19 +87,19 @@
         "cocos-services"
       ]
     },
-    "window-1642408132535": {},
+    "window-1643086225714": {},
     "worker": {}
   },
   "panels": {
     "builder": {
-      "x": 811,
-      "y": 170,
+      "x": 836,
+      "y": 193,
       "width": 670,
-      "height": 727
+      "height": 723
     },
     "project-settings": {
-      "x": 283,
-      "y": 95,
+      "x": 664,
+      "y": 246,
       "width": 601,
       "height": 565
     },
@@ -128,9 +128,9 @@
       "height": 536
     },
     "preferences": {
-      "x": 614,
-      "y": 184,
-      "width": 775,
+      "x": 437,
+      "y": 216,
+      "width": 961,
       "height": 565
     },
     "keystore": {

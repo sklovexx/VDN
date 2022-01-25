@@ -13,9 +13,8 @@
   "keystorePassword": "123456",
   "keystoreAlias": "liliao2",
   "keystoreAliasPassword": "123456",
-  "apiLevel": "android-30",
+  "apiLevel": "android-32",
   "appABIs": [
-    "armeabi-v7a",
     "x86",
     "arm64-v8a"
   ],

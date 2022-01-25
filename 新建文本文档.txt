@@ -4,4 +4,4 @@ node version_generator.js -v 2.3.7 -u http://129.226.180.137:8001/remote-assets/
 //Parallel-assets
 node version_generator.js -v 1.0.3 -u http://129.226.180.137:8001/parallel-assets/ -s build2/jsb-link/ -d assets/
 
-node version_generator.js -v 2.6.0 -u http://156.241.191.27:8081/remote-asset/ -s build2/jsb-link/ -d assets/
+node version_generator.js -v 2.6.2 -u http://156.241.191.27:8081/remote-asset/ -s build2/jsb-link/ -d assets/

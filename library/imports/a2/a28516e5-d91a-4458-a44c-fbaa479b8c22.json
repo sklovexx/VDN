@@ -3,5 +3,5 @@
   "_name": "zhongzi",
   "_objFlags": 0,
   "_native": "",
-  "text": "﻿info,,,,,,\nnumber,String,String,String,String,String\nid,name,picture,time,reward,quarter,output,price,selling\n101001,蓝莓,蓝莓1,18500000,10,1,10,10ECC,每个2ECC\n101002,人参果,人参果1,18500000,40,3,4,10ECC,每个2ECC\n101003,葫芦,葫芦1,18500000,10,1,20,10ECC,每个2ECC\n"
+  "text": "﻿info,,,,,,\r\nnumber,String,String,String,String,String\r\nid,name,picture,time,reward,quarter,output,price,selling\r\n101001,蓝莓,蓝莓1,18500000,10,1,10,10ECC,每个2ECC\r\n101002,人参果,人参果1,18500000,40,3,4,10ECC,每个2ECC\r\n101003,葫芦,葫芦1,18500000,10,1,20,10ECC,每个2ECC\r\n"
 }

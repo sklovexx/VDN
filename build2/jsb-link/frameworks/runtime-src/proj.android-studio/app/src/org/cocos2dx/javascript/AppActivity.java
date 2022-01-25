@@ -159,6 +159,13 @@ public class AppActivity extends Cocos2dxActivity {
         return true;
     }
 
+    //复制邮箱
+    public static String GetCopyEmail() {
+        String  result = "";
+        ClipboardManager cmb = (ClipboardManager) app.getSystemService(Context.CLIPBOARD_SERVICE);
+        result = cmb.getPrimaryClip().getItemAt(0).getText().toString();
+        return result;
+    }
 
     public static boolean openApp(String actionStr) {
         String[] actionArray = actionStr.split(",");

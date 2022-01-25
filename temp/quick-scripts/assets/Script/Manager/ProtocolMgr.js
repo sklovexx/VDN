@@ -114,6 +114,12 @@ cc.Class({
     },
 
 
+    //获取提币列表
+    queryGetWithdrawApplyDetail: function queryGetWithdrawApplyDetail(limit, page, callback) {
+        app.Post('finance/getWithdrawApplyDetail', { limit: limit, page: page }, callback);
+    },
+
+
     //找回密码
     queryForgetPassword: function queryForgetPassword(reqData, callback) {
         app.Post('member/forgetPassword', reqData, callback);
@@ -213,6 +219,11 @@ cc.Class({
     //提交中奖信息
     queryReceivePrizes: function queryReceivePrizes(reqData, callback) {
         app.Post('lottery/receivePrizes', reqData, callback);
+    },
+
+    //提现
+    queryWithdrawApply: function queryWithdrawApply(reqData, callback) {
+        app.Post('finance/withdrawApply', reqData, callback);
     },
     submitBaoMing: function submitBaoMing(reqData, callback) {
         console.log(reqData);

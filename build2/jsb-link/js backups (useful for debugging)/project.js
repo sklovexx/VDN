@@ -1908,14 +1908,14 @@ if (!a) return -1;
 n = 0;
 }
 "string" == typeof t && (t = s.from(t, i));
-if (s.isBuffer(t)) return 0 === t.length ? -1 : N(e, t, n, i, a);
+if (s.isBuffer(t)) return 0 === t.length ? -1 : P(e, t, n, i, a);
 if ("number" == typeof t) {
 t &= 255;
-return s.TYPED_ARRAY_SUPPORT && "function" == typeof Uint8Array.prototype.indexOf ? a ? Uint8Array.prototype.indexOf.call(e, t, n) : Uint8Array.prototype.lastIndexOf.call(e, t, n) : N(e, [ t ], n, i, a);
+return s.TYPED_ARRAY_SUPPORT && "function" == typeof Uint8Array.prototype.indexOf ? a ? Uint8Array.prototype.indexOf.call(e, t, n) : Uint8Array.prototype.lastIndexOf.call(e, t, n) : P(e, [ t ], n, i, a);
 }
 throw new TypeError("val must be string, number or Buffer");
 }
-function N(e, t, n, i, a) {
+function P(e, t, n, i, a) {
 var o, r = 1, c = e.length, s = t.length;
 if (void 0 !== i && ("ucs2" === (i = String(i).toLowerCase()) || "ucs-2" === i || "utf16le" === i || "utf-16le" === i)) {
 if (e.length < 2 || t.length < 2) return -1;
@@ -1957,7 +1957,7 @@ return C(this, e, t, n, !0);
 s.prototype.lastIndexOf = function(e, t, n) {
 return C(this, e, t, n, !1);
 };
-function P(e, t, n, i) {
+function N(e, t, n, i) {
 n = Number(n) || 0;
 var a = e.length - n;
 i ? (i = Number(i)) > a && (i = a) : i = a;
@@ -1980,10 +1980,10 @@ return Q(Y(t), e, n, i);
 function D(e, t, n, i) {
 return w(e, t, n, i);
 }
-function E(e, t, n, i) {
+function R(e, t, n, i) {
 return Q(X(t), e, n, i);
 }
-function R(e, t, n, i) {
+function E(e, t, n, i) {
 return Q(K(t, e.length - n), e, n, i);
 }
 s.prototype.write = function(e, t, n, i) {
@@ -2012,7 +2012,7 @@ if (e.length > 0 && (n < 0 || t < 0) || t > this.length) throw new RangeError("A
 i || (i = "utf8");
 for (var o = !1; ;) switch (i) {
 case "hex":
-return P(this, e, t, n);
+return N(this, e, t, n);
 
 case "utf8":
 case "utf-8":
@@ -2026,13 +2026,13 @@ case "binary":
 return D(this, e, t, n);
 
 case "base64":
-return E(this, e, t, n);
+return R(this, e, t, n);
 
 case "ucs2":
 case "ucs-2":
 case "utf16le":
 case "utf-16le":
-return R(this, e, t, n);
+return E(this, e, t, n);
 
 default:
 if (o) throw new TypeError("Unknown encoding: " + i);
@@ -3490,14 +3490,14 @@ for (var l = new Array(16), u = new Date().getTime(), d = u % 1e3, h = Math.floo
 for (var p = 0; p < 2; p++) l[p + 2] = g >>> 8 * p & 255;
 for (var m = 0; m < 4; m++) l[m + 4] = h >>> 8 * m & 255;
 for (var b = "", _ = 0; _ < 8; _++) b += String.fromCharCode(l[_]);
-for (var y = o.keyExpansion(s), v = Math.ceil(e.length / 16), C = new Array(v), N = 0; N < v; N++) {
-for (var P = 0; P < 4; P++) l[15 - P] = N >>> 8 * P & 255;
-for (var S = 0; S < 4; S++) l[15 - S - 4] = N / 4294967296 >>> 8 * S;
-for (var w = o.cipher(l, y), D = N < v - 1 ? 16 : (e.length - 1) % 16 + 1, E = new Array(D), R = 0; R < D; R++) {
-E[R] = w[R] ^ e.charCodeAt(16 * N + R);
-E[R] = String.fromCharCode(E[R]);
+for (var y = o.keyExpansion(s), v = Math.ceil(e.length / 16), C = new Array(v), P = 0; P < v; P++) {
+for (var N = 0; N < 4; N++) l[15 - N] = P >>> 8 * N & 255;
+for (var S = 0; S < 4; S++) l[15 - S - 4] = P / 4294967296 >>> 8 * S;
+for (var w = o.cipher(l, y), D = P < v - 1 ? 16 : (e.length - 1) % 16 + 1, R = new Array(D), E = 0; E < D; E++) {
+R[E] = w[E] ^ e.charCodeAt(16 * P + E);
+R[E] = String.fromCharCode(R[E]);
 }
-C[N] = E.join("");
+C[P] = R.join("");
 }
 var T = b + C.join("");
 return T = n.base64Encode(T);
@@ -3515,14 +3515,14 @@ e = f;
 for (var m = new Array(e.length), b = 0; b < g; b++) {
 for (var _ = 0; _ < 4; _++) l[15 - _] = b >>> 8 * _ & 255;
 for (var y = 0; y < 4; y++) l[15 - y - 4] = (b + 1) / 4294967296 - 1 >>> 8 * y & 255;
-for (var v = o.cipher(l, h), C = new Array(e[b].length), N = 0; N < e[b].length; N++) {
-C[N] = v[N] ^ e[b].charCodeAt(N);
-C[N] = String.fromCharCode(C[N]);
+for (var v = o.cipher(l, h), C = new Array(e[b].length), P = 0; P < e[b].length; P++) {
+C[P] = v[P] ^ e[b].charCodeAt(P);
+C[P] = String.fromCharCode(C[P]);
 }
 m[b] = C.join("");
 }
-var P = m.join("");
-return P = P.utf8Decode();
+var N = m.join("");
+return N = N.utf8Decode();
 };
 var r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 n.base64Encode = function(e) {
@@ -5173,14 +5173,14 @@ ctor: function() {
 this.act = "otherReady";
 this.user = null;
 }
-}), N = cc.Class({
+}), P = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "kick";
 this.uid = 0;
 this.bet = 0;
 }
-}), P = cc.Class({
+}), N = cc.Class({
 extends: a,
 ctor: function() {
 this.act = "payBet";
@@ -5207,14 +5207,14 @@ ctor: function() {
 this.act = "pDeal";
 this.cards = [];
 }
-}), E = cc.Class({
+}), R = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "pBet";
 this.bet = 0;
 this.uid = 0;
 }
-}), R = cc.Class({
+}), E = cc.Class({
 extends: o,
 ctor: function() {
 this.act = "pStartBet";
@@ -5330,7 +5330,7 @@ createRoom: l,
 enterRoom: h,
 gameReady: v,
 otherReady: C,
-payBet: P,
+payBet: N,
 countReward: f,
 config: m,
 startGame: _,
@@ -5338,8 +5338,8 @@ pEnterRoom: g,
 pExitRoom: I,
 changeBanker: O,
 pDeal: D,
-pBet: E,
-pStartBet: R,
+pBet: R,
+pStartBet: E,
 pShowCards: T,
 chat: w,
 cmdTest: j
@@ -5367,8 +5367,8 @@ ConfigRequest: p,
 ReadyRequest: y,
 ReadyResponse: v,
 OtherReadyResponse: C,
-KickRequest: N,
-BetRequest: P,
+KickRequest: P,
+BetRequest: N,
 DebugChangeMeRequest: U,
 DebugChangeMeResponse: j,
 countRewardResponse: f,
@@ -5377,8 +5377,8 @@ PushEnterRoom: g,
 PushExitRoom: I,
 PushDeal: D,
 PushChat: w,
-PushBet: E,
-PushStartBet: R,
+PushBet: R,
+PushStartBet: E,
 PushShowCards: T,
 response_classes: q
 };
@@ -9662,6 +9662,12 @@ limit: t,
 page: n
 }, a);
 },
+queryGetWithdrawApplyDetail: function(e, t, n) {
+i.Post("finance/getWithdrawApplyDetail", {
+limit: e,
+page: t
+}, n);
+},
 queryForgetPassword: function(e, t) {
 i.Post("member/forgetPassword", e, t);
 },
@@ -9721,6 +9727,9 @@ i.Post("lottery/getPickUpLocation", {}, e);
 },
 queryReceivePrizes: function(e, t) {
 i.Post("lottery/receivePrizes", e, t);
+},
+queryWithdrawApply: function(e, t) {
+i.Post("finance/withdrawApply", e, t);
 },
 submitBaoMing: function(e, t) {
 console.log(e);
@@ -11372,23 +11381,45 @@ cc._RF.pop();
 ShaderHelper: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "49d0auleM9GkaUgf+inMFoR", "ShaderHelper");
+var i = this && this.__extends || function() {
+var e = function(t, n) {
+return (e = Object.setPrototypeOf || {
+__proto__: []
+} instanceof Array && function(e, t) {
+e.__proto__ = t;
+} || function(e, t) {
+for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n]);
+})(t, n);
+};
+return function(t, n) {
+e(t, n);
+function i() {
+this.constructor = t;
+}
+t.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
+};
+}(), a = this && this.__decorate || function(e, t, n, i) {
+var a, o = arguments.length, r = o < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, n) : i;
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(e, t, n, i); else for (var c = e.length - 1; c >= 0; c--) (a = e[c]) && (r = (o < 3 ? a(r) : o > 3 ? a(t, n, r) : a(t, n)) || r);
+return o > 3 && r && Object.defineProperty(t, n, r), r;
+};
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var i = cc._decorator, a = i.ccclass, o = i.property, r = i.executeInEditMode, c = function() {
+var o = cc._decorator, r = o.ccclass, c = o.property, s = o.executeInEditMode, l = function() {
 function e() {
 this.key = "";
 this.value = 0;
 }
-__decorate([ o({
+a([ c({
 readonly: !0
 }) ], e.prototype, "key", void 0);
-__decorate([ o(cc.Float) ], e.prototype, "value", void 0);
-return e = __decorate([ a("ShaderProperty") ], e);
+a([ c(cc.Float) ], e.prototype, "value", void 0);
+return e = a([ r("ShaderProperty") ], e);
 }();
-n.ShaderProperty = c;
-var s = cc.Enum({}), l = function(e) {
-__extends(t, e);
+n.ShaderProperty = l;
+var u = cc.Enum({}), d = function(e) {
+i(t, e);
 function t() {
 var t = null !== e && e.apply(this, arguments) || this;
 t._program = 0;
@@ -11456,30 +11487,30 @@ t.prototype.prev = function() {
 };
 var n;
 t.effectAssets = null;
-__decorate([ o ], t.prototype, "_program", void 0);
-__decorate([ o({
-type: s
+a([ c ], t.prototype, "_program", void 0);
+a([ c({
+type: u
 }) ], t.prototype, "program", null);
-__decorate([ o({
-type: [ c ]
+a([ c({
+type: [ l ]
 }) ], t.prototype, "_props", void 0);
-__decorate([ o({
-type: [ c ]
+a([ c({
+type: [ l ]
 }) ], t.prototype, "props", null);
-return t = n = __decorate([ a, r ], t);
+return t = n = a([ r, s ], t);
 }(cc.Component);
-n.default = l;
+n.default = d;
 cc.game.on(cc.game.EVENT_ENGINE_INITED, function() {
 cc.dynamicAtlasManager.enabled = !1;
 cc.loader.loadResDir("effect", cc.EffectAsset, function(e, t) {
-l.effectAssets = t;
-var n = l.effectAssets.map(function(e, t) {
+d.effectAssets = t;
+var n = d.effectAssets.map(function(e, t) {
 return {
 name: e._name,
 value: t
 };
 });
-cc.Class.Attr.setClassAttr(l, "program", "enumList", n);
+cc.Class.Attr.setClassAttr(d, "program", "enumList", n);
 });
 });
 cc._RF.pop();
@@ -11487,11 +11518,33 @@ cc._RF.pop();
 ShaderMouse: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "0ed2cS4TFpGyo6y5mPlpF50", "ShaderMouse");
+var i = this && this.__extends || function() {
+var e = function(t, n) {
+return (e = Object.setPrototypeOf || {
+__proto__: []
+} instanceof Array && function(e, t) {
+e.__proto__ = t;
+} || function(e, t) {
+for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n]);
+})(t, n);
+};
+return function(t, n) {
+e(t, n);
+function i() {
+this.constructor = t;
+}
+t.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
+};
+}(), a = this && this.__decorate || function(e, t, n, i) {
+var a, o = arguments.length, r = o < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, n) : i;
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(e, t, n, i); else for (var c = e.length - 1; c >= 0; c--) (a = e[c]) && (r = (o < 3 ? a(r) : o > 3 ? a(t, n, r) : a(t, n)) || r);
+return o > 3 && r && Object.defineProperty(t, n, r), r;
+};
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var i = cc._decorator, a = i.ccclass, o = i.executeInEditMode, r = function(e) {
-__extends(t, e);
+var o = cc._decorator, r = o.ccclass, c = o.executeInEditMode, s = function(e) {
+i(t, e);
 function t() {
 return null !== e && e.apply(this, arguments) || this;
 }
@@ -11512,19 +11565,41 @@ this.node.targetOff(this);
 t.prototype._onTouchMove = function(e) {
 this._material && this._material.effect.setProperty("mouse", e.getLocation());
 };
-return t = __decorate([ a, o ], t);
+return t = a([ r, c ], t);
 }(cc.Component);
-n.default = r;
+n.default = s;
 cc._RF.pop();
 }, {} ],
 ShaderNameLabel: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "4cd0ffQe75Ddod5dqnEgLHx", "ShaderNameLabel");
+var i = this && this.__extends || function() {
+var e = function(t, n) {
+return (e = Object.setPrototypeOf || {
+__proto__: []
+} instanceof Array && function(e, t) {
+e.__proto__ = t;
+} || function(e, t) {
+for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n]);
+})(t, n);
+};
+return function(t, n) {
+e(t, n);
+function i() {
+this.constructor = t;
+}
+t.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
+};
+}(), a = this && this.__decorate || function(e, t, n, i) {
+var a, o = arguments.length, r = o < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, n) : i;
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(e, t, n, i); else for (var c = e.length - 1; c >= 0; c--) (a = e[c]) && (r = (o < 3 ? a(r) : o > 3 ? a(t, n, r) : a(t, n)) || r);
+return o > 3 && r && Object.defineProperty(t, n, r), r;
+};
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var i = e("./ShaderHelper"), a = cc._decorator, o = a.ccclass, r = a.property, c = a.executeInEditMode, s = function(e) {
-__extends(t, e);
+var o = e("./ShaderHelper"), r = cc._decorator, c = r.ccclass, s = r.property, l = r.executeInEditMode, u = function(e) {
+i(t, e);
 function t() {
 var t = null !== e && e.apply(this, arguments) || this;
 t.shaderHelper = null;
@@ -11533,14 +11608,14 @@ return t;
 t.prototype.start = function() {
 var e = this;
 this.shaderHelper && setTimeout(function() {
-var t = i.default.effectAssets[e.shaderHelper.program];
+var t = o.default.effectAssets[e.shaderHelper.program];
 e.getComponent(cc.Label).string = t.name;
 }, 1e3);
 };
-__decorate([ r(i.default) ], t.prototype, "shaderHelper", void 0);
-return t = __decorate([ o, c ], t);
+a([ s(o.default) ], t.prototype, "shaderHelper", void 0);
+return t = a([ c, l ], t);
 }(cc.Component);
-n.default = s;
+n.default = u;
 cc._RF.pop();
 }, {
 "./ShaderHelper": "ShaderHelper"
@@ -11548,11 +11623,33 @@ cc._RF.pop();
 ShaderTime: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "5866cn/yXtO664c25gnwSdk", "ShaderTime");
+var i = this && this.__extends || function() {
+var e = function(t, n) {
+return (e = Object.setPrototypeOf || {
+__proto__: []
+} instanceof Array && function(e, t) {
+e.__proto__ = t;
+} || function(e, t) {
+for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n]);
+})(t, n);
+};
+return function(t, n) {
+e(t, n);
+function i() {
+this.constructor = t;
+}
+t.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
+};
+}(), a = this && this.__decorate || function(e, t, n, i) {
+var a, o = arguments.length, r = o < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, n) : i;
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(e, t, n, i); else for (var c = e.length - 1; c >= 0; c--) (a = e[c]) && (r = (o < 3 ? a(r) : o > 3 ? a(t, n, r) : a(t, n)) || r);
+return o > 3 && r && Object.defineProperty(t, n, r), r;
+};
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var i = cc._decorator, a = i.ccclass, o = i.property, r = function(e) {
-__extends(t, e);
+var o = cc._decorator, r = o.ccclass, c = o.property, s = function(e) {
+i(t, e);
 function t() {
 var t = null !== e && e.apply(this, arguments) || this;
 t._max = 65535;
@@ -11580,11 +11677,11 @@ t += .02;
 this._material.effect.setProperty("time", t);
 this._start = t;
 };
-__decorate([ o ], t.prototype, "_max", void 0);
-__decorate([ o ], t.prototype, "max", null);
-return t = __decorate([ a ], t);
+a([ c ], t.prototype, "_max", void 0);
+a([ c ], t.prototype, "max", null);
+return t = a([ r ], t);
 }(cc.Component);
-n.default = r;
+n.default = s;
 cc._RF.pop();
 }, {} ],
 ShejiaoPanel: [ function(e, t, n) {
@@ -12169,13 +12266,95 @@ cc._RF.pop();
 TiXianPanel: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "3360b4iNflPDrxHJSEE+41e", "TiXianPanel");
+var i = e("../../Util/appScript");
 cc.Class({
 extends: cc.Component,
-properties: {},
-start: function() {}
+properties: {
+label_Usdt: cc.Label,
+label_daojishi: cc.Label,
+editBox_dizhi: cc.EditBox,
+editBox_sum: cc.EditBox,
+editBox_code: cc.EditBox,
+toggle: cc.Toggle,
+btn_code: cc.Node
+},
+onEnable: function() {
+var e = this;
+this.editBox_dizhi.string = "";
+this.editBox_sum.string = "";
+this.editBox_code.string = "";
+this.label_daojishi.string = "";
+this.btn_code.active = !0;
+i.Post("member/getMemberInfo", {}, function(t) {
+if (200 == t.code && t.data) {
+e.label_Usdt.string = cc.js.formatStr("%s", parseFloat(t.data.totalUsdt).toFixed(4));
+e.username = t.data.username;
+}
+});
+this.toggle.isChecked = !0;
+this.typeid = 1;
+this.timeSum = 0;
+this._time = -1;
+},
+start: function() {},
+onClickWithdrawal: function() {
+if ("" != this.editBox_dizhi.string) if ("" != this.editBox_sum.string) if ("" != this.editBox_code.string) if (parseFloat(this.editBox_sum.string) > parseFloat(this.label_Usdt.string)) Global.PageMgr.showTipPage("可用额度不够"); else if (this.typeid < 0) Global.PageMgr.showTipPage("请选择提币类型"); else {
+var e = {
+address: this.editBox_dizhi.string,
+number: this.editBox_sum.string,
+type: this.typeid,
+code: this.editBox_code.string
+};
+Global.ProtocolMgr.queryWithdrawApply(e, function(e) {
+200 == e.code ? Global.PageMgr.onClosePage(12) : Global.PageMgr.showTipPage(e.message);
+});
+} else Global.PageMgr.showTipPage("请输入验证码"); else Global.PageMgr.showTipPage("请输入数量"); else Global.PageMgr.showTipPage("请输入地址");
+},
+onClickWithdrawalList: function() {
+Global.PageMgr.onOpenPage(27);
+},
+ToggleEvent: function(e, t) {
+this.typeid = t;
+},
+onClickcopyTextToClip: function() {
+jsb.copyTextToClipboard;
+},
+GetVerificationCode: function() {
+var e = this;
+if (this._time > 0) Global.PageMgr.showTipPage("请稍后再试"); else {
+var t = {
+account: this.username,
+verifyType: 1
+};
+Global.ProtocolMgr.queryGetAuthCode(t, function(t) {
+if (200 == t.code) {
+e._time = 120;
+e.label_daojishi.string = cc.js.formatStr("倒计时:%s", e._time);
+e.btn_code.active = !1;
+Global.PageMgr.showTipPage("已发送验证码到注册账号邮箱!");
+} else Global.PageMgr.showTipPage(t.message);
+});
+}
+},
+update: function(e) {
+if (this._time > 0) {
+this.timeSum += e;
+if (this.timeSum >= 1) {
+this._time -= 1;
+this.timeSum = 0;
+this.label_daojishi.string = cc.js.formatStr("倒计时:%s", this._time);
+}
+} else if (0 == this._time) {
+this.btn_code.active = !0;
+this.label_daojishi.string = "";
+this._time = -1;
+}
+}
 });
 cc._RF.pop();
-}, {} ],
+}, {
+"../../Util/appScript": "appScript"
+} ],
 TipsPage: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "6d876ZRWYpHtqDXn7aDfItO", "TipsPage");
@@ -13350,6 +13529,97 @@ cc._RF.pop();
 }, {
 "./GCONFIG": "GCONFIG"
 } ],
+WithdrawalListPanel: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "b913frxb8NN/7Cj9AtDiB8A", "WithdrawalListPanel");
+cc.Class({
+extends: cc.Component,
+properties: {
+incomeDetailsItem: cc.Prefab,
+container_incomeDetails: cc.Node,
+pageSum: 1,
+pageSum2: 1
+},
+onEnable: function() {
+this.pageSum = 1;
+this.upDataAccountDetail();
+},
+upDataAccountDetail: function() {
+var e = this;
+Global.ProtocolMgr.queryGetWithdrawApplyDetail(10, this.pageSum, function(t) {
+if (200 == t.code) {
+if (t.data) {
+var n = t.data;
+if (0 == n.length) {
+1 != e.pageSum && Global.PageMgr.showTipPage("已经是最后页了");
+e.pageSum = e.pageSum2 + 1;
+return;
+}
+e.pageSum2 = e.pageSum;
+1 != e.pageSum && Global.PageMgr.showTipPage("刷新成功！");
+e.container_incomeDetails.removeAllChildren();
+for (var i = 0; i < n.length; i++) {
+var a = cc.instantiate(e.incomeDetailsItem);
+a.getComponent("WithdrawalList_Item").setData(n[i]);
+e.container_incomeDetails.addChild(a);
+}
+}
+} else Global.PageMgr.showTipPage(t.message);
+});
+},
+onClickDown: function() {
+if (this.pageSum > 2) this.pageSum -= 1; else {
+this.pageSum = 1;
+Global.PageMgr.showTipPage("已经是首页了");
+}
+this.upDataAccountDetail();
+},
+onClickUp: function() {
+this.pageSum += 1;
+this.upDataAccountDetail();
+}
+});
+cc._RF.pop();
+}, {} ],
+WithdrawalList_Item: [ function(e, t, n) {
+"use strict";
+cc._RF.push(t, "c84e4+kpVNHMrUnhZe/Q1eN", "WithdrawalList_Item");
+cc.Class({
+extends: cc.Component,
+properties: {
+label_name: cc.Label,
+label_time: cc.Label,
+label_pic: cc.Label,
+label_yuanyin: cc.Label
+},
+start: function() {},
+setData: function(e) {
+this.label_name.string = e.title;
+this.label_time.string = e.createTime;
+this.label_yuanyin.string = e.failedReason;
+this.label_pic.string = cc.js.formatStr("%s", parseFloat(e.actualValue).toFixed(4));
+var t = "";
+switch (e.withdrawStatus) {
+case 0:
+t = "申请中";
+break;
+
+case 1:
+t = "确认中";
+break;
+
+case 2:
+t = "成功";
+break;
+
+case 3:
+t = "失败";
+}
+this.label_name.string = t;
+}
+});
+cc._RF.pop();
+}, {} ],
 XHP_item: [ function(e, t, n) {
 "use strict";
 cc._RF.push(t, "79b2c5S0rtF/b9iqAvobfnB", "XHP_item");
@@ -13735,7 +14005,7 @@ for (var a in n) 3 === n[a].length && (o = n[a]);
 var r = [];
 for (var a in i) 3 === i[a].length && (r = i[a]);
 return p(o, r);
-}, N = function(e, t) {
+}, P = function(e, t) {
 for (var n = {}, i = 0; i < e.length; i++) n.hasOwnProperty(e[i].card_data.value) ? n[e[i].card_data.value].push(e[i]) : n[e[i].card_data.value] = [ e[i] ];
 var a = [], o = 16;
 for (var i in n) if (Number(i) < o) {
@@ -13751,11 +14021,11 @@ o = Number(i);
 c = r[i];
 }
 return b(a, c);
-}, P = function(e, t) {
+}, N = function(e, t) {
 for (var n = {}, i = [], a = 0; a < e.length; a++) n.hasOwnProperty(e[a].card_data.value) ? i.push(e[a]) : n[e[a].card_data.value] = [ e[a] ];
 var o = {}, r = [];
 for (a = 0; a < t.length; a++) o.hasOwnProperty(t[a].card_data.value) ? r.push(t[a]) : o[t[a].card_data.value] = [ t[a] ];
-return N(i, r);
+return P(i, r);
 }, S = function(e, t) {
 for (var n = {}, i = 0; i < e.length; i++) n.hasOwnProperty(e[i].card_data.value) ? n[e[i].card_data.value].push(e[i]) : n[e[i].card_data.value] = [ e[i] ];
 var a = {};
@@ -13765,7 +14035,7 @@ for (var i in n) if (3 === n[i].length) for (var r = 0; r < n[i].length; r++) o.
 console.log("list a = " + JSON.stringify(o));
 var c = [];
 for (var i in a) if (3 === a[i].length) for (r = 0; r < a[i].length; r++) c.push(a[i][r]);
-return N(o, c);
+return P(o, c);
 }, w = function(e, t) {
 console.log("compareScroll");
 if (e.length != t.length) return !1;
@@ -13787,7 +14057,7 @@ c.push(t[o]);
 console.log("list a = " + JSON.stringify(i));
 console.log("list b = " + JSON.stringify(c));
 return w(i, c);
-}, E = function(e, t, n) {
+}, R = function(e, t, n) {
 var i = !1;
 switch (n.name) {
 case f.one.name:
@@ -13819,11 +14089,11 @@ i = C(e, t);
 break;
 
 case f.plane.name:
-i = N(e, t);
+i = P(e, t);
 break;
 
 case f.planeWithOne.name:
-i = P(e, t);
+i = N(e, t);
 break;
 
 case f.planeWithTwo.name:
@@ -13847,17 +14117,17 @@ return i;
 (e = {
 card_list: []
 }).findWithCard = function(e, t) {
-R(e);
+E(e);
 };
 e.compareWithCard = function(e, t) {
 console.log("last_cards" + JSON.stringify(e));
 console.log("current_cards" + JSON.stringify(t));
-var n = R(e), i = R(t);
+var n = E(e), i = E(t);
 if (e.value < t.value) {
 console.log("compareWithCard less");
 return !0;
 }
-return e.value == t.value && (n.name != i.name ? "牌型不同" : E(e, t, n));
+return e.value == t.value && (n.name != i.name ? "牌型不同" : R(e, t, n));
 };
 e.IsCanPushs = function(e) {
 if (t(e)) {
@@ -13909,7 +14179,7 @@ console.log("IsLianDui sucess");
 return f.DoubleScroll;
 }
 };
-var R = e.IsCanPushs;
+var E = e.IsCanPushs;
 return e;
 };
 t.exports = n.default;
@@ -16374,4 +16644,4 @@ redPackList: "红包列表"
 };
 cc._RF.pop();
 }, {} ]
-}, {}, [ "CardCtrl", "DragSelect", "GameMgr", "LoadingCtrl", "LobbyCardCtrl", "LobbyCtrl", "MenuCtrl", "PlayerCtrl", "RoomCtrl", "RoomNetCtrl", "AssetMgr", "AudioMgr", "AutoScaleFixedWidth", "BtnCtrl", "ButtonSafe", "CSVParser", "CoinsMgr", "DataMgr", "DataObject", "Facebook", "FacebookMgr", "GCONFIG", "GlobalNiuNiu", "GraySprite", "IAP", "IAPMgr", "IapTools", "ImageLoader", "LabelInteger", "LabelOwnNumCtrl", "ListView", "ProgressBarExt", "ScrollViewFixed", "ServerTimeMgr", "SliderExt", "SpriteRemote", "SwitchControl", "Toast", "UiUpdater", "UtilsCross", "UtilsOther", "ViewBase", "ViewMgr", "one-side-platform", "AchievementData", "DailyRewardData", "EnemyBaseData", "EnemyGroupData", "GameCfg", "GunData", "Algo", "Encrypt", "Md5", "joinRoomNiuNiu", "GameHttp", "HttpProxy", "GameNetwork", "GameProtocols", "GameWebSocket", "NetProxy", "AlertBindFBCtrl", "DialogCtrl", "ModeSelViewCtrl", "SettingViewCtrl", "ToastCtrl", "ComboBox", "Item", "Config", "Dssc", "GameData", "Global", "GlobalEvent", "HotUpdate", "Main", "PageMgr", "ProtocolMgr", "ResourceMgr", "SocketMgr", "Tip", "AnnouncementPanel", "ArderPanel", "Arder_Item", "BaoMingPanel", "BaoMing_Item", "ChongWuPanel", "ChongWuUserDataPanel", "CustomerServicePanel", "EmailDetailPanel", "EmailPanel", "emailItem", "Friend", "GamePanel", "Game_Item2", "Game_Item3", "game_item", "GivingCrystalPanel", "GongGaoPanel", "FaHongBao", "HongBao", "HongBaoList", "HongBaoList1", "IncomeDetailsPanel", "IncomeDetails_Item", "JiaoYiPanel", "jiaoyi_item", "KnapsackPanel", "KuangJiShiChang", "DoorBg", "DoorBottom", "DoorTop", "Email", "Fan", "Gold", "KuangChi", "MineDoor", "TreasureBox", "LoginPanel", "LuckyDrawItem", "LuckyDrawPanel", "TurntableMgr", "MainPage", "Manor", "NFTPanel", "NongChang", "NongChangPanel", "SalePanel", "ZhongZiPanel", "Racing", "RankPanel", "rank_item", "RecreationalCenter", "ShejiaoPanel", "ShengJia", "NFT_item", "ShopPanel", "ShopUserDataPanel", "XHP_item", "SlotPanel", "TipsPage", "MaiRu", "MairChu", "TradingFloor", "ZhuJinPanel", "ZiChuangPanel", "BuyPanel", "ChongZhiPanel", "TiXianPanel", "DataFunc", "appScript", "ClickEvent", "GainGold", "ShaderHelper", "ShaderMouse", "ShaderNameLabel", "ShaderTime", "carder", "player", "socket_ctr", "failPanel", "gameScene", "gamebeforeUI", "gameingUI", "card", "player_node", "winPanel", "hallScene", "creatRoom", "joinRoom", "password", "quick_join", "loginScene", "mygolbal", "event_lister", "waitnode", "en", "zh", "LanguageData", "LocalizedLabel", "LocalizedSprite", "SpriteFrameSet", "polyglot.min" ]);
+}, {}, [ "CardCtrl", "DragSelect", "GameMgr", "LoadingCtrl", "LobbyCardCtrl", "LobbyCtrl", "MenuCtrl", "PlayerCtrl", "RoomCtrl", "RoomNetCtrl", "AssetMgr", "AudioMgr", "AutoScaleFixedWidth", "BtnCtrl", "ButtonSafe", "CSVParser", "CoinsMgr", "DataMgr", "DataObject", "Facebook", "FacebookMgr", "GCONFIG", "GlobalNiuNiu", "GraySprite", "IAP", "IAPMgr", "IapTools", "ImageLoader", "LabelInteger", "LabelOwnNumCtrl", "ListView", "ProgressBarExt", "ScrollViewFixed", "ServerTimeMgr", "SliderExt", "SpriteRemote", "SwitchControl", "Toast", "UiUpdater", "UtilsCross", "UtilsOther", "ViewBase", "ViewMgr", "one-side-platform", "AchievementData", "DailyRewardData", "EnemyBaseData", "EnemyGroupData", "GameCfg", "GunData", "Algo", "Encrypt", "Md5", "joinRoomNiuNiu", "GameHttp", "HttpProxy", "GameNetwork", "GameProtocols", "GameWebSocket", "NetProxy", "AlertBindFBCtrl", "DialogCtrl", "ModeSelViewCtrl", "SettingViewCtrl", "ToastCtrl", "ComboBox", "Item", "Config", "Dssc", "GameData", "Global", "GlobalEvent", "HotUpdate", "Main", "PageMgr", "ProtocolMgr", "ResourceMgr", "SocketMgr", "Tip", "AnnouncementPanel", "ArderPanel", "Arder_Item", "BaoMingPanel", "BaoMing_Item", "ChongWuPanel", "ChongWuUserDataPanel", "CustomerServicePanel", "EmailDetailPanel", "EmailPanel", "emailItem", "Friend", "GamePanel", "Game_Item2", "Game_Item3", "game_item", "GivingCrystalPanel", "GongGaoPanel", "FaHongBao", "HongBao", "HongBaoList", "HongBaoList1", "IncomeDetailsPanel", "IncomeDetails_Item", "JiaoYiPanel", "jiaoyi_item", "KnapsackPanel", "KuangJiShiChang", "DoorBg", "DoorBottom", "DoorTop", "Email", "Fan", "Gold", "KuangChi", "MineDoor", "TreasureBox", "LoginPanel", "LuckyDrawItem", "LuckyDrawPanel", "TurntableMgr", "MainPage", "Manor", "NFTPanel", "NongChang", "NongChangPanel", "SalePanel", "ZhongZiPanel", "Racing", "RankPanel", "rank_item", "RecreationalCenter", "ShejiaoPanel", "ShengJia", "NFT_item", "ShopPanel", "ShopUserDataPanel", "XHP_item", "SlotPanel", "TipsPage", "MaiRu", "MairChu", "TradingFloor", "WithdrawalListPanel", "WithdrawalList_Item", "ZhuJinPanel", "ZiChuangPanel", "BuyPanel", "ChongZhiPanel", "TiXianPanel", "DataFunc", "appScript", "ClickEvent", "GainGold", "ShaderHelper", "ShaderMouse", "ShaderNameLabel", "ShaderTime", "carder", "player", "socket_ctr", "failPanel", "gameScene", "gamebeforeUI", "gameingUI", "card", "player_node", "winPanel", "hallScene", "creatRoom", "joinRoom", "password", "quick_join", "loginScene", "mygolbal", "event_lister", "waitnode", "en", "zh", "LanguageData", "LocalizedLabel", "LocalizedSprite", "SpriteFrameSet", "polyglot.min" ]);

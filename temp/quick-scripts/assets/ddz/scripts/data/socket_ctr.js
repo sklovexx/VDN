@@ -97,7 +97,7 @@ var socketCtr = function socketCtr() {
       需要判断: 
          出的牌是否符合规则
          和上个出牌玩家比较，是否满足条件
-     */
+      */
     that.request_chu_card = function (req, callback) {
         _request("chu_card_req", req, callback);
     };

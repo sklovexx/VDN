@@ -1,4 +1,4 @@
 include ':libcocos2dx'
-project(':libcocos2dx').projectDir = new File('D:/tool/CocosCreator2.2.2/resources/cocos2d-x/cocos/platform/android/libcocos2dx')
+project(':libcocos2dx').projectDir = new File('D:/Tools/CocosCreator/resources/cocos2d-x/cocos/platform/android/libcocos2dx')
 include ':parallel'
 project(':parallel').projectDir = new File(settingsDir, 'app')

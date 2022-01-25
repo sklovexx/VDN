@@ -1,1 +1,1 @@
-{"__type__":"cc.TextAsset","_name":"zhongziperiod","text":"﻿info,,,,,,\nnumber,String,String,String,String,String\nid,1,2,3,4,5\n101001,发芽-6166000,成熟-6166000,收获-6168000\n101002,发芽-6166000,成熟-6166000,收获-6168000\n101003,发芽-6166000,成熟-6166000,收获-6168000\n"}
+{"__type__":"cc.TextAsset","_name":"zhongziperiod","text":"﻿info,,,,,,\r\nnumber,String,String,String,String,String\r\nid,1,2,3,4,5\r\n101001,发芽-6166000,成熟-6166000,收获-6168000\r\n101002,发芽-6166000,成熟-6166000,收获-6168000\r\n101003,发芽-6166000,成熟-6166000,收获-6168000\r\n"}
